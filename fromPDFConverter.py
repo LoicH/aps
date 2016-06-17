@@ -5,57 +5,43 @@ Created on Thu Jun 16 15:55:42 2016
 @author: asueur
 """
 import sys
+import os   
 sys.path.append("/usr/home/username/pdfminer")
+path ="/cal/homes/asueur/Downloads/pdfminer-20140328/samples/simple1.pdf"
 
+#import subprocess
+#s="python pdf2txt.py TP3.pdf"
+#proc = subprocess.Popen("ls", stdout=subprocess.PIPE)
+#
+#proc = subprocess.Popen("python pdf2txt.py TP3.pdf", stdout=subprocess.PIPE)
+#tmp = proc.stdout.read()
+#print tmp
 
-def pdf_to_csv(filename):
-    from cStringIO import StringIO  
-    from pdfminer.converter import LTChar, TextConverter
-    from pdfminer.layout import LAParams
-    from pdfminer.pdfparser import PDFDocument, PDFParser
-    from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
+from pdfminer.pdfpage import PDFPage
+from cStringIO import StringIO
 
-    class CsvConverter(TextConverter):
-        def __init__(self, *args, **kwargs):
-            TextConverter.__init__(self, *args, **kwargs)
-
-        def end_page(self, i):
-            from collections import defaultdict
-            lines = defaultdict(lambda : {})
-            for child in self.cur_item._objs:                #<-- changed
-                if isinstance(child, LTChar):
-                    (_,_,x,y) = child.bbox                   
-                    line = lines[int(-y)]
-                    line[x] = child._text.encode(self.codec) #<-- changed
-
-            for y in sorted(lines.keys()):
-                line = lines[y]
-                self.outfp.write(";".join(line[x] for x in sorted(line.keys())))
-                self.outfp.write("\n")
-
-    # ... the following part of the code is a remix of the 
-    # convert() function in the pdfminer/tools/pdf2text module
-    rsrc = PDFResourceManager()
-    outfp = StringIO()
-    device = CsvConverter(rsrc, outfp, codec="utf-8", laparams=LAParams())
-        # becuase my test documents are utf-8 (note: utf-8 is the default codec)
-
-    doc = PDFDocument()
-    fp = open(filename, 'rb')
-    parser = PDFParser(fp)       
-    parser.set_document(doc)     
-    doc.set_parser(parser)       
-    doc.initialize('')
-
-    interpreter = PDFPageInterpreter(rsrc, device)
-
-    for i, page in enumerate(doc.get_pages()):
-        outfp.write("START PAGE %d\n" % i)
-        if page is not None:
-            interpreter.process_page(page)
-        outfp.write("END PAGE %d\n" % i)
-
-    device.close()
+def convert_pdf_to_txt(path):
+    rsrcmgr = PDFResourceManager()
+    retstr = StringIO()
+    codec = 'utf-8'
+    laparams = LAParams()
+    device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
+    fp = file(path, 'rb')
+    interpreter = PDFPageInterpreter(rsrcmgr, device)
+    password = ""
+    maxpages = 0
+    caching = True
+    pagenos=set()
+    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password,caching=caching, check_extractable=True):
+        interpreter.process_page(page)
     fp.close()
+    device.close()
+    s = retstr.getvalue()
+    retstr.close()
+    return s
+    
 
-    return outfp.getvalue()
+a= convert_pdf_to_txt("TP3.pdf")

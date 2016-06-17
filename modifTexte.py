@@ -10,7 +10,9 @@ Created on Thu Jun 16 16:42:50 2016
 # listeCreux : list des mots creux
 
 import string
-
+from  nltk import *
+import os
+pdfPath = "/cal/homes/asueur/Downloads/TP3.pdf"
 text = "abc Abc bAc.... bBc bacb acb acb acb"
 listeCreux=["abc","acb"]
 
@@ -41,4 +43,5 @@ def compteur(text, wordList):
             dictionnary[word]=str(a/float(len(textWords)))
     return dictionnary
         
-    
+def convertToText(textPath):
+    os.system("pdftotext '%s' '%s'" % (pdfPath, "TP3.txt"))
