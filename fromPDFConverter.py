@@ -6,6 +6,7 @@ Created on Thu Jun 16 15:55:42 2016
 """
 import sys
 import os   
+import textract
 sys.path.append("/usr/home/username/pdfminer")
 path ="/cal/homes/asueur/Downloads/pdfminer-20140328/samples/simple1.pdf"
 
@@ -44,4 +45,6 @@ def convert_pdf_to_txt(path):
     return s
     
 
-a= convert_pdf_to_txt("TP3.pdf")
+a= convert_pdf_to_txt(path)
+
+
