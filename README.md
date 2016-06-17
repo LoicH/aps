@@ -9,3 +9,5 @@ Loïc Herbelot
 Antoine Sueur
 
 Romeo Brofiga
+
+Adrien Lagasse
