@@ -99,6 +99,15 @@ def create_matrix(linkWordDocFreq, list_titles) :
             matrix[linkDocLine[title]][linkWordColumn[word]]=compute_tfidf(linkWordDocFreq,word,title, list_titles)
 
     return matrix, linkDocLine, linkWordColumn
+    
+def index2(list, i) :
+    pos = []
+    j = 0
+    for a in list :
+        if a == i :
+            pos.append(j)
+        j+=1
+    return pos
 
 def create_matrix2(linkWordDocFreq, list_titles) :
     listNonNullValues = []
@@ -126,7 +135,13 @@ def create_matrix2(linkWordDocFreq, list_titles) :
 
     return listNonNullValues, listLines, listColumns, linkDocLine, linkWordColumn
     
-    
+def accessMatrix(matrix, i, j) :
+    for k in range(len(matrix[1])) :
+        if matrix[1][k] == i :
+            if matrix[2][k] == j :
+                return matrix[0][k]
+    return 0
+
     
 dic_freq1 = dict()
 dic_freq2 = dict()
