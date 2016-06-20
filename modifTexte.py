@@ -45,9 +45,12 @@ def modifyText(textWords, blackList):
 
     
 def deleteStopWords(textWords):
-    #deleting words of types determiners, conjonctions, cardinal numbers
+    #deleting words of types determiners, conjonctions, cardinal numbers and stopwords
     listCopy=textWords
-    types = nltk.pos_tag(listCopy)
+    stopwords= corpus.stopwords.words("english")
+    for sw in stopwords:
+        listCopy=[j for j in listCopy if j!=str(sw)]
+    types = nltk.pos_tag(listCopy)      
     for i in types:
         if i[1] in ["DT","CC", "CD", "PRP", "PRP$", "PDT"] :  
             listCopy.remove(i[0])
