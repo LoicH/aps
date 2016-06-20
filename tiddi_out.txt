@@ -1,0 +1,828 @@
+Using Linked Data Traversal to Label Academic
+
+Communities
+
+Ilaria Tiddi, Mathieu d’Aquin, Enrico Motta
+Knowledge Media Institute, The Open University
+
+Walton Hall, Milton Keynes, MK76AA, United Kingdom
+
+{ilaria.tiddi, mathieu.daquin, enrico.motta}@open.ac.uk
+
+ABSTRACT
+In this paper we exploit knowledge from Linked Data to
+ease the process of analysing scholarly data.
+In the last
+years, many techniques have been presented with the aim of
+analysing such data and revealing new, unrevealed knowl-
+edge, generally presented in the form of “patterns”. How-
+ever, the discovered patterns often still require human in-
+terpretation to be further exploited, which might be a time
+and energy consuming process. Our idea is that the knowl-
+edge shared within Linked Data can actuality help and ease
+the process of interpreting these patterns. In practice, we
+show how research communities obtained through standard
+network analytics techniques can be made more understand-
+able through exploiting the knowledge contained in Linked
+Data. To this end, we apply our system Dedalo that, by
+performing a simple Linked Data traversal, is able to auto-
+matically label clusters of words, corresponding to topics of
+the diﬀerent communities.
+
+Categories and Subject Descriptors
+I.5 [Pattern Recognition]; I.5.4 [Pattern Recognition]:
+Application—Text Analysis; J.5 [Computer Application]:
+Administrative data processing—Education
+
+Keywords
+Linked Data, Educational Data, Community Detection
+
+1.
+
+INTRODUCTION
+
+Interest for research and scholarly data has sensibly in-
+creased in the last years, due to the large and constantly in-
+creasing amounts of published data. Many techniques have
+been applied and presented in the literature in order to mine
+and visualise such data, with the aim to reveal unrevealed
+knowledge, highlighting hidden patterns (to be intended, as
+in [4], as “a statement describing an interesting relation-
+ship among a subset of the data”) and forecasting interesting
+trends.
+
+Copyright is held by the International World Wide Web Conference Com-
+mittee (IW3C2). IW3C2 reserves the right to provide a hyperlink to the
+author’s site if the Material is used in electronic media.
+WWW 2015 Companion, May 18–22, 2015, Florence, Italy.
+ACM 978-1-4503-3473-0/15/05.
+http://dx.doi.org/10.1145/2740908.2742019.
+
+However, the interpretation of the revealed knowledge is
+still an intensive process, since it requires the intervention of
+a human expert, whose role is to analyse the trends and give
+them a meaning before they can be further exploited. This
+makes interpretation a crucial step in the process, where
+some knowledge might still remain unrevealed.
+
+The use-case we adopt here is the detection of topic com-
+munities within data provided by our university; i.e. a cor-
+pus of thousands of papers that have been published by each
+faculty of the Open University in recent years1. For the sim-
+ple aim of detecting which research areas are being studied,
+we process documents using basic text-mining techniques to
+obtain groups of similar documents, corresponding more or
+less to research areas. The techniques generally employed
+for purposes like ours tend to probabilistically extract top-
+ics as groups of co-occuring words, which eventually need a
+human to interpret and label them with the right research
+area.
+
+The nature of Linked Data can facilitate the process of
+understanding scholarly data: the idea we bring here is not
+only that educational data are one of the biggest portions
+within Linked Data (as reported in April 20142), but also
+that the structured and linked form they are represented
+with allows the spanning of datasets and the discovery of
+unrevealed knowledge about them with very little eﬀort.
+We highlight the Web of (Linked) Data potential of link-
+ing RDF datasets across diﬀerent disciplines, making new
+sources of knowledge accessible by the machines but also
+allowing the discovery of unrevealed, multi-domain knowl-
+edge. With such an amount of information shared through
+Linked Data, it should therefore be possible to automatise,
+or at least facilitate, the interpretation of results such as the
+ones described above.
+
+What we intend to achieve in this work is automatis-
+ing the interpretation of topic communities, by using the
+Linked Data connected information as background knowl-
+edge. In this paper, we use an automatic framework travers-
+ing Linked Data, Dedalo [13], that uses an A* search strat-
+egy over the graph of Linked Data, to identify common ex-
+planations (labels) for the the research communities that it
+found.
+
+2. RELATED WORK
+
+Our work ﬁnds its place at the intersection between the se-
+mantic publishing ﬁeld, which comprehends Semantic Web-
+based approaches enriching published data and facilitating
+1http://oro.open.ac.uk/
+2http://data.dws.informatik.uni-mannheim.de/lodcloud/2014/
+
+their analysis, and the subﬁeld of social network analysis
+deﬁned as topical community detection, consisting in those
+approaches using the documents’ textual information to de-
+tect topics of the identiﬁed communities.
+
+Semantic publishing. The pioneer works to explore aca-
+demic data have been built based on citation-indexes. Among
+those, we include the very well known Google Scholar3, the
+DBLP database4 and the CiteSeerX [8] search engine. Ar-
+guing that those were only focusing on data exploration,
+a more recent generation including the Microsoft Academic
+Search5 and ArnetMiner [12] systems has highlighted the im-
+portance trend discovery and prediction, and proposed novel
+features for those purposes. Recently, the Rexplore [10] sys-
+tem pointed out that the lack of semantic information in the
+former works prevents a proper data exploration in a gran-
+ular way, and introduced information from external Linked
+Data datasets such as GeoNames, DBpedia or DBLP++ to
+overcome this issue.
+
+The importance of the Semantic Web for scholarly data
+has also been highlighted in the literature through the use of
+ontologies and vocabularies to enhance the representation of
+those data. A whole set of vocabularies, now available as the
+SPAR suite6, include ontological models in OWL 2.0 DL for
+publishing and referencing bibliographic records and docu-
+ments in various aspects of the publication process. Since
+those models did not take into account the time factor (e.g.
+author’s role changing), the work of [11] presented two on-
+tologies including the time-indexed value in context ontology
+pattern tackling this issue.
+
+Topical community detection. Relevant literature in-
+cludes a wide range of works for topic labelling (for a full sur-
+vey on the area, see [3]). Our work is part of those works that
+make use of external datasources to label topics. In [1, 2,
+7], topics are extracted from Wikipedia’s structured knowl-
+edge, also verifying the topics against a search engine [1, 7].
+Moving away from Wikipedia and built-in knowledge bases
+into Linked Data, [5] proposes to use DBpedia categories as
+labels for topics. This work is certainly the most similar to
+our research, but with a signiﬁcant diﬀerence: [5] relies on
+the use of SPARQL queries to retrieve the DBpedia cate-
+gories. This introduces some (human) a priori knowledge,
+and limits the beneﬁts of the Linked Data interconnected
+knowledge, intended as a more serendipitous knowledge dis-
+covery process.
+
+3. PROBLEM STATEMENT
+
+To detect communities that talk about similar things, we
+can perform clustering on the set of available documents.
+Given a dataset D = {d0,. . . ,dm} of m publications and a
+corpus W ={w0,. . . ,wn} of n words occurring in each dk ∈
+D, a community is deﬁned as a group of similar words C =
+{w0, . . . , wj} (where C ⊆ W) associated to a topic T , that we
+aim at deﬁning automatically by estimating it on the words’
+similarity (see next section for details). Once obtained, we
+can use the 10 words top10(Ci) ⊆ Ci that are closest to the
+centroid of the cluster Ci to label the community.
+3http://scholar.google.com
+4http://www.informatik.uni-trier.de/ ley/db/
+5http://academic.research.microsoft.com/
+6http://purl.org/spar
+
+Figure 1 shows clusters representing our university’s com-
+munities. We obtained a network of communities (the size
+represents the number of documents belonging to it) whose
+connections intensity shows their relatedness (the stronger is
+the connection, the thicker is the line). The network reveals
+
+Figure 1: The Open University community network.
+
+indeed diﬀerent areas; however, quickly identifying commu-
+nities is hard since, unless being an expert of the domain,
+words in each cluster remain meaningless. For instance, we
+distinguish a red group that we call Cy1, Cy2, Cy3, for which:
+• top10(Cy1) = media, twentieth, paint, begin, religion,
+
+rich, church, write, century, movement
+
+• top10(Cy2) = inertia, instantaneous, smooth, zonal, ad-
+justment, kolmogorov, france, steeper, ethnic, longer
+• top10(Cy3) = mania, within, complete, one, emerge,
+
+open, shape, space, highlight, bring
+
+To interpret them, one needs to be an expert that, us-
+ing his own background knowledge, deﬁnes a super concept
+relating them. And even so, this might not be enough to ex-
+plain the whole community. One could say that Cy1 and Cy2
+might correspond respectively to arts and mathematics, but
+Cy3 would probably remain unexplained to many people.
+
+In [13] we presented Dedalo, a framework to explain clus-
+ters of items using knowledge extracted from Linked Data.
+Dedalo is based on three main assumptions:
+
+• if items are in the same cluster, there is an underlying
+characteristics that makes items appearing together,
+and this goes beyond the clustering process;
+
+• Linked Data knowledge is a graph of URI entities con-
+nected through RDF properties, that can be blindly
+navigated in order to serendipitously discover new knowl-
+edge (possibly across diﬀerent datasources), using a
+simple Linked Data traversal and URI dereferencing
+process;
+
+• some entities in this graph can have a common walk −→w
+
+(expressed in the form of a chain of contiguous RDF
+properties) to a speciﬁc entity.
+
+Given those assumptions, the main insight is that if items of
+a cluster share the same walk to a speciﬁc (unknown) entity
+in the Linked Data graph, then these walks can be used as
+
+confocalthapsigargincosmologyionicagonistpotentcaffeineapoptosiscytosolintactmediatwentiethpaintbeginreligiorichchurchwrittencenturiesmovementdatinganatexistibetanfaultextrusionoligocenereeschistlhasasouthwardcreepaustenitecompressedtensilepipefinitedeformstainlessweldspecimenthirdfaceunderstandgendersecondcriticnotionpatternpowerbestperformemploymeasurelanguageprogrammecommunicatecollaborauseabilityskillvegetablewarmclimateyearsstartvarietieslongregionlinkwatertetheredseedsciaticmyelininjuryrepairregenerategelbiomaterialperipherychondritesoxygenmeteoritesbulkmeteoritebodinisotopechondritesolaralteresaccdorbitatmospheremissionvariateestimachargelaunchdeviceinertiainstantaneoussmoothzonaladjustmentkolmogorovfrancesteeperethniclongermaniawithincompleteoneemergeopenshapespacehighlightbringprocesseseducationlocateautomatamarkablereasondiversclearinterpretarcticsamplesmicrobialextremamicroorganismhaughtonmarhabitatxraybiologysiterisesemanticscientificsourcenegateontologynetworkcourseanionkingdompoliciesgovernunitpolitesenstwoenhanceconcernfindadoptrightconsumeresourcecasenewbookindustrialrelationshipproductempireresultreflectextentformatsouthproducecapableafricaexaminecurriculumsecondariesteachersanalysispupilprimariesclassroomschoolsachieveschoolmicroscopiclabelthinmorphologyltdhippocampuslayerratsdepressplasticastronomyextrasolarcompaniondiscexoplanetwaspgiantparametersplanetssuperwaspmarinacarbontimerecordeventenvironmentmassglobalan explanation to their grouping. Dedalo then applies an
+A* graph search strategy, aiming at ﬁnding the least-cost
+path from the set of initial nodes to a goal node, i.e. the
+entity they have in common somewhere in the graph, and
+uses the entropy measure to estimate the costs of the walks
+in the graph. Because Linked Data can be traversed by URI
+dereferencing, Dedalo explores the graph trying to improve
+the accuracy of the explanations by iteratively deepening
+the graph exploration.
+
+Our general challenge is summarised as follows: given the
+cluster of words, whose understandability remain diﬃcult,
+Linked Data, providing information about concepts in mul-
+tivariate domains and Dedalo, which is able to ﬁnd Linked
+Data explanations for the grouping of some patterns, we
+want to set up a process to automatically label communities
+and ease the process of their interpretation.
+
+4. APPROACH
+
+To label communities, we performed three tasks: (i) data
+pre-processing, (ii) network building and (iii) community la-
+belling.
+4.1 Data pre-processing
+The ﬁrst step consisted in pre-processing the input data.
+We started from a corpus of publication abstracts D =
+{d0,. . . , dn} and applied common text preprocessing steps
+to clean them. We intentionally chose the abstracts for
+their accessibility, as well as because we considered they were
+enough to represent the research topic of a paper. The use
+of full texts is left for future work.
+
+(1) Text normalisation. This includes reducing words to
+lower case as well as removing (English) stopwords, numbers
+and punctuation.
+(2) Stemming and stem completion. Words are ﬁrst
+reduced to their stemma, and then each stem is replaced
+with its shortest possible raw form in W. This improves the
+words readability and the chances to map them with the
+same one DBpedia entity. For instance, the words religion,
+religious and religiously are ﬁrst all stemmed as religi-, and
+this one is then transformed to religion.
+(3) Term ﬁltering. We set the minimum characters length
+for a term wi to 3, as we considered words below this bound-
+ary as pointless to our purposes. This, of course, is a choice
+purely adapted to our data, and might not be applicable to
+a diﬀerent dataset.
+(4) DBpedia lookup. We removed from W words that
+could not be mapped with DBpedia. Because Dedalo re-
+lies on link traversal, we do not have to worry about words
+ambiguity nor ranking the top(k) relevant DBpedia entities
+for a word: either a DBpedia entity exists (as in the triple
+(cid:104)db:Religion,dc:subject,db:category:Religion(cid:105)), and therefore
+Dedalo would normally dereference it by collecting its prop-
+erties and values, or the entity has a redirection property
+(expressed in DBpedia by the dbo:wikiPageRedirects prop-
+erty) that Dedalo would naturally follow as any other prop-
+erty, as when discovering the triple (cid:104)db:Religiosity,dbo:wiki-
+PageRedirects,db:Religion(cid:105).
+4.2 Network building
+
+We applied the mathematical technique of Latent Seman-
+tic Analysis (LSA) to extract and infer relations of expected
+contextual usage of words in texts [6]. Words have been
+
+represented ﬁrst as high dimensional vectors, so that we
+obtained a TF-IDF weighted term-document matrix M in
+which each column was a unique word and each row a doc-
+ument of the corpus. We cropped M at its upper and lower
+boundaries, i.e.
+removing words appearing in more than
+25% of D, or less than twice. With respect to the power
+law distribution7, we considered that boundaries would be
+helpful in detecting the truly meaningful words with respect
+to our data.
+
+Secondly, the matrix was reduced into a lower dimensional
+space, the latent semantic space, using a form of factor anal-
+ysis called the single value decomposition (SVD). This space
+reveals semantic connections between words beyond the lexi-
+cal level, reproducing the human judgment of meanings sim-
+ilarity. With the SVD, M is ﬁrst split in three sub-matrices
+(the term vector T-matrix, the document vector D-matrix
+and the diagonal matrix S-matrix ) and then reduced into
+a space Sk of k dimensions, i.e. the latent semantic space.
+The dimensions reduction collapses the sub-matrices in such
+a way that words occurring in similar contexts will appear
+with a greater (or lesser) estimated frequency, therefore au-
+tomatically reproducing the words’ grouping (into what a
+human would deﬁne as a topic).
+
+Once obtained the LSA space Sk, we clustered the words
+according to the Euclidean distance between them, and formed
+the set of clusters C ={C0, . . . ,Ci} corresponding to the com-
+munities. To highlight the communities relatedness, we kept
+only the connection (the edge) between a given cluster Ci
+and its closest one according to the distance between their
+centroids. The result is a network graph, as already shown
+in Figure 1, in which clusters are nodes of diﬀerent size (the
+number of words belonging to it), and the edges are the
+top(1) connections between the nodes. The thicker the edge,
+the closest the two centroids are, the more the two commu-
+nities are related.
+4.3 Communities labelling
+
+The last step is to run Dedalo on each cluster Ci in order
+to ﬁnd explanations revealing why its words wi are part of
+it. Dedalo’s process is inspired by the Inductive Logic Pro-
+gramming approach [9], in which, starting from a group of
+positive and negative examples (in our case, words wi ∈ W)
+and some knowledge about them, a set of theories entail-
+ing all the positive and none of the negative examples are
+automatically derived. In this context, given:
+
+• Ci, a cluster of words corresponding to the community
+
+that we want to label;
+
+examples;
+
+• W\Ci, the remaining words wi in W to use as counter
+• B, the knowledge in Linked Data, encoded as walks −→w
+of RDF properties between a group of items in W and
+a ﬁnal entity ei, i.e. εi =(cid:104)−→w .ei(cid:105);
+
+Dedalo’s aim is to ﬁnd the best explanation top(εi) for the
+words in Ci, where best is intended as representing the biggest
+number of words of Ci and the least of the words outside
+it. An A*-driven link traversal is used to iteratively ex-
+plore new parts of the Linked Data graph, and to collect the
+most promising explanations. To start this graph search,
+we created a URI entity for each word wi, and linked it
+7http://en.wikipedia.org/wiki/Zipf law
+
+Figure 2: Example of the Linked Data graph traversal. The search starts at the top with the words in Cy1.
+The walks they share in the graph are collected and then evaluated in order to ﬁnd the most suitable ones.
+
+to explain. For instance, 5 sources are covered by the expla-
+
+nation ε1=(cid:104)−→w4.db:category:Concepts in aesthetics(cid:105), while the
+explanation ε2=(cid:104)−→w3.db:category:Creativity(cid:105) covers only 3, so
+
+we consider ε1 as the most valuable explanation for the clus-
+ter.
+
+Finally, the best explanation is can be used as label of
+
+communities, as in Figure 3.
+
+to its DBpedia correspondent wD
+i (found in the DBpedia
+lookup step) with a RDF property skos:relatedMatch, so
+that Dedalo’s graph initially contains n triples in the form
+of (cid:104)ddl:wi,skos:relatedMatch,db:wD
+i (cid:105) with n being the size
+of the words corpus W.
+best walk −→w i is taken from the queue of all the possible
+
+The graph is iteratively expanded, as follows: ﬁrst, the
+
+walks that could be followed in the graph; second, the en-
+tities at the end of this walk are dereferenced; third, new
+walks of length l+1 (l being the length of the best walk
+
+−→wi) are collected by chaining −→wi to the properties obtained
+
+by dereferencing the new URIs; ﬁnally, those new walks are
+added to the queue, and a new iteration begins. Each time
+
+a new walk −→wi is discovered, we also build new explanations
+εi=(cid:104)−→wi.ei(cid:105), using each of the entities ei that −→wi walks to.
+Figure 2 gives a non-exhaustive graph search example on
+Cy1. For readability clarity, Table 1 presents a legend of the
+walks that will be used further on.
+
+Table 1: Walks label of our running example.
+
+id. −→wi
+−→w1
+−→w2
+−→w3
+−→w4
+−→w5
+
+{skos:relatedMatch}
+{skos:relatedMatch,dc:subject}
+{skos:relatedMatch,dc:subject,skos:broader}
+{skos:relatedMatch,dc:subject,skos:broader,
+skos:broader,skos:broader}
+{skos:relatedMatch,dc:subject,skos:broader,
+skos:broader,skos:broader}
+
+e2=db:category:Spirituality. Thus, we build the new walk
+
+If we assume the best walk at a given iteration is −→w3 ={skos:
+relatedMatch,dc:subject,skos:broader}, we dereference the
+entities at the end of −→w3, i.e. e1=db:category:Creativity and
+−→w4={skos:relatedMatch,dc:subject,skos:broader,skos:broade
+r} by adding to −→w3 the new property p=skos:broader discov-
+ered by dereferencing e1 and e2, and add it to the queue of
+walks. Finally, we create a new explanation ε =(cid:104)−→w4.db:cate-
+gory:Concepts in aestethics(cid:105), evaluate it, and start a new
+iteration.
+the F-Measure F = 2 ∗ P∗R
+(cid:104)−→wi.ei(cid:105), Precision and Recall are deﬁned as follows:
+(2) R = sources(εi)∩Ci
+
+The explanations accuracy is statistically evaluated using
+P +R . Given an explanation εi =
+
+where sources(εi) is the number of words wi ∈ W walking to
+ei through the walk −→wi and Ci is the cluster of words we want
+
+(1) P = sources(εi)∩Ci
+
+sources(εi)
+
+|Ci|
+
+Figure 3: Replacing the clusters of words with the
+DBpedia categories. Each community is labelled
+with the best explanation that Dedalo found after
+5 iterations.
+
+5. EXPERIMENTS
+
+Below we give some details about our experiments. All the
+
+data, experiments and tests are publicly available online8.
+5.1 Data and process details
+Data preprocessing. Our dataset D was composed of
+17,142 English abstracts, retrieved from the ORO reposi-
+tory using a simple SPARQL query9. The set of words W,
+initially composed of 65,564 words, was reduced to 18,396
+
+8http://linkedu.eu/dedalo/
+9http://data.open.ac.uk/sparql
+
+ChemistryCreativityGeologyMaterials scienceSocial sciencesBranches of psychologyManagementBranches of biologyMeteoritesTelecommunications engineeringMathematicsAbstractionConcepts in epistemologyBranches of geographyPhilosophy of languagePhilosophy of social scienceLeadershipSubfields of political scienceEducational institutionsOrgansAstronomyChemical propertiesTable 2: Explanations found by Dedalo after 5 iterations, their F-Measure score (FM), the number of sources
+sources(εi) in Ci covered by εi, and the size of the cluster Ci.
+
+|Ci|
+16
+125
+
+8
+73
+52
+28
+160
+81
+31
+150
+36
+21
+32
+49
+31
+33
+25
+23
+45
+35
+42
+38
+
+εi
+
+(cid:104)−→w2.db:Category:Meteorites(cid:105)
+(cid:104)−→w5.db:Category:Geology(cid:105)
+(cid:104)−→w4.db:Category:Chemical Properties(cid:105)
+(cid:104)−→w5.db:Category:Branches of Biology(cid:105)
+(cid:104)−→w5.db:Category:Organs(cid:105)
+(cid:104)−→w4.db:Category:Educational Institutions(cid:105)
+(cid:104)−→w5.db:Category:Chemistry(cid:105)
+(cid:104)−→w5.db:Category:Astronomy(cid:105)
+(cid:104)−→w3.db:Category:Social Sciences(cid:105)
+(cid:104)−→w5.db:Category:Mathematics(cid:105)
+(cid:104)−→w5.db:Category:Telecommunications Engineering(cid:105)
+(cid:104)−→w4.db:Category:Subﬁelds of Political Science(cid:105)
+(cid:104)−→w3.db:Category:Concepts in Epistemology(cid:105)
+(cid:104)−→w4.db:Category:Creativity(cid:105)
+(cid:104)−→w4.db:Category:Abstraction(cid:105)
+(cid:104)−→w4.db:Category:Branches of Psychology(cid:105)
+(cid:104)−→w4.db:Category:Management(cid:105)
+(cid:104)−→w5.db:Category:Leadership(cid:105)
+(cid:104)−→w5.db:Category:Materials Science(cid:105)
+(cid:104)−→w4.db:Category:Philosophy of Social Science(cid:105)
+(cid:104)−→w5.db:Category:Branches of Geography(cid:105)
+(cid:104)−→w3.db:Category:Philosophy of Language(cid:105)
+
+FM |sources(εi) ∩ Ci|
+40.0
+32.9
+26.7
+26.4
+26.1
+23.5
+22.9
+22.2
+21.3
+21.1
+20.8
+20.1
+19.5
+18.2
+17.9
+17.9
+16.7
+16.7
+16.5
+16.3
+14.7
+13.3
+
+4
+25
+2
+21
+9
+4
+28
+12
+5
+22
+5
+3
+4
+7
+6
+5
+3
+3
+7
+4
+5
+3
+
+words after the preprocessing step.
+LSA space extraction. To obtain the LSA space Sk out
+of W, we used the R LSA package10. We produced several
+k-dimensional spaces S, with k either manually set to 150
+and 250 or automatically set to 899. Since no signiﬁcant
+diﬀerence was seen between the clusters produced by S150,
+S250 and S899, we chose S250 as a trade-oﬀ among them.
+
+Clustering. We used the K-means algorithm and the Weka
+tool11 to cluster the words represented in S250 and obtain
+communities of words. In order to test diﬀerent granular-
+ities, we ran several tests, with the clusters number K set
+to 20, 30, 50, 100 and 150. For the communities visual-
+isation and as a running example of this work, we chose
+the K = 30 as it was giving a good idea of the connections
+between communities. Some of Dedalo’s explanations with
+more ﬁne-grained or general clusters are presented in the
+next section, while the full results are available online. We
+ﬁltered out of the process clusters whose size |Ci| was less
+than 10 or above 500 elements, as we considered them noise.
+The ﬁnal W corpus consisted of 1,192 words.
+
+Networking. The network graph was obtained using the
+Gephi tool12.
+5.2 Experiments and discussion
+
+Our evaluation is focused on showing the beneﬁts of in-
+
+cluding Dedalo’s strategy to label clusters.
+
+Improvement over iterations. As explained in the pre-
+vious section, Dedalo iteratively builds a graph and ﬁnds ex-
+planations while traversing Linked Data. This means that
+the more the graph is traversed, the more an explanation
+is likely to be shared by a bigger number of elements, and
+
+10http://cran.r-project.org/web/packages/lsa/lsa.pdf
+11http://www.cs.waikato.ac.nz/ml/index.html
+12https://gephi.github.io/
+
+therefore to improve its accuracy. In Figure 2, for instance,
+
+we can see that the ε1 = (cid:104)−→w3.db:category:Creativity(cid:105) covers
+three items of Ci, while ε2 = (cid:104)−→w4.db:category:Concepts in ae-
+sthetics(cid:105) covers 5 of them. Table 3 gives an overview of the
+explanations improvement for the clusters Cy1, Cy2 and Cy3,
+by showing the best explanation at each iteration, as well as
+its F-Measure.
+
+As one can see, within few iterations we automatically
+span from our initial dataset to DBpedia, and manage to
+build explanations that generalise the clusters and explain
+why words appear together. Dedalo’s A* search detects in
+a ﬁrst instance that the DBpedia property dc:subject is the
+most promising walk (where promising means the one that
+is more likely to reveal a good explanation in terms of F-
+Measure), followed by the property skos:broader. For this
+reason, most of the explanations after few iterations have
+already walked up the taxonomy of DBpedia concepts by
+following two or three skos:broader properties (shown by the
+walks’ apex in the Table). With this strategy, we can see
+how the explanation for a cluster signiﬁcantly improves in a
+short time (we pass from “2% of the words in Cy2 match the
+DBpedia concept db:Scale” to “20% of the words in Cy2 are
+subcategories of the category Mathematics”).
+
+Fine-grained clusters labelling. Table 2 shows the best
+explanation that has been found for each of the 23 clusters
+after 5 iterations. The others columns are: F-Measure, the
+numbers of sources covered by the explanations and the size
+of the cluster Ci. Dedalo exploits Linked Data knowledge
+to give an automatic label to each community, and we can
+see that labels do not only give more sense to the groups of
+words, but also reﬂect the distinction of diﬀerent research ar-
+eas. Those labels facilitate the user’s analysis: for instance,
+labelling the three clusters Cy1, Cy2 and Cy3 respectively as
+Creativity, Mathematics and Abstraction reveals an hidden
+connection between the communities that could not be that
+visible simply by using the cluster’s top10 words.
+
+identiﬁcation. In Proceedings of the Thirteenth
+Conference on Computational Natural Language
+Learning, pages 210–218. Association for
+Computational Linguistics, 2009.
+
+[3] Y. Ding. Community detection: Topological vs.
+
+topical. Journal of Informetrics, 5(4):498 – 514, 2011.
+[4] U. Fayyad, G. Piatetsky-Shapiro, and P. Smyth. From
+
+data mining to knowledge discovery in databases. AI
+magazine, 17(3):37, 1996.
+
+[5] I. Hulpus, C. Hayes, M. Karnstedt, and D. Greene.
+
+Unsupervised graph-based topic labelling using
+dbpedia. In Proceedings of the sixth ACM
+international conference on Web search and data
+mining, pages 465–474. ACM, 2013.
+
+[6] T. K. Landauer, P. W. Foltz, and D. Laham. An
+
+introduction to latent semantic analysis. Discourse
+processes, 25(2-3):259–284, 1998.
+
+[7] J. H. Lau, K. Grieser, D. Newman, and T. Baldwin.
+
+Automatic labelling of topic models. In Proceedings of
+the 49th Annual Meeting of the Association for
+Computational Linguistics: Human Language
+Technologies-Volume 1, pages 1536–1545. Association
+for Computational Linguistics, 2011.
+
+[8] H. Li, I. Councill, W.-C. Lee, and C. L. Giles.
+
+Citeseerx: an architecture and web service design for
+an academic document search engine. In Proceedings
+of the 15th international conference on World Wide
+Web, pages 883–884. ACM, 2006.
+
+[9] S. Muggleton. Inductive logic programming, volume
+
+168. Springer, 1992.
+
+[10] F. Osborne, E. Motta, and P. Mulholland. Exploring
+
+scholarly data with rexplore. In The Semantic
+Web–ISWC 2013, pages 460–477. Springer, 2013.
+
+[11] S. Peroni, D. Shotton, and F. Vitali. Scholarly
+
+publishing and linked data: describing roles, statuses,
+temporal and contextual extents. In Proceedings of the
+8th International Conference on Semantic Systems,
+pages 9–16. ACM, 2012.
+
+[12] J. Tang, J. Zhang, L. Yao, J. Li, L. Zhang, and Z. Su.
+Arnetminer: Extraction and mining of academic social
+networks. In Proceedings of the 14th ACM SIGKDD
+International Conference on Knowledge Discovery and
+Data Mining, KDD ’08, pages 990–998, New York,
+NY, USA, 2008. ACM.
+
+[13] I. Tiddi, M. d’Aquin, and E. Motta. Dedalo: Looking
+for clusters explanations in a labyrinth of linked data.
+In The Semantic Web: Trends and Challenges, pages
+333–348. Springer, 2014.
+
+Table 3: Example of explanations for Cy1, Cy2 and Cy3
+found at each iteration.
+
+iter
+
+1
+2
+3
+4
+1
+2
+3
+4
+5
+1
+2
+3
+4
+
+best explanation ε
+
+(cid:104)−→w1.db:Century(cid:105)
+(cid:104)−→w2.db:Category:Writing(cid:105)
+(cid:104)−→w3.db:Category:Problem solving(cid:105)
+(cid:104)−→w4.db:Category:Creativity(cid:105)
+(cid:104)−→w1.db:Scale(cid:105)
+(cid:104)−→w2.db:Category:Concepts in Physics(cid:105)
+(cid:104)−→w3.db:Category:Physics(cid:105)
+(cid:104)−→w4.db:Category:Fields of Mathematics(cid:105)
+(cid:104)−→w5.db:Category:Mathematics(cid:105)
+(cid:104)−→w1.db:Social(cid:105)
+(cid:104)−→w2.db:Category:Concepts in Logics(cid:105)
+(cid:104)−→w3.db:Category:Logic(cid:105)
+(cid:104)−→w4.db:Category:Abstraction(cid:105)
+
+F(%)
+7.8
+11.3
+13.5
+18.2
+2.6
+10.3
+14.3
+18.5
+21.1
+6.0
+10.8
+15.0
+17.9
+
+Ci
+
+Cy1
+
+Cy2
+
+Cy3
+
+Finally, we can observe how the labelling process reﬂects
+the granularity of the clustering process: the more clusters
+we create, the more ﬁne-grained is the explanation; while the
+less there are, the more general the topic is. For instance,
+for K = 20, we observed a community whose best expla-
+
+nation is: ε1 = (cid:104)−→w5.db:Category:Culture(cid:105) (13% F-Measure),
+while we notice that its second and third best ones, ε2 =
+(cid:104)−→w3.db:Category:Philosophy of Language(cid:105) and ε3 = (cid:104)−→w4.db:
+Category:Social Science(cid:105) do correspond to the labels of two
+diﬀerent clusters when K = 30. Inversely, for K = 50, we have
+obtained diﬀerent communities, each of one explained by
+
+mathematics subcategories, for instance, (i) ε1=(cid:104)−→w4.db:Pro-
+bability and statistics(cid:105), (ii) ε2=(cid:104)−→w2.db:Category:Elementa-
+ry Mathematics(cid:105), and (iii) ε3=(cid:104)−→w4.db:Category:Reasoning(cid:105).
+6. CONCLUSIONS AND FUTURE WORK
+In this paper, we presented a use-case for labelling schol-
+arly data represented as groups of related words, by ex-
+ploiting knowledge from Linked Data. To achieve this, we
+used Dedalo, a system able to ﬁnd explanations from Linked
+Data for a group of items using a graph search strategy
+and a Linked Data traversal. We automatically obtained
+labels for a group of “semantically related words” that oth-
+erwise would have required the experts background knowl-
+edge to be explained. We have shown that the explana-
+tions serendipitously found by Dedalo can ease the process
+of understanding the words grouping. The result is a more
+human-readable network of academic communities that only
+relies on the knowledge contained in Linked Data.
+
+As future work, we will consider other approaches to ex-
+ploit Dedalo and Linked Data to ease the analysis of pub-
+lished data, as well as using them for prediction purposes.
+Another axis of research is combining the explanations to
+obtain a more precise explanation of the cluster.
+
+7. ACKNOWLEDGEMENT
+
+Authors would like to thank E. Bastianelli (Semantic An-
+alytics Group at Uniroma2) for the fruitful discussion and
+help in outlining the early stage of this work.
+
+8. REFERENCES
+[1] N. Aletras and M. Stevenson. Labelling topics using
+
+unsupervised graph-based methods.
+
+[2] K. Coursey, R. Mihalcea, and W. Moen. Using
+
+encyclopedic knowledge for automatic topic
+
+
