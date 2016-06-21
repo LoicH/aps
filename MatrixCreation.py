@@ -1,4 +1,6 @@
 import numpy as np
+import time
+import modifTexte
 
 
 def fusion_words(list_dic_freq) : # needs dictionnary list. One dictionnary[word : frequency] per document
@@ -101,6 +103,10 @@ def create_matrix(linkWordDocFreq, list_titles) :
 
     return matrix, linkDocLine, linkWordColumn
     
+def accessMatrix(matrix, i, j) :
+    return matrix[i][j]
+
+
 def index2(list, i) :
     pos = []
     j = 0
@@ -136,7 +142,7 @@ def create_matrix2(linkWordDocFreq, list_titles) :
 
     return listNonNullValues, listLines, listColumns, linkDocLine, linkWordColumn
     
-def accessMatrix(matrix, i, j) :
+def accessMatrix2(matrix, i, j) :
     for k in range(len(matrix[1])) :
         if matrix[1][k] == i :
             if matrix[2][k] == j :
@@ -163,3 +169,26 @@ dic_freq3["c"]=0.2
 list_dic_freq = [dic_freq1, dic_freq2, dic_freq3] 
 list_titles= ["ninja", "samourai", "wasabi"]
 dic = linkWordDocFreq(list_dic_freq, list_titles)
+
+u = create_matrix(dic, list_titles)
+m=u[0]
+n = create_matrix2(dic, list_titles)
+
+
+t0 = time.clock()
+for i in range(len(m)):
+    for j in range(len(m[0])) :
+        print(accessMatrix(m,i,j))
+print("La premiere methode met en secondes :")
+print time.clock() - t0
+
+t0 = time.clock()
+for i in range(len(m)):
+    for j in range(len(m[0])) :
+        print(accessMatrix2(n,i,j))
+print("La deuxieme methode met en secondes :")
+print time.clock() - t0
+
+
+        
+        

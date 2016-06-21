@@ -12,7 +12,6 @@ Created on Thu Jun 16 16:42:50 2016
 # blackList : banned words list
 import string
 from nltk import *
-import os
 
 #tests
 pdfPath = "/cal/homes/asueur/Downloads/TP3.pdf"
@@ -50,7 +49,7 @@ def deleteStopWords(textWords):
     stopwords= corpus.stopwords.words("english")
     for sw in stopwords:
         listCopy=[j for j in listCopy if j!=str(sw)]
-    types = nltk.pos_tag(listCopy)      
+    types = pos_tag(listCopy)      
     for i in types:
         if i[1] in ["DT","CC", "CD", "PRP", "PRP$", "PDT"] :  
             listCopy.remove(i[0])
@@ -83,3 +82,6 @@ def frequency(textWords):
     for i in a.keys():
         a[i]=a[i]/float(length)
     return a
+    
+def textToDictionnary(text, blackList):
+    return lemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList)))
