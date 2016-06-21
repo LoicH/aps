@@ -56,6 +56,7 @@ def deleteStopWords(textWords):
     return listCopy
     
 def lemmatization(textWords):
+    #lemmatizes all the words
     words = textWords
     lmtzr=WordNetLemmatizer()
     for i in range(len(words)):
@@ -63,20 +64,9 @@ def lemmatization(textWords):
     return words
     
     
-#def compteur(text, wordList):
-#    text=delPunctuation(text)
-#    dictionnary={}
-#    textWords=text.split()
-#    for word in wordList:
-#        a=0
-#        for word2 in textWords:
-#            if (word==word2):
-#                a+=1
-#            dictionnary[word]=str(a/float(len(textWords)))
-#    return dictionnary
-    
         
 def frequency(textWords):
+    #gives the frequency of each word in the text
     a=FreqDist(textWords)
     length=len(a)
     for i in a.keys():
@@ -84,4 +74,5 @@ def frequency(textWords):
     return a
     
 def textToDictionnary(text, blackList):
-    return lemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList)))
+    #does all the functions above in one take
+    return frequency(lemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList))))
