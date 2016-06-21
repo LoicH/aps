@@ -7,7 +7,6 @@ Created on Thu Jun 16 15:55:42 2016
 import sys
 import os      #file manipulation
 import codecs  #write files in utf8
-import textract
 import fnmatch #to match filename and implement testing
 import nltk    #words retriever
 import random  #used for testing
