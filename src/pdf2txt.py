@@ -13,10 +13,14 @@ import random  #used for testing
 
 sys.path.append("/usr/home/username/pdfminer") #? what's the use?
 
+app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
+
+
 """Adding arguments for command-line use"""
 import argparse
 parser = argparse.ArgumentParser(description='Convert PDF to text')
-parser.add_argument('-f','--file', help="runs on a file and outputs text to 'file'_out.txt")
+parser.add_argument('-f','--file', help="source file")
+parser.add_argument('-o', '--output', help="output file")
 parser.add_argument('-t', '--testing', help="""runs on sample files, it's the action 
         by default if you invoke this script without arguments""", action="store_true")
 
@@ -55,21 +59,22 @@ def pdf_to_txt(path):
     retstr.close()
     return s
     
-def pdf_to_file(filepath):
-    """Outputs a file from $filepath to '$doc'_out.txt in the current directory"""
-    raw_txt = pdf_to_txt(filepath)
-    filename = filepath.split(os.path.sep)[-1] #with .pdf at the end
-    docname = filename.split(".")[0] #doc name without .pdf
-    print "Doc name: ",docname
-    output = codecs.open(docname+"_out.txt", "w", "utf-8")
+def pdf_to_file(src_filepath, out_filepath):
+    """Outputs a file to out_filepath"""
+    print "Processing...",
+    raw_txt = pdf_to_txt(src_filepath)
+    src_filename = src_filepath.split(os.path.sep)[-1] #with .pdf at the end
+    docname = src_filename.split(".")[0] #doc name without .pdf
+    output = codecs.open(app_path+"/data/"+docname+"_out.txt", "w", "utf-8")
     output.write(raw_txt.decode('utf-8'))
     output.close()
+    print "Done."
 
 def testing():
     """Tests all the sample files in the current directory"""
     trials = 1000
     print "Testing for", trials,"words."
-    for filename in os.listdir('.'):
+    for filename in os.listdir(app_path+'/data/'):
         if fnmatch.fnmatch(filename, '*_orig.txt'):
             docname = filename[:-9]
             print "Testing ",docname,"..."
@@ -82,11 +87,11 @@ def testing():
 
 def test_file(docname, trials):
     """Tests a sample file to check the integrity"""
-    src_file = codecs.open(docname+"_orig.txt", 'r', "utf-8")
+    src_file = codecs.open(app_path+"/data/"+docname+"_orig.txt", 'r', "utf-8")
     src_txt = src_file.read() #src_txt is unicode
     src_file.close()
 
-    dest_txt = pdf_to_txt(docname+".pdf").decode("utf-8") #unicode
+    dest_txt = pdf_to_txt(app_path+"/data/"+docname+".pdf").decode("utf-8") #unicode
     words_src = nltk.word_tokenize(src_txt)
     count = 0
     for i in range(trials):
@@ -103,7 +108,7 @@ def test_file(docname, trials):
 
 if __name__ == '__main__':
     if args.file :
-        pdf_to_file(args.file)
+        pdf_to_file(args.file, args.output)
     elif args.testing :
         testing()
         

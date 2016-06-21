@@ -16,7 +16,12 @@ from nltk import *
 #tests
 pdfPath = "/cal/homes/asueur/Downloads/TP3.pdf"
 text1 = "abc Abc bAc.... bBc bacb acb acb acb and ant ham"
-randomText="Still court no small think death so an wrote. Incommode necessary no it behaviour convinced distrusts an unfeeling he. Could death since do we hoped is in. Exquisite no my attention extensive. The determine conveying moonlight age. Avoid for see marry sorry child. Sitting so totally forbade hundred to.Their could can widen ten she any. As so we smart those money in. Am wrote up whole so tears sense oh. Absolute required of reserved in offering no. How sense found our those gay again taken the. Had mrs outweigh desirous sex overcame. Improved property reserved disposal do offering me"
+randomText="""Still court no small think death so an wrote. Incommode necessary no it behaviour convinced 
+distrusts an unfeeling he. Could death since do we hoped is in. Exquisite no my attention extensive. 
+The determine conveying moonlight age. Avoid for see marry sorry child. Sitting so totally 
+forbade hundred to.Their could can widen ten she any. As so we smart those money in. Am wrote up whole 
+so tears sense oh. Absolute required of reserved in offering no. How sense found our those gay again 
+taken the. Had mrs outweigh desirous sex overcame. Improved property reserved disposal do offering me"""
 blackList=["abc","acb"]
 
 
@@ -60,7 +65,7 @@ def lemmatization(textWords):
     words = textWords
     lmtzr=WordNetLemmatizer()
     for i in range(len(words)):
-        words[i]=str(lmtzr.lemmatize(words[i]))
+        words[i]=lmtzr.lemmatize(words[i])
     return words
     
     
@@ -75,4 +80,8 @@ def frequency(textWords):
     
 def textToDictionnary(text, blackList):
     #does all the functions above in one take
-    return frequency(lemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList))))
+    f= frequency(lemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList))))
+    dic = dict()
+    for word in f.keys():
+        dic[word] = f[word]
+    return dic
