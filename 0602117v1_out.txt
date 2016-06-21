@@ -1,0 +1,5557 @@
+6
+0
+0
+2
+
+ 
+
+b
+e
+F
+6
+
+ 
+
+ 
+ 
+
+1
+v
+7
+1
+1
+2
+0
+6
+0
+/
+h
+p
+-
+o
+r
+t
+s
+a
+:
+v
+i
+X
+r
+a
+
+ADVANCED TOPICS IN COSMOLOGY: A PEDAGOGICAL INTRODUCTION
+
+T. Padmanabhan
+
+IUCAA, Post Bag 4, Ganeshkhind, Pune - 411 007
+
+email: nabhan@iucaa.ernet.in
+
+These lecture notes provide a concise, rapid and pedagogical introduction to several advanced top-
+ics in contemporary cosmology. The discussion of thermal history of the universe, linear perturbation
+theory, theory of CMBR temperature anisotropies and the inﬂationary generation of perturbation
+are presented in a manner accessible to someone who has done a ﬁrst course in cosmology. The
+discussion of dark energy is more research oriented and reﬂects the personal bias of the author. Con-
+tents: (I) The cosmological paradigm and Friedmann model; (II) Thermal history of the universe;
+(III) Structure formation and linear perturbation theories; (IV) Perturbations in dark matter and
+radiation; (V) Transfer function for matter perturbations; (VI) Temperature anisotropies of CMBR;
+(VII) Generation of initial perturbations from inﬂation; (VIII) The dark energy.
+
+I. The Cosmological Paradigm and Friedmann model
+
+Contents
+
+II. Thermal History of the Universe
+
+A. Neutrino background
+B. Primordial Nucleosynthesis
+C. Decoupling of matter and radiation
+
+III. Structure Formation and Linear Perturbation Theory
+
+IV. Perturbations in Dark Matter and Radiation
+
+A. Evolution for λ ≫ dH
+B. Evolution for λ ≪ dH in the radiation dominated phase
+C. Evolution in the matter dominated phase
+D. An alternative description of matter-radiation system
+
+V. Transfer Function for matter perturbations
+
+VI. Temperature anisotropies of CMBR
+
+A. CMBR Temperature Anisotropy: More detailed theory
+B. Description of photon-baryon ﬂuid
+
+VII. Generation of initial perturbations from inﬂation
+
+VIII. The Dark Energy
+
+A. Gravitational Holography
+B. Cosmic Lenz law
+C. Geometrical Duality in our Universe
+D. Gravity as detector of the vacuum energy
+
+Acknowledgement
+
+References
+
+1
+
+4
+4
+5
+9
+
+10
+
+14
+15
+15
+16
+17
+
+19
+
+20
+22
+24
+
+26
+
+31
+34
+34
+35
+36
+
+37
+
+37
+
+I. THE COSMOLOGICAL PARADIGM AND FRIEDMANN MODEL
+
+Observations show that the universe is fairly homogeneous and isotropic at scales larger than about 150h−1 Mpc
+where 1 Mpc ≃ 3× 1024 cm and h ≈ 0.7 is a parameter related to the expansion rate of the universe. The conventional
+— and highly successful — approach to cosmology separates the study of large scale (l & 150h−1 Mpc) dynamics of
+
+the universe from the issue of structure formation at smaller scales. The former is modeled by a homogeneous and
+isotropic distribution of energy density; the latter issue is addressed in terms of gravitational instability which will
+amplify the small perturbations in the energy density, leading to the formation of structures like galaxies. In such an
+approach, the expansion of the background universe is described by the metric (We shall use units with with c = 1
+throughout, unless otherwise speciﬁed):
+
+2
+
+ds2 ≡ dt2 − a2dx2 ≡ dt2 − a2(t)(cid:2)dχ2 + S2
+
+k(χ)(cid:0)dθ2 + sin2 θdφ2(cid:1)(cid:3)
+
+(1)
+
+with Sk(χ) = (sin χ, χ, sinh χ) for the three values of the label k = (1, 0,−1). The function a(t) is governed by the
+equations:
+
+˙a2 + k
+
+a2 =
+
+8πGρ
+
+3
+
+;
+
+d(ρa3) = −pda3
+
+(2)
+
+The ﬁrst one relates expansion rate of the universe to the energy density ρ and k = 0,±1 is a parameter which
+characterizes the spatial curvature of the universe. The second equation, when coupled with the equation of state
+p = p(ρ) which relates the pressure p to the energy density, determines the evolution of energy density ρ = ρ(a) in
+terms of the expansion factor of the universe. In particular if p = wρ with (at least, approximately) constant w then,
+ρ ∝ a−3(1+w) and (if we further assume k = 0, which is strongly favoured by observations) the ﬁrst equation in Eq.(2)
+gives a ∝ t2/[3(1+w)]. We will also often use the redshift z(t), deﬁned as (1 + z) = a0/a(t) where the subscript zero
+denotes quantities evaluated at the present moment. in a k = 0 universe, we can set a0 = 1 by rescaling the spatial
+coordinates.
+
+It is convenient to measure the energy densities of diﬀerent components in terms of a critical energy density (ρc)
+required to make k = 0 at the present epoch. (Of course, since k is a constant, it will remain zero at all epochs if it
+is zero at any given moment of time.) From Eq.(2), it is clear that ρc = 3H 2
+0 /8πG where H0 ≡ ( ˙a/a)0 — called the
+Hubble constant — is the rate of expansion of the universe at present. Numerically
+
+ρc =
+
+3H 2
+0
+8πG
+
+= 1.88h2 × 10−29 gm cm−3 = 2.8 × 1011h2M⊙ Mpc−3
+= 1.1 × 104h2 eV cm−3 = 1.1 × 10−5h2 protons cm−3
+
+(3)
+
+The variables Ωi ≡ ρi/ρc will give the fractional contribution of diﬀerent components of the universe (i denoting
+baryons, dark matter, radiation, etc.) to the critical density. Observations then lead to the following results:
+(1) Our universe has 0.98 . Ωtot . 1.08. The value of Ωtot can be determined from the angular anisotropy spectrum
+of the cosmic microwave background radiation (CMBR; see Section VI) and these observations (combined with the
+reasonable assumption that h > 0.5) show[1] that we live in a universe with critical density, so that k = 0.
+
+(2) Observations of primordial deuterium produced in big bang nucleosynthesis (which took place when the universe
+was about few minutes in age) as well as the CMBR observations show[2] that the total amount of baryons in the
+universe contributes about ΩB = (0.024±0.0012)h−2. Given the independent observations[3] which ﬁx h = 0.72±0.07,
+we conclude that ΩB ∼= 0.04 − 0.06. These observations take into account all baryons which exist in the universe
+today irrespective of whether they are luminous or not. Combined with previous item we conclude that most of the
+universe is non-baryonic.
+
+(3) Host of observations related to large scale structure and dynamics (rotation curves of galaxies, estimate of
+cluster masses, gravitational lensing, galaxy surveys ..) all suggest[4] that the universe is populated by a non-luminous
+component of matter (dark matter; DM hereafter) made of weakly interacting massive particles which does cluster at
+galactic scales. This component contributes about ΩDM ∼= 0.20− 0.35 and has the simple equation of state pDM ≈ 0.
+The second equation in Eq.(2), then gives ρDM ∝ a−3 as the universe expands which arises from the evolution of
+number density of particles: ρ = nmc2 ∝ n ∝ a−3.
+(4) Combining the last observation with the ﬁrst we conclude that there must be (at least) one more component to
+the energy density of the universe contributing about 70% of critical density. Early analysis of several observations[5]
+indicated that this component is unclustered and has negative pressure. This is conﬁrmed dramatically by the
+supernova observations (see Ref. [6]; for a critical look at the current data, see Ref. [7]). The observations suggest
+that the missing component has w = p/ρ . −0.78 and contributes ΩDE ∼= 0.60 − 0.75. The simplest choice for
+such dark energy with negative pressure is the cosmological constant which is a term that can be added to Einstein’s
+equations. This term acts like a ﬂuid with an equation of state pDE = −ρDE; the second equation in Eq.(2), then
+gives ρDE = constant as universe expands.
+(5) The universe also contains radiation contributing an energy density ΩRh2 = 2.56 × 10−5 today most of which
+is due to photons in the CMBR. The equation of state is pR = (1/3)ρR; the second equation in Eq.(2), then gives
+ρR ∝ a−4. Combining it with the result ρR ∝ T 4 for thermal radiation, it follows that T ∝ a−1. Radiation is
+
+dynamically irrelevant today but since (ρR/ρDM ) ∝ a−1 it would have been the dominant component when the
+universe was smaller by a factor larger than ΩDM /ΩR ≃ 4 × 104ΩDM h2.
+(6) Taking all the above observations together, we conclude that our universe has (approximately) ΩDE ≃
+0.7, ΩDM ≃ 0.26, ΩB ≃ 0.04, ΩR ≃ 5 × 10−5. All known observations are consistent with such an — admittedly
+weird — composition for the universe.
+
+3
+
+Using ρN R ∝ a−3, ρR ∝ a−4 and ρDE=constant we can write Eq.(2) in a convenient dimensionless form as
+
+where τ = H0t, a = a0q(τ ), ΩNR = ΩB + ΩDM and
+
+1
+
++ V (q) = E
+
+2(cid:18) dq
+dτ(cid:19)2
++ ΩDEq2(cid:21) ; E =
+
+ΩNR
+
+q
+
+1
+2
+
+(1 − Ωtot) .
+
+(4)
+
+(5)
+
+V (q) = −
+
+1
+
+2(cid:20) ΩR
+q2 +
+
+This equation has the structure of the ﬁrst integral for motion of a particle with energy E in a potential V (q). For
+
+models with Ω = ΩNR + ΩDE = 1, we can take E = 0 so that (dq/dτ ) =pV (q). Based on the observed composition
+of the universe, we can identify three distinct phases in the evolution of the universe when the temperature is less
+than about 100 GeV. At high redshifts (small q) the universe is radiation dominated and ˙q is independent of the
+other cosmological parameters. Then Eq.(4) can be easily integrated to give a(t) ∝ t1/2 and the temperature of the
+universe decreases as T ∝ t−1/2. As the universe expands, a time will come when (t = teq, a = aeq and z = zeq,
+say) the matter energy density will be comparable to radiation energy density. For the parameters described above,
+(1 + zeq) = ΩN R/ΩR ≃ 4 × 104ΩDM h2. At lower redshifts, matter will dominate over radiation and we will have
+a ∝ t2/3 until fairly late when the dark energy density will dominate over non relativistic matter. This occurs at a
+redshift of zDE where (1 + zDE) = (ΩDE/ΩNR)1/3. For ΩDE ≈ 0.7, ΩNR ≈ 0.3, this occurs at zDE ≈ 0.33. In this
+phase, the velocity ˙q changes from being a decreasing function to an increasing function leading to an accelerating
+universe. In addition to these, we believe that the universe probably went through a rapidly expanding, inﬂationary,
+phase very early when T ≈ 1014 GeV; we will say more about this in Section VII. (For a textbook description of these
+and related issues, see e.g. Ref. [8].)
+Before we conclude this section, we will brieﬂy mention some key aspects of the background cosmology described
+
+by a Friedmann model.
+
+(a) The metric in Eq.(1) can be rewritten using the expansion parameter a or the redshift z = (a0/a)−1 − 1 as the
+
+time coordinate in the form
+
+ds2 = H −2(a)(cid:18) da
+a (cid:19)2
+
+− a2dx2 =
+
+1
+
+(1 + z)2(cid:2)H −2(z)dz2 − dx2(cid:3)
+
+(6)
+
+This form clearly shows that the only dynamical content of the metric is encoded in the function H(a) = ( ˙a/a). An
+immediate consequence is that any observation which is capable of determining the geometry of the universe can only
+provide — at best — information about this function.
+
+(b) Since cosmological observations usually use radiation received from distant sources, it is worth reviewing brieﬂy
+
+the propagation of radiation in the universe. The radial light rays follow a trajectory given by
+
+rem(z) = Sk(α);
+
+α ≡
+
+1
+
+a0 Z z
+
+0
+
+H −1(z)dz
+
+(7)
+
+if the photon is emitted at rem at the redshift z and received here today. Two other quantities closely related to
+rem(z) are the luminosity distance, dL, and the angular diameter distance dA. If we receive a ﬂux F from a source
+of luminosity L, then the luminosity distance is deﬁned via the relation F ≡ L/4πd2
+L(z). If an object of transverse
+length l subtends a small angle θ, the angular diameter distance is deﬁned via (l = θdA ). Simple calculation shows
+that:
+
+dL(z) = a0rem(z)(1 + z) = a0(1 + z)Sk(α);
+
+dA(z) = a0rem(z)(1 + z)−1
+
+(8)
+
+(c) As an example of determining the spacetime geometry of the universe from observations, let us consider how
+one can determine a(t) from the observations of the luminosity distance. It is clear from the ﬁrst equation in Eq. (8)
+that
+
+H −1(z) =(cid:20)1 −
+
+kd2
+
+L(z)
+
+0(1 + z)2(cid:21)−1/2 d
+
+dz (cid:20) dL(z)
+
+1 + z(cid:21) →
+
+a2
+
+d
+
+dz (cid:20) dL(z)
+1 + z(cid:21)
+
+(9)
+
+where the last form is valid for a k = 0 universe. If we determine the form of dL(z) from observations — which can
+be done if we can measure the ﬂux F from a class of sources with known value for luminosity L — then we can use
+this relation to determine the evolutionary history of the universe and thus the dynamics.
+
+4
+
+II. THERMAL HISTORY OF THE UNIVERSE
+
+Let us next consider some key events in the evolutionary history of our universe [8]. The most well understood phase
+of the universe occurs when the temperature is less than about 1012 K. Above this temperature, thermal production of
+baryons and their strong interaction is signiﬁcant and somewhat diﬃcult to model. We can ignore such complications
+at lower temperatures and — as we shall see — several interesting physical phenomena did take place during the later
+epochs with T . 1012.
+
+The ﬁrst thing we need to do is to determine the composition of the universe when T ≈ 1012 K. We will certainly
+have, at this time, copious amount of photons and all species of neutrinos and antineutrinos. In addition, neutrons and
+protons must exist at this time since there is no way they could be produced later on. (This implies that phenomena
+which took place at higher temperatures should have left a small excess of baryons over anti baryons; we do not
+quite understand how this happened and will just take it as an initial condition.) Since the rest mass of electrons
+correspond to a much lower temperature (about 0.5× 1010 K), there will be large number of electrons and positrons at
+this temperature but in order to maintain charge neutrality, we need to have a slight excess of electrons over positrons
+(by about 1 part in 109) with the net negative charge compensating the positive charge contributed by protons.
+
+An elementary calculation using the known interaction rates show that all these particles are in thermal equilibrium
+at this epoch. Hence standard rules of statistical mechanics allows us to determine the number density (n), energy
+density (ρ) and the pressure (p) in terms of the distribution function f :
+
+g
+
+g
+
+m
+
+n =Z f (k)d3k =
+2π2 Z ∞
+2π2Z ∞
+ρ =Z Ef (k)d3k =
+3Z d3kf (k)kv(k) =Z 1
+|k|2
+E
+
+1
+
+3
+
+m
+
+p =
+
+(E2 − m2)1/2EdE
+exp[(E − µ)/T ] ± 1
+
+(E2 − m2)1/2E2dE
+exp[(E − µ)/T ] ± 1
+
+(10)
+
+(11)
+
+(12)
+
+f (k)d3k =
+
+g
+
+6π2Z ∞
+
+m
+
+(E2 − m2)3/2dE
+e[(E−µ)/T ] ± 1
+
+Next, we can argue that the chemical potentials for electrons, positrons and neutrinos can be taken to be zero. For
+example, conservation of chemical potential in the reaction e+e− → 2γ implies that the chemical potentials of electrons
+and positrons must diﬀer in a sign. But since the number densities of electrons and positrons, which are determined
+by the chemical potential, are very close to each other, the chemical potentials of electrons and positrons must be
+(very closely) equal to each other. Hence both must be (very close to) zero. Similar reasoning based on lepton number
+shows that neutrinos should also have zero chemical potential. Given this, one can evaluate the integrals for all the
+relativistic species and we obtain for the total energy density
+
+ρtotal = Xi=boson
+
+where
+
+gi(cid:18) π2
+
+30(cid:19) T 4
+
+i + Xi=fermion
+
+7
+8
+
+gi(cid:18) π2
+
+30(cid:19) T 4
+
+i = gtotal(cid:18) π2
+
+30(cid:19) T 4
+
+The corresponding entropy density is given by
+
+gtotal ≡ Xboson
+
+gB + Xfermion
+
+7
+8
+
+gF .
+
+s ∼=
+
+1
+T
+
+(ρ + p) =
+
+2π2
+45
+
+qT 3;
+
+q ≡ qtotal = Xboson
+
+gB +
+
+7
+
+8 Xfermion
+
+gF .
+
+A. Neutrino background
+
+(13)
+
+(14)
+
+(15)
+
+As a simple application of the above result, let us consider the fate of neutrinos in the expanding universe. From the
+standard weak interaction theory, one can compute the reaction rate Γ of the neutrinos with the rest of the species.
+When this reaction rate fall below the expansion rate H of the universe, the reactions cannot keep the neutrinos
+coupled to the rest of the matter. A simple calculation [8] shows that the relevant ratio is given by
+
+Γ
+
+H ≃(cid:18) T
+
+1.4MeV(cid:19)3
+
+=(cid:18)
+
+T
+
+1.6 × 1010K(cid:19)3
+
+(16)
+
+Thus, for T . 1.6 × 1010 K, the neutrinos decouple from matter. At slightly lower temperature, the electrons and
+positrons annihilate increasing the number density of photons. Neutrinos do not get any share of this energy since
+they have already decoupled from the rest of the matter. As a result, the photon temperature goes up with respect
+to the neutrino temperature once the e+e− annihilation is complete. This increase in the temperature is easy to
+calculate. As far as the photons are concerned, the increase in the temperature is essentially due to the change in the
+degrees of freedom g and is given by:
+
+5
+
+(aTγ)3
+(aTγ)3
+
+after
+
+before
+
+=
+
+gbefore
+gafter
+
+=
+
+7
+8 (2 + 2) + 2
+
+2
+
+=
+
+11
+4
+
+.
+
+(17)
+
+(In the numerator, one 2 is for electron; one 2 is for positron; the 7/8 factor arises because these are fermions. The
+ﬁnal 2 is for photons. In the denominator, there are only photons to take care of.) Therefore
+
+(aTγ)after = (cid:18) 11
+= (cid:18) 11
+
+4 (cid:19)1/3
+4 (cid:19)1/3
+
+4 (cid:19)1/3
+(aTγ)before =(cid:18) 11
+(aTν)after≃1.4(aTν)after.
+
+(aTν)before
+
+(18)
+
+The ﬁrst equality is from Eq. (17); the second arises because the photons and neutrinos had the same temperature
+originally; the third equality is from the fact that for decoupled neutrinos aTν is a constant. This result leads to the
+prediction that, at present, the universe will contain a bath of neutrinos which has temperature that is (predictably)
+lower than that of CMBR. The future detection of such a cosmic neutrino background will allow us to probe the
+universe at its earliest epochs.
+
+B. Primordial Nucleosynthesis
+
+When the temperature of the universe is higher than the binding energy of the nuclei (∼ MeV), none of the heavy
+elements (helium and the metals) could have existed in the universe. The binding energies of the ﬁrst four light nuclei,
+2H, 3H, 3He and 4He are 2.22 MeV, 6.92 MeV, 7.72 MeV and 28.3 MeV respectively. This would suggest that these
+nuclei could be formed when the temperature of the universe is in the range of (1 − 30)MeV. The actual synthesis
+takes place only at a much lower temperature, Tnuc = Tn ≃ 0.1MeV. The main reason for this delay is the ‘high
+entropy’ of our universe, i.e., the high value for the photon-to-baryon ratio, η−1. Numerically,
+
+η =
+
+nB
+nγ
+
+= 5.5 × 10−10(cid:18) ΩBh2
+
+0.02 (cid:19) ; ΩBh2 = 3.65 × 10−3(cid:18) T0
+
+2.73 K(cid:19)3
+
+η10
+
+(19)
+
+To see this, let us assume, for a moment, that the nuclear (and other) reactions are fast enough to maintain thermal
+equilibrium between various species of particles and nuclei. In thermal equilibrium, the number density of a nuclear
+species ANZ with atomic mass A and charge Z will be
+
+nA = gA(cid:18) mAT
+
+2π (cid:19)3/2
+
+exp(cid:20)−(cid:18) mA − µA
+
+T
+
+(cid:19)(cid:21) .
+
+(20)
+
+From this one can obtain the equation for the temperature TA at which the mass fraction of a particular species-A
+will be of order unity (XA ≃ 1). We ﬁnd that
+
+TA ≃
+
+BA/(A − 1)
+
+ln(η−1) + 1.5 ln(mB/T )
+
+(21)
+
+where BA is the binding energy of the species. This temperature will be fairly lower than BA because of the large
+value of η−1. For 2H, 3He and 4He the value of TA is 0.07MeV, 0.11MeV and 0.28MeV respectively. Comparison
+with the binding energy of these nuclei shows that these values are lower than the corresponding binding energies BA
+by a factor of about 10, at least.
+
+Thus, even when the thermal equilibrium is maintained, signiﬁcant synthesis of nuclei can occur only at T . 0.3MeV
+and not at higher temperatures. If such is the case, then we would expect signiﬁcant production (XA . 1) of nuclear
+species-A at temperatures T . TA. It turns out, however, that the rate of nuclear reactions is not high enough to
+maintain thermal equilibrium between various species. We have to determine the temperatures up to which thermal
+
+6
+
+equilibrium can be maintained and redo the calculations to ﬁnd non-equilibrium mass fractions. The general procedure
+for studying non equilibrium abundances in an expanding universe is based on rate equations. Since we will require
+this formalism again in Section II C (for the study of recombination), we will develop it in a somewhat general context.
+Consider a reaction in which two particles 1 and 2 interact to form two other particles 3 and 4. For example,
+n + νe ⇋ p + e constitutes one such reaction which converts neutrons into protons in the forward direction and protons
+into neutrons in the reverse direction; another example we will come across in the next section is p + e ⇋ H + γ
+where the forward reaction describes recombination of electron and proton forming a neutral hydrogen atom (with
+the emission of a photon), while the reverse reaction is the photoionisation of a hydrogen atom. In general, we are
+interested in how the number density n1 of particle species 1, say, changes due to a reaction of the form 1 + 2 ⇋ 3 + 4.
+We ﬁrst note that even if there is no reaction, the number density will change as n1 ∝ a−3 due to the expansion
+of the universe; so what we are really after is the change in n1a3. Further, the forward reaction will be proportional
+to the product of the number densities n1n2 while the reverse reaction will be proportional to n3n4. Hence we can
+write an equation for the rate of change of particle species n1 as
+
+1
+a3
+
+d(n1a3)
+
+dt
+
+= µ(An3n4 − n1n2).
+
+(22)
+
+The left hand side is the relevant rate of change over and above that due to the expansion of the universe; on the
+right hand side, the two proportionality constants have been written as µ and (Aµ), both of which, of course, will
+be functions of time. (The quantity µ has the dimensions of cm3s−1, so that nµ has the dimensions of s−1; usually
+µ ≃ σv where σ is the cross-section for the relevant process and v is the relative velocity.) The left hand side has to
+vanish when the system is in thermal equilibrium with ni = neq
+i , where the superscript ‘eq’ denotes the equilibrium
+densities for the diﬀerent species labeled by i = 1 − 4. This condition allows us to rewrite A as A = neq
+3 neq
+4 ).
+Hence the rate equation becomes
+
+2 /(neq
+
+1 neq
+
+1
+a3
+
+d(n1a3)
+
+dt
+
+= µneq
+
+1 neq
+
+2 (cid:18) n3n4
+4 −
+
+neq
+3 neq
+
+n1n2
+neq
+1 neq
+
+2 (cid:19) .
+
+(23)
+
+In the left hand side, one can write (d/dt) = Ha(d/da) which shows that the relevant time scale governing the
+process is H −1. Clearly, when H/nµ ≫ 1 the right hand side becomes ineﬀective because of the (µ/H) factor and
+the number of particles of species 1 does not change. We see that when the expansion rate of the universe is large
+compared to the reaction rate, the given reaction is ineﬀective in changing the number of particles. This certainly does
+not mean that the reactions have reached thermal equilibrium and ni = neq
+i ; in fact, it means exactly the opposite:
+The reactions are not fast enough to drive the number densities towards equilibrium densities and the number densities
+“freeze out” at non equilibrium values. Of course, the right hand side will also vanish when ni = neq
+i which is the
+other extreme limit of thermal equilibrium.
+
+Having taken care of the general formalism, let us now apply it to the process of nucleosynthesis which requires
+protons and neutrons combining together to form bound nuclei of heavier elements like deuterium, helium etc.. The
+abundance of these elements are going to be determined by the relative abundance of neutrons and protons in the
+universe. Therefore, we need to ﬁrst worry about the maintenance of thermal equilibrium between protons and the
+neutrons in the early universe. As long as the inter-conversion between n and p through the weak interaction processes
+(ν + n ↔ p + e), (e + n ↔ p + ν) and the ‘decay’ (n ↔ p + e + ν), is rapid (compared to the expansion rate of the
+universe), thermal equilibrium will be maintained. Then the equilibrium (n/p) ratio will be
+
+np(cid:19) =
+(cid:18) nn
+
+Xn
+Xp
+
+= exp(−Q/T ),
+
+(24)
+
+where Q = mn − mp = 1.293 MeV. At high (T ≫ Q) temperatures, there will be equal number of neutrons and
+protons but as the temperature drops below about 1.3 MeV, the neutron fraction will start dropping exponentially
+provided thermal equilibrium is still maintained. To check whether thermal equilibrium is indeed maintained, we
+need to compare the expansion rate with the reaction rate. The expansion rate is given by H = (8πGρ/3)1/2 where
+ρ = (π2/30)gT 4 with g ≈ 10.75 representing the eﬀective relativistic degrees of freedom present at these temperatures.
+At T = Q, this gives H ≈ 1.1 s−1. The reaction rate needs to be computed from weak interaction theory. The neutron
+to proton conversion rate, for example, is well approximated by
+
+λnp ≈ 0.29 s−1 (cid:18) T
+
+Q(cid:19)5"(cid:18) Q
+T(cid:19)2
+
++ 6(cid:18) Q
+
+T(cid:19) + 12# .
+
+(25)
+
+At T = Q, this gives λ ≈ 5 s−1, slightly more rapid than the expansion rate. But as T drops below Q, this decreases
+rapidly and the reaction ceases to be fast enough to maintain thermal equilibrium. Hence we need to work out the
+neutron abundance by using Eq. (23).
+
+7
+
+(26)
+
+(27)
+
+(28)
+
+−Hs
+
+dXn
+ds
+
+= λnp(cid:0)(1 − Xn)e−s − Xn(cid:1) ; H = (1.1 sec−1) s−4;
+
+λnp =
+
+0.29 s−1
+
+s5
+
+(cid:2)s2 + 6s + 12(cid:3) .
+
+Converting from the variable t to the variable s = (Q/T ) and using (d/dt) = −HT (d/dT ), the equations we need to
+solve reduce to
+
+It is now straightforward to integrate these equations numerically and determine how the neutron abundance changes
+with time. The neutron fraction falls out of equilibrium when temperatures drop below 1 MeV and it freezes to about
+0.15 at temperatures below 0.5 MeV.
+
+As the temperature decreases further, the neutron decay with a half life of τn ≈ 886.7 sec (which is not included in
+the above analysis) becomes important and starts depleting the neutron number density. The only way neutrons can
+survive is through the synthesis of light elements. As the temperature falls further to T = THe ≃ 0.28MeV, signiﬁcant
+amount of He could have been produced if the nuclear reaction rates were high enough. The possible reactions which
+produces 4He are [D(D, n) 3He(D, p) 4He, D(D, p) 3H(D, n) 4He, D(D, γ) 4He]. These are all based on D, 3He and
+3H and do not occur rapidly enough because the mass fraction of D, 3He and 3H are still quite small [10−12, 10−19
+and 5 × 10−19 respectively] at T ≃ 0.3MeV. The reactions n + p ⇋ d + γ will lead to an equilibrium abundance ratio
+of deuterium given by
+
+npnn
+ndn
+
+=
+
+4
+
+3(cid:18) mpmn
+
+md (cid:19)3/2 (2πkBT )3/2
+
+(2π)3 n
+
+e−B/kB T = exp(cid:20)25.82 − ln ΩBh2T 3/2
+
+10 −(cid:18) 2.58
+
+T10 (cid:19)(cid:21) .
+
+(29)
+
+The equilibrium deuterium abundance passes through unity (for ΩBh2 = 0.02) at the temperature of about 0.07 MeV
+which is when the nucleosynthesis can really begin.
+
+FIG. 1: The evolution of mass fraction of diﬀerent species during nucleosynthesis
+
+Using n1 = nn, n3 = np and n2, n4 = nl where the subscript l stands for the leptons, Eq. (23) becomes
+
+We now use Eq. (24), write (neq
+fractional abundance Xn = nn/(nn + np). Simple manipulation then leads to the equation
+
+l µ) = λnp which is the rate for neutron to proton conversion and introduce the
+
+1
+a3
+
+d(nna3)
+
+dt
+
+= µneq
+
+l (cid:18) npneq
+
+p − nn(cid:19) .
+
+n
+neq
+
+dXn
+dt
+
+= λnp(cid:16)(1 − Xn)e−Q/T − Xn(cid:17) .
+
+8
+
+So we need to determine the neutron fraction at T = 0.07 MeV given that it was about 0.15 at 0.5 MeV. During
+this epoch, the time-temperature relationship is given by t = 130 sec (T /0.1 MeV)−2. The neutron decay factor
+is exp(−t/τn) ≈ 0.74 for T = 0.07 MeV. This decreases the neutron fraction to 0.15 × 0.74 = 0.11 at the time of
+nucleosynthesis. When the temperature becomes T . 0.07MeV, the abundance of D and 3H builds up and these
+elements further react to form 4He. A good fraction of D and 3H is converted to 4He (See Fig.1 which shows the
+growth of deuterium and its subsequent fall when helium is built up). The resultant abundance of 4He can be easily
+calculated by assuming that almost all neutrons end up in 4He. Since each 4He nucleus has two neutrons, (nn/2)
+helium nuclei can be formed (per unit volume) if the number density of neutrons is nn. Thus the mass fraction of
+4He will be
+
+Y =
+
+4(nn/2)
+nn + np
+
+=
+
+2(n/p)
+
+1 + (n/p)
+
+= 2xc
+
+(30)
+
+where xc = n/(n + p) is the neutron abundance at the time of production of deuterium. For ΩBh2 = 0.02, xc ≈ 0.11
+giving Y ≈ 0.22. Increasing baryon density to ΩBh2 = 1 will make Y ≈ 0.25. An accurate ﬁtting formula for the
+dependence of helium abundance on various parameters is given by
+
+Y = 0.226 + 0.025 log η10 + 0.0075(g∗ − 10.75) + 0.014(τ1/2(n) − 10.3 min)
+
+(31)
+
+where η10 measures the baryon-photon ratio today via Eq. (19) and g∗ is the eﬀective number of relativistic degrees of
+freedom contributing to the energy density and τ1/2(n) is the neutron half life. The results (of a more exact treatment)
+are shown in Fig. 1.
+
+As the reactions converting D and 3H to 4He proceed, the number density of D and 3H is depleted and the reaction
+rates - which are proportional to Γ ∝ XA(ηnγ) < σv > - become small. These reactions soon freeze-out leaving a
+residual fraction of D and 3H (a fraction of about 10−5 to 10−4). Since Γ ∝ η it is clear that the fraction of (D,3 H)
+left unreacted will decrease with η. In contrast, the 4He synthesis - which is not limited by any reaction rate - is
+fairly independent of η and depends only on the (n/p) ratio at T ≃ 0.1MeV. The best ﬁts, with typical errors, to
+deuterium abundance calculated from the theory, for the range η = (10−10 − 10−9) is given by
+
+H(cid:19)p
+Y2 ≡(cid:18) D
+
+= 3.6 × 10−5±0.06(cid:18)
+
+η
+
+5 × 10−10(cid:19)−1.6
+
+.
+
+(32)
+
+The production of still heavier elements - even those like 16C, 16O which have higher binding energies than 4He
+- is suppressed in the early universe. Two factors are responsible for this suppression: (1) For nuclear reactions to
+proceed, the participating nuclei must overcome their Coulomb repulsion. The probability to tunnel through the
+Coulomb barrier is governed by the factor F = exp[−2A1/3 (Z1Z2)2/3(T /1MeV)−1/3] where A−1 = A−1
+2 . For
+heavier nuclei (with larger Z), this factor suppresses the reaction rate. (2) Reaction between helium and proton would
+have led to an element with atomic mass 5 while the reaction of two helium nuclei would have led to an element with
+atomic mass 8. However, there are no stable elements in the periodic table with the atomic mass of 5 or 8! The 8Be,
+for example, has a half life of only 10−16 seconds. One can combine 4He with 8Be to produce 12C but this can occur at
+signiﬁcant rate only if it is a resonance reaction. That is, there should exist an excited state 12C nuclei which has an
+energy close to the interaction energy of 4He + 8Be. Stars, incidentally, use this route to synthesize heavier elements.
+It is this triple-alpha reaction which allows the synthesis of heavier elements in stars but it is not fast enough in the
+early universe. (You must thank your stars that there is no such resonance in 16O or in 20Ne — which is equally
+important for the survival of carbon and oxygen.)
+
+1 + A−1
+
+The current observations indicate, with reasonable certainty that: (i) (D/H) & 1 × 10−5. (ii) [(D +3 He)/H]
+≃ (1 − 8) × 10−5 and (iii) 0.236 < (4He/H) < 0.254. These observations are consistent with the predictions if
+10.3 min . τ . 10.7 min, and η = (3 − 10) × 10−10. Using η = 2.68 × 10−8ΩBh2, this leads to the important
+conclusion: 0.011 ≤ ΩBh2 ≤ 0.037. When combined with the broad bounds on h, 0.6 . h . 0.8, say, we can constrain
+the baryonic density of the universe to be: 0.01 . ΩB . 0.06. These are the typical bounds on ΩB available today. It
+shows that, if Ωtotal ≃ 1 then most of the matter in the universe must be non baryonic.
+Since the 4He production depends on g, the observed value of 4He restricts the total energy density present at
+the time of nucleosynthesis. In particular, it constrains the number (Nν) of light neutrinos (that is, neutrinos with
+mν . 1MeV which would have been relativistic at T ≃ 1MeV). The observed abundance is best explained by Nν = 3,
+is barely consistent with Nν = 4 and rules out Nν > 4. The laboratory bound on the total number of particles
+including neutrinos, which couples to the Z 0 boson is determined by measuring the decay width of the particle Z 0;
+each particle with mass less than (mz/2) ≃ 46 GeV contributes about 180 MeV to this decay width. This bound is
+Nν = 2.79 ± 0.63 which is consistent with the cosmological observations.
+
+C. Decoupling of matter and radiation
+
+9
+
+In the early hot phase, the radiation will be in thermal equilibrium with matter; as the universe cools below
+kBT ≃ (ǫa/10) where ǫa is the binding energy of atoms, the electrons and ions will combine to form neutral atoms
+and radiation will decouple from matter. This occurs at Tdec ≃ 3 × 103 K. As the universe expands further, these
+photons will continue to exist without any further interaction. It will retain thermal spectrum since the redshift of the
+frequency ν ∝ a−1 is equivalent to changing the temperature in the spectrum by the scaling T ∝ (1/a). It turns out
+that the major component of the extra-galactic background light (EBL) which exists today is in the microwave band
+and can be ﬁtted very accurately by a thermal spectrum at a temperature of about 2.73 K. It seems reasonable to
+interpret this radiation as a relic arising from the early, hot, phase of the evolving universe. This relic radiation, called
+cosmic microwave background radiation, turns out to be a gold mine of cosmological information and is extensively
+investigated in recent times. We shall now discuss some details related to the formation of neutral atoms and the
+decoupling of photons.
+
+The relevant reaction is, of course, e + p ⇋ H + γ and if the rate of this reaction is faster than the expansion rate,
+then one can calculate the neutral fraction using Saha’s equation. Introducing the fractional ionisation, Xi, for each
+of the particle species and using the facts np = ne and np + nH = nB, it follows that Xp = Xe and XH = (nH /nB)
+= 1 − Xe. Saha’s equation now gives
+
+1 − Xe
+X 2
+e
+
+∼= 3.84η(T /me)3/2 exp(B/T )
+
+(33)
+
+where η = 2.68 × 10−8(ΩBh2) is the baryon-to-photon ratio. We may deﬁne Tatom as the temperature at which 90
+percent of the electrons, say, have combined with protons: i.e. when Xe = 0.1. This leads to the condition:
+
+(ΩBh2)−1τ − 3
+
+2 exp(cid:2)−13.6τ −1(cid:3) = 3.13 × 10−18
+
+(34)
+
+where τ = (T /1eV). For a given value of (ΩBh2), this equation can be easily solved by iteration. Taking logarithms
+and iterating once we ﬁnd τ −1 ∼= 3.084 − 0.0735 ln(ΩBh2) with the corresponding redshift (1 + z) = (T /T0) given by
+(35)
+
+(1 + z) = 1367[1 − 0.024 ln(ΩBh2)]−1.
+
+For ΩBh2 = 1, 0.1, 0.01 we get Tatom ∼= 0.324eV, 0.307eV, 0.292eV respectively. These values correspond to the
+redshifts of 1367, 1296 and 1232.
+
+Because the preceding analysis was based on equilibrium densities, it is important to check that the rate of the
+reactions p + e ↔ H + γ is fast enough to maintain equilibrium. For ΩBh2 ≈ 0.02, the equilibrium condition is only
+marginally satisﬁed, making this analysis suspect. More importantly, the direct recombination to the ground state of
+the hydrogen atom — which was used in deriving the Saha’s equation — is not very eﬀective in producing neutral
+hydrogen in the early universe. The problem is that each such recombination releases a photon of energy 13.6 eV
+which will end up ionizing another neutral hydrogen atom which has been formed earlier. As a result, the direct
+recombination to the ground state does not change the neutral hydrogen fraction at the lowest order. Recombination
+through the excited states of hydrogen is more eﬀective since such a recombination ends up emitting more than one
+photon each of which has an energy less than 13.6 eV. Given these facts, it is necessary to once again use the rate
+equation developed in the previous section to track the evolution of ionisation fraction.
+
+A simple procedure for doing this, which captures the essential physics, is as follows: We again begin with Eq. (23)
+and repeating the analysis done in the last section, now with n1 = ne, n2 = np, n3 = nH and n4 = nγ, and deﬁning
+Xe = ne/(ne + nH) = np/nH one can easily derive the rate equation for this case:
+
+dXe
+dt
+
+=(cid:2)β(1 − Xe) − αnbX 2
+
+e(cid:3) = α(cid:18) β
+
+α
+
+e(cid:19) .
+(1 − Xe) − nbX 2
+
+(36)
+
+This equation is analogous to Eq. (27); the ﬁrst term gives the photoionisation rate which produces the free electrons
+and the second term is the recombination rate which converts free electrons into hydrogen atom and we have used the
+fact ne = nbXe etc.. Since we know that direct recombination to the ground state is not eﬀective, the recombination
+rate α is the rate for capture of electron by a proton forming an excited state of hydrogen. To a good approximation,
+this rate is given by
+
+α = 9.78r2
+
+0c(cid:18) B
+
+T(cid:19)1/2
+
+T(cid:19)
+ln(cid:18) B
+
+(37)
+
+10
+
+where r0 = e2/mec2 is the classical electron radius. To integrate Eq. (36) we also need to know β/α. This is easy
+because in thermal equilibrium the right hand side of Eq. (36) should vanish and Saha’s equation tells us the value of
+Xe in thermal equilibrium. On using Eq. (33), this gives
+
+β
+α
+
+=(cid:18) meT
+
+2π (cid:19)3/2
+
+exp[−(B/T )].
+
+(38)
+
+We can now integrate Eq. (36) using the variable B/T just as we used the variable Q/T in solving Eq. (27). The
+result shows that the actual recombination proceeds more slowly compared to that predicted by the Saha’s equation.
+The actual fractional ionisation is higher than the value predicted by Saha’s equation at temperatures below about
+1300. For example, at z = 1300, these values diﬀer by a factor 3; at z ≃ 900, they diﬀer by a factor of 200. The
+value of Tatom, however, does not change signiﬁcantly. A more rigorous analysis shows that, in the redshift range of
+800 < z < 1200, the fractional ionisation varies rapidly and is given (approximately) by the formula,
+
+Xe = 2.4 × 10−3 (ΩNRh2)1/2
+
+(ΩBh2) (cid:16) z
+
+1000(cid:17)12.75
+
+.
+
+(39)
+
+This is obtained by ﬁtting a curve to the numerical solution.
+
+The formation of neutral atoms makes the photons decouple from the matter. The redshift for decoupling can be
+determined as the epoch at which the optical depth for photons is unity. Using Eq. (39), we can compute the optical
+depth for photons to be
+
+τ =Z t
+
+n(t)Xe(t)σT dt =Z z
+where we have used the relation H0dt ∼= −Ω−1/2
+NR z−5/2dz which is valid for z ≫ 1. This optical depth is unity at
+zdec = 1072. From the optical depth, we can also compute the probability that the photon was last scattered in the
+interval (z, z + dz). This is given by (exp−τ ) (dτ /dz) which can be expressed as
+
+dz(cid:19) dz ≃ 0.37(cid:16) z
+
+n(z)Xe(z)σT (cid:18) dt
+
+1000(cid:17)14.25
+
+(40)
+
+0
+
+o
+
+(41)
+
+P (z) = e−τ dτ
+dz
+
+= 5.26 × 10−3(cid:16) z
+
+1000(cid:17)13.25
+
+exp(cid:20)−0.37(cid:16) z
+
+1000(cid:17)14.25(cid:21) .
+
+This P (z) has a sharp maximum at z ≃ 1067 and a width of about ∆z ∼= 80. It is therefore reasonable to assume
+that decoupling occurred at z ≃ 1070 in an interval of about ∆z ≃ 80. We shall see later that the ﬁnite thickness of
+the surface of last scattering has important observational consequences.
+
+III. STRUCTURE FORMATION AND LINEAR PERTURBATION THEORY
+
+Having discussed the evolution of the background universe, we now turn to the study of structure formation. Before
+discussing the details, let us brieﬂy summarise the broad picture and give references to some of the topics that we will
+not discuss. The key idea is that if there existed small ﬂuctuations in the energy density in the early universe, then
+gravitational instability can amplify them in a well-understood manner leading to structures like galaxies etc. today.
+The most popular model for generating these ﬂuctuations is based on the idea that if the very early universe went
+through an inﬂationary phase [9], then the quantum ﬂuctuations of the ﬁeld driving the inﬂation can lead to energy
+density ﬂuctuations[10, 11]. It is possible to construct models of inﬂation such that these ﬂuctuations are described
+by a Gaussian random ﬁeld and are characterized by a power spectrum of the form P (k) = Akn with n ≃ 1 (see Sec.
+VII). The models cannot predict the value of the amplitude A in an unambiguous manner but it can be determined
+from CMBR observations. The CMBR observations are consistent with the inﬂationary model for the generation of
+perturbations and gives A ≃ (28.3h−1M pc)4 and n = 0.97± 0.023 (The ﬁrst results were from COBE [12] and WMAP
+has reconﬁrmed them with far greater accuracy). When the perturbation is small, one can use well deﬁned linear
+perturbation theory to study its growth. But when δ ≈ (δρ/ρ) is comparable to unity the perturbation theory breaks
+down. Since there is more power at small scales, smaller scales go non-linear ﬁrst and structure forms hierarchically.
+The non linear evolution of the dark matter halos (which is an example of statistical mechanics of self gravitating
+systems; see e.g.[13]) can be understood by simulations as well as theoretical models based on approximate ansatz
+[14] and nonlinear scaling relations [15]. The baryons in the halo will cool and undergo collapse in a fairly complex
+manner because of gas dynamical processes. It seems unlikely that the baryonic collapse and galaxy formation can be
+understood by analytic approximations; one needs to do high resolution computer simulations to make any progress
+[16]. All these results are broadly consistent with observations.
+
+11
+
+As long as these ﬂuctuations are small, one can study their evolution by linear perturbation theory, which is
+what we will start with [17]. The basic idea of linear perturbation theory is well deﬁned and simple. We perturb
+the background FRW metric by gF RW
++ hik and also perturb the source energy momentum tensor by
+T F RW
+ik → T F RW
++ δTik. Linearising the Einstein’s equations, one can relate the perturbed quantities by a relation
+of the form L(gF RW
+)hik = δTik where L is second order linear diﬀerential operator depending on the back ground
+metric gF RW
+. Since the background is maximally symmetric, one can separate out time and space; for e.g, if k = 0,
+simple Fourier modes can be used for this purpose and we can write down the equation for any given mode, labelled
+by a wave vector k as:
+
+ik → gF RW
+
+ik
+
+ik
+
+ik
+
+ik
+
+To every mode we can associate a wavelength normalized to today’s value: λ(t) = (2π/k)(1+z)−1 and a corresponding
+mass scale which is invariant under expansion:
+
+L(a(t), k)hab(t, k) = δTab(t, k)
+
+(42)
+
+M =
+
+4πρ(t)
+
+3
+
+(cid:20) λ(t)
+2 (cid:21)3
+
+=
+
+4πρ0
+
+3 (cid:18) λ0
+2 (cid:19)3
+
+=1.5 × 1011M⊙(Ωmh2)(cid:18) λ0
+
+1 Mpc(cid:19)3
+
+.
+
+(43)
+
+The behaviour of the mode depends on the relative value of λ(t) as compared to the Hubble radius dH (t) ≡ ( ˙a/a)−1.
+Since the Hubble radius: dH (t) ∝ t while the wavelength of the mode: λ(t) ∝ a(t) ∝ (t1/2, t2/3) in the radiation
+dominated and matter dominated phases it follows that λ(t) > dH (t) at suﬃciently early times. When λ(t) = dH (t),
+we say that the mode is entering the Hubble radius. Since the Hubble radius at z = zeq is
+
+λeq ∼=(cid:18) H −1
+
+0√2 (cid:19)  Ω1/2
+
+ΩN R! ∼= 14Mpc(ΩNRh2)−1
+
+R
+
+(44)
+
+it follows that modes with λ0 > λeq enter Hubble radius in MD phase while the more relevant modes with λ < λeq
+enter in the RD phase. Thus, for a given mode we can identify three distinct phases: First, very early on, when
+λ > dH , z > zeq the dynamics is described by general relativity. In this stage, the universe is radiation dominated,
+gravity is the only relevant force and the perturbations are linear. Next, when λ < dH and z > zeq one can describe
+the dynamics by Newtonian considerations. The perturbations are still linear and the universe is radiation dominated.
+Finally, when λ < dH , z < zeq we have a matter dominated universe in which we can use the Newtonian formalism;
+but at this stage — when most astrophysical structures form — we need to grapple with nonlinear astrophysical
+processes.
+
+Let us now consider the metric perturbation in greater detail. When the metric is perturbed to the form: gab →
+gab + hab the perturbation can be split as hab = (h00, h0α ≡ wα, hαβ). We also know that any 3-vector w(x) can be
+split as w = w⊥ + wk in which wk = ∇Φk is curl-free (and carries one degree of freedom) while w⊥ is divergence-free
+(and has 2 degrees of freedom). This result is obvious in k−space since we can write any vector w(k) as a sum of two
+terms, one along k and one transverse to k:
+
+w(k) = wk(k) + w⊥(k) = k(cid:18) w(k) · k
+k2 (cid:19)
+}
+{z
+
+along k
+
+|
+
+k2 (cid:19)(cid:21)
++(cid:20)w(k) − k(cid:18) k · w(k)
+; k × wk = 0; k · w⊥ = 0
+|
+}
+
+transverse to k
+
+{z
+
+Fourier transforming back, we can split w into a curl-free and divergence-free parts. Similar decomposition works for
+hαβ by essentially repeating the above analysis on each index. We can write:
+
+(45)
+
+hαβ = ψδαβ
+
++(cid:0)∇αu⊥
+|
+
+α(cid:1)
+β + ∇βu⊥
+{z
+}
+
+traceless from vector
+
+trace
+
+|{z}
+
++(cid:18)∇α∇β −
+|
+
+1
+3
+
+δαβ∇2(cid:19) Φ1
+{z
+}
+
+traceless from scalar
+
++h⊥⊥
+
+αβ ⇒ 1 + 2 + 1 + 2 = 6
+
+(46)
+
+α is divergence free and h⊥⊥
+
+The u⊥
+degrees of freedom) can be built out of
+
+αβ is traceless and divergence free. Thus the most general perturbation hab (ten
+
+hab = (h00, h0α ≡ wα, hαβ) = [h00, (Φk, w⊥), (ψ, Φ1, u⊥
+
+α , h⊥⊥
+
+αβ )] ⇒ [1, (1, 2), (1, 1, 2, 2)]
+
+(47)
+
+We now use the freedom available in the choice of four coordinate transformations to set four conditions: Φk = Φ1 = 0
+and u⊥
+αβ ) as nonzero. Then the perturbed line
+element takes the form:
+
+α = 0 thereby leaving six degrees of freedom in (h00 ≡ 2Φ, ψ, w⊥, h⊥⊥
+
+ds2 = a2(η) [{1 + 2Φ(x, η)} dη2 − 2w⊥
+
+α (x, η) dη dxα − {(1 − 2ψ(x, η)) δαβ + 2h⊥⊥
+
+αβ (x, η)} dxα dxβ ]
+
+(48)
+
+12
+
+To make further simpliﬁcation we need to use two facts from Einstein’s equations. It turns out that the Einstein’s
+equations for w⊥ and h⊥⊥
+αβ decouple from those for (Φ, ψ). Further, in the absence of anisotropic stress, one of the
+equations give ψ = Φ. If we use these two facts, we can simplify the structure of perturbed metric drastically. As far
+as the growth of matter perturbations are concerned, we can ignore w⊥
+
+αβ and work with a simple metric:
+
+α and h⊥⊥
+ds2 = a2(η)[(1 + 2Φ)dη2 − (1 − 2Φ)δαβdxαdxβ]
+with just one perturbed scalar degree of freedom in Φ. This is what we will study.
+
+(49)
+
+Having decided on the gauge, let us consider the evolution equations for the perturbations. While one can directly
+work with the Einstein’s equations, it turns out to be convenient to use the equations of motion for matter variables,
+since we are eventually interested in the matter perturbations. In what follows, we will use the over-dot to denote
+(d/dη) so that the standard Hubble parameter is H = (1/a)(da/dt) = ˙a/a2. With this notation, the continuity
+equation becomes:
+
+˙ρ + 3(cid:16)aH − ˙Φ(cid:17) (ρ + p) = −∇α [(ρ + p)vα]
+
+(50)
+
+Since the momentum ﬂux in the relativistic case is (ρ + p)vα, all the terms in the above equation are intuitively
+obvious, except probably the ˙Φ term. To see the physical origin of this term, note that the perturbation in Eq. (49)
+changes the factor in front of the spatial metric from a2 to a2(1 − 2Φ) so that ln a → ln a − Φ; hence the eﬀective
+Hubble parameter from ( ˙a/a) to ( ˙a/a)− ˙Φ which explains the extra ˙Φ term. This is, of course, the exact equation for
+matter variables in the perturbed metric given by Eq. (49); but we only need terms which are of linear order. Writing
+the curl-free velocity part as vα = ∇αv, the linearised equations, for dark matter (with p = 0) and radiation (with
+p = (1/3)ρ) perturbations are given by:
+
+˙δm =
+
+d
+
+dη(cid:18) δnm
+
+nm (cid:19) = ∇2vm + 3 ˙Φ;
+
+3
+4
+
+˙δR =
+
+d
+
+dη(cid:18) δnR
+
+nR (cid:19) = ∇2vR + 3 ˙Φ
+
+(51)
+
+where nm and nR are the number densities of dark matter particles and radiation. The same equations in Fourier
+space [using the same symbols for, say, δ(t, x) or δ(t, k)] are simpler to handle:
+
+˙δm =
+
+d
+
+dη (cid:18) δnm
+
+nm (cid:19) = −k2vm + 3 ˙Φ;
+
+3
+4
+
+˙δR =
+
+d
+
+dη(cid:18) δnR
+
+nR (cid:19) = −k2vR + 3 ˙Φ
+
+Note that these equations imply
+
+d
+
+dη(cid:20) δnR
+nR −
+
+δnm
+
+nm (cid:21) =
+
+d
+
+dη(cid:20)δ ln(cid:18) nR
+
+nm(cid:19)(cid:21) =
+
+d
+
+dη(cid:20)δ(cid:18)ln(cid:18) s
+
+nm(cid:19)(cid:19)(cid:21) = −k2(vR − vm)
+
+(52)
+
+(53)
+
+For long wavelength perturbations (in the limit of k → 0), this will lead to the conservation of perturbation δ(s/nm)
+in the entropy per particle.
+
+Let us next consider the Euler equation which has the general form:
+
+∂η[(ρ + p)vα] = −(ρ + p)∇αΦ − ∇αp − 4aH(ρ + p)vα
+
+(54)
+
+Once again each of the terms is simple to interpret. The (ρ + p) arises because the pressure also contributes to inertia
+in a relativistic theory and the factor 4 in the last term on the right hand side arises because the term vα∂η(ρ + p)
+on the left hand side needs to be compensated. Taking the linearised limit of this equation, for dark matter and
+radiation, we get:
+
+Thus we now have four equations in Eqs. (52), (55) for the ﬁve variables (δm, δR, vm, vR, Φ). All we need to do is to
+pick one more from Einstein’s equations to complete the set. The Einstein’s equations for our perturbed metric are:
+
+˙vm = Φ − aHvm;
+
+˙vR = Φ +
+
+1
+4
+
+δR
+
+(55)
+
+0 component : k2Φ + 3
+0
+
+0
+α component :
+
+˙Φ +
+
+˙a
+a
+
+Φ(cid:19) = −4πGa2XA
+
+˙a
+
+˙a
+a
+
+a(cid:18) ˙Φ +
+Φ = −4πGa2XA
+
+(ρ + p)AvA; v = ∇v
+
+ρAδA = −4πGa2ρbgδtotal
+
+α
+α component : 3
+
+˙a
+a
+
+˙Φ + 2
+
+¨a
+a
+
+Φ −
+
+˙a2
+a2 Φ + ¨Φ = 4πGa2δp
+
+(56)
+
+(57)
+
+(58)
+
+13
+
+where A denotes diﬀerent components like dark matter, radiation etc. Using Eq. (57) in Eq. (56) we can get a modiﬁed
+Poisson equation which is purely algebraic:
+
+−k2Φ = 4πGa2XA (cid:18)ρAδA − 3(cid:18) ˙a
+
+a(cid:19) (ρA + pA)vA(cid:19)
+
+(59)
+
+which once again emphasizes the fact that in the relativistic theory, both pressure and density act as source of gravity.
+To get a feel for the solutions let us consider a ﬂat universe dominated by a single component of matter with the
+equation of state p = wρ. (A purely radiation dominated universe, for example, will have w = 1/3.) In this case the
+Friedmann background equation gives ρ ∝ a−3(1+w) and
+
+The equation for the potential Φ can be reduced to the form:
+
+˙a
+a
+
+=
+
+2
+
+(1 + 3w)η
+
+;
+
+¨a
+a
+
+=
+
+2(1 − 3w)
+(1 + 3w)2η2
+
+¨Φ +
+
+6(1 + w)
+1 + 3w
+
+˙Φ
+η
+
++ k2wΦ = 0
+
+(60)
+
+(61)
+
+The second term is the damping due to the expansion while last term is the pressure support that will lead to
+oscillations. Clearly, the factor kη determines which of these two terms dominates. When the pressure term dominates
+(kη ≫ 1), we expect oscillatory behaviour while when the background expansion dominates (kη ≪ 1), we expect the
+growth to be suppressed. This is precisely what happens. The exact solution is given in terms of the Bessel functions
+
+Φ(η) =
+
+C1(k)Jν/2(√wkη) + C2(k)Yν/2(√wkη)
+
+ην/2
+
+;
+
+ν =
+
+5 + 3w
+1 + 3w
+
+From the theory of Bessel functions, we know that:
+
+lim
+x→0
+
+Jν/2(x) ≃
+
+xν/2
+
+2ν/2Γ(ν/2 + 1)
+
+;
+
+lim
+x→0
+
+Yν/2(x) ∝ −
+
+1
+
+xν/2
+
+(62)
+
+(63)
+
+This shows that if we want a ﬁnite value for Φ as η → 0, we can set C2 = 0. This gives the gravitational potential to
+be
+
+Φ(η) =
+
+C1(k)Jν/2(√wkη)
+
+ην/2
+
+;
+
+ν =
+
+5 + 3w
+1 + 3w
+
+The corresponding density perturbation will be:
+
+δ = −2Φ −
+
+(1 + 3w)2k2η2
+
+C1(k)Jν/2(√wkη)
+
+6
+
+ην/2
+
++ (1 + 3w)√wkη
+
+C1(k)J(ν/2)+1(√wkη)
+
+ην/2
+
+(64)
+
+(65)
+
+To understand the nature of the solution, note that dH = ( ˙a/a)−1 ∝ η and
+kdH ≃ dH /λ ∝ kη. So the argument of
+the Bessel function is just the ratio (dH /λ). From the theory of Bessel functions, we know that for small values of the
+argument Jν(x) ∝ xν is a power law while for large values of the argument it oscillates with a decaying amplitude:
+
+lim
+x→∞
+
+Jν/2(x) ∼
+
+cos[x − (ν − 1)π/4]
+
+√x
+
+;
+
+(66)
+
+Hence, for modes which are still outside the Hubble radius (k ≪ η−1), we have a constant amplitude for the potential
+and density contrast:
+
+That is, the perturbation is frozen (except for a decaying mode) at a constant value. On the other hand, for modes
+which are inside the Hubble radius (k ≫ η−1), the perturbation is rapidly oscillatory (if w 6= 0). That is the pressure
+is eﬀective at small scales and leads to acoustic oscillations in the medium.
+
+Φ ≈ Φi(k);
+
+δ ≈ −2Φi(k)
+
+(67)
+
+A special case of the above is the ﬂat, matter-dominated universe with w = 0. In this case, we need to take the
+w → 0 limit and the general solution is indeed a constant Φ = Φi(k) (plus a decaying mode Φdecay ∝ η−5 which
+diverges as η → 0). The corresponding density perturbations is:
+k2η2
+
+δ = −(2 +
+
+6
+
+)Φi(k)
+
+14
+
+(68)
+
+which shows that density perturbation is “frozen” at large scales but grows at small scales:
+
+δ =(−2Φi(k) = constant
+
+− 1
+6 k2η2Φi(k) ∝ η2 ∝ a (kη ≫ 1)
+
+(kη ≪ 1)
+
+(69)
+
+We will use these results later on.
+
+IV. PERTURBATIONS IN DARK MATTER AND RADIATION
+
+We shall now move on to the more realistic case of a multi-component universe consisting of radiation and colli-
+sionless dark matter. (For the moment we are ignoring the baryons, which we will study in Sec. VI). It is convenient
+to use y = a/aeq as independent variable rather than the time coordinate. The background expansion of the universe
+described by the function a(t) can be equivalently expressed (in terms of the conformal time η) as
+
+It is also useful to deﬁne a critical wave number kc by:
+
+y ≡
+
+ρM
+ρR
+
+=
+
+a
+aeq
+
+= x2 + 2x,
+
+x ≡(cid:18) ΩM
+
+4aeq(cid:19)1/2
+
+H0η
+
+k2
+c =
+
+H 2
+
+0 Ωm
+aeq
+
+= 4(√2 − 1)2η−2
+
+eq = 4(√2 − 1)2k2
+
+eq;
+
+k−1
+c = 19(Ωmh2)−1M pc
+
+(70)
+
+(71)
+
+which essentially sets the comoving scale corresponding to matter-radiation equality. Note that 2x = kcη and y ≈ kcη
+in the radiation dominated phase while y = (1/4)(kcη)2 in the matter dominated phase.
+We now manipulate Eqs. (52), (55), (56), (57) governing the growth of perturbations by essentially eliminating the
+
+velocity. This leads to the three equations
+
+yΦ′ + Φ +
+
+1
+3
+
+k2
+k2
+c
+
+y2
+
+1 + y
+
+Φ = −
+
+1
+2
+
+y
+
+1 + y(cid:18)δm +
+
+1
+y
+
+(1 + y)δ′′
+
+m +
+
+2 + 3y
+
+2y
+
+δ′
+m = 3(1 + y)Φ′′ +
+
+3(2 + 3y)
+
+2y
+
+δR(cid:19)
+Φ′ −
+
+k2
+k2
+c
+
+Φ
+
+(1 + y)δ′′
+
+R +
+
+1
+2
+
+δ′
+R +
+
+1
+3
+
+k2
+k2
+c
+
+δR = 4(1 + y)Φ′′ + 2Φ′ −
+
+4
+3
+
+k2
+k2
+c
+
+Φ
+
+(72)
+
+(73)
+
+(74)
+
+for the three unknowns Φ, δm, δR. Given suitable initial conditions we can solve these equations to determine the
+growth of perturbations. The initial conditions need to imposed very early on when the modes are much bigger than
+the Hubble radius which corresponds to the y ≪ 1, k → 0 limit. In this limit, the equations become:
+
+yΦ′ + Φ ≈ −
+
+1
+2
+
+δR;
+
+δ′′
+m +
+
+1
+y
+
+δ′
+m ≈ 3Φ′′ +
+
+3
+y
+
+Φ′;
+
+δ′′
+R +
+
+δ′
+R ≈ 4Φ′′ + 2Φ′
+
+(75)
+
+1
+2
+
+We will take Φ(yi, k) = Φi(k) as given value, to be determined by the processes that generate the initial perturbations.
+First equation in Eq. (75) shows that we can take δR = −2Φi for yi → 0. Further Eq. (53) shows that adiabaticity
+is respected at these scales and we can take δm = (3/4)δR = −(3/2)Φi;. The exact equation Eq. (72) determines Φ′
+if (Φ, δm, δR) are given. Finally we use the last two equations to set δ ′
+R = 4Φ ′, Thus we take the initial
+conditions at some y = yi ≪ 1 to be:
+
+m = 3Φ ′, δ ′
+
+Φ(yi, k) = Φi(k);
+
+δR(yi, k) = −2Φi(k);
+
+δm(yi, k) = −(3/2)Φi(k)
+
+(76)
+
+with δ ′
+
+m(yi, k) = 3Φ ′(yi, k); δ ′
+
+R(yi, k) = 4Φ ′(yi, k).
+
+Given these initial conditions, it is fairly easy to integrate the equations forward in time and the numerical results
+are shown in Figs 2, 3, 4, 5. (In the ﬁgures keq is taken to be aeqHeq.) To understand the nature of the evolution, it
+is, however, useful to try out a few analytic approximations to Eqs. (72) – (74) which is what we will do now.
+
+1
+
+0.8
+
+0.6
+
+0.4
+
+0.2
+
+0
+
+F
+
+2
+
+3
+
+
+q
+e
+k
+
+k
+
+
+(cid:173)
+
+(cid:173)
+
+k=0.01keq
+
+(cid:173)
+
+k=keq
+
+k=100keq
+
+
+Σ
++
+1
+
+
+0
+1
+
+g
+o
+L
+
+5
+
+4
+
+3
+
+2
+
+1
+
+0
+
+-6
+
+-4
+
+-2
+
+Log10 aaeq 
+
+0
+
+2
+
+4
+
+-6
+
+-4
+
+15
+
+k=100keq
+
+k=keq
+
+¯
+
+¯
+
+k=0.01keq
+
+¯
+
+-2
+
+0
+Log10 aaeq 
+
+2
+
+4
+
+FIG. 2: Left Panel:The evolution of gravitational potential Φ for 3 diﬀerent modes. The wavenumber is indicated by the label
+and the epoch at which the mode enters the Hubble radius is indicated by a small arrow. The top most curve is for a mode
+which stays outside the Hubble radius for most of its evolution and is well described by Eq. (78). The other two modes show
+the decay of Φ after the mode has entered the Hubble radius in the radiation dominated epoch as described by Eq. (79). Right
+Panel: Evolution of entropy perturbation (see Eq. (87) for the deﬁnition). The entropy perturbation is essentially zero till the
+mode enters Hubble radius and grows afterwards tracking the dominant energy density perturbation.
+
+A. Evolution for λ ≫ dH
+
+Let us begin by considering very large wavelength modes corresponding to the kη → 0 limit. In this case adiabaticity
+
+is respected and we can set δR ≈ (4/3)δm. Then Eqs. (72), (73) become
+
+yΦ′ + Φ ≈ −
+
+3y + 4
+8(1 + y)
+
+δR;
+
+δ′
+R ≈ 4Φ′
+
+(77)
+
+Diﬀerentiating the ﬁrst equation and using the second to eliminate δm, we get a second order equation for Φ. Fortu-
+nately, this equation has an exact solution
+
+Φ = Φi
+
+δR ≈ 4Φ − 6Φi
+
+(78)
+
+1
+
+10y3h16p(1 + y) + 9y3 + 2y2 − 8y − 16i ;
+
+[There is simple way of determining such an exact solution, which we will describe in Sec. IV D.]. The initial condition
+on δR is chosen such that it goes to −2Φi initially. The solution shows that, as long as the mode is bigger than the
+Hubble radius, the potential changes very little; it is constant initially as well as in the ﬁnal matter dominated phase.
+At late times (y ≫ 1) we see that Φ ≈ (9/10)Φi so that Φ decreases only by a factor (9/10) during the entire evolution
+if k → 0 is a valid approximation.
+
+B. Evolution for λ ≪ dH in the radiation dominated phase
+
+When the mode enters Hubble radius in the radiation dominated phase, we can no longer ignore the pressure terms.
+The pressure makes radiation density contrast oscillate and the gravitational potential, driven by this, also oscillates
+with a decay in the overall amplitude. An approximate procedure to describe this phase is to solve the coupled δR − Φ
+system, ignoring δm which is sub-dominant and then determine δm using the form of Φ.
+When δm is ignored, the problem reduces to the one solved earlier in Eqs (64), (65) with w = 1/3 giving ν = 3.
+Since J3/2 can be expressed in terms of trigonometric functions, the solution given by Eq. (64) with ν = 3, simpliﬁes
+to
+
+Φ = Φi
+
+3
+l3y3 [sin(ly) − ly cos(ly)] ;
+
+l2 =
+
+k2
+3k2
+c
+
+(79)
+
+Note that as y → 0, we have Φ = Φi, Φ′ = 0. This solution shows that once the mode enters the Hubble radius, the
+potential decays in an oscillatory manner. For ly ≫ 1, the potential becomes Φ ≈ −3Φi(ly)−2 cos(ly). In the same
+
+limit, we get from Eq. (65) that
+
+δR ≈ −
+
+2
+3
+
+k2η2Φ ≈ −2l2y2Φ ≈ 6Φi cos(ly)
+
+16
+
+(80)
+
+(This is analogous to Eq. (68) for the radiation dominated case.) This oscillation is seen clearly in Fig 3 and Fig.4
+(left panel). The amplitude of oscillations is accurately captured by Eq. (80) for k = 100keq mode but not for k = keq;
+this is to be expected since the mode is not entering in the radiation dominated phase.
+
+Let us next consider matter perturbations during this phase. They grow, driven by the gravitational potential
+
+determined above. When y ≪ 1, Eq.(73) becomes:
+1
+δ′
+m = 3Φ′′ +
+y
+
+δ′′
+m +
+
+3
+y
+
+Φ′ −
+
+k2
+k2
+c
+
+Φ
+
+The Φ is essentially determined by radiation and satisﬁes Eq. (61); using this, we can rewrite Eq. (81) as
+
+d
+dy
+
+(yδ′
+
+m) = −9(Φ′ +
+
+2
+3
+
+l2yΦ)
+
+(81)
+
+(82)
+
+The general solution to the homogeneous part of Eq. (82) (obtained by ignoring the right hand side) is (c1 + c2 ln y);
+hence the general solution to this equation is
+
+δm = (c1 + c2 ln y) − 9Z dy
+
+y Z y
+
+dy1[Φ′(y1) +
+
+2
+3
+
+l2y1Φ(y1)]
+
+(83)
+
+For y ≪ 1 the growing mode varies as ln y and dominates over the rest; hence we conclude that, matter, driven by Φ,
+grows logarithmically during the radiation dominated phase for modes which are inside the Hubble radius.
+
+C. Evolution in the matter dominated phase
+
+Finally let us consider the matter dominated phase, in which we can ignore the radiation and concentrate on
+
+Eq. (72) and Eq. (73). When y ≫ 1 these equations become:
+
+yΦ′ + Φ ≈ −
+
+1
+2
+
+δm −
+
+k2y
+3k2
+c
+
+Φ;
+
+yδ′′
+
+m +
+
+3
+2
+
+δ′
+m = −
+
+k2
+k2
+c
+
+Φ
+
+These have a simple solution which we found earlier (see Eq. (69)):
+
+Φ = Φ∞ = const.;
+
+δm = −2Φ∞ −
+
+2k2
+3k2
+c
+
+Φ∞y ∼ y
+
+(84)
+
+(85)
+
+In this limit, the matter perturbations grow linearly with expansion: δm ∝ y ∝ a. In fact this is the most dominant
+growth mode in the linear perturbation theory.
+
+R
+
+∆
+
+2
+
+3
+
+
+q
+e
+k
+
+k
+
+-
+
+6
+
+4
+
+2
+
+0
+
+-2
+
+-4
+
+-6
+
+k=100keq
+
+(cid:173)
+
+-6
+
+-4
+
+-2
+0
+Log10 aaeq 
+
+2
+
+4
+
+FIG. 3: Evolution of δR for a mode with k = 100keq. The mode remains frozen outside the Hubble radius at (k/keq )3/2(−δR) ≈
+(k/keq)3/22Φ = 2 (in the normalisation used in Fig. 2 ) and oscillates when it enters the Hubble radius. The oscillations are
+well described by Eq. (80) with an amplitude of 6.
+
+5
+
+4
+
+3
+
+2
+
+1
+
+R
+
+∆
+
+2
+
+3
+
+
+q
+e
+k
+
+k
+
+-
+
+k=keq
+
+(cid:173)
+
+3.5
+
+3.25
+
+3
+
+2.75
+
+2.5
+
+2.25
+
+R
+
+∆
+
+2
+
+3
+
+
+q
+e
+k
+
+k
+
+-
+
+17
+
+(cid:173)
+
+-6
+
+-4
+
+0
+-2
+Log10 aaeq 
+
+2
+
+4
+
+k=0.01keq
+
+-4
+
+2
+
+-6
+
+0
+-2
+Log10 aaeq 
+
+2
+
+4
+
+FIG. 4: Evolution of δR for two modes k = keq and k = 0.01 keq. The modes remain frozen outside the Hubble radius at
+(−δR) ≈ 2 and oscillates when it enters the Hubble radius. The mode in the right panel stays outside the Hubble radius for
+most part of its evolution and hence changes very little.
+
+D. An alternative description of matter-radiation system
+
+Before proceeding further, we will describe an alternative procedure for discussing the perturbations in dark matter
+and radiation, which has some advantages. In the formalism we used above, we used perturbations in the energy
+density of radiation (δR) and matter (δm) as the dependent variables. Instead, we now use perturbations in the total
+energy density, δ and the perturbations in the entropy per particle, σ as the new dependent variables. In terms of
+δR, δm, these variables are deﬁned as:
+
+δ ≡
+
+δρtotal
+ρtotal
+
+=
+
+ρRδR + ρmδm
+
+ρR + ρm
+
+=
+
+δR + yδm
+
+1 + y
+
+;
+
+y =
+
+ρm
+ρR
+
+=
+
+a
+aeq
+
+σ ≡(cid:18) δs
+
+s (cid:19) =
+
+3δTR
+TR −
+
+δρm
+ρm
+
+=
+
+3
+4
+
+δR − δm =
+
+δnR
+nR −
+
+δnm
+nm
+
+(86)
+
+(87)
+
+5
+
+4
+
+3
+
+
+M
+∆
+
+2
+
+3
+
+
+q
+e
+k
+
+k
+
+
+
+0
+1
+
+g
+o
+L
+
+2
+
+1
+
+k=100keq
+
+k=keq
+
+-6
+
+-4
+
+¯
+
+-2
+
+Log10 aaeq 
+
+¯
+
+0
+
+k=0.01keq
+
+2
+
+¯
+
+4
+
+FIG. 5: Evolution of |δm| for 3 diﬀerent modes. The modes are labelled by their wave numbers and the epochs at which they
+enter the Hubble radius are shown by small arrows. All the modes remain frozen when they are outside the Hubble radius and
+grow linearly in the matter dominated phase once they are inside the Hubble radius. The mode that enters the Hubble radius
+in the radiation dominated phase grows logarithmically until y = yeq. These features are well approximated by Eqs. (83), (85).
+
+Given the equations for δR, δm, one can obtain the corresponding equations for the new variables (δ, σ) by straight
+forward algebra. It is convenient to express them as two coupled equations for Φ and σ. After some direct but a bit
+tedious algebra, we get:
+
+18
+
+yΦ′′ +
+
+yΦ′
+
+2(1 + y)
+
++ 3(1 + c2
+
+s)Φ′ +
+
+3c2
+
+sΦ
+
+4(1 + y)
+
++ c2
+s
+
+k2
+k2
+c
+
+y
+
+1 + y
+
+Φ =
+
+3c2
+
+sσ
+
+2(1 + y)
+
+yσ′′ +
+
+yσ′
+
+2(1 + y)
+
++ 3c2
+
+sσ′ +
+
+3c2
+
+sy2
+4(1 + y)
+
+k2
+k2
+c
+
+σ =
+
+c2
+sy3
+
+2(1 + y)(cid:18) k
+kc(cid:19)4
+
+Φ
+
+c2
+s =
+
+(4/3)ρR
+
+4ρR + 3ρm
+
+=
+
+1
+
+3(cid:18)1 +
+
+3
+4
+
+ρm
+
+ρR(cid:19)−1
+
+=
+
+1
+
+3(cid:18)1 +
+
+3
+4
+
+y(cid:19)−1
+
+(88)
+
+(89)
+
+(90)
+
+where we have deﬁned
+
+These equations show that the entropy perturbations and gravitational potential (which is directly related to total
+energy density perturbations) act as sources for each other. The coupling between the two arises through the right
+hand sides of Eq. (88) and Eq. (89). We also see that if we set σ = 0 as an initial condition, this is preserved to
+O(k4) and — for long wave length modes — the Φ evolves independent of σ. The solutions to the coupled equations
+obtained by numerical integration is shown in Fig.(2) right panel. The entropy perturbation σ ≈ 0 till the mode enters
+Hubble radius and grows afterwards tracking either δR or δm whichever is the dominant energy density perturbation.
+To illustrate the behaviour of Φ, let us consider the adiabatic perturbations at large scales with σ ≈ 0, k → 0; then
+the gravitational potential satisﬁes the equation:
+
+yΦ′′ +
+
+yΦ′
+
+2(1 + y)
+
++ 3(1 + c2
+
+s)Φ′ +
+
+3c2
+
+sΦ
+
+4(1 + y)
+
+=
+
+sσ
+
+3c2
+2(1 + y) ≈ 0
+
+which has the two independent solutions:
+
+f1(y) = 1 +
+
+2
+9y −
+
+8
+9y2 −
+
+16
+9y3 ,
+
+f2(y) =
+
+√1 + y
+
+y2
+
+(91)
+
+(92)
+
+both of which diverge as y → 0. We need to combine these two solutions to ﬁnd the general solution, keeping in mind
+that the general solution should be nonsingular and become a constant (say, unity) as y → 0. This ﬁxes the linear
+combination uniquely:
+
+(93)
+
+f (y) =
+
+9
+10
+
+f1 +
+
+8
+5
+
+f2 =
+
+1
+
+10y3h16p(1 + y) + 9y3 + 2y2 − 8y − 16i
+
+Multiplying by Φi we get the solution that was found earlier (see Eq. (78)). Given the form of Φ and σ ≃ 0 we can
+determine all other quantities. In particular, we get:
+
+δR = −2(1 + y)d(yΦ)/dy + yσ
+
+1 + (3/4)y
+
+2(1 + y)
+1 + (3/4)y
+
+d
+dy
+
+≃ −
+
+(yΦ)
+
+The corresponding velocity ﬁeld, which we quote for future reference, is given by:
+
+vα = −
+
+3c2
+s
+
+2( ˙a/a)
+
+(1 + y)∇α
+
+d(yΦ)
+
+dy
+
+(94)
+
+(95)
+
+We conclude this section by mentioning another useful result related to Eq. (88). When σ ≈ 0, the equation for Φ
+
+can be re-expressed as
+
+where we have deﬁned:
+
+a
+
+dζ
+da
+
+2c2
+s
+3
+
+k2/a2
+H 2
+
+= −
+
+ρ
+
+ρ + p
+
+Φ ≈ 0
+
+(for
+
+k
+aH ≪ 1)
+
+ζ =
+
+2
+3
+
+ρ
+
+ρ + p
+
+a
+
+˙a(cid:18) ˙Φ +
+
+˙a
+a
+
+Φ(cid:19) + Φ =
+
+H
+
+ρ + p
+
+ikα
+k2 δT 0
+
+α + Φ
+
+(96)
+
+(97)
+
+(The i factor arises because of converting a gradient to the k space; of course, when everything is done correctly, all
+physical quantities will be real.) Other equivalent alternative forms for ζ, which are useful are:
+
+ζ =
+
+2
+
+3[1 + w(a)]
+
+d
+da
+
+(aΦ) + Φ =
+
+H 2
+
+a(ρ + p)
+
+d
+
+dt(cid:18) aΦ
+H (cid:19)
+
+(98)
+
+For modes which are bigger than the Hubble radius, Eq. (96) shows that ζ is conserved. When ζ=constant, we can
+integrate Eq. (98) easily to obtain:
+
+19
+
+Φ = c1
+
+H
+a
+
++ c2(cid:20)1 −
+
+H
+
+a Z a
+
+0
+
+da′
+
+H(a′)(cid:21)
+
+(99)
+
+This is the easiest way to obtain the solution in Eq. (78).
+
+The conservation law for ζ also allows us to understand in a simple manner our previous result that Φ only
+deceases by a factor (9/10) when the mode remains bigger than Hubble radius as we evolve the equations from
+y ≪ 1 to y ≫ 1. Let us compare the values of ζ early in the radiation dominated phase and late in the matter
+dominated phase. From the ﬁrst equation in Eq. (98), [using Φ′ ≈ 0] we ﬁnd that, in the radiation dominated phase,
+ζ ≈ (1/2)Φi +Φi = (3/2)Φi; late in the matter dominated phase, ζ ≈ (2/3)Φf +Φf = (5/3)Φf . Hence the conservation
+of ζ gives Φf = (3/5)(3/2)Φi = (9/10)Φi which was the result obtained earlier. The expression in Eq. (99) also works
+at late times in the Λ dominated or curvature dominated universe.
+
+One key feature which should be noted in the study of linear perturbation theory is the diﬀerent amount of growths
+for Φ, δR and δm. The Φ either changes very little or decays; the δR grows in amplitude only by a factor of few. The
+physical reason, of course, is that the amplitude is frozen at super-Hubble scales and the pressure prevents the growth
+at sub-Hubble scales. In contrast, δm, which is pressureless, grows logarithmically in the radiation dominated era and
+linearly during the matter dominated era. Since the later phase lasts for a factor of 104 in expansion, we get a fair
+amount of growth in δm.
+
+V. TRANSFER FUNCTION FOR MATTER PERTURBATIONS
+
+We now have all the ingredients to evolve the matter perturbation from an initial value δ = δi at y = yi ≪ 1 to the
+current epoch y = y0 = a−1
+eq in the matter dominated phase at y ≫ 1. Initially, the wavelength of the perturbation
+will be bigger than the Hubble radius and the perturbation will essentially remain frozen. When it enters the Hubble
+radius in the radiation dominated phase, it begins to grow but only logarithmically (see section IV B ) until the
+universe becomes matter dominated.
+In the ﬁnal matter dominated phase, the perturbation grows linearly with
+expansion factor. The relation between ﬁnal and initial perturbation can be obtained by combining these results.
+
+Usually, one is more interested in the power spectrum Pk(t) and the power per logarithmic band in k−space ∆k(t).
+
+These quantities are deﬁned in terms of δk(t) through the equations:
+
+Pk(t) ≡ |δk(t)|2; ∆2
+
+k(t) ≡
+
+k3Pk(t)
+
+2π2
+
+(100)
+
+It is therefore convenient to study the evolution of k3/2δk since its square will immediately give the power per
+logarithmic band ∆2
+
+Let us ﬁrst consider a mode which enters the Hubble radius in the radiation dominated phase at the epoch aenter.
+
+k in k−space.
+
+where two factors — as indicated — gives the growth in radiation (RD) and matter dominated (MD) phases. Let
+ent so that
+
+us next consider the modes that enter in the matter dominated phase. In this case, aent/k ∝ tent ∝ a3/2
+yent = (keq/k)2. Hence
+
+k3/2δm(k, a = 1) =
+
+1
+
+aent
+
+|{z}MD
+
+hk3/2δent(k)i
+|
+}
+
+{z
+
+at entry
+
+∝ k2[k3/2δent(k)]
+
+(102)
+
+From the scaling relation, aent/k ∝ tent ∝ a2
+1
+aeq
+
+k3/2δm(k, a = 1) =
+
+ent we ﬁnd that yent = (keq/k). Hence
+
+ln(cid:18) aeq
+aent(cid:19)
+}
+{z
+|
+
+RD
+
+hk3/2δent(k)i
+|
+}
+
+{z
+
+at entry
+
+|{z}MD
+
+∝ ln(cid:18) k
+
+keq(cid:19) [k3/2δent(k)]
+
+(101)
+
+To proceed further, we need to know the k−dependence of the perturbation when it enters the Hubble radius which,
+of course, is related to the mechanism that generates the initial power spectrum. The most natural choice will be
+that all the modes enter the Hubble radius with a constant amplitude at the time of entry. This would imply that the
+physical perturbations are scale invariant at the time of entering the Hubble radius, a possibility that was suggested
+by Zeldovich and Harrison [18] (years before inﬂation was invented!). We will see later that this is also true for
+perturbations generated by inﬂation and thus is a reasonable assumption at least in such models. Hence we shall
+assume
+
+20
+
+Using this we ﬁnd that the current value of perturbation is given by
+
+k3|δent(k)|2 = k3Pent(k) = C = constant,
+
+The corresponding power per logarithmic band is
+
+2
+
+P (k, a = 1) ∝(cid:12)(cid:12)(cid:12)δm(k, a = 1)(cid:12)(cid:12)(cid:12)
+∆2(k, a = 1) ∝ k3(cid:12)(cid:12)(cid:12)δm(k, a = 1)(cid:12)(cid:12)(cid:12)
+
+∝(k (for k ≪ keq)
+
+k−3(ln k)2(for k ≫ keq)
+
+2
+
+∝(k4 (for k ≪ keq)
+(ln k)2(for k ≫ keq)
+
+(103)
+
+(104)
+
+(105)
+
+The form for P (k) shows that the evolution imprints the scale keq on the power spectrum even though the initial
+power spectrum is scale invariant. For k < keq (for large spatial scales), the primordial form of the spectrum is
+preserved and the evolution only increases the amplitude preserving the shape. For k > keq (for small spatial scales),
+the shape is distorted and in general the power is suppressed in comparison with larger spatial scales. This arises
+because modes with small wavelengths enter the Hubble radius early on and have to wait till the universe becomes
+matter dominated in order to grow in amplitude. This is in contrast to modes with large wavelengths which continue
+to grow. It is this eﬀect which suppresses the power at small wavelengths (for k > keq) relative to power at larger
+wavelengths.
+
+VI. TEMPERATURE ANISOTROPIES OF CMBR
+
+We shall now apply the formalism we have developed to understand the temperature anisotropies in the cosmic
+microwave background radiation which is probably the most useful application of linear perturbation theory. We
+shall begin by developing the general formulation and the terminology which is used to describe the temperature
+anisotropies.
+
+Towards every direction in the sky, n = (θ, ψ) we can deﬁne a fractional temperature ﬂuctuation ∆(n) ≡
+(∆T /T )(θ, ψ). Expanding this quantity in spherical harmonics on the sky plane as well as in terms of the spatial
+Fourier modes, we get the two relations:
+
+∆(n) ≡
+
+∆T
+T
+
+(θ, ψ)=
+
+∞
+
+Xl,m
+
+almYlm(θ, ψ)=Z d3k
+
+(2π)
+
+∆(k)eik·nL
+
+(106)
+
+where L = η0− ηLSS is the distance to the last scattering surface (LSS) from which we are receiving the radiation. The
+last equality allows us to deﬁne the expansion coeﬃcients alm in terms of the temperature ﬂuctuation in the Fourier
+space ∆(k) . Standard identities of mathematical physics now give
+
+Next, let us consider the angular correlation function of temperature anisotropy, which is given by:
+
+alm =Z
+
+d3k
+(2π)3 (4π) il ∆(k) jl(kL) Ylm(ˆk)
+
+C(α) = h∆(n)∆(m)i =XXhalma∗
+
+l′m′iYlm(n)Y ∗
+
+l′m′(m).
+
+where the wedges denote an ensemble average. For a Gaussian random ﬁeld of ﬂuctuations we can express the ensemble
+average as halma∗
+l′m′i = Clδll′ δmm′ . Using Eq. (107), we get a relation between Cl and ∆(k). Given ∆(k), the Cl’s
+are given by:
+
+(107)
+
+(108)
+
+Cl =
+
+2
+
+πZ ∞
+
+0
+
+k2dk |∆(k)|2 j2
+
+l (kL)
+
+(109)
+
+Further, Eq. (108) now becomes:
+
+C(α) =Xl
+
+(2l + 1)
+
+4π
+
+ClPl(cos α)
+
+21
+
+(110)
+
+Equation (110) shows that the mean-square value of temperature ﬂuctuations and the quadrupole anisotropy corre-
+sponding to l = 2 are given by
+
+(cid:18) ∆T
+T (cid:19)2
+
+rms
+
+= C(0) =
+
+1
+4π
+
+∞
+
+Xl=2
+
+T (cid:19)2
+(2l + 1) Cl, (cid:18) ∆T
+
+Q
+
+=
+
+5
+4π
+
+C2.
+
+(111)
+
+These can be explicitly computed if we know ∆(k) from the perturbation theory. (The motion of our local group
+through the CMBR leads to a large l = 1 dipole contribution in the temperature anisotropy. In the analysis of CMBR
+anisotropies, this is usually subtracted out. Hence the leading term is the quadrupole with l = 2.)
+
+It should be noted that, for a given l, the Cl is the average over all m = −l, ... − 1, 0, 1, ...l. For a Gaussian
+random ﬁeld, one can also compute the variance around this mean value. It can be shown that this variance in Cl is
+2C2
+l /(2l + 1). In other words, there is an intrinsic root-mean-square ﬂuctuation in the observed, mean value of Cl’s
+which is of the order of ∆Cl/Cl ≈ (2l + 1)−1/2. It is not possible for any CMBR observations which measures the Cl’s
+to reduce its uncertainty below this intrinsic variance — usually called the “cosmic variance”. For large values of l,
+the cosmic variance is usually sub-dominant to other observational errors but for low l this is the dominant source of
+uncertainty in the measurement of Cl’s. Current WMAP observations are indeed only limited by cosmic variance at
+low-l.
+
+As an illustration of the formalism developed above, let us compute the Cl’s for low l which will be contributed
+essentially by ﬂuctuations at large spatial scales. Since these ﬂuctuations will be dominated by gravitational eﬀects, we
+can ignore the complications arising from baryonic physics and compute these using the formalism we have developed
+earlier.
+
+We begin by noting that the redshift law of photons in the unperturbed Friedmann universe, ν0 = ν(a)/a, gets
+modiﬁed to the form ν0 = ν(a)/[a(1 + Φ)] in a perturbed FRW universe. The argument of the Planck spectrum will
+thus scale as
+
+ν0
+T0
+
+=
+
+ν(a)
+
+aT0(1 + Φ)
+
+=
+
+ν(a)
+
+ahT0i[1 + (δR/4)](1 + Φ) ∼=
+
+ν(a)
+
+ahT0i[1 + Φ + (δR/4)]
+
+This is equivalent to a temperature ﬂuctuation of the amount
+
+(cid:18) ∆T
+T (cid:19)obs
+
+=
+
+1
+4
+
+δR + Φ
+
+(112)
+
+(113)
+
+at large scales. (Note that the observed ∆T /T is not just (δR/4) as one might have naively imagined.) To proceed
+further, we recall our large scale solution (see Eq. (78)) for the gravitational potential:
+
+Φ = Φi
+
+At y = ydec we can take the asymptotic solution Φdec ≈ (9/10)Φi. Hence we get
+10
+9
+
+Φi ≈ 2Φdec −
+
+3
+2
+
+10y3h16p(1 + y) + 9y3 + 2y2 − 8y − 16i ;
+=(cid:20) 1
+
+δR + Φ(cid:21)dec
+
+= 2Φdec −
+
+3
+2
+
+T (cid:19)obs
+(cid:18) ∆T
+
+1
+
+4
+
+δR = 4Φ − 6Φi
+
+Φdec =
+
+1
+3
+
+Φdec
+
+(114)
+
+(115)
+
+We thus obtain the nice result that the observed temperature ﬂuctuations at very large scales is simply related to
+the ﬂuctuations of the gravitational potential at these scales. (For a discussion of the 1/3 factor, see [19]). Fourier
+transforming this result we get ∆(k) = (1/3)Φ(k, ηLSS ) where ηLSS is the conformal time at the last scattering
+surface. (This contribution is called Sachs-Wolfe eﬀect.) It follows from Eq. (109) that the contribution to Cl from
+the gravitational potential is
+
+Cl =
+
+with
+
+2
+
+πZ k2dk|∆(k)|2j2
+
+l (kL) =
+
+2
+
+π Z ∞
+
+0
+
+dk
+k
+
+k3|Φk|2
+
+9
+
+j2
+l (kL)
+
+L = η0 − ηLSS ≈ η0 ≈ 2(ΩmH 2
+
+0 )−1/2 ≈ 6000 Ω−1/2
+
+m
+
+h−1 Mpc
+
+(116)
+
+(117)
+
+22
+
+For a scale invariant spectrum, k3|Φk|2 is a constant independent of k. (Earlier on, in Eq. (103) we said that scale
+invariant spectrum has k3|δk|2 = constant. These statements are equivalent since δ ≈ −2Φ at the large scales because
+of Eq. (85) with the extra correction term in Eq. (85) being about 3 × 10−4 for k ≈ L−1, y = ydec.) As we shall see
+later, inﬂation generates such a perturbation. In this case, it is conventional to introduce a constant amplitude A and
+write:
+
+Substituting this form into Eq. (116) and evaluating the integral, we ﬁnd that
+
+∆2
+Φ ≡
+
+k3|Φk|2
+2π2 = A2 = constant
+
+l(l + 1)Cl
+
+2π
+
+3(cid:19)2
+=(cid:18) A
+
+(118)
+
+(119)
+
+As an application of this result, let us consider the observations of COBE which measured the temperature ﬂuctuations
+for the ﬁrst time in 1992. This satellite obtained the RMS ﬂuctuations and the quadrupole after smoothing over an
+angular scale of about θc ≈ 10◦. Hence the observed values are slightly diﬀerent from those in Eq. (111). We have,
+instead,
+
+(cid:18) ∆T
+T (cid:19)2
+
+rms
+
+=
+
+Using Eqs. (118), (119) we ﬁnd that
+
+(2l + 1)Cl exp(cid:18)−
+
+l2θ2
+c
+
+2 (cid:19) ; (cid:18) ∆T
+T (cid:19)2
+
+Q
+
+1
+4π
+
+∞
+
+Xl=2
+(cid:18) ∆T
+T (cid:19)Q
+
+∼= 0.22A; (cid:18) ∆T
+
+T (cid:19)rms
+
+∼= 0.51A.
+
+=
+
+5
+4π
+
+C2e−2θ2
+c .
+
+(120)
+
+(121)
+
+Given these two measurements, one can verify that the ﬂuctuations are consistent with the scale invariant spectrum
+by checking their ratio. Further, the numerical value of the observed (∆T /T ) can be used to determine the amplitude
+A. One ﬁnds that A ≈ 3 × 10−5 which sets the scale of ﬂuctuations in the gravitational potential at the time when
+the perturbation enters the Hubble radius.
+Incidentally, note that the solution δR = 4Φ − 6Φi corresponds to δm = (3/4)δR = 3Φ − (9/2)Φi. At y = ydec,
+taking Φdec = (9/10)Φi, we get δm = 3Φdec − (9/2)(10/9)Φdec = −2Φdec. Since (∆T /T )obs = (1/3)Φdec we get
+δm = −6(∆T /T )obs. This shows that the amplitude of matter perturbations is a factor six larger that the amplitude
+of temperature anisotropy for our adiabatic initial conditions. In several other models, one gets δm = O(1)(∆T /T )obs.
+So, to reach a given level of nonlinearity in the matter distribution at later times, these models will require higher
+values of (∆T /T )obs at decoupling. This is one reason for such models to be observationally ruled out.
+
+There is another useful result which we can obtain from Eq. (109) along the same lines as we derived the Sachs-
+Wolfe eﬀect. Whenever k3|∆(k)|2 is a slowly varying function of k, we can pull out this factor out of the integral and
+evaluate the integral over j2
+
+l . This will give the result for any slowly varying k3|∆(k)|2
+
+l(l + 1)Cl
+
+2π
+
+≈(cid:18) k3|∆(k)|2
+
+2π2 (cid:19)kL≈l
+
+(122)
+
+This is applicable even when diﬀerent processes contribute to temperature anisotropies as long as they add in quadra-
+ture. While far from accurate, it allows one to estimate the eﬀects rapidly.
+
+A. CMBR Temperature Anisotropy: More detailed theory
+
+We shall now work out a more detailed theory of temperature anisotropies of CMBR so that one can understand
+the eﬀects at small scales as well. A convenient starting point is the distribution function for photons with perturbed
+Planckian distribution, which we can write as:
+
+f (xα, η, E, nα) =
+
+Iν
+
+2πν3 = fP(cid:18) aE
+
+1 + ∆(cid:19) ;
+
+fP (ǫ) ≡ 2 [exp (ǫ/T0) − 1]−1
+
+(123)
+
+The fp(ǫ) is the standard Planck spectrum for energy ǫ and we take ǫ = aE(1 + ∆)−1 to take care of the perturbations.
+In the absence of collisions, the distribution function is conserved along the trajectories of photons so that df /dη = 0.
+So, in the presence of collisions, we can write the time evolution of the distribution function as
+
+df
+dη
+
+=(cid:18) aE
+
+1 + ∆(cid:19) f ′
+
+P(cid:18) aE
+
+1 + ∆(cid:19)(cid:20) d ln(aE)
+
+dη
+
+d∆
+
+dη(cid:21) =(cid:18) df
+
+dη(cid:19)coll
+
+−
+
+(124)
+
+where the right hand side gives the contribution due to collisional terms. Equivalently, in terms of ∆, the same
+equation takes the form:
+
+23
+
+d∆
+dη −
+
+d ln(aE)
+
+dη
+
+= −(cid:18) 1 + ∆
+
+aE (cid:19) [f ′
+
+P ]−1(cid:18) df
+
+dη(cid:19)coll ≡(cid:18) d∆
+
+dη(cid:19)coll
+
+(125)
+
+To proceed further, we need the expressions for the two terms on the left hand side. First term, on using the standard
+expansion for total derivative, gives:
+
+d∆
+dη
+
+=
+
+∂∆
+∂η
+
++
+
+∂∆
+∂xα
+
+dxα
+dη
+
++
+
+dE
+dη
+
++
+
+∂∆
+∂nα
+
+dnα
+dη
+
+∼= ∂η∆ + nα∂α∆
+
+(126)
+
+∂∆
+∂E
+
+|{z}zero
+
+|{z}nα
+
+|
+
+O(∆2)=0
+
+{z
+
+}
+
+(Note that we are assuming ∂∆/∂E = 0 so that the perturbations do not depend on the frequency of the photon.)
+To determine the second term, we note that it vanishes in the unperturbed Friedmann universe and arises essentially
+due to the variation of Φ. Both the intrinsic time variation of Φ as well as its variation along the photon path will
+contribute, giving:
+
+(The minus sign arises from the fact that the we have (1 + 2Φ) in g00 but (1 − 2Φ) in the spatial perturbations.)
+Putting all these together, we can bring the evolution equation Eq. (125) to the form:
+
+d ln(aE)
+
+dη
+
+= −nα∂αΦ + ∂ηΦ
+
+(127)
+
+Let us next consider the collision term, which can be expressed in the form:
+
+d∆
+dη
+
+= −nα∂αΦ + ∂ηΦ +(cid:18) d∆
+= −NeσT ∆ + NeσT (cid:18) 1
+= NeσT (cid:18)−∆ +
+
+δR + v·n(cid:19)
+
+dη(cid:19)coll
+δR(cid:19) + NeσT (v·n)
+
+1
+4
+
+4
+
+adη(cid:19)coll
+(cid:18) d∆
+
+(128)
+
+(129)
+
+(130)
+
+(131)
+
+(132)
+
+Each of the terms in the right hand side of the ﬁrst line has a simple interpretation. The ﬁrst term describes the
+removal of photons from the beam due to Thomson scattering with the electrons while the second term gives the
+scattering contribution into the beam. In a static universe, we expect these two terms to cancel if ∆ = (1/4)δR which
+ﬁxes the relative coeﬃcients of these two terms. The third term is a correction due to the fact that the electrons
+which are scattering the photons are not at rest relative to the cosmic frame. This leads to a Doppler shift which
+is accounted for by the third term. (We denote electron number density by Ne rather than ne to avoid notational
+conﬂict with nα.)
+
+Formally, Eq. (128) is a ﬁrst order linear diﬀerential equation for ∆. To eliminate the −NeσT ∆ term which is linear
+
+in ∆ in the right hand side, we use the standard integrating factor exp(−τ ) where
+
+τ (χ) ≡Z χ
+
+0
+
+dη (aNeσT )
+
+We can then formally integrate Eq. (128) to get:
+
+We can write
+
+∆(n) =Z η0
+e−τ (−nα∂αΦ) = −(cid:18) dΦ
+
+dχe−τ (χ)(cid:20)−nα∂αΦ + ∂ηΦ + aNeσT (cid:18) 1
+dη(cid:19) e−τ + (∂ηΦ)e−τ = −
+
+d
+dη
+
+4
+
+0
+
+δR + v·n(cid:19)(cid:21)
+
+(Φe−τ ) + (aNeσT Φ)e−τ + (∂ηΦ)e−τ
+
+On integration, the ﬁrst term gives zero at the lower limit and an unimportant constant (which does not depend on
+n). Using the rest of the terms, we can write Eq. (131) in the form:
+
+∆(n) = Z η0
+= Z η0
+
+0
+
+0
+
+dχ e−τ(cid:20)2∂ηΦ + aNeσT (cid:18)Φ +
+dχ e−τ [2∂ηΦ] +Z η0
+
+δR + v·n(cid:19)(cid:21)
+dχ (e−τ aNeσT )(cid:18)Φ +
+
+1
+4
+
+0
+
+1
+4
+
+δR + v·n(cid:19)
+
+(133)
+
+The ﬁrst term gives the contribution due to the intrinsic time variation of the gravitational potential along the path
+of the photon and is called the integrated Sachs-Wolfe eﬀect. In the second term one can make further simpliﬁcations.
+Note that e−τ is essentially unity (optically thin) for z < zrec and zero (optically thick) for z > zrec; on the other
+hand, NeσT is zero for z < zrec (all the free electrons have disappeared) and is large for z > zrec. Hence the product
+(aNee−τ ) is sharply peaked at χ = χrec (i.e. at z ≃ 103 with ∆z ≃ 80). Treating this sharply peaked quantity as
+essentially a Dirac delta function (usually called the instantaneous recombination approximation) we can approximate
+the second term in Eq. (133) as a contribution occurring just on the LSS:
+
+24
+
+∆(n) =(cid:18) 1
+
+4
+
++ 2Z η0
+In the second term we have put τ = ∞ for η < ηLSS and τ = 0 for η > ηLSS.
+Once we know δR, Φ and v on the LSS from perturbation theory, we can take a Fourier transform of this result to
+obtain ∆(k) and use Eq. (109) to compute Cl. At very large scales the velocity term is sub-dominant and we get back
+the Sachs-Wolfe eﬀect derived earlier in Eq. (118). For understanding the small scale eﬀects, we need to introduce
+baryons into the picture which is our next task.
+
+δR + v · n + Φ(cid:19)LSS
+
+dχ∂ηΦ
+
+ηLSS
+
+(134)
+
+B. Description of photon-baryon ﬂuid
+
+To study the interaction of photons and baryons in the ﬂuid limit, we need to again start from the continuity equation
+
+and Euler equation. In Fourier space, the continuity equation is same as the one we had before (see Eq. (52)):
+
+The Euler equations, however, gets modiﬁed; for photons, it becomes:
+
+(cid:18) 3
+4(cid:19) ˙δR = −k2vR + 3 ˙Φ;
+
+˙δB = −k2vB + 3 ˙Φ
+
+˙vR = (
+
+1
+4
+
+δR + Φ)− ˙τ (vR − vB);
+
+˙τ = NeσT a
+
+(135)
+
+(136)
+
+The ﬁrst two terms in the right hand side are exactly the same as the ones in Eq. (55). The last term is analogous to
+a viscous drag force between the photons and baryons which arises because of the non zero relative velocity between
+the two ﬂuids. The coupling is essentially due to Thomson scattering which leads to the factor ˙τ . (The notation, and
+the physics, is the same as in Eq. (130)). The corresponding Euler equation for the baryons is:
+
+where
+
+˙vB = −
+
+˙a
+a
+
+vB + Φ+
+
+˙τ (vR − vB)
+
+R
+
+R ≡
+
+pB + ρB
+pR + ρR ≃
+
+3ρB
+
+4ρR ≈ 30 ΩBh2(cid:16) a
+10−3(cid:17)
+
+(137)
+
+(138)
+
+Again, the ﬁrst two terms in the right hand side of Eq. (137) are the same as what we had before in Eq. (55). The last
+term has the same interpretation as in the case of Euler equation Eq. (136) for photons, except for the factor R. This
+quantity essentially takes care of the inertia of baryons relative to photons. Note that the the conserved momentum
+density of photon-baryon ﬂuid has the form
+
+which accounts for the extra factor R in Eq. (137).
+
+We can now combine the Eqs. (135), (136), (137) to obtain, to lowest order in (k/ ˙τ ) the equation:
+
+(ρR + pR)vR + (ρB + pB)vB ≈ (1 + R)(ρR + pR)vR
+
+with
+
+¨δR +
+
+˙R
+
+(1 + R)
+
+˙δR + k2c2
+
+sδR = F
+
+F = 4" ¨Φ +
+
+˙R
+
+(1 + R)
+
+k2Φ# ;
+
+1
+3
+
+˙Φ −
+
+c2
+s =
+
+1
+
+3(1 + R)
+
+(139)
+
+(140)
+
+(141)
+
+An exact solution to this equation is diﬃcult to obtain. However, we can try to understand several features by an
+approximate method in which we treat the time variation of R to be small. In that case, we can drop the ˙R terms on
+both sides of the equation. Since we know that the physically relevant temperature ﬂuctuation is ∆ = (1/4)δR + Φ,
+we can recast the above equation for ∆ as:
+
+25
+
+¨∆ + k2c2
+
+s∆ ≈ −k2c2
+
+sRΦ + 2 ¨Φ
+
+(142)
+
+Let us further ignore the time variation of all terms (especially ¨Φ on the right hand side). Then, the solution is just
+∆ = −RΦ + A cos(kcsηLSS ) + B sin(kcsηLSS ). To ﬁx the initial conditions which determine A and B, we recall that
+early on (η → 0), we have ∆ → Φ/3 (see Eq. (115)) and corresponding velocity should vanish. This gives the solution:
+
+1
+4
+
+δR + Φ =
+
+Φi
+3
+
+(1 + 3R) cos(kcsηLSS ) − ΦiR;
+
+v = −Φi (1 + 3R) cs sin(kcsηLSS )
+
+(143)
+
+(One can do a little better by using WKB approximation in which (kcsηLSS ) can be replaced by the integral of kcs
+over η but it is not very important.) Given this solution, one can proceed as before and compute the Cl’s. Adding the
+
+eﬀects of [Φ + (1/4)δR] and that of [v · n] in quadrature and noticing that the angular average of(cid:10)(v · n)2(cid:11) = (1/3)v2
+we can estimate the Cl for scale invariant ( k3|Φk|2 = 2π2A2) spectrum to be:
+
+l(l + 1)Cl = 2π2A2((cid:20) (1 + 3R)
+
+3
+
+cos(k∗csηLSS ) − R(cid:21)2
+
++
+
+(1 + 3R)2
+
+3
+
+c2
+
+s sin2(k∗csηLSS ))
+
+(144)
+
+with k∗L ≈ l with L = η0 − ηLSS ≃ η0. The key feature is, of course, the maxima and minima which arises from the
+trigonometric functions. The peaks of Cl are determined by the condition k∗csηLSS = lcsηLSS /η0 = nπ; that is
+
+lpeak =
+
+nπ
+
+cs (cid:18) η0
+
+ηLSS(cid:19) = nπ√3(1 + zdec)1/2 ≈ 172n
+
+(145)
+
+More precise work gives the ﬁrst peak at lpeak ≃ 200. It is also clear that because of non zero R the peaks are larger
+when the cosine term is negative; that is, the odd peaks corresponding to n = 1, 3, ... have larger amplitudes than the
+even peaks with n = 2, 4, ....
+
+Incidentally, the above approximation is not very good for modes which enter the Hubble radius during the radiation
+dominated phase since Φ does evolve with time (and decays) in the radiation dominated phase. We saw that Φ ≈
+−3Φi(ly)−2 cos(ly) asymptotically in this phase (see Eq. (80)). From Eq. (80) we ﬁnd that during this phase, for
+modes which are inside the Hubble radius, we can take δR ≈ 6Φi cos(ly), so that ∆ ≈ δR/4 ≈ (3/2)Φi cos(ly). On the
+other hand, at very large scale, the amplitude was ∆ = Φ/3 = (1/3)(9/10)Φi = (3/10)Φi. Hence the amplitude of the
+modes that enter the horizon during the radiation dominated phase is enhanced by a factor (3/2)(10/9) = 5, relative
+to the large scale amplitude contributed by modes which enter during matter dominated phase. This is essentially
+due to the driving term ¨Φ which is nonzero in the radiation dominated phase but zero in the matter dominated phase.
+(In reality, the enhancement is smaller because the relevant modes have k & keq rather than k ≫ keq; see Figs. 3 and
+4.)
+If this were the whole story, we will see a series of peaks and troughs in the temperature anisotropies as a function of
+angular scale. In reality, however, there are processes which damp out the anisotropies at small angular scales (large
+-l) so that only the ﬁrst few peaks and troughs are really relevant. We will now discuss two key damping mechanisms
+which are responsible for this.
+
+The ﬁrst one is the ﬁnite width of the last scattering surface which makes it uncertain from which event we are
+receiving the photons. In general, if P(z) is the probability that the photon was last scattered at redshift z, then we
+can write:
+
+(cid:18) ∆T
+T (cid:19)obs
+
+=Z dz (cid:26) (∆T /T ) if the last
+
+scattering was at z (cid:27) × P(z).
+
+From Eq. (41) we know that P(z) is a Gaussian with width ∆z = 80. This corresponds to a length scale
+
+∆l = c(cid:18) dt
+
+dz(cid:19) ∆z · (1 + zdec) ≈ H −1
+
+0
+
+∆z
+
+Ω1/2z3/2
+dec
+
+≈8(cid:0)Ωh2(cid:1)−1/2
+
+Mpc.
+
+over which the temperature ﬂuctuations will be smoothed out.
+
+(146)
+
+(147)
+
+It turns out that there is another eﬀect, which is slightly more important. This arises from the fact that the photon-
+baryon ﬂuid is not tightly coupled and the photons can diﬀuse through the ﬂuid. This diﬀusion can be modeled as a
+random walk and the root mean square distance traveled by the photon during this diﬀusion process will smear the
+temperature anisotropies over that length scale. This photon diﬀusion length scale can be estimated as follows:
+
+26
+
+(∆x)2 =
+
+N
+
+|{z}
+
+numberof collisions
+
+comovingmeanf reepath
+
+=
+
+∆t
+q(t)
+
+q2
+a2 =
+
+∆t
+a2 q(t)
+
+(cid:16) q
+a(cid:17)2
+|{z}
+
+Integrating, we ﬁnd the mean square distance traveled by the photon to be
+
+The corresponding proper length scale below which photon diﬀusion will wipe out temperature anisotropies is:
+
+x2 ≡Z tdec
+
+0
+
+dt
+
+a2(t)
+
+q(t) =
+
+3
+5
+
+tdecq(tdec)
+a2(tdec)
+
+qdiﬀ = a(tdec)x =(cid:20) 3
+
+5
+
+2
+
+tdecq(tdec)(cid:21) 1
+
+≃ 35 Mpc(cid:18) ΩBh2
+
+0.02 (cid:19)− 1
+
+2
+
+4 .
+
+(cid:0)Ωh2
+
+50(cid:1)− 1
+
+It turns out that this is the dominant sources of damping of temperature anisotropies at large l ≈ 103.
+
+(148)
+
+(149)
+
+(150)
+
+VII. GENERATION OF INITIAL PERTURBATIONS FROM INFLATION
+
+In the description of linear perturbation theory given above, we assumed that some small perturbations existed
+in the early universe which are ampliﬁed through gravitational instability. To provide a complete picture we need a
+mechanism for generation of these initial perturbations. One such mechanism is provided by inﬂationary scenario which
+allows for the quantum ﬂuctuations in the ﬁeld driving the inﬂation to provide classical energy density perturbations
+at a late epoch. (Originally inﬂationary scenarios were suggested as pseudo-solutions to certain pseudo-problems;
+that is only of historical interest today and the only reason to take the possibility of an inﬂationary phase in the early
+universe seriously is because it provides a mechanism for generating these perturbations.) We shall now discuss how
+this can come about.
+
+The basic assumption in inﬂationary scenario is that the universe underwent a rapid — nearly exponential —
+expansion for a brief period of time in very early universe. The simplest way of realizing such a phase is to postulate
+the existence of a scalar ﬁeld with a nearly ﬂat potential. The dynamics of the universe, driven by a scalar ﬁeld
+source, is described by:
+
+1
+
+dt(cid:19)2
+a2 (cid:18) da
+
+= H 2(t) =
+
+1
+
+Pl"V (φ) +
+
+3M 2
+
+1
+
+dt(cid:19)2# ;
+2(cid:18) dφ
+
+d2φ
+dt2 + 3H
+
+dφ
+dt
+
+dV
+dφ
+
+= −
+
+(151)
+
+where Mpl = (8πG)−1/2. If the potential is nearly ﬂat for certain range of φ, we can introduce the “ slow roll-over”
+approximation, under which these equations become:
+
+H 2 ≃
+
+V (φ)
+3M 2
+Pl
+
+;
+
+3H
+
+dφ
+dt ≃ −V ′(φ)
+
+(152)
+
+For this slow roll-over to last for reasonable length of time, we need to assume that the terms ignored in the Eq. (151)
+are indeed small. This can be quantiﬁed in terms of the parameters:
+
+ǫ(φ) =
+
+M 2
+Pl
+
+2 (cid:18) V ′
+V (cid:19)2
+
+;
+
+η(φ) = M 2
+Pl
+
+V ′′
+V
+
+(153)
+
+which are taken to be small. Typically the inﬂation ends when this assumption breaks down. If such an inﬂationary
+phase lasts up to some time tend then the universe would have undergone an expansion by a factor exp N (t) during
+the interval (t, tend) where
+
+N ≡ ln
+
+a(tend)
+
+a(t)
+
+=Z tend
+
+t
+
+H dt ≃
+
+1
+M 2
+
+PlZ φ
+
+φend
+
+V
+V ′ dφ
+
+(154)
+
+One usually takes N ≃ 65 or so.
+Before proceeding further, we would like to make couple of comments regarding such an inﬂationary phase. To
+begin with, it is not diﬃcult to obtain exact solutions for a(t) with rapid expansion by tailoring the potential for the
+scalar ﬁeld. In fact, given any a(t) and thus a H(t) = ( ˙a/a), one can determine a potential V (φ) for a scalar ﬁeld
+such that Eq. (151) are satisﬁed (see the ﬁrst reference in [27]). One can verify that, this is done by the choice:
+
+27
+
+V (t) =
+
+1
+
+16πG
+
+H(cid:20)6H +
+
+2
+H
+
+dH
+
+dt (cid:21) ; φ(t) =Z dt(cid:20) −2
+
+8πG
+
+dH
+
+dt (cid:21)1/2
+
+(155)
+
+Given any H(t), these equations give (φ(t), V (t)) and thus implicitly determine the necessary V (φ). As an example,
+note that a power law inﬂation, a(t) = a0tp (with p ≫ 1) is generated by:
+MPl(cid:19)
+
+V (φ) = V0 exp(cid:18)−r 2
+
+(156)
+
+φ
+
+p
+
+while an exponential of power law
+
+a(t) ∝ exp(Atf ),
+
+f =
+
+β
+
+4 + β
+
+,
+
+0 < f < 1,
+
+A > 0
+
+can arise from
+
+V (φ) ∝(cid:18) φ
+
+MPl(cid:19)−β(cid:18)1 −
+
+β2
+6
+
+M 2
+Pl
+
+φ2 (cid:19)
+
+(157)
+
+(158)
+
+Thus generating a rapid expansion in the early universe is trivial if we are willing to postulate scalar ﬁelds with tailor
+made potentials. This is often done in the literature.
+
+The second point to note regarding any inﬂationary scenarios is that the modes with reasonable size today originated
+
+from sub-Planck length scales early on. A scale λ0 today will be
+
+λend = λ0
+
+aend
+a0
+
+= λ0
+
+T0
+Tend ≈ λ0 × 10−28
+
+(159)
+
+at the end of inﬂation (if inﬂation took place at GUT scales) and
+
+(160)
+at the beginning of inﬂation if the inﬂation changed the scale factor by A ≃ 1030. Note that λbegin < LP for λ0 < 3
+Mpc!! Most structures in the universe today correspond to transplanckian scales at the start of the inﬂation. It is not
+clear whether we can trust standard physics at early stages of inﬂation or whether transplanckian eﬀects will lead to
+observable eﬀects [20, 21].
+
+λbegin = λendA−1 ≈ λ0 × 10−58(A/1030)−1
+
+Let us get back to conventional wisdom and consider the evolution of perturbations in a universe which underwent
+exponential inﬂation. During the inﬂationary phase the a(t) grows exponentially and hence the wavelength of any
+perturbation will also grow with it. The Hubble radius, on the other hand, will remain constant. It follows that,
+one can have situation in which a given mode has wavelength smaller than the Hubble radius at the beginning of the
+inﬂation but grows and becomes bigger than the Hubble radius as inﬂation proceeds. It is conventional to say that
+a perturbation of comoving wavelength λ0 “leaves the Hubble radius” when λ0a = dH at some time t = texit(λ0).
+For t > texit the wavelength of the perturbation is bigger than the Hubble radius. Eventually the inﬂation ends and
+the universe becomes radiation dominated. Then the wavelength will grow (∝ t1/2) slower than the Hubble radius
+(∝ t) and will enter the Hubble radius again during t = tenter(λ0). Our ﬁrst task is to relate the amplitude of the
+perturbation at t = texit(λ0) with the perturbation at t = tenter(λ0).
+
+We know that for modes bigger than Hubble radius, we have the conserved quantity (see Eq. (97)
+
+ζ =
+
+2
+3
+
+ρ
+
+ρ + p
+
+a
+
+˙a(cid:18) ˙Φ +
+
+˙a
+a
+
+Φ(cid:19) + Φ =
+
+H
+
+ρ + p
+
+ikα
+k2 δT 0
+
+α + Φ
+
+(161)
+
+At the time of re-entry, the universe is radiation dominated and ζentry ≈ (2/3)Φ. On the other hand, during inﬂation,
+we can write the scalar ﬁeld as a dominant homogeneous part plus a small, spatially varying ﬂuctuation: φ(t, x) =
+φ0(t) + f (t, x). Perturbing the equation in Eq. (151) for the scalar ﬁeld, we ﬁnd that the homogeneous mode φ0
+satisﬁes Eq. (151) while the perturbation, in Fourier space satisﬁes:
+
+d2fk
+dt2 + 3H
+
+dfk
+dt
+
++
+
+k2
+a2 fk = 0
+
+(162)
+
+Further, the energy momentum tensor for the scalar ﬁeld gives [with the “dot” denoting (d/dη) = a(d/dt)]:
+
+ρ =
+
+˙φ2
+0
+2a2 + V ;
+
+p =
+
+˙φ2
+0
+2a2 − V ;
+
+δT α
+
+0 =
+
+ikα
+a
+
+˙φ0 f
+
+It is easy to see that Φ is negligible at t = texit since
+
+4πGa2
+
+k2 ∼
+
+4πG
+H 2 δρ ∼
+
+Φ ∼
+
+Therefore,
+
+δρ
+
+ρ ∼(cid:18) ρ + p
+
+ρ (cid:19)(cid:18) δρ
+
+ρ + p(cid:19) ≪
+
+H
+
+(ρ + p)
+
+˙φ0
+a
+
+fk
+
+ζexit ≈
+
+H
+
+0/a2)"−
+
+( ˙φ2
+
+˙φ0fk
+
+a # = −aH
+
+fk
+˙φ0 ≈
+
+3H 2
+V ′ fk
+
+Using the conservation law ζexit = ζentry, we get
+
+28
+
+(163)
+
+(164)
+
+(165)
+
+(166)
+
+=
+
+Φk(cid:12)(cid:12)(cid:12)entry
+
+9H 2
+
+2V ′ fk(cid:12)(cid:12)(cid:12)exit
+
+Thus, given a perturbation of the scalar ﬁeld fk during inﬂation, we can compute its value at the time of re-entry,
+which — in turn — can be used to compare with observations.
+
+Equation (166) connects a classical energy density perturbation fk at the time of exit with the corresponding
+quantity Φk at the time of re-entry. The next important — and conceptually diﬃcult — question is how we can
+obtain a c-number ﬁeld fk from a quantum scalar ﬁeld. There is no simple answer to this question and one possible
+way of doing it is as follows: Let us start with the quantum operator for a scalar ﬁeld decomposed into the Fourier
+modes with ˆqk(t) denoting an inﬁnite set of operators:
+
+ˆφ(t, x) =Z d3k
+
+(2π)3 ˆqk(t)eik.x.
+
+(167)
+
+We choose a quantum state |ψ > such the expectation value of ˆqk(t) vanishes for all non-zero k so that the expec-
+tation value of ˆφ(t, x) gives the homogeneous mode that drives the inﬂation. The quantum ﬂuctuation around this
+homogeneous part in a quantum state |ψ > is given by
+
+σ2
+k(t) =< ψ|ˆq2
+
+k(t)|ψ > − < ψ|ˆqk(t)|ψ >2=< ψ|ˆq2
+
+k(t)|ψ >
+
+It is easy to verify that this ﬂuctuation is just the Fourier transform of the two-point function in this state:
+
+σ2
+
+k(t) =Z d3x < ψ| ˆφ(t, x + y) ˆφ(t, y)|ψ > eik.x.
+
+(168)
+
+(169)
+
+Since σk characterises the quantum ﬂuctuations, it seems reasonable to introduce a c-number ﬁeld f (t, x) by the
+deﬁnition:
+
+f (t, x) ≡Z d3k
+
+(2π)3 σk(t)eik.x
+
+(170)
+
+This c-number ﬁeld will have same c-number power spectrum as the quantum ﬂuctuations. Hence we may take this
+as our deﬁnition of an equivalent classical perturbation. (There are more sophisticated ways of getting this result but
+none of them are fundamentally more sound that the elementary deﬁnition given above. There is a large literature
+on the subject of quantum to classical transition, especially in the context of gravity; see e.g.[22]) We now have all
+the ingredients in place. Given the quantum state |ψ >, one can explicitly compute σk and then — using Eq. (166)
+with fk = σk — obtain the density perturbations at the time of re-entry.
+The next question we need to address is what is |ψ >. The free quantum ﬁeld theory in the Friedmann background
+is identical to the quantum mechanics of a bunch of time dependent harmonic oscillators, each labelled by a wave
+vector k. The action for a free scalar ﬁeld in the Friedmann background
+
+A =
+
+1
+
+2Z d4x√−g ∂aφ∂aφ =
+
+1
+
+2Z dt d3x a3"(cid:18) ∂φ
+∂t(cid:19)2
+
+1
+
+a2 (∇φ)2# →
+
+−
+
+1
+
+2Z dt d3k a3"(cid:18) dqk
+dt (cid:19)2
+
+k#
+k2
+a2 q2
+
+−
+
+(171)
+
+can be thought of as the sum over the actions for an inﬁnite set of harmonic oscillators with mass m = a3 and
+frequency ω2
+k = k2/a2. (To be precise, one needs to treat the real and imaginary parts of the Fourier transform as
+independent oscillators and restrict the range of k; just pretending that qk is real amounts the same thing.) The
+quantum state of the ﬁeld is just an inﬁnite product of the quantum state ψk[qk, t] for each of the harmonic oscillators
+and satisﬁes the Schrodinger equation
+
+i
+
+∂ψk
+∂t
+
+1
+2a3
+
+∂2ψk
+∂q2
+
+k
+
+= −
+
++
+
+1
+2
+
+ak2ψk
+
+(172)
+
+If the quantum state ψk[qk, t′] of any given oscillator, labelled by k, is given at some initial time, t′, we can evolve it
+to ﬁnal time:
+
+29
+
+ψ [qk, t] =Z dq′
+
+k K[qk, t; q′
+
+k, t′]ψ [q′
+
+k, t′]
+
+(173)
+
+where K is known in terms of the solutions to the classical equations of motion and ψ[q′
+k, t′] is the initial state.
+There is nothing non-trivial in the mathematics, but the physics is completely unknown. The real problem is that
+unfortunately — in spite of conﬁdent assertions in the literature occasionally — we have no clue what ψ[q′
+k, t′] is. So
+we need to make more assumptions to proceed further.
+
+One natural choice is the following: It turns out that, Gaussian states of the form
+
+preserve their form under evolution governed by the Schrodinger equation in Eq. (172). Substituting Eq. (174) in
+Eq. (172) we can determine the ordinary diﬀerential equation which governs Bk(t). (The Ak(t) is trivially ﬁxed by
+normalization.) Simple algebra shows that Bk(t) can be expressed in the form
+
+ψk = Ak(t) exp[−Bk(t)q2
+k]
+
+(174)
+
+where fk is the solution to the classical equation of motion:
+
+Bk = −
+
+i
+2
+
+a3(cid:18) 1
+
+fk
+
+dfk
+
+dt (cid:19)
+
+k2
+a2 fk = 0
+For the quantum state in Eq. (174), the ﬂuctuations are characterized by
+
+d2fk
+dt2 + 3H
+
+dfk
+dt
+
++
+
+σ2
+k =
+
+1
+2
+
+(Re Bk)−1 = |fk|2
+
+(175)
+
+(176)
+
+(177)
+
+Since one can take diﬀerent choices for the solutions of Eq. (176) one get diﬀerent values for σk and diﬀerent spectra
+for perturbations. Any prediction one makes depends on the choice of mode functions. One possibility is to choose
+the modes so that ψk represents the instantaneous vacuum state of the oscillators at some time t = ti. (That is Re
+Bk(ti) = (1/2)ω2
+k(ti), say). The ﬁnal result will then depend on the choice for ti. One can further make an assumption
+that we are interested in the limit of ti → −∞; that is the quantum state is an instantaneous ground state in the
+inﬁnite past. It is easy to show that this corresponds to choosing the following solution to Eq. (176):
+
+which is usually called the Bunch-Davies vacuum. For this choice,
+
+fk =
+
+1
+
+a√2k
+
+(1 + ix)eix;
+
+x =
+
+k
+Ha
+
+|fk|2 =
+
+1
+
+2ka2(cid:18)1 +
+
+k2
+
+a2H 2(cid:19) ;
+
+|fk|2(cid:12)(cid:12)k=aH ≈
+
+(178)
+
+(179)
+
+H 2
+k3
+
+where the second result is at t = texit which is what we need to use in Eq. (166), (Numerical factors of order unity
+cannot be trusted in this computation). We can now determine the amplitude of the perturbation when it re-enters
+the Hubble radius. Eq. (166) gives:
+
+|Φk|2
+
+2V ′(cid:19)2
+entry =(cid:18) 9H 2
+
+|fk|2 =
+
+1
+k3
+
+9H 6
+4V ′2 ;
+
+k3|Φk|2
+
+V ′(cid:19)2
+entry ≃(cid:18) H 3
+
+exit
+
+(180)
+
+One sees that the result is scale invariant in the sense that k3|Φk|2
+It is sometimes claimed in the literature that scale invariant spectrum is a prediction of inﬂation. This is simply
+wrong. One has to make several other assumptions including an all important choice for the quantum state (about
+which we know nothing) to obtain scale invariant spectrum. In fact, one can prove that, given any power spectrum
+Φ(k), one can ﬁnd a quantum state such that this power spectrum is generated (for an explicit construction, see the
+last reference in [20]). So whatever results are obtained by observations can be reconciled with inﬂationary generation
+of perturbations.
+
+entry is independent of k.
+
+To conclude the discussion, let us work out the perturbations for one speciﬁc case. Let us consider the case of the
+
+λφ4 model for which
+
+30
+
+Using
+
+we can write
+
+d2φ
+dt2 + 3H
+
+dφ
+dt
+
++ V ′(φ) = 0;
+
+V (φ) ≈ V0 −
+
+λ
+4
+
+φ4
+
+N ∼= 8πGZ φf
+
+φ
+
+V0
+[−V ′]
+
+dφ =
+
+3H 2
+
+2λ   1
+φ2 −
+
+f! ≈
+
+1
+φ2
+
+3H 2
+2λφ2
+
+so that the result in Eq. (180) becomes:
+
+−V ′(φ) = λφ3 ≃
+
+H 3
+
+λ1/2N 3/2 .
+
+k3/2Φk ≃ H 3 λ1/2N 3/2
+
+H 3
+
+≈ λ1/2N 3/2.
+
+(181)
+
+(182)
+
+(183)
+
+(184)
+
+We do get scale invariant spectrum but the amplitude has a serious problem.
+If we take N & 50 and note that
+observations require k3/2Φk ∼ 10−4 we need to take λ . 10−15 for getting consistent values. Such a ﬁne tuning of a
+dimensionless coupling constant is fairly ridiculous; but over years inﬂationists have learnt to successfully forget this
+embarrassment.
+
+Our formalism can also be used to estimate the deviation of the power spectrum from the scale invariant form. To
+
+the lowest order we have
+
+P V ′2(cid:19)
+Let us deﬁne the deviation from the scale invariant index by (n − 1) = (d ln ∆2
+
+(V ′)2 ∼(cid:18) V 3
+
+∆2
+Φ ∼ k3|Φk|2 ∼
+
+H 6
+
+m6
+
+φ/d ln k). Using
+
+d
+
+d ln k
+
+= a
+
+d
+da
+
+=
+
+˙φ
+H
+
+d
+dφ
+
+m2
+p
+8π
+
+V ′
+V
+
+d
+dφ
+
+= −
+
+(185)
+
+(186)
+
+one ﬁnds that
+
+(187)
+Thus, as long as ǫ and η are small we do have n ≈ 1; what is more, given a potential one can estimate ǫ and η and
+thus the deviation (n − 1).
+Finally, note that the same process can also generate spin-2 perturbations. If we take the normalised gravity wave
+amplitude as hab = √16πG eabφ, the mode function φ behaves like a scalar ﬁeld. (The normalisation is dictated by the
+fact that the action for the perturbation should reduce to that of a spin-2 ﬁeld.) The corresponding power spectrum
+of gravity waves is
+
+1 − n = 6ǫ − 2η
+
+Pgrav(k) ∼=
+
+Comparing the two results
+
+∆2
+scalar ∼
+
+k3|hk|2
+2π2 =
+
+π (cid:18) H
+mP(cid:19)2
+P V ′2(cid:19) ; ∆2
+(V ′)2 ∼(cid:18) V 3
+
+, Ωgrav(k)h2 ≃ 10−5(cid:18) M
+mP(cid:19)3
+P(cid:19) ∼(cid:18) V
+P(cid:19)
+tensor ∼(cid:18) H 2
+
+H 6
+
+m2
+
+m4
+
+4
+
+m6
+
+(188)
+
+(189)
+
+we get (∆tensor/∆scalar)2 ≈ 16πǫ ≪ 1. Further, if (1 − n) ≈ 4ǫ (see Eq. (187) with ǫ ∼ η) we have the relation
+(∆tensor/∆scalar)2 ≈ O(3)(1−n) which connects three quantities, all of which are independently observable in principle.
+If these are actually measured in future it could act as a consistency check of the inﬂationary paradigm.
+
+VIII. THE DARK ENERGY
+
+31
+
+It is rather frustrating that the only component of the universe which we understand theoretically is the radiation!
+While understanding the baryonic and dark matter components [in particular the values of ΩB and ΩDM ] is by no
+means trivial, the issue of dark energy is lot more perplexing, thereby justifying the attention it has received recently.
+In this section we will discuss several aspects of the dark energy problem.
+
+The key observational feature of dark energy is that — treated as a ﬂuid with a stress tensor T a
+
+b = dia (ρ,−p,−p,−p)
+— it has an equation state p = wρ with w . −0.8 at the present epoch. The spatial part g of the geodesic acceleration
+(which measures the relative acceleration of two geodesics in the spacetime) satisﬁes an exact equation in general
+relativity given by:
+
+∇ · g = −4πG(ρ + 3p)
+
+(190)
+
+This shows that the source of geodesic acceleration is (ρ + 3p) and not ρ. As long as (ρ + 3p) > 0, gravity remains
+attractive while (ρ + 3p) < 0 can lead to repulsive gravitational eﬀects. In other words, dark energy with suﬃciently
+negative pressure will accelerate the expansion of the universe, once it starts dominating over the normal matter.
+This is precisely what is established from the study of high redshift supernova, which can be used to determine the
+expansion rate of the universe in the past [6].
+
+Λ(G/c3) ≡ (L2
+
+Λ , related to the constant dark energy density ρDE by H 2
+
+The simplest model for a ﬂuid with negative pressure is the cosmological constant (for some recent reviews, see
+[23]) with w = −1, ρ = −p = constant.
+If the dark energy is indeed a cosmological constant, then it introduces
+a fundamental length scale in the theory LΛ ≡ H −1
+Λ ≡
+(8πGρDE /3). In classical general relativity, based on the constants G, c and LΛ, it is not possible to construct any
+dimensionless combination from these constants. But when one introduces the Planck constant, , it is possible
+to form the dimensionless combination H 2
+Λ) . 10−123. As
+has been mentioned several times in literature, this will require enormous ﬁne tuning. What is more, in the past,
+the energy density of normal matter and radiation would have been higher while the energy density contributed by
+the cosmological constant does not change. Hence we need to adjust the energy densities of normal matter and
+cosmological constant in the early epoch very carefully so that ρΛ & ρNR around the current epoch. This raises
+the second of the two cosmological constant problems: Why is it that (ρΛ/ρNR) = O(1) at the current phase of the
+universe ?
+Because of these conceptual problems associated with the cosmological constant, people have explored a large variety
+of alternative possibilities. The most popular among them uses a scalar ﬁeld φ with a suitably chosen potential V (φ)
+so as to make the vacuum energy vary with time. The hope then is that, one can ﬁnd a model in which the current
+value can be explained naturally without any ﬁne tuning. A simple form of the source with variable w are scalar ﬁelds
+with Lagrangians of diﬀerent forms, of which we will discuss two possibilities:
+
+P /L2
+
+Λ). Observations then require (L2
+
+P /L2
+
+Lquin =
+
+1
+2
+
+∂aφ∂aφ − V (φ); Ltach = −V (φ)[1 − ∂aφ∂aφ]1/2
+
+(191)
+
+Both these Lagrangians involve one arbitrary function V (φ). The ﬁrst one, Lquin, which is a natural generalization of
+the Lagrangian for a non-relativistic particle, L = (1/2) ˙q2 − V (q), is usually called quintessence (for a small sample of
+models, see [24]; there is an extensive and growing literature on scalar ﬁeld models and more references can be found
+in the reviews in ref.[23]). When it acts as a source in Friedmann universe, it is characterized by a time dependent
+w(t) with
+
+ρq(t) =
+
+1
+2
+
+˙φ2 + V ;
+
+pq(t) =
+
+1
+2
+
+˙φ2 − V ; wq =
+
+1 − (2V / ˙φ2)
+1 + (2V / ˙φ2)
+
+(192)
+
+The structure of the second Lagrangian (which arise in string theory [25]) in Eq. (191) can be understood by a
+simple analogy from special relativity. A relativistic particle with (one dimensional) position q(t) and mass m is
+
+described by the Lagrangian L = −mp1 − ˙q2. It has the energy E = m/p1 − ˙q2 and momentum k = m ˙q/p1 − ˙q2
+which are related by E2 = k2 + m2. As is well known, this allows the possibility of having massless particles with
+ﬁnite energy for which E2 = k2. This is achieved by taking the limit of m → 0 and ˙q → 1, while keeping the ratio in
+E = m/p1 − ˙q2 ﬁnite. The momentum acquires a life of its own, unconnected with the velocity ˙q, and the energy
+is expressed in terms of the momentum (rather than in terms of ˙q) in the Hamiltonian formulation. We can now
+construct a ﬁeld theory by upgrading q(t) to a ﬁeld φ. Relativistic invariance now requires φ to depend on both space
+and time [φ = φ(t, x)] and ˙q2 to be replaced by ∂iφ∂iφ. It is also possible now to treat the mass parameter m as a
+function of φ, say, V (φ) thereby obtaining a ﬁeld theoretic Lagrangian L = −V (φ)p1 − ∂iφ∂iφ. The Hamiltonian
+
+structure of this theory is algebraically very similar to the special relativistic example we started with. In particular,
+
+the theory allows solutions in which V → 0, ∂iφ∂iφ → 1 simultaneously, keeping the energy (density) ﬁnite. Such
+solutions will have ﬁnite momentum density (analogous to a massless particle with ﬁnite momentum k) and energy
+density. Since the solutions can now depend on both space and time (unlike the special relativistic example in which q
+depended only on time), the momentum density can be an arbitrary function of the spatial coordinate. The structure
+of this Lagrangian is similar to those analyzed in a wide class of models called K-essence [26] and provides a rich
+gamut of possibilities in the context of cosmology [27, 28].
+
+Since the quintessence ﬁeld (or the tachyonic ﬁeld) has an undetermined free function V (φ), it is possible to choose
+this function in order to produce a given H(a). To see this explicitly, let us assume that the universe has two forms
+of energy density with ρ(a) = ρknown(a) + ρφ(a) where ρknown(a) arises from any known forms of source (matter,
+radiation, ...) and ρφ(a) is due to a scalar ﬁeld. Let us ﬁrst consider quintessence. Here, the potential is given
+implicitly by the form [27, 29].
+
+32
+
+V (a) =
+
+1
+
+16πG
+
+(193)
+
+aHQ′
+
+1 − Q(cid:21) ; φ(a) =(cid:20) 1
+
+8πG(cid:21)1/2Z da
+
+H(1 − Q)(cid:20)6H + 2aH ′ −
+
+a (cid:20)aQ′ − (1 − Q)
+where Q(a) ≡ [8πGρknown(a)/3H 2(a)] and prime denotes diﬀerentiation with respect to a.
+(The result used in
+Eq. (155) is just a special case of this when Q = 0) Given any H(a), Q(a), these equations determine V (a) and φ(a)
+and thus the potential V (φ). Every quintessence model studied in the literature can be obtained from these equations.
+Similar results exists for the tachyonic scalar ﬁeld as well [27]. For example, given any H(a), one can construct a
+tachyonic potential V (φ) so that the scalar ﬁeld is the source for the cosmology. The equations determining V (φ) are
+now given by:
+
+d ln a (cid:21)1/2
+
+d ln H 2
+
+φ(a) =Z da
+
+aH (cid:18) aQ′
+
+3(1 − Q) −
+
+2
+3
+
+aH ′
+
+H (cid:19)1/2
+
+;
+
+V =
+
+3H 2
+8πG
+
+(1 − Q)(cid:18)1 +
+
+2
+3
+
+aH ′
+H −
+
+aQ′
+
+3(1 − Q)(cid:19)1/2
+
+(194)
+
+Equations (194) completely solve the problem. Given any H(a), these equations determine V (a) and φ(a) and thus
+the potential V (φ). A wide variety of phenomenological models with time dependent cosmological constant have been
+considered in the literature all of which can be mapped to a scalar ﬁeld model with a suitable V (φ).
+
+While the scalar ﬁeld models enjoy considerable popularity (one reason being they are easy to construct!) it is very
+doubtful whether they have helped us to understand the nature of the dark energy at any deeper level. These models,
+viewed objectively, suﬀer from several shortcomings:
+
+• They completely lack predictive power. As explicitly demonstrated above, virtually every form of a(t) can be
+
+modeled by a suitable “designer” V (φ).
+
+• These models are degenerate in another sense. The previous discussion illustrates that even when w(a) is
+known/speciﬁed, it is not possible to proceed further and determine the nature of the scalar ﬁeld Lagrangian.
+The explicit examples given above show that there are at least two diﬀerent forms of scalar ﬁeld Lagrangians
+(corresponding to the quintessence or the tachyonic ﬁeld) which could lead to the same w(a). (See the second
+paper in ref.[7] for an explicit example of such a construction.)
+
+• All the scalar ﬁeld potentials require ﬁne tuning of the parameters in order to be viable. This is obvious in
+the quintessence models in which adding a constant to the potential is the same as invoking a cosmological
+constant. So to make the quintessence models work, we ﬁrst need to assume the cosmological constant is zero.
+These models, therefore, merely push the cosmological constant problem to another level, making it somebody
+else’s problem!.
+
+• By and large, the potentials used in the literature have no natural ﬁeld theoretical justiﬁcation. All of them are
+non-renormalisable in the conventional sense and have to be interpreted as a low energy eﬀective potential in
+an ad hoc manner.
+
+• One key diﬀerence between cosmological constant and scalar ﬁeld models is that the latter lead to a w(a) which
+varies with time. If observations have demanded this, or even if observations have ruled out w = −1 at the
+present epoch, then one would have been forced to take alternative models seriously. However, all available
+observations are consistent with cosmological constant (w = −1) and — in fact — the possible variation of w is
+strongly constrained [30] as shown in Figure 6.
+
+• While on the topic of observational constraints on w(t), it must be stressed that: (a) There is fair amount of
+tension between WMAP and SN data and one should be very careful about the priors used in these analysis.
+(b) There is no observational evidence for w < −1. (c) It is likely that more homogeneous, future, data sets
+of SN might show better agreement with WMAP results. (For more details related to these issues, see the last
+reference in [30].)
+
+33
+
+FIG. 6: The observational constraints on the variation of dark energy density as a function of redshift from WMAP and SNLS
+data (see [30]). The green/hatched region is excluded at 68% conﬁdence limit, red/cross-hatched region at 95% conﬁdence level
+and the blue/solid region at 99% conﬁdence limit. The white region shows the allowed range of variation of dark energy at
+68% conﬁdence limit.
+
+The observational and theoretical features described above suggests that one should consider cosmological constant
+as the most natural candidate for dark energy. Though it leads to well know ﬁne tuning problems, it also has certain
+attractive features that need to kept in mind.
+
+• Cosmological constant is the most economical [just one number] and simplest explanation for all the observations.
+We stress that there is absolutely no evidence for variation of dark energy density with redshift, which is
+consistent with the assumption of cosmological constant .
+
+• Once we invoke the cosmological constant classical gravity will be described by the three constants G, c and
+Λ ≡ L−2
+Λ . It is not possible to obtain a dimensionless quantity from these; so, within classical theory, there
+is no ﬁne tuning issue. Since Λ(G/c3) ≡ (LP /LΛ)2 ≈ 10−123, it is obvious that the cosmological constant is
+telling us something regarding quantum gravity, indicated by the combination G. An acid test for any quantum
+gravity model will be its ability to explain this value; needless to say, all the currently available models — strings,
+loops etc. — ﬂunk this test.
+
+• So, if dark energy is indeed cosmological constant this will be the greatest contribution from cosmology to
+
+fundamental physics. It will be unfortunate if we miss this chance by invoking some scalar ﬁeld epicycles!
+
+In this context, it is worth stressing another peculiar feature of cosmological constant when it is treated as a clue
+to quantum gravity. It is well known that, based on energy scales, the cosmological constant problem is an infra
+red problem par excellence. At the same time, it is a relic of a quantum gravitational eﬀect or principle of unknown
+nature. An analogy [31] will be helpful to illustrate this point. Suppose one solves the Schrodinger equation for the
+Helium atom for the quantum states of the two electrons ψ(x1, x2). When the result is compared with observations,
+one will ﬁnd that only half the states — those in which ψ(x1, x2) is antisymmetric under x1 ←→ x2 interchange
+— are realized in nature. But the low energy Hamiltonian for electrons in the Helium atom has no information
+about this eﬀect! Here is low energy (IR) eﬀect which is a relic of relativistic quantum ﬁeld theory (spin-statistics
+theorem) that is totally non perturbative, in the sense that writing corrections to the Helium atom Hamiltonian in
+some (1/c) expansion will not reproduce this result. The current value of cosmological constant could very well be
+related to quantum gravity in a similar way. There must exist a deep principle in quantum gravity which leaves its
+non perturbative trace even in the low energy limit that appears as the cosmological constant .
+
+34
+
+Let us now turn our attention to few of the many attempts to understand the cosmological constant. The choice
+is, of course, dictated by personal bias and is deﬁnitely a non-representative sample. A host of other approaches exist
+in literature, some of which can be found in [32].
+
+A. Gravitational Holography
+
+One possible way of addressing this issue is to simply eliminate from the gravitational theory those modes which
+couple to cosmological constant. If, for example, we have a theory in which the source of gravity is (ρ + p) rather
+than (ρ + 3p) in Eq. (190), then cosmological constant will not couple to gravity at all. (The non linear coupling of
+matter with gravity has several subtleties; see eg. [33].) Unfortunately it is not possible to develop a covariant theory
+of gravity using (ρ + p) as the source. But we can probably gain some insight from the following considerations. Any
+metric gab can be expressed in the form gab = f 2(x)qab such that det q = 1 so that det g = f 4. From the action
+functional for gravity
+
+A =
+
+1
+
+16πGZ d4x(R − 2Λ)√−g =
+
+1
+
+16πGZ d4xR√−g −
+
+Λ
+
+8πGZ d4xf 4(x)
+
+(195)
+
+it is obvious that the cosmological constant couples only to the conformal factor f . So if we consider a theory of
+
+gravity in which f 4 = √−g is kept constant and only qab is varied, then such a model will be oblivious of direct
+coupling to cosmological constant. If the action (without the Λ term) is varied, keeping det g = −1, say, then one
+is lead to a unimodular theory of gravity that has the equations of motion Rab − (1/4)gabR = κ(Tab − (1/4)gabT )
+with zero trace on both sides. Using the Bianchi identity, it is now easy to show that this is equivalent to the usual
+theory with an arbitrary cosmological constant. That is, cosmological constant arises as an undetermined integration
+constant in this model [34].
+
+The same result arises in another, completely diﬀerent approach to gravity. In the standard approach to gravity
+one uses the Einstein-Hilbert Lagrangian LEH ∝ R which has a formal structure LEH ∼ R ∼ (∂g)2 + ∂2g. If the
+surface term obtained by integrating Lsur ∝ ∂2g is ignored (or, more formally, canceled by an extrinsic curvature
+term) then the Einstein’s equations arise from the variation of the bulk term Lbulk ∝ (∂g)2 which is the non-covariant
+Γ2 Lagrangian. There is, however, a remarkable relation between Lbulk and Lsur:
+
+√−gLsur = −∂a(cid:18)gij
+
+∂√−gLbulk
+∂(∂agij) (cid:19)
+
+(196)
+
+which allows a dual description of gravity using either Lbulk or Lsur! It is possible to obtain the dynamics of gravity
+[35] from an approach which uses only the surface term of the Hilbert action; we do not need the bulk term at all!.
+This suggests that the true degrees of freedom of gravity for a volume V reside in its boundary ∂V — a point of
+view that is strongly supported by the study of horizon entropy, which shows that the degrees of freedom hidden
+by a horizon scales as the area and not as the volume. The resulting equations can be cast in a thermodynamic
+form T dS = dE + P dV and the continuum spacetime is like an elastic solid (see e.g. [36]) with Einstein’s equations
+providing the macroscopic description.
+Interestingly, the cosmological constant arises again in this approach as a
+undetermined integration constant but closely related to the ‘bulk expansion’ of the solid.
+
+While this is all very interesting, we still need an extra physical principle to ﬁx the value (even the sign) of
+cosmological constant. One possible way of doing this is to interpret the Λ term in the action as a Lagrange multiplier
+for the proper volume of the spacetime. Then it is reasonable to choose the cosmological constant such that the total
+proper volume of the universe is equal to a speciﬁed number. While this will lead to a cosmological constant which
+has the correct order of magnitude, it has several obvious problems. First, the proper four volume of the universe is
+inﬁnite unless we make the spatial sections compact and restrict the range of time integration. Second, this will lead
+to a dark energy density which varies as t−2 (corresponding to w = −1/3 ) which is ruled out by observations.
+
+B. Cosmic Lenz law
+
+Another possibility which has been attempted in the literature tries to “cancel out” the cosmological constant by
+some process, usually quantum mechanical in origin. One of the simplest ideas will be to ask whether switching on
+a cosmological constant will lead to a vacuum polarization with an eﬀective energy momentum tensor that will tend
+to cancel out the cosmological constant. A less subtle way of doing this is to invoke another scalar ﬁeld (here we
+go again!) such that it can couple to cosmological constant and reduce its eﬀective value [37]. Unfortunately, none
+of this could be made to work properly. By and large, these approaches lead to an energy density which is either
+
+ρUV ∝ L−4
+the cosmological constant ). The ﬁrst one is too large while the second one is too small!
+
+P (where LP is the Planck length) or to ρIR ∝ L−4
+
+Λ (where LΛ = H −1
+
+Λ is the Hubble radius associated with
+
+35
+
+C. Geometrical Duality in our Universe
+
+While the above ideas do not work, it gives us a clue. A universe with two length scales LΛ and LP will be
+asymptotically De Sitter with a(t) ∝ exp(t/LΛ) at late times. There are some curious features in such a universe
+which we will now describe. Given the two length scales LP and LΛ, one can construct two energy scales ρUV = 1/L4
+P
+and ρIR = 1/L4
+Λ in natural units (c =  = 1). There is suﬃcient amount of justiﬁcation from diﬀerent theoretical
+perspectives to treat LP as the zero point length of spacetime [38], giving a natural interpretation to ρUV. The
+second one, ρIR also has a natural interpretation. The universe which is asymptotically De Sitter has a horizon
+and associated thermodynamics [39] with a temperature T = HΛ/2π and the corresponding thermal energy density
+ρthermal ∝ T 4 ∝ 1/L4
+Λ = ρIR. Thus LP determines the highest possible energy density in the universe while LΛ
+determines the lowest possible energy density in this universe. As the energy density of normal matter drops below
+this value, the thermal ambience of the De Sitter phase will remain constant and provide the irreducible ‘vacuum
+noise’. Note that the dark energy density is the the geometric mean ρDE = √ρIRρUV between the two energy densities.
+DE then LDE = √LP LΛ is the geometric mean
+If we deﬁne a dark energy length scale LDE such that ρDE = 1/L4
+of the two length scales in the universe. (Incidentally, LDE ≈ 0.04 mm is macroscopic; it is also pretty close to the
+length scale associated with a neutrino mass of 10−2 eV; another intriguing coincidence ?!)
+Using the characteristic length scale of expansion, the Hubble radius dH ≡ ( ˙a/a)−1, we can distinguish between
+three diﬀerent phases of such a universe. The ﬁrst phase is when the universe went through a inﬂationary expansion
+with dH = constant; the second phase is the radiation/matter dominated phase in which most of the standard
+cosmology operates and dH increases monotonically; the third phase is that of re-inﬂation (or accelerated expansion)
+governed by the cosmological constant in which dH is again a constant. The ﬁrst and last phases are time translation
+invariant; that is, t → t+ constant is an (approximate) invariance for the universe in these two phases. The universe
+satisﬁes the perfect cosmological principle and is in steady state during these phases!
+In fact, one can easily imagine a scenario in which the two De Sitter phases (ﬁrst and last) are of arbitrarily long
+duration [40]. If ΩΛ ≈ 0.7, ΩDM ≈ 0.3 the ﬁnal De Sitter phase does last forever; as regards the inﬂationary phase,
+nothing prevents it from lasting for arbitrarily long duration. Viewed from this perspective, the in between phase —
+in which most of the ‘interesting’ cosmological phenomena occur — is of negligible measure in the span of time. It
+merely connects two steady state phases of the universe.
+
+While the two De Sitter phases can last forever in principle, there is a natural cut oﬀ length scale in both of them
+which makes the region of physical relevance to be ﬁnite [40]. Let us ﬁrst discuss the case of re-inﬂation in the late
+universe. As the universe grows exponentially in the phase 3, the wavelength of CMBR photons are being redshifted
+rapidly. When the temperature of the CMBR radiation drops below the De Sitter temperature (which happens when
+the wavelength of the typical CMBR photon is stretched to the LΛ.) the universe will be essentially dominated by
+the vacuum thermal noise [39] due to the horizon in the De Sitter phase. This happens when the expansion factor is
+a = aF determined by the equation T0(a0/aF ) = (1/2πLΛ). Let a = aΛ be the epoch at which cosmological constant
+started dominating over matter, so that (aΛ/a0)3 = (ΩDM /ΩΛ). Then we ﬁnd that the dynamic range of the phase
+3 is
+
+aF
+aΛ
+
+= 2πT0LΛ(cid:18) ΩΛ
+
+ΩDM(cid:19)1/3
+
+≈ 3 × 1030
+
+(197)
+
+Interestingly enough, one can also impose a similar bound on the physically relevant duration of inﬂation. We know
+that the quantum ﬂuctuations, generated during this inﬂationary phase, could act as seeds of structure formation
+in the universe. Consider a perturbation at some given wavelength scale which is stretched with the expansion of
+the universe as λ ∝ a(t). During the inﬂationary phase, the Hubble radius remains constant while the wavelength
+increases, so that the perturbation will ‘exit’ the Hubble radius at some time. In the radiation dominated phase,
+the Hubble radius dH ∝ t ∝ a2 grows faster than the wavelength λ ∝ a(t). Hence, normally, the perturbation will
+‘re-enter’ the Hubble radius at some time. If there was no re-inﬂation, all wavelengths will re-enter the Hubble radius
+sooner or later. But if the universe undergoes re-inﬂation, then the Hubble radius ‘ﬂattens out’ at late times and
+some of the perturbations will never reenter the Hubble radius ! If we use the criterion that we need the perturbation
+to reenter the Hubble radius, we get a natural bound on the duration of inﬂation which is of direct astrophysical
+relevance. Consider a perturbation which leaves the Hubble radius (H −1
+in ) during the inﬂationary epoch at a = ai. It
+will grow to the size H −1
+in (a/ai) at a later epoch. We want to determine ai such that this length scale grows to LΛ
+just when the dark energy starts dominating over matter; that is at the epoch a = aΛ = a0(ΩDM /ΩΛ)1/3. This gives
+
+in (aΛ/ai) = LΛ so that ai = (H −1
+
+H −1
+in /LΛ)(ΩDM /ΩΛ)1/3a0. On the other hand, the inﬂation ends at a = aend where
+aend/a0 = T0/Treheat where Treheat is the temperature to which the universe has been reheated at the end of inﬂation.
+Using these two results we can determine the dynamic range of this phase 1 to be
+
+36
+
+aend
+ai
+
+=(cid:18) T0LΛ
+
+TreheatH −1
+
+in (cid:19)(cid:18) ΩΛ
+
+ΩDM(cid:19)1/3
+
+=
+
+(aF /aΛ)
+
+2πTreheatH −1
+in
+
+∼= 1025
+
+(198)
+
+in Treheat = O(1), the ranges in Eq. (197) and Eq. (198) are approximately equal.
+
+where we have used the fact that, for a GUTs scale inﬂation with EGUT = 1014GeV, Treheat = EGUT , ρin = E4
+we have 2πH −1
+with 2πH −1
+
+in Treheat = (3π/2)1/2(EP /EGUT ) ≈ 105. If we consider a quantum gravitational, Planck scale, inﬂation
+This fact is deﬁnitely telling us something regarding the duality between Planck scale and Hubble scale or between
+the infrared and ultraviolet limits of the theory. The mystery is compounded by the fact the asymptotic De Sitter
+phase has an observer dependent horizon and related thermal properties [39]. Recently, it has been shown — in a series
+of papers, see ref.[35] — that it is possible to obtain classical relativity from purely thermodynamic considerations.
+It is diﬃcult to imagine that these features are unconnected and accidental; at the same time, it is diﬃcult to prove
+a deﬁnite connection between these ideas and the cosmological constant.
+
+GUT
+
+D. Gravity as detector of the vacuum energy
+
+Finally, we will describe an idea which does lead to the correct value of cosmological constant. The conventional
+discussion of the relation between cosmological constant and vacuum energy density is based on evaluating the zero
+point energy of quantum ﬁelds with an ultraviolet cutoﬀ and using the result as a source of gravity. Any reasonable
+cutoﬀ will lead to a vacuum energy density ρvac which is unacceptably high. This argument, however, is too simplistic
+since the zero point energy — obtained by summing over the (1/2)ωk — has no observable consequence in any
+other phenomena and can be subtracted out by redeﬁning the Hamiltonian. The observed non trivial features of the
+vacuum state of QED, for example, arise from the ﬂuctuations (or modiﬁcations) of this vacuum energy rather than
+the vacuum energy itself. This was, in fact, known fairly early in the history of cosmological constant problem and
+is stressed by Zeldovich [41] who explicitly calculated one possible contribution to ﬂuctuations after subtracting away
+the mean value. This suggests that we should consider the ﬂuctuations in the vacuum energy density in addressing
+the cosmological constant problem.
+
+If the vacuum probed by the gravity can readjust to take away the bulk energy density ρUV ≃ L−4
+
+P , quantum
+ﬂuctuations can generate the observed value ρDE. One of the simplest models [42] which achieves this uses the
+fact that, in the semi-classical limit, the wave function describing the universe of proper four-volume V will vary
+as Ψ ∝ exp(−iA0) ∝ exp[−i(ΛeﬀV/L2
+P ,V) as conjugate variables then uncertainty principle
+suggests ∆Λ ≈ L2
+P , then the
+Poisson ﬂuctuations will lead to ∆V ≈ √VL2
+(This idea can be a more
+quantitative; see [42]).
+
+P /∆V. If the four volume is built out of Planck scale substructures, giving V = N L4
+
+P /∆V ≈ 1/√V ≈ H 2
+
+P giving ∆Λ = L2
+
+P )].
+
+If we treat (Λ/L2
+
+0 .
+
+Similar viewpoint arises, more rigorously, when we study the question of detecting the energy density using gravi-
+tational ﬁeld as a probe. Recall that an Unruh-DeWitt detector with a local coupling LI = M (τ )φ[x(τ )] to the ﬁeld
+φ actually responds to h0|φ(x)φ(y)|0i rather than to the ﬁeld itself [43]. Similarly, one can use the gravitational ﬁeld
+as a natural “detector” of energy momentum tensor Tab with the standard coupling L = κhabT ab. Such a model
+was analysed in detail in ref. [44] and it was shown that the gravitational ﬁeld responds to the two point function
+h0|Tab(x)Tcd(y)|0i. In fact, it is essentially this ﬂuctuations in the energy density which is computed in the inﬂationary
+models (see Eq. (170)) as the seed source for gravitational ﬁeld, as stressed in ref. [11]. All these suggest treating the
+energy ﬂuctuations as the physical quantity “detected” by gravity, when one needs to incorporate quantum eﬀects. If
+the cosmological constant arises due to the energy density of the vacuum, then one needs to understand the structure
+of the quantum vacuum at cosmological scales. Quantum theory, especially the paradigm of renormalization group
+has taught us that the energy density — and even the concept of the vacuum state — depends on the scale at which
+it is probed. The vacuum state which we use to study the lattice vibrations in a solid, say, is not the same as vacuum
+state of the QED.
+In fact, it seems inevitable that in a universe with two length scale LΛ, LP , the vacuum ﬂuctuations will contribute
+an energy density of the correct order of magnitude ρDE = √ρIRρUV. The hierarchy of energy scales in such a universe,
+as detected by the gravitational ﬁeld has [40, 45] the pattern
+
+ρvac =
+
+1
+L4
+P
+
++
+
+1
+L4
+
+P (cid:18) LP
+LΛ(cid:19)2
+
++
+
+1
+L4
+
+P (cid:18) LP
+LΛ(cid:19)4
+
++ ···
+
+(199)
+
+37
+
+The ﬁrst term is the bulk energy density which needs to be renormalized away (by a process which we do not
+understand at present); the third term is just the thermal energy density of the De Sitter vacuum state; what is
+interesting is that quantum ﬂuctuations in the matter ﬁelds inevitably generate the second term.
+
+The key new ingredient arises from the fact that the properties of the vacuum state depends on the scale at which it
+is probed and it is not appropriate to ask questions without specifying this scale. If the spacetime has a cosmological
+horizon which blocks information, the natural scale is provided by the size of the horizon, LΛ, and we should use
+observables deﬁned within the accessible region. The operator H(< LΛ), corresponding to the total energy inside a
+region bounded by a cosmological horizon, will exhibit ﬂuctuations ∆E since vacuum state is not an eigenstate of
+this operator. The corresponding ﬂuctuations in the energy density, ∆ρ ∝ (∆E)/L3
+Λ = f (LP , LΛ) will now depend
+Λ which scales as (LP LΛ)−2 we need to
+on both the ultraviolet cutoﬀ LP as well as LΛ. To obtain ∆ρvac ∝ ∆E/L3
+have (∆E)2 ∝ L−4
+Λ; that is, the square of the energy ﬂuctuations should scale as the surface area of the bounding
+surface which is provided by the cosmic horizon. Remarkably enough, a rigorous calculation [45] of the dispersion in
+the energy shows that for LΛ ≫ LP , the ﬁnal result indeed has the scaling
+
+P L2
+
+(∆E)2 = c1
+
+L2
+Λ
+L4
+P
+
+(200)
+
+where the constant c1 depends on the manner in which ultra violet cutoﬀ is imposed. Similar calculations have been
+done (with a completely diﬀerent motivation, in the context of entanglement entropy) by several people and it is
+known that the area scaling found in Eq. (200), proportional to L2
+Λ, is a generic feature [46]. For a simple exponential
+UV-cutoﬀ, c1 = (1/30π2) but cannot be computed reliably without knowing the full theory. We thus ﬁnd that the
+ﬂuctuations in the energy density of the vacuum in a sphere of radius LΛ is given by
+
+∆ρvac =
+
+∆E
+Λ ∝ L−2
+L3
+
+P L−2
+
+Λ ∝
+
+H 2
+Λ
+G
+
+(201)
+
+The numerical coeﬃcient will depend on c1 as well as the precise nature of infrared cutoﬀ radius (like whether it is LΛ
+or LΛ/2π etc.). It would be pretentious to cook up the factors to obtain the observed value for dark energy density.
+But it is a fact of life that a ﬂuctuation of magnitude ∆ρvac ≃ H 2
+Λ/G will exist in the energy density inside a sphere
+of radius H −1
+Λ if Planck length is the UV cut oﬀ. One cannot get away from it. On the other hand, observations
+suggest that there is a ρvac of similar magnitude in the universe. It seems natural to identify the two, after subtracting
+out the mean value by hand. Our approach explains why there is a surviving cosmological constant which satisﬁes
+ρDE = √ρIRρUV which — in our opinion — is the problem.
+
+Acknowledgement
+
+I thank J. Alcaniz for his friendship and warm hospitality during the X Special Courses at Observatorio Nacional,
+Rio de Janeiro, Brazil and for persuading me to write up my lecture notes. I am grateful to Gaurang Mahajan for
+help in generating the ﬁgures.
+
+[1] P. de Bernardis et al., Nature 404, 955 (2000); A. Balbi et al., Ap.J. 545, L1 (2000); S. Hanany et al., Ap.J. 545, L5
+(2000); T.J. Pearson et al., Ap.J. 591, 556 (2003); C.L. Bennett et al, Ap. J. Suppl. 148, 1 (2003); D. N. Spergel et
+al., Ap.J.Suppl. 148, 175 (2003); B. S. Mason et al., Ap.J. 591, 540 (2003). For a summary, see e.g., L. A. Page,
+astro-ph/0402547.
+
+[2] For a review of Big Bang Nucleosynthesis (BBN), see S.Sarkar, Rept.Prog.Phys., 59, 1493 (1996); G.Steigman,
+astro-ph/0501591. The consistency between CMBR observations and BBN is gratifying since the initial MAXIMA-
+BOOMERANG data gave too high a value as stressed by T. Padmanabhan and Shiv Sethi, Ap. J. 555, 125 (2001),
+[astro-ph/0010309].
+
+[3] W. Freedman et al., Ap.J. 553, 47 (2001); J.R. Mould et al., Ap.J. 529, 786 (2000).
+[4] For a discussion of the evidence, see P.J.E. Peebles, astro-ph/0410284.
+[5] G. Efstathiou et al., Nature 348, 705 (1990); J. P. Ostriker, P. J. Steinhardt, Nature 377, 600 (1995); J. S. Bagla et al.,
+
+Comments on Astrophysics 18, 275 (1996), [astro-ph/9511102].
+
+[6] S.J. Perlmutter et al., Astrophys. J. 517, 565 (1999); A.G. Reiss et al., Astron. J. 116, 1009 (1998); J. L. Tonry et al.,
+
+ApJ 594, 1 (2003); B. J. Barris,Astrophys.J. 602, 571 (2004); A. G.Reiss et al., Astrophys.J. 607, 665(2004).
+
+[7] T. Roy Choudhury, T. Padmanabhan, Astron.Astrophys. 429, 807 (2005),
+
+[astro-ph/0311622]; T. Padmanab-
+han,T. Roy Choudhury, MNRAS 344, 823 (2003) [astro-ph/0212573]. H.K.Jassal et al., Phys.Rev. D 72, 103503 (2005)
+[astro-ph/0506748].
+
+38
+
+[8] T. Padmanabhan, Structure Formation in the Universe, (Cambridge University Press, Cambridge, 1993); T. Padman-
+abhan, Theoretical Astrophysics, Volume III: Galaxies and Cosmology, (Cambridge University Press, Cambridge, 2002);
+J.A. Peacock, Cosmological Physics, (Cambridge University Press, Cambridge, 1999); S. Dodelson, Modern Cosmology,
+(Academic Press, 2003); J. Bernstein, Kinetic Theory in the Expanding Universe (Cambridge University Press, Cambridge,
+(1988).
+
+[9] D. Kazanas, Ap. J. Letts. 241, 59 (1980); A. A. Starobinsky, JETP Lett. 30, 682 (1979); Phys. Lett. B 91, 99 (1980);
+A. H. Guth, Phys. Rev. D 23, 347 (1981); A. D. Linde, Phys. Lett. B 108, 389 (1982); A. Albrecht, P. J. Steinhardt,
+Phys. Rev. Lett. 48, 1220 (1982); for a review, see e.g.,J. V. Narlikar and T. Padmanabhan, Ann. Rev. Astron. Astrophys.
+29, 325 (1991).
+
+[10] S. W. Hawking, Phys. Lett. B 115, 295 (1982); A. A. Starobinsky, Phys. Lett. B 117, 175 (1982); A. H. Guth, S.-Y. Pi,
+Phys. Rev. Lett. 49, 1110 (1982); J. M. Bardeen et al., Phys. Rev. D 28, 679 (1983); L. F. Abbott, M. B. Wise, Nucl.
+Phys. B 244, 541 (1984).
+
+[11] T. Padmanabhan, Phys. Rev. Letts. , (1988), 60 , 2229; T. Padmanabhan, T.R. Seshadri and T.P. Singh, Phys.Rev. D 39
+
+, 2100 (1989).
+
+[12] G.F. Smoot. et al., Ap.J. 396, L1 (1992); T. Padmanabhan, D. Narasimha, MNRAS 259, 41P (1992); G. Efstathiou et
+
+al., MNRAS, 258, 1 (1992).
+
+[13] For a review, see T.Padmanabhan, Phys. Rept.
+
+188, 285 (1990); Astrophys. Jour. Supp.,
+
+71 , 651 (1989);
+
+astro-ph/0206131.
+
+[14] Ya.B. Zeldovich, Astron.Astrophys. 5, 84 (1970); Gurbatov, S. N. et al, MNRAS 236, 385 (1989); T.G. Brainerd et al.,
+Astrophys.J. 418, 570 (1993); J.S. Bagla, T.Padmanabhan, MNRAS 266, 227 (1994), [gr-qc/9304021]; MNRAS, 286,
+1023 (1997), [astro-ph/9605202]; T.Padmanabhan, S.Engineer, Ap. J. 493, 509 (1998), [astro-ph/9704224]; S. Engineer
+et.al., MNRAS 314, 279 (2000), [astro-ph/9812452]; for a recent review, see T.Tatekawa, [astro-ph/0412025].
+
+[15] A. J. S. Hamilton et al., Ap. J. 374, L1 (1991); R. Nityananda, T. Padmanabhan, MNRAS 271, 976 (1994),
+[gr-qc/9304022]; T. Padmanabhan, MNRAS 278, L29 (1996), [astro-ph/9508124]. T.Padmanabhan et al., Ap. J. 466,
+604 (1996), [astro-ph/9506051]; D. Munshi et al., MNRAS, 290, 193 (1997), [astro-ph/9606170]; J. S. Bagla, et.al., Ap.J.
+495, 25 (1998), [astro-ph/9707330]; N.Kanekar et al., MNRAS , 324, 988 (2001), [astro-ph/0101562].
+
+[16] For a pedagogical description, see J.S. Bagla, astro-ph/0411043; J.S. Bagla, T. Padmanabhan, Pramana 49, 161-192
+
+(1997), [astro-ph/0411730].
+
+[17] There is extensive literature on linear perturbation theory as well as generation of perturbations from inﬂation. I am not
+giving original references while discussing these topics. In addition to the textbooks mentioned in [8], the following review
+articles will be useful: V.F. Mukhanov et al., Physics Reports 215, 203 (1992); D. H. Lyth and A. Riotto, Physics Reports
+314, 1 (1999); A. R. Liddle and D. H. Lyth, Physics Reports 231, 1 (1993); H. Kodama and M. Sasaki, Prog. Theor. Phys.
+Suppl. 78, 1 (1984).
+
+[18] E.R. Harrison, Phys. Rev. D1, 2726 (1970); Zeldovich Ya B. MNRAS 160, 1p (1972).
+[19] J. Hwang et al., Phys. Rev. D65, 043005 (2002) [astro-ph/0107307].
+[20] One of the earliest attempts to include transplanckian eﬀects in inﬂation is in [11]. A sample of more recent papers are
+J.Martin, R.H. Brandenberger, Phys.Rev. D 63, 123501 (2001); A. Kempf, Phys.Rev. D 63 , 083514 (2001); U.H. Daniels-
+son, Phys.Rev. D 66, 023511 (2002); A. Ashoorioon et al., Phys.Rev. D 71 023503 (2005); R. Easther, astro-ph/0412613;
+for a more extensive set of references, see L. Sriramkumar et al., Phys. Rev., D 71, 103512 (2005) [gr-qc/0408034].
+
+[21] S. Corley, T. Jacobson, Phys.Rev. D 54, 1568 (1996); T. Padmanabhan, Phys.Rev.Lett. 81, 4297 (1998), [hep-th/9801015];
+Phys.Rev. D 59 124012 (1999), [hep-th/9801138]; A.A. Starobinsky, JETP Lett. 73 371-374 (2001); J.C. Niemeyer,
+R. Parentani, Phys.Rev. D 64 101301 (2001); J. Kowalski-Glikman, Phys.Lett. B 499 1 (2001); G.Amelino-Camelia,
+Int.J.Mod.Phys. D 11 35 (2002).
+
+[22] V.G. Lapchinsky, V.A. Rubakov, Acta Phys.Polon. B 10, 1041 (1979); J. B. Hartle, Phys. Rev. D 37, 2818 (1988); D
+38, 2985 (1988); T.Padmanabhan, Class. Quan. Grav. 6, 533 (1989); T.P. Singh, T. Padmanabhan, Annals Phys. 196,
+296(1989). T. Padmanabhan, Phys.Rev. D 39, 2924 (1989); T.Padmanabhan and T.P. Singh, Class. Quan. Grav.. 7, 441
+(1990); J.J. Hallwell, Phys.Rev. D 39, 2912 (1989).
+
+[23] L. Perivolaropoulos, astro-ph/0601014; S. Hannestad, astro-ph/0509320; P. J. E. Peebles and B. Ratra, Rev. Mod. Phys.
+75, 559 (2003); T. Padmanabhan, Phys. Rept. 380, 235 (2003) [hep-th/0212290]; Current Science, 88,1057, (2005)
+[astro-ph/0411044]; gr-qc/0503107; J. R. Ellis, Phil. Trans. Roy. Soc. Lond. A 361, 2607 (2003).
+
+[24] A small sample of papers covering varied aspects are: S. Nojiri, S.D. Odintsov. hep-th/0601213; Mian Wang.
+hep-th/0601189; Hao Wei et al., Phys.Rev. D 72, 123507 (2005); S. Capozziello, astro-ph/0508350; D. Polarski,
+A. Ranquet, Phys.Lett. B 627, 1 (2005); A. A. Andrianov et al., Phys.Rev. D 72, 043531 (2005); H.Stefancic,
+astro-ph/0504518; Martin Sahlen et al., astro-ph/0506696; Zhuo-Yi Huang et al., astro-ph/0511745; Z. K. Guo, N. Ohta
+and Y. Z. Zhang, astro-ph/0505253; Shin’ichi Nojiri, S. D. Odintsov, hep-th/0506212; hep-th/0408170; W. Godlowski et
+al.,astro-ph/0309569; V. F. Cardone et al., Phys.Rev. D69, (2004), 083517; I.P. Neupane, Class.Quant.Grav. 21, 4383
+(2004); M.C. Bento et al.,, astro-ph/0407239; A. DeBenedictis et al., gr-qc/0402047; M. Axenides and K.Dimopoulos,
+hep-ph/0401238; M. D. Maia et al., astro-ph/0403072; J. A. S. Lima, J. S. Alcaniz, Phys.Lett. B 600 191 (2004); J. S.
+Alcaniz, astro-ph/0312424; Xin-Zhou Li et al., Int.J.Mod.Phys. A18, 5921 (2003); P. J. Steinhardt, Phil. Trans. Roy. Soc.
+Lond. A 361, 2497 (2003); S. Sen and T. R. Seshadri, Int. J. Mod. Phys. D 12, 445 (2003); C. Rubano and P. Scud-
+ellaro, Gen. Rel. Grav. 34, 307 (2002); S. A. Bludman and M. Roos, Phys. Rev. D 65, 043503 (2002); R. de Ritis and
+A. A. Marino, Phys. Rev. D 64, 083509 (2001); A. de la Macorra and G. Piccinelli, Phys. Rev. D 61, 123503 (2000);
+L. A. Urena-Lopez and T. Matos, Phys. Rev. D 62, 081302 (2000); P. F. Gonzalez-Diaz, Phys. Rev. D 62, 023513 (2000);
+Phys. Lett. B 562, 1 (2003); T. Barreiro, E. J. Copeland and N. J. Nunes, Phys. Rev. D 61, 127301 (2000). B. Ratra,
+
+39
+
+P.J.E. Peebles, Phys.Rev. D 37, 3406 (1988).
+
+[25] A. Sen, JHEP 0204 048 (2002), [hep-th/0203211].
+[26] A small sample of papers are Hui Li et al., astro-ph/0601007; L. P. Chimento and A. Feinstein, Mod. Phys. Lett. A 19,
+761 (2004); R. J. Scherrer, Phys. Rev. Lett. 93 ) 011301 (2004; P. F. Gonzalez-Diaz,hep-th/0408225; L. P. Chimento,
+Phys.Rev. D69, 123517, (2004); O.Bertolami, astro-ph/0403310; R.Lazkoz, gr-qc/0410019; J.S. Alcaniz, J.A.S. Lima,
+astro-ph/0308465; M. Malquarti et al., Phys. Rev. D 67, 123503 (2003); T. Chiba, Phys. Rev. D 66, 063514 (2002);
+C. Armendariz-Picon et al., Phys. Rev. D 63, 103510 (2001).
+
+[27] T. Padmanabhan, Phys. Rev. D 66, 021301 (2002), [hep-th/0204150]; T. Padmanabhan and T. R. Choudhury, Phys. Rev.
+
+D 66, 081301 (2002) [hep-th/0205055]; J. S. Bagla, et al., Phys. Rev. D 67, 063504 (2003) [astro-ph/0212198].
+
+[28] For a varied sample, see H. Singh, hep-th/0505012; hep-th/0508101; Anupam Das et al., Phys.Rev. D 72, 043528 (2005);
+I.Ya. Aref’eva et al., astro-ph/0505605; astro-ph/0410443; J. M. Aguirregabiria and R. Lazkoz, hep-th/0402190; C. Kim et
+al., hep-th/0404242; R. Herrera et al.,astro-ph/0404086; A. Ghodsi and A.E.Mosaﬀa,hep-th/0408015; D.J. Liu and X.Z.Li,
+astro-ph/0402063; V. Gorini et al., Phys.Rev. D 69 123512 (2004); M. Sami et al., Pramana 62, 765 (2004); D.A. Steer,
+Phys.Rev. D70, 043527 (2004); L.Raul W. Abramo, Fabio Finelli, Phys.Lett. B 575, 165 (2003); L. Frederic, A. W. Peet,
+JHEP 0304, 048 (2003); M. Sami, Mod.Phys.Lett. A 18, 691 (2003); G. W. Gibbons, Class. Quant Grav. 20, S321 (2003);
+C. J. Kim et al., Phys. Lett. B 552, 111 (2003); G. Shiu and I. Wasserman, Phys. Lett. B 541, 6 (2002); D. Choudhury et
+al., Phys. Lett. B 544, 231 (2002); A. V. Frolov, et al., Phys. Lett. B 545, 8 (2002); G. W. Gibbons, Phys. Lett. B 537,
+1 (2002).
+
+[29] G.F.R. Ellis and M.S.Madsen, Class.Quan.Grav. 8, 667 (1991).
+[30] H.K. Jassal et al., MNRAS 356, L11-L16 (2005), [astro-ph/0404378]; [astro-ph/0601389].
+[31] T. Padmanabhan and T. Roy Choudhury, Mod. Phys. Lett. A 15, 1813 (2000), [gr-qc/0006018].
+[32] There is extensive literature on diﬀerent paradigms for solving the cosmological constant problem, like e.g., those based
+on QFT in CST: E. Mottola, Phys.Rev. D 31, 754 (1985); N.C. Tsamis,R.P. Woodard, Phys.Lett. B301, 351 (1993); E.
+Elizalde and S.D. Odintsov, Phys.Lett. B 321 199 (1994); B 333 331 (1994); J.V. Lindesay, H.P. Noyes, astro-ph/0508450;
+Shi Qi, hep-th/0505109. Non-ideal ﬂuids mimicking cosmological constant, like e.g., E. Baum, Phys. Letts. B 133, 185
+(1983); T. Padmanabhan, Phys. Letts., A104, 196 (1984); S.W. Hawking, Phys. Letts. B 134, 403 (1984); T.Padmanabhan
+and S.M. Chitre, Phys. Letts. A 120, 433 (1987); S. Coleman, Nucl. Phys. B 310 643 (1988); Quantum cosmological con-
+siderations: T. Mongan, Gen. Rel. Grav., 33 1415 (2001) [gr-qc/0103021]; Gen.Rel.Grav. 35 685 (2003). Holographic dark
+energy: Yungui Gong, Yuan-Zhong Zhang, hep-th/0505175; astro-ph/0502262; hep-th/0412218; Xin Zhang, Feng-Quan
+Wu, astro-ph/0506310; M.G.Hu, Xin-He Meng, astro-ph/0511615. Those based on renormalization group, running coupling
+constants and more general time dependent decay schemes: I.L. Shapiro, Phys.Lett. B 329, 181 (1994); I.L. Shapiro and
+J. Sola, Phys.Lett. B475, 236 (2000); hep-ph/0305279; astro-ph/0401015; I.L. Shapiro et al., hep-ph/0410095; Cristina
+Espana-Bonet, et.al., Phys.Lett. B 574 149 (2003); JCAP 0402, 006 (2004); F.Bauer, gr-qc/0501078; gr-qc/0512007; I. L.
+Shapiro, J. Sola, JHEP, 0202 006 (2002), hep-ph/0012227; J.Sola and H.Stefancic, astro-ph/0505133; astro-ph/0507110;
+J. S. Alcaniz, J. A. S. Lima, Phys.Rev. D 72 063516 (2005), [astro-ph/0507372]; J. S. Alcaniz , J. M. F. Maia, Phys.Rev.
+D 67 043502 (2003); F. Bauer, Class.Quant.Grav., 22, 3533 (2005) and many more.
+
+[33] T. Padmanabhan (2004) [gr-qc/0409089]; R. R. Caldwell, astro-ph/0209312; T.Padmanabhan, Int.Jour. Mod.Phys. A 4,
+
+4735 (1989), Sec.6.1.
+
+[34] A. Einstein, Siz. Preuss. Acad. Scis. (1919), translated as ”Do Gravitational Fields Play an essential Role in the Structure
+of Elementary Particles of Matter,” in The Principle of Relativity, by edited by A. Einstein et al. (Dover, New York, 1952);
+J. J. van der Bij et al., Physica A 116, 307 (1982); F. Wilczek, Phys. Rep. 104, 111 (1984); A. Zee, in High Energy
+Physics, proceedings of the 20th Annual Orbis Scientiae, Coral Gables, (1983), edited by B. Kursunoglu, S. C. Mintz, and
+A. Perlmutter (Plenum, New York, 1985); W. Buchmuller and N. Dragon, Phys.Lett. B 207, 292, (1988); W.G. Unruh,
+Phys.Rev. D 40 1048 (1989).
+
+[35] T. Padmanabhan, Int.Jour.Mod.Phys D (in press)[gr-qc/0510015]; Brazilian Jour.Phys. (Special Issue) 35, 362 (2005)
+[gr-qc/0412068]; Class. Quan. Grav., 21, L1 (2004) [gr-qc/0310027]; Gen.Rel.Grav., 35, 2097 (2003); ibid.,34 2029 (2002)
+[gr-qc/0205090].
+
+[36] A. D. Sakharov, Sov. Phys. Dokl., 12, 1040 (1968); T. Jacobson, Phys. Rev. Lett. 75, 1260 (1995); T. Padmanabhan, Mod.
+Phys. Lett. A 17, 1147 (2002) [hep-th/0205278]; 18, 2903 (2003) [hep-th/0302068]; Class.Quan.Grav., 21, 4485 (2004)
+[gr-qc/0308070]; G.E. Volovik, Phys.Rept., 351, 195 (2001); T. Padmanabhan, Int.Jour.Mod.Phys. D 13, 2293-2298 (2004),
+[gr-qc/0408051]; G. E. Volovik, The universe in a helium droplet, (Oxford University Press, 2003); B.L. Hu, gr-qc/0503067
+and references therein.
+
+[37] A.D. Dolgov, in The very early universe: Proceeding of the 1982 Nuﬃeld Workshop at Cambridge, ed. G.W. Gibbons,
+S.W. Hawking and S.T.C. Sikkos (Cambridge University Press), (1982), p. 449; S.M. Barr, Phys. Rev. D 36, 1691 (1987);
+Ford, L.H., Phys. Rev. D 35, 2339 (1987); A. Hebecker and C. Wetterich, Phy. Rev. Lett., 85 3339 (2000); A. Hebecker
+hep-ph/0105315; T.P. Singh, T. Padmanabhan, Int. Jour. Mod. Phys. A 3, (1988), 1593; M. Sami, T. Padmanabhan,
+(2003) Phys. Rev. D 67, 083509 [hep-th/0212317].
+
+[38] H. S. Snyder Phys. Rev., 71, 38 (1947); B. S. DeWitt, Phys. Rev. Lett., 13, 114 (1964); T. Yoneya Prog. Theor. Phys.,
+56, 1310 (1976); T. Padmanabhan Ann. Phys. (N.Y.), 165, 38 (1985); Class. Quantum Grav. 4, L107 (1987); A. Ashtekar
+et al., Phys. Rev. Lett., 69, 237 (1992 ); T. Padmanabhan Phys. Rev. Lett. 78, 1854 (1997) [hep-th/9608182]; Phys. Rev.
+D 57, 6206 (1998); K.Srinivasan et al., Phys. Rev. D 58 044009 (1998) [gr-qc/9710104]; M. Fontanini et al. Phys.Lett. B
+633, 627 (2006) hep-th/0509090. For a review, see L.J. Garay, Int. J. Mod. Phys. A10, 145 (1995).
+
+[39] G. W. Gibbons and S.W. Hawking, Phys. Rev. D 15, 2738 (1977); T.Padmanabhan, Mod.Phys.Letts., A 17, 923
+(2002) [gr-qc/0202078]; Class. Quant. Grav., 19, 5387 (2002) [gr-qc/0204019]; Mod.Phys.Letts. A 19, 2637 (2004)
+
+[gr-qc/0405072]; For a recent review see e.g., T. Padmanabhan, Phys. Reports, 406, 49 (2005) [gr-qc/0311036].
+
+[40] T.Padmanabhan Lecture given at the Plumian 300 - The Quest for a Concordance Cosmology and Beyond meeting at
+
+Institute of Astronomy, Cambridge, July 2004; [astro-ph/0510492].
+
+40
+
+[41] Y.B. Zel’dovich, JETP letters 6, 316 (1967); Soviet Physics Uspekhi 11, 381 (1968).
+[42] T. Padmanabhan, Class.Quan.Grav. 19, L167 (2002),
+
+[gr-qc/0204020];
+
+Int.J.Theor.Phys. 36, 2759 (1997);
+astro-ph/0412477; Yun Soo Myung, hep-th/0412224; E.Elizalde et al., hep-th/0502082.
+
+see D. Sorkin,
+for related ideas, see Volovik, G. E., gr-qc/0405012; J. V. Lindesay et al.,
+
+for an earlier attempt,
+
+[43] S. A. Fulling, Phys. Rev. D7 2850 (1973); W.G. Unruh, Phys. Rev. D14, 870 (1976); K. Srinivasan et al., Phys. Rev. D
+
+60, 24007 (1999) [gr-qc-9812028]; L. Sriramkumar et al., Int. Jour. Mod. Phys. D 11,1 (2002) [gr-qc/9903054].
+
+[44] T. Padmanabhan and T.P. Singh, Class. Quan. Grav., (1987), 4 , 1397.
+[45] T. Padmanabhan, Class.Quan.Grav., 22, L107, (2005) [hep-th/0406060].
+[46] L. Bombelli et al., Phys. Rev. D34, 373 (1986); M. Srednicki, Phys. Rev. Lett. 71, 666 (1993); R. Brustein et al., Phys.
+Rev. D65, 105013 (2002); A. Yarom, R. Brustein, hep-th/0401081. This result can also be obtained from those in ref. [44].
+
+

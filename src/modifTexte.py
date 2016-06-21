@@ -12,7 +12,6 @@ Created on Thu Jun 16 16:42:50 2016
 # blackList : banned words list
 import string
 from nltk import *
-import os
 
 #tests
 pdfPath = "/cal/homes/asueur/Downloads/TP3.pdf"
@@ -50,13 +49,14 @@ def deleteStopWords(textWords):
     stopwords= corpus.stopwords.words("english")
     for sw in stopwords:
         listCopy=[j for j in listCopy if j!=str(sw)]
-    types = nltk.pos_tag(listCopy)      
+    types = pos_tag(listCopy)      
     for i in types:
         if i[1] in ["DT","CC", "CD", "PRP", "PRP$", "PDT"] :  
             listCopy.remove(i[0])
     return listCopy
     
 def lemmatization(textWords):
+    #lemmatizes all the words
     words = textWords
     lmtzr=WordNetLemmatizer()
     for i in range(len(words)):
@@ -64,22 +64,15 @@ def lemmatization(textWords):
     return words
     
     
-#def compteur(text, wordList):
-#    text=delPunctuation(text)
-#    dictionnary={}
-#    textWords=text.split()
-#    for word in wordList:
-#        a=0
-#        for word2 in textWords:
-#            if (word==word2):
-#                a+=1
-#            dictionnary[word]=str(a/float(len(textWords)))
-#    return dictionnary
-    
         
 def frequency(textWords):
+    #gives the frequency of each word in the text
     a=FreqDist(textWords)
     length=len(a)
     for i in a.keys():
         a[i]=a[i]/float(length)
     return a
+    
+def textToDictionnary(text, blackList):
+    #does all the functions above in one take
+    return frequency(lemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList))))
