@@ -85,4 +85,4 @@ if __name__ == "__main__":
     print m.word_appearance("programming")
     tm = m.to_TFIDF_Matrix()
     tm.pretty_print()
-    tm.save("tfidf2.csv")
+    tm.save("../data/tfidf1.csv")
