@@ -22,6 +22,8 @@ def convertDict(dico):
         L.append(json.dumps(a.__dict__))
         string=string+json.dumps(a.__dict__)+","
     string = string[0:-1]
-    return '{"frequency_list":['+ string+"]}"
+    f = open('frequency_list.json','w')
+    f.write('{"frequency_list":['+ string+"]}")
+    f.close()
     
     
