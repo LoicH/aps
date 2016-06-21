@@ -67,18 +67,20 @@ def pdf_to_file(filepath):
 
 def testing():
     """Tests all the sample files in the current directory"""
+    trials = 1000
+    print "Testing for", trials,"words."
     for filename in os.listdir('.'):
         if fnmatch.fnmatch(filename, '*_orig.txt'):
             docname = filename[:-9]
             print "Testing ",docname,"..."
-            if test_file(docname):
+            if test_file(docname, trials):
                 print "Done."
             else:
                 print "ERROR."
                 break
             
 
-def test_file(docname):
+def test_file(docname, trials):
     """Tests a sample file to check the integrity"""
     src_file = codecs.open(docname+"_orig.txt", 'r', "utf-8")
     src_txt = src_file.read() #src_txt is unicode
@@ -87,14 +89,14 @@ def test_file(docname):
     dest_txt = pdf_to_txt(docname+".pdf").decode("utf-8") #unicode
     words_src = nltk.word_tokenize(src_txt)
     count = 0
-    for i in range(100):
+    for i in range(trials):
         chosen_word = random.choice(words_src)
         if chosen_word in dest_txt:
             count += 1
         else :
             print chosen_word,"not in destination"
-    print "Success rate:",count/100.
-    return (count >= 60)
+    print "Success rate:",float(count)/trials
+    return (float(count)/trials >= 0.7)
         
     
     
