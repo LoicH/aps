@@ -5,14 +5,7 @@ Created on Tue Jun 21 14:45:13 2016
 @author: asueur
 """
 import numpy as np
-#scalar product between
-#def normalizedScalarProduct(matrice, numTextDic, text1, text2):
-#    scal=0
-#    i=numTextDic[text1]
-#    j=numTextDic[text2]
-#    scal=np.dot(matrice[:,i],matrice[:,j])/float(np.linalg.norm(x)*np.linalg.norm(y))
-#    return scal
-    
+
 
 #similarity matrix 
 def similarityMatrix(matrice):
