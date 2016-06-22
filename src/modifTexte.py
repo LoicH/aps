@@ -43,11 +43,6 @@ def modifyText(textWords, blackList):
         textWords = textWords.replace(i,'')
     return textWords
     
-    
-    
-    
-
-    
 def deleteStopWords(textWords):
     #deleting words of types determiners, conjonctions, cardinal numbers and stopwords
     listCopy=textWords
@@ -94,12 +89,12 @@ def frequency(textWords):
         a[i]=a[i]/float(nbMots)
     return a
 
-def frequencyWithTreshold(textWords, treshold):
+def frequencyWithTreshold(textWords, occTreshold, lengthTreshold):
     a=FreqDist(textWords)
     nbMots = 0
     wordsToRemove = []
     for word in a :
-        if a[word] <= treshold :
+        if a[word] <= occTreshold or len(word) <= lengthTreshold:
             wordsToRemove.append(word)
         else :
             nbMots = nbMots + a[word]
@@ -242,7 +237,7 @@ classical-quantum state can then be written as a statistical mixture in the foll
 
 w= textToDictionnary(t, [])
 d = frequency(w)
-e = frequencyWithTreshold(w, 1)
+e = frequencyWithTreshold(w, 2, 0)
 
 
 for word in d :
