@@ -2,7 +2,7 @@
 
 
 
-d3.json("frequency_list.json", function(error, json) {
+d3.json("testjson.json", function(error, json) {
     if (error) return console.warn(error);
     var frequency_list = json.frequency_list;
     d3.layout.cloud().size([800, 300])
