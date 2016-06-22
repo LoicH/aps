@@ -63,5 +63,4 @@ def getWordsLinkedTo(category,URIList): #returns text words linked to a certain 
         for result in results["results"]["bindings"]:
             if result["label"]["value"].encode("UTF-8").split("/")[-1].replace("_"," ").replace("Category:","")== category:
                 L.append(URI.split("/")[-1].replace("_"," ")) 
-    return L
-#needs testing
+    return list(set(L))

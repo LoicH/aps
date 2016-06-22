@@ -12,7 +12,6 @@ Created on Thu Jun 16 16:42:50 2016
 # blackList : banned words list
 import string
 from nltk import *
-import os
 
 #tests
 pdfPath = "/cal/homes/asueur/Downloads/TP3.pdf"
@@ -234,9 +233,12 @@ classical-quantum state can then be written as a statistical mixture in the foll
 
 w= textToDictionnary(t, [])
 d = frequency(w)
-e = frequencyWithTreshold(w, 2)
+e = frequencyWithTreshold(w, 1)
 
 
 for word in d :
     if word in e :
         print(word)
+    
+def textToDictionnary(text, blackList):
+    return lemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList)))

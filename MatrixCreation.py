@@ -1,6 +1,7 @@
 import numpy as np
 
 
+
 def fusion_words(list_dic_freq) : # needs dictionnary list. One dictionnary[word : frequency] per document
     list_words=[];                # return all different worlds in all documents
     for dic in list_dic_freq :
@@ -8,21 +9,6 @@ def fusion_words(list_dic_freq) : # needs dictionnary list. One dictionnary[word
             if word not in list_words :
                 list_words.append(word);
     return list_words
-
-#def compute_idf(list_dic_freq, word) :
-#    S = 0;
-#    for dic in list_dic_freq :
-#        if dic(word) != 0 :
-#            S = S+1
-#    return np.log(len(list_dic_freq)/S)
-        
-        
-#def compute_tfidf(list_dic_freq,word, doc) :
-#    idf = compute_idf(list_dic_freq, word)
-#    dic = list_dic_freq[doc]
-#    tf = dic(word)
-#    tfidf= tf*np.log(idf)
-#    return tfidf
 
 def linkWordDocFreq(list_dic_freq, list_titles) : # needs : - dictionnary list. One dictionnary[word : frequency] per document. 
                                                   #         - titles list 
@@ -46,61 +32,30 @@ def compute_tfidf(linkWordDocFreq, word, title, list_titles) : # computes tfidf 
     idf= float(len(list_titles))/len(linkWordDocFreq[word])
     return tf*np.log(idf)
     
-#def create_matrix(dic_mot_doc_occurence, list_titles) :
-#    list_not_null_values = []
-#    list_columns = []
-#    list_lines = []
-#    list_words = []
-#    i = 0
-#    tfidf = 0
-#    for word in dic_mot_doc_occurence :
-#        for j in range(len(list_titles)) :
-#            title = list_titles[j]
-#            tfidf = compute_tfidf2(dic_mot_doc_occurence, word, title, list_titles)
-#            if tfidf != 0 :
-#                list_not_null_values.append(tfidf)
-#                list_columns.append(i)
-#                list_words.append(word)
-#                list_lines.append(j)
-#        i=i+1
-#    return [list_not_null_values, list_columns, list_words, list_lines]
-    
-#def create_matrix2(dic_mot_doc_occurence, list_titles) :
-#    list_not_null_values = []
-#    dic_columns = dict()
-#    dic_lines = dict()
-#    i = 0
-#    tfidf = 0
-#    for word in dic_mot_doc_occurence :
-#        for j in range(len(list_titles)) :
-#            title = list_titles[j]
-#            tfidf = compute_tfidf2(dic_mot_doc_occurence, word, title, list_titles)
-#            if tfidf != 0 :
-#                list_not_null_values.append(tfidf)
-#                dic_columns[i] = word
-#                dic_lines[j] = title
-#        i=i+1
-#    return [list_not_null_values, dic_columns, dic_lines]
     
 def create_matrix(linkWordDocFreq, list_titles) :
-    matrix = np.zeros((len(list_titles),len(linkWordDocFreq)),float) # matrix initialization : words in columns, documents in lines
+    matrix = np.zeros((len(linkWordDocFreq),len(list_titles)),float) # matrix initialization : words in ligns, columns in lines
     i = 0
     j = 0
-    linkDocLine = dict()
-    linkWordColumn = dict()
+    linkWordLine = dict()
+    linkDocColumn = dict()
     for title in list_titles :
-        linkDocLine[title]=i
+        linkDocColumn[title]=i
         i=i+1
     for word in linkWordDocFreq :
-        linkWordColumn[word]=j
+        linkWordLine[word]=j
         j=j+1
     
     for word in linkWordDocFreq:
         for title in linkWordDocFreq[word]:            
-            matrix[linkDocLine[title]][linkWordColumn[word]]=compute_tfidf(linkWordDocFreq,word,title, list_titles)
+            matrix[linkWordLine[word]][linkDocColumn[title]]=compute_tfidf(linkWordDocFreq,word,title, list_titles)
 
-    return matrix, linkDocLine, linkWordColumn
+    return matrix, linkWordLine, linkDocColumn
     
+def accessMatrix(matrix, i, j) :
+    return matrix[i][j]
+
+
 def index2(list, i) :
     pos = []
     j = 0
@@ -136,13 +91,20 @@ def create_matrix2(linkWordDocFreq, list_titles) :
 
     return listNonNullValues, listLines, listColumns, linkDocLine, linkWordColumn
     
-def accessMatrix(matrix, i, j) :
+def accessMatrix2(matrix, i, j) :
     for k in range(len(matrix[1])) :
         if matrix[1][k] == i :
             if matrix[2][k] == j :
                 return matrix[0][k]
     return 0
 
+
+def accessMatrix2(matrix, i, j) :
+    for k in range(len(matrix[1])) :
+        if matrix[1][k] == i :
+            if matrix[2][k] == j :
+                return matrix[0][k]
+    return 0
     
 dic_freq1 = dict()
 dic_freq2 = dict()
@@ -163,3 +125,31 @@ dic_freq3["c"]=0.2
 list_dic_freq = [dic_freq1, dic_freq2, dic_freq3] 
 list_titles= ["ninja", "samourai", "wasabi"]
 dic = linkWordDocFreq(list_dic_freq, list_titles)
+
+u = create_matrix(dic, list_titles)
+m=u[0]
+n = create_matrix2(dic, list_titles)
+
+
+t0 = time.clock()
+for i in range(len(m)):
+    for j in range(len(m[0])) :
+        print(accessMatrix(m,i,j))
+print("La premiere methode met en secondes :")
+print time.clock() - t0
+
+t0 = time.clock()
+for i in range(len(m)):
+    for j in range(len(m[0])) :
+        print(accessMatrix2(n,i,j))
+print("La deuxieme methode met en secondes :")
+print time.clock() - t0
+
+
+
+
+
+
+
+        
+        
