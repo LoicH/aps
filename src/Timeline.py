@@ -6,6 +6,9 @@ Created on Wed Jun 22 11:55:20 2016
 """
 import re
 import sys
+import retrieveCategories
+import MatrixCreation
+
 regex = r"(\d+) ([a-zA-Z]+)"
 
 def selecDocsByAuthor(listDocs, author) : #  select the docs written by an author
@@ -59,4 +62,27 @@ else:
     print "The regex pattern does not match. :("
 
 
-   
+def categoriesDoc(listDocs, dicTitleText) : # listDocs is a list of docs from an author ordered by chronological order
+    listCategoriesDocs = []                 # dicTitleText links title of a doc to their text
+    for doc in listDocs :                   # returns a list. Each element contains the a dictionnary[category : frequency] for each doc
+        listCategoriesDocs.append(retrieveCategories.textToCatFreq(dicTitleText(doc)))
+    return listCategoriesDocs
+    
+
+    
+    
+def importantCategories(listCategoriesDocs, numberCategories) :
+    d = dict()
+    for dic in listCategoriesDocs :
+        for category in dic :
+            if category not in d :
+                d[category] = dic[category]
+            else :
+                d[category] = d[category] + dic[category]
+    return d
+
+
+
+
+
+
