@@ -27,7 +27,7 @@ def download(fileURL,writeFile):
     try:
         testfile.retrieve(fileURL, writeFile)  # example : testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11068", "file.pdf")
     except IOError:
-        print "No pdf"
+        print "No pdf or no memory left"
         
 def downloadPDF(id):
     testfile = urllib.URLopener()
@@ -39,7 +39,9 @@ def downloadPDF(id):
             testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id="+str(id), data+os.sep+str(id)+".pdf")
     except IOError:
         print "No pdf"
-def downloadAll(bibName):
+        
+def downloadAll(bibName): #downloads all files from a given bibTex library
+    pos_Id_List = dict()
     bibtex_database=openBibLib(bibName)
     for i in range(len(bibtex_database.entries)):
         try:
@@ -48,5 +50,7 @@ def downloadAll(bibName):
             print "No id found"
         print i
         id=int(re.findall(regex,annote)[0])
+        pos_Id_List[i]=id
         downloadPDF(id)
+        return pos_Id_List
 
