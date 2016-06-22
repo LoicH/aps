@@ -10,10 +10,11 @@ import os
 import re
 import pdf2txt
 import modifTexte
+from freqMatrixClass import FreqMatrix
 
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
-
+src = app_path+os.sep+"src"
 
 
 #Getting the text from all PDF 
@@ -31,6 +32,7 @@ for filename in os.listdir(data):
 
 
 #Constructing frequency dictionary for all documents
+freqMatrix = FreqMatrix([],[])
 
 def get_first(dic, n):
     """Returns a dic of the first n terms, sorted by value"""
@@ -41,6 +43,7 @@ def get_first(dic, n):
     return output_dic
     
 print "Analyzing text of PDF"
+
 for filename in os.listdir(data):
     if re.match(r'(.*)_out\.txt', filename):
         print filename
@@ -48,10 +51,12 @@ for filename in os.listdir(data):
         txt = f.read()
         f.close()
         dic = modifTexte.textToDictionnary(txt.decode("utf-8"),[])
-        print sorted([(v,k) for (k,v) in dic.items()], reverse=True)[:24]
+        l = sorted([(v,k) for (k,v) in dic.items()], reverse=True)[:99]
+        first = {k:v for (v,k) in l}
+        print first
+        freqMatrix.add_doc(filename[:-8], first)
 
-
-
+freqMatrix.pretty_print()
 
         
     

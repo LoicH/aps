@@ -63,7 +63,20 @@ class FreqMatrix:
         return tfidf
             
             
-            
+    def pretty_print(self):
+        """pretty output"""
+        print "\t",
+        for doc in self.docs:
+            print doc,"|",
+        print "\n"
+        for word, dic in self.graph.items():
+            print word,"|",
+            for doc in self.docs:
+                if doc in dic.keys():
+                    print dic[doc],"|",
+                else:
+                    print 0,"|",
+            print "\n"
             
 #until here, 1 line = 1 word, 
 # 1 column = 1 doc            
