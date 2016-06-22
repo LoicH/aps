@@ -11,7 +11,7 @@ import re
 import pdf2txt
 import modifTexte
 from freqMatrixClass import FreqMatrix
-
+import time
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
 src = app_path+os.sep+"src"
@@ -34,13 +34,6 @@ for filename in os.listdir(data):
 #Constructing frequency dictionary for all documents
 freqMatrix = FreqMatrix([],[])
 
-def get_first(dic, n):
-    """Returns a dic of the first n terms, sorted by value"""
-    output_dic = dict()
-    for value in sorted(dic.values())[:n-1]:
-        output_dic[dic.get(value)] = value
-        dic.pop(dic.get(value))
-    return output_dic
     
 print "Analyzing text of PDF"
 
@@ -53,10 +46,15 @@ for filename in os.listdir(data):
         dic = modifTexte.textToDictionnary(txt.decode("utf-8"),[])
         l = sorted([(v,k) for (k,v) in dic.items()], reverse=True)[:99]
         first = {k:v for (v,k) in l}
-        print first
         freqMatrix.add_doc(filename[:-8], first)
 
-freqMatrix.pretty_print()
+#frequency matrix is done at this point
+freqMatrix.save(data+os.sep+"freq"+time.strftime("%d-%m-%y-%Hh%M")+".csv")
+tfidfMatrix = freqMatrix.to_TFIDF_Matrix()
 
-        
-    
+tfidfMatrix.save(data+os.sep+"tfidf"+time.strftime("%d-%m-%y-%Hh%M")+".csv")
+
+#printing a 100 words with the highest TFIDF value
+l = sorted([(v,k) for (k,v) in tfidfMatrix.weights(50).items()], reverse=True)[:99]
+for (v,k) in l:
+    print k,":",v

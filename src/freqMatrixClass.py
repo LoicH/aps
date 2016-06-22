@@ -10,6 +10,7 @@ Class defining matrix behavior
 from math import log
 
 from TFIDFMatrixClass import *
+import codecs
 
 class FreqMatrix:
     """Contains a graph linking documents and words"""
@@ -65,21 +66,40 @@ class FreqMatrix:
             
     def pretty_print(self):
         """pretty output"""
-        print "\t",
+        def fit(s):
+            if len(s)>=10:
+                return s[:9]
+            else:
+                return s+(9-len(s))*" "
+                
+        print " "*11,
         for doc in self.docs:
-            print doc,"|",
+            print fit(doc),"|",
         print "\n"
         for word, dic in self.graph.items():
-            print word,"|",
+            print fit(word),"|",
             for doc in self.docs:
                 if doc in dic.keys():
-                    print dic[doc],"|",
+                    print fit(str(dic[doc])),"|",
                 else:
-                    print 0,"|",
+                    print "    0    ","|",
             print "\n"
             
-#until here, 1 line = 1 word, 
-# 1 column = 1 doc            
+    
+    def save(self, filename):
+        """saves the matrix under the csv format"""
+        f = codecs.open(filename, "w", "utf-8")
+        for doc in self.docs:
+            f.write(","+doc)
+        for word, dic in self.graph.items():
+            f.write("\n")
+            f.write(word)
+            for doc in self.docs:
+                if doc in dic:
+                    f.write(","+str(dic[doc]))
+                else:
+                    f.write(",0")
+        f.close()         
             
     def to_TFIDF_Matrix(self):
         tfidfMatrix = TFIDFMatrix(self.graph.keys(), self.docs)

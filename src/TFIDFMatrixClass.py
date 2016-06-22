@@ -5,7 +5,11 @@ Created on Tue Jun 21 11:09:45 2016
 @author: loic
 """
 
-"""Coding the class of a TFIDF Matrix"""
+"""Coding the class of a TFIDF Matrix
+1 word = 1 line
+1 doc = 1 column"""
+
+import codecs
 
 class TFIDFMatrix:
     """Contains a graph saving tfidf values of words"""
@@ -33,7 +37,7 @@ class TFIDFMatrix:
     
     def save(self, filename):
         """saves the matrix under the csv format"""
-        f = open(filename, "w")
+        f = codecs.open(filename, "w","utf-8")
         for doc in self.docs:
             f.write(","+doc)
         for word, dic in self.graph.items():
@@ -48,20 +52,34 @@ class TFIDFMatrix:
     
     def pretty_print(self):
         """pretty output"""
-        print "\t",
+        def fit(s):
+            if len(s)>=10:
+                return s[:9]
+            else:
+                return s+(9-len(s))*" "
+                
+        print " "*11,
         for doc in self.docs:
-            print doc,"|",
+            print fit(doc),"|",
         print "\n"
         for word, dic in self.graph.items():
-            print word,"|",
+            print fit(word),"|",
             for doc in self.docs:
                 if doc in dic.keys():
-                    print dic[doc],"|",
+                    print fit(str(dic[doc])),"|",
                 else:
-                    print 0,"|",
+                    print "    0    ","|",
             print "\n"
-
+            
+    def weights(self, coef):
+        weights = dict()
+        for word in self.graph.keys():
+            weights[word] = float(coef) * sum(self.graph[word].values()) / coef
+        return weights
+        
+        
 def load(filename):
+    """File → Matrix Object"""
     m = TFIDFMatrix([], [])
     f = open(filename, "r")
     

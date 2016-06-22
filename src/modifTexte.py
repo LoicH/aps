@@ -55,7 +55,7 @@ def deleteStopWords(textWords):
     for sw in stopwords:
         listCopy=[j for j in listCopy if j!=str(sw)]
     types = pos_tag(listCopy)    
-    print types
+    #print types
     for i in types:
         if i[1] in ["DT","CC", "CD", "PRP", "PRP$", "PDT"] :  
             listCopy.remove(i[0])
