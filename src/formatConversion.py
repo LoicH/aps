@@ -13,7 +13,7 @@ class Object(object):
         self.size = size
 
 
-def convertDict(dico):
+def convertDict(dico, file_out):
     string=""
     a= dict()
     L=[]
@@ -22,7 +22,7 @@ def convertDict(dico):
         L.append(json.dumps(a.__dict__))
         string=string+json.dumps(a.__dict__)+","
     string = string[0:-1]
-    f = open('frequency_list.json','w')
+    f = open(file_out,'w')
     f.write('{"frequency_list":['+ string+"]}")
     f.close()
     

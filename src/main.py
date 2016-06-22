@@ -11,7 +11,10 @@ import re
 import pdf2txt
 import modifTexte
 from freqMatrixClass import FreqMatrix
+import formatConversion
 import time
+
+
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
 src = app_path+os.sep+"src"
@@ -55,6 +58,9 @@ tfidfMatrix = freqMatrix.to_TFIDF_Matrix()
 tfidfMatrix.save(data+os.sep+"tfidf"+time.strftime("%d-%m-%y-%Hh%M")+".csv")
 
 #printing a 100 words with the highest TFIDF value
-l = sorted([(v,k) for (k,v) in tfidfMatrix.weights(50).items()], reverse=True)[:99]
-for (v,k) in l:
-    print k,":",v
+print tfidfMatrix.weights()
+
+#makes the JSon file
+formatConversion.convertDict(tfidfMatrix.weights(50), app_path+os.sep+"js"+os.sep+"frequency_list.json")
+
+print "All done!"

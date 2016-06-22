@@ -235,14 +235,13 @@ Going beyond just bits, one can think about any classical system as consisting o
 collection of distinct states, which can be represented using an orthonormal basis {|ii}. Any
 classical-quantum state can then be written as a statistical mixture in the following way [24]"""
 
-w= textToDictionnary(t, [])
-d = frequency(w)
-e = frequencyWithTreshold(w, 2, 0)
-
-
-for word in d :
-    if word in e :
-        print(word)
+if __name__ == "__main__":
+    w= textToDictionnary(t, [])
+    d = frequency(w)
+    e = frequencyWithTreshold(w, 2, 0)
+    for word in d :
+        if word in e :
+            print(word)
     
 def textToDictionnary(text, blackList):
     #does all the functions above in one take

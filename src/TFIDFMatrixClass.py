@@ -71,11 +71,21 @@ class TFIDFMatrix:
                     print "    0    ","|",
             print "\n"
             
-    def weights(self, coef):
+    def weights(self, number=25):
         weights = dict()
         for word in self.graph.keys():
-            weights[word] = float(coef) * sum(self.graph[word].values()) / coef
-        return weights
+            weights[word] = sum(self.graph[word].values())
+        
+        l = sorted([(v,k) for (k,v) in weights.items()], reverse=True)[:number-1]
+        highest = l[0][0] #highest TFIDF value
+        lowest = l [-1][0]
+        
+        #linear transformation to put the highest value to 100 and the lowest to 1
+        a = (100 -  1)/(highest - lowest)
+        b = 1 - a * lowest        
+        
+        
+        return {k:int(a*v+b) for (v,k) in l}
         
         
 def load(filename):

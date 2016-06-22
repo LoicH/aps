@@ -54,7 +54,7 @@ class FreqMatrix:
     def compute_TFIDF(self, word):
         #compute IDF
         appearance = self.word_appearance(word)
-        print "\""+word+"\" appears in",len(appearance)," docs."
+        #print "\""+word+"\" appears in",len(appearance)," docs."
         idf = log(float(len(self.docs))/len(appearance))
         
         #compute TF * IDF line for a word
@@ -104,7 +104,7 @@ class FreqMatrix:
     def to_TFIDF_Matrix(self):
         tfidfMatrix = TFIDFMatrix(self.graph.keys(), self.docs)
         for word in self.graph.keys():
-            print "Computing for \"",word,"\"..."
+            #print "Computing for \"",word,"\"..."
             tfidfMatrix.add_word(word, self.compute_TFIDF(word))
         return tfidfMatrix
         
