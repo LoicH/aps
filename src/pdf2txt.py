@@ -98,8 +98,8 @@ def test_file(docname, trials):
         chosen_word = random.choice(words_src)
         if chosen_word in dest_txt:
             count += 1
-        else :
-            print chosen_word,"not in destination"
+#        else :
+#            print chosen_word,"not in destination"
     print "Success rate:",float(count)/trials
     return (float(count)/trials >= 0.7)
         

@@ -61,6 +61,6 @@ tfidfMatrix.save(data+os.sep+"tfidf"+time.strftime("%d-%m-%y-%Hh%M")+".csv")
 print tfidfMatrix.weights()
 
 #makes the JSon file
-formatConversion.convertDict(tfidfMatrix.weights(50), app_path+os.sep+"js"+os.sep+"frequency_list.json")
+formatConversion.convertDict(tfidfMatrix.weights(50), src+os.sep+"templates"+os.sep+"frequency_list.json")
 
 print "All done!"
