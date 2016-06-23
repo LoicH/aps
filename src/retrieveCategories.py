@@ -58,7 +58,8 @@ def categoryFrequency(categoryList): #returns relative frequency of a category
     return freq
     
 def textToCatFreq(text) :
-    return categoryFrequency(getCategories(getURIs(text)))
+    URIs = getURIs(text)
+    return categoryFrequency(getCategories(URIs[0], URIs[1]))
     
 def getWordsLinkedTo(category,URIList): #returns text words linked to a certain category
     L=[]
