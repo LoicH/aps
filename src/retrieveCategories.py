@@ -10,20 +10,23 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 #test <http://dbpedia.org/page/Computer_science>
 
-def getURIs(text): #returns all the URIs linked to words or word groups in the text
-    L=[]
+def getURIs(text): #returns all the URIs linked to words or word groups in the text #unknown influence of parameters
+    URIList=[]
+    annotatedWords=[]
     annotations = spotlight.annotate('http://spotlight.sztaki.hu:2222/rest/annotate',text,confidence=0.4, support=20, spotter='Default')
     for i in annotations:
         a=i["URI"]
-        L.append(a.encode("UTF-8"))
-    return L
-#problem to solve : one URI missing when duplicated
+        URIList.append(a.encode("UTF-8"))
+        annotatedWords.append(str(i["surfaceForm"]))
+    return URIList, annotatedWords
                           
 
 
     
-def getCategories(URIList): #returns all the categories linked to an URL list. Produces duplicates on purpose
+def getCategories(URIList, annotatedWords): #returns all the categories linked to an URL list. Produces duplicates on purpose
     L=[]
+    wordByCategory=dict()
+    i=0
     for URI in URIList:
         sparql = SPARQLWrapper("http://dbpedia.org/sparql")
         sparql.setQuery("""
@@ -35,8 +38,14 @@ def getCategories(URIList): #returns all the categories linked to an URL list. P
         sparql.setReturnFormat(JSON)
         results = sparql.query().convert()
         for result in results["results"]["bindings"]:
-            L.append(result["label"]["value"].encode("UTF-8").split("/")[-1].replace("_"," ").replace("Category:",""))
-    return L
+            category=result["label"]["value"].encode("UTF-8").split("/")[-1].replace("_"," ").replace("Category:","")
+            L.append(category)
+            if category in wordByCategory:
+                wordByCategory[category].append(annotatedWords[i])
+            else:
+                wordByCategory[category]=[annotatedWords[i]]
+        i+=1
+    return L, wordByCategory
     
 def categoryFrequency(categoryList): #returns relative frequency of a category
     n=len(categoryList)
@@ -67,3 +76,8 @@ def getWordsLinkedTo(category,URIList): #returns text words linked to a certain 
             if result["label"]["value"].encode("UTF-8").split("/")[-1].replace("_"," ").replace("Category:","")== category:
                 L.append(URI.split("/")[-1].replace("_"," ")) 
     return list(set(L))
+
+
+def getAll(text): #returns relative frequency of a category, and words linked to categories
+    categories=getCategories(getURIs(text)[0], getURIs(text)[1] )
+    return categoryFrequency(categories[0]),categories[1]
