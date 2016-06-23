@@ -38,7 +38,7 @@ class FreqMatrix:
         return words_dict
         
     def word_appearance(self, word):
-        """returns all frequency of a word"""
+        """returns all frequency of a word : dict {doc : frequency of word in this doc}"""
         return self.graph[word]
 
         
@@ -49,20 +49,7 @@ class FreqMatrix:
         for word in dic:
             if word not in self.graph:
                 self.graph[word] = dict()
-            self.graph[word][docname] = dic[word]
-                
-    def compute_TFIDF(self, word):
-        #compute IDF
-        appearance = self.word_appearance(word)
-        #print "\""+word+"\" appears in",len(appearance)," docs."
-        idf = log(float(len(self.docs))/len(appearance))
-        
-        #compute TF * IDF line for a word
-        tfidf = dict()
-        for doc, freq in appearance.items():
-            tfidf[doc] = freq * idf
-        return tfidf
-            
+            self.graph[word][docname] = dic[word]            
             
     def pretty_print(self):
         """pretty output"""
@@ -99,9 +86,23 @@ class FreqMatrix:
                     f.write(","+str(dic[doc]))
                 else:
                     f.write(",0")
-        f.close()         
+        f.close()  
+        
+    def compute_TFIDF(self, word):
+        """compute the TFIDF value of the word"""
+        #compute IDF
+        appearance = self.word_appearance(word)
+        #print "\""+word+"\" appears in",len(appearance)," docs."
+        idf = log(float(len(self.docs))/len(appearance))
+        
+        #compute TF * IDF line for a word
+        tfidf = dict()
+        for doc, freq in appearance.items():
+            tfidf[doc] = freq * idf
+        return tfidf
             
     def to_TFIDF_Matrix(self):
+        """returns the TFIDF matrix associated with self"""
         tfidfMatrix = TFIDFMatrix(self.graph.keys(), self.docs)
         for word in self.graph.keys():
             #print "Computing for \"",word,"\"..."

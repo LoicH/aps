@@ -72,6 +72,7 @@ class TFIDFMatrix:
             print "\n"
             
     def weights(self, number=25):
+        """returns the weight of the <number> first words, used for the word cloud"""
         weights = dict()
         for word in self.graph.keys():
             weights[word] = sum(self.graph[word].values())
@@ -117,7 +118,7 @@ def load(filename):
 
 
 if __name__ == "__main__":
-    m = load("tfidf1.csv")
+    m = load("tfidf.csv")
     m.pretty_print()
         
                 
