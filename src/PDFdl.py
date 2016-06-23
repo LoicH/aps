@@ -22,12 +22,12 @@ def openBibLib(bibName): # e.g : 'document.bib'
         return bibtex_database
 
 
-def download(fileURL,writeFile):
-    testfile = urllib.URLopener()
-    try:
-        testfile.retrieve(fileURL, writeFile)  # example : testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11068", "file.pdf")
-    except IOError:
-        print "No pdf or no memory left"
+#def download(fileURL,writeFile):
+#    testfile = urllib.URLopener()
+#    try:
+#        testfile.retrieve(fileURL, writeFile)  # example : testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11068", "file.pdf")
+#    except IOError:
+#        print "No pdf or no memory left"
         
 def downloadPDF(id):
     testfile = urllib.URLopener()
@@ -36,9 +36,10 @@ def downloadPDF(id):
         if( str(id)+".pdf" in os.listdir(data)): #checks if the file already exists
             print "File already present"
         else:
-            testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id="+str(id), data+os.sep+str(id)+".pdf")
+            print id
+            testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id="+str(id), "/tmp"+os.sep+str(id)+".pdf")
     except IOError:
-        print "No pdf"
+        print "No pdf or no memory left"
         
 def downloadAll(bibName): #downloads all files from a given bibTex library
     pos_Id_List = dict()
@@ -52,5 +53,5 @@ def downloadAll(bibName): #downloads all files from a given bibTex library
         id=int(re.findall(regex,annote)[0])
         pos_Id_List[i]=id
         downloadPDF(id)
-        return pos_Id_List
+    return pos_Id_List
 
