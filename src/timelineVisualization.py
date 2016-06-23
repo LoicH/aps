@@ -6,9 +6,7 @@ Created on Thu Jun 23 11:19:24 2016
 """
 
 import PDFdl
-import latexcodec
-import codecs
-import re
+import bibtexparser
 
 
 bib = 'document.bib'  ### bib name (can be modified)
@@ -21,28 +19,26 @@ class article:
 
 
 def getAll(index):
-    return entries[index]
+    return bibtexparser.customization.convert_to_unicode(entries[index]) 
 
-def getInfo(authorLastName):
+def getInfo(authorName): #name in the form of Initial. lastName
     dates = dict()
     coauthors=[]
     temp=0
     for i in entries:
-        if authorLastName in i["author"]:
+        if authorName in i["author"]:
             try:
                 dates[i["title"]]=i["year"]+" " + i["month"]
             except KeyError:
                 print "no month available for document"
                 temp+=1
             for k in i["author"].split("and"):
-                coauthors.append(k.replace('}','').replace('{',''))
-    coauthors=[i for i in coauthors if i!=authorLastName]
-    coauthorsFreq=dict()
-    for c in coauthors:
-        if c in coauthorsFreq:
-            coauthorsFreq[c]+=1
-        else:
-            coauthorsFreq[c]=1
+                coauthors.append(k.replace('}','').replace('{','').replace(" ",""))
+                
+    coauthors=[i for i in coauthors if i!=authorName]
+    
+    coauthorsFreq = {a:coauthors.count(a) for a in coauthors}    
+    
     return dates, coauthorsFreq
         
 
