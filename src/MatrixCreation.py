@@ -1,5 +1,5 @@
 import numpy as np
-
+import time
 
 
 def fusion_words(list_dic_freq) : # needs dictionnary list. One dictionnary[word : frequency] per document
@@ -99,51 +99,45 @@ def accessMatrix2(matrix, i, j) :
     return 0
 
 
-def accessMatrix2(matrix, i, j) :
-    for k in range(len(matrix[1])) :
-        if matrix[1][k] == i :
-            if matrix[2][k] == j :
-                return matrix[0][k]
-    return 0
     
-dic_freq1 = dict()
-dic_freq2 = dict()
-dic_freq3 = dict()
-
-dic_freq1["poisson"] = 0.5
-dic_freq1["a"]=0.4
-dic_freq1["b"]=0.6
-
-dic_freq2["viande"] = 0.6
-dic_freq2["a"]=0.7
-dic_freq2["b"]=0.8
-
-dic_freq3["oeuf"] = 0.4
-dic_freq3["a"]=0.7
-dic_freq3["c"]=0.2
-
-list_dic_freq = [dic_freq1, dic_freq2, dic_freq3] 
-list_titles= ["ninja", "samourai", "wasabi"]
-dic = linkWordDocFreq(list_dic_freq, list_titles)
-
-u = create_matrix(dic, list_titles)
-m=u[0]
-n = create_matrix2(dic, list_titles)
-
-
-t0 = time.clock()
-for i in range(len(m)):
-    for j in range(len(m[0])) :
-        print(accessMatrix(m,i,j))
-print("La premiere methode met en secondes :")
-print time.clock() - t0
-
-t0 = time.clock()
-for i in range(len(m)):
-    for j in range(len(m[0])) :
-        print(accessMatrix2(n,i,j))
-print("La deuxieme methode met en secondes :")
-print time.clock() - t0
+#dic_freq1 = dict()
+#dic_freq2 = dict()
+#dic_freq3 = dict()
+#
+#dic_freq1["poisson"] = 0.5
+#dic_freq1["a"]=0.4
+#dic_freq1["b"]=0.6
+#
+#dic_freq2["viande"] = 0.6
+#dic_freq2["a"]=0.7
+#dic_freq2["b"]=0.8
+#
+#dic_freq3["oeuf"] = 0.4
+#dic_freq3["a"]=0.7
+#dic_freq3["c"]=0.2
+#
+#list_dic_freq = [dic_freq1, dic_freq2, dic_freq3] 
+#list_titles= ["ninja", "samourai", "wasabi"]
+#dic = linkWordDocFreq(list_dic_freq, list_titles)
+#
+#u = create_matrix(dic, list_titles)
+#m=u[0]
+#n = create_matrix2(dic, list_titles)
+#
+#
+#t0 = time.clock()
+#for i in range(len(m)):
+#    for j in range(len(m[0])) :
+#        print(accessMatrix(m,i,j))
+#print("La premiere methode met en secondes :")
+#print time.clock() - t0
+#
+#t0 = time.clock()
+#for i in range(len(m)):
+#    for j in range(len(m[0])) :
+#        print(accessMatrix2(n,i,j))
+#print("La deuxieme methode met en secondes :")
+#print time.clock() - t0
 
 
 

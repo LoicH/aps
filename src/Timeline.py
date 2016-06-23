@@ -7,7 +7,8 @@ Created on Wed Jun 22 11:55:20 2016
 import re
 import sys
 import retrieveCategories
-import MatrixCreation
+import TFIDFMatrixClass
+import freqMatrixClass
 
 regex = r"(\d+) ([a-zA-Z]+)"
 
@@ -68,20 +69,23 @@ def categoriesDoc(listDocs, dicTitleText) : # listDocs is a list of docs from an
         listCategoriesDocs.append(retrieveCategories.textToCatFreq(dicTitleText(doc)))
     return listCategoriesDocs
     
-
+def allCategories(listCategoriesDocs) :
+    listAllCategories = []
+    for doc in listCategoriesDocs :
+        for category in doc :
+            if category not in listAllCategories :
+                listAllCategories.append(category)
+    return listAllCategories
     
-    
-def importantCategories(listCategoriesDocs, numberCategories) :
-    d = dict()
-    for dic in listCategoriesDocs :
-        for category in dic :
-            if category not in d :
-                d[category] = dic[category]
-            else :
-                d[category] = d[category] + dic[category]
-    return d
 
 
+d=dict()
+
+d["a"]= 0
+d["c"]=2
+d["b"]=4
+d["d"]=6
+d["e"]=5
 
 
 
