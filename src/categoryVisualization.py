@@ -4,6 +4,15 @@ Created on Thu Jun 23 10:33:11 2016
 
 @author: asueur
 """
+# coding: utf8
+
+#concolato_out.txt
+
+def getText(nameFile) :
+    file = open("../data/" + nameFile, "r")
+    content =file.read()
+    file.close()
+    return content
 
 import retrieveCategories as ret
 #trouver mots liés concept dans dictionnaire de chacun des documents / concaténer
@@ -13,13 +22,16 @@ import retrieveCategories as ret
 def getLinkedWord(category, textList, numberWords = 20): #returns the 20 words linked to a category and with the most occurences
     wordOcc = dict()                                     # A MODIFIER : ouvrir fichier dans dossier data
     for text in textList:
-        URIs= ret.getURIs(text)
+        file = open("text", "r")
+        content = file.read()
+        URIs= ret.getURIs(content)
         categories=ret.getCategories(URIs[0],URIs[1])[1]
         for word in categories[category]:
             if word in wordOcc:
                 wordOcc[word]+=1
             else:
                 wordOcc[word]=1
+        file.close()
     sortedOcc= sorted([(k) for (k,v) in wordOcc.items()],reverse=True)[:numberWords]
     return sortedOcc
     
