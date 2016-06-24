@@ -87,7 +87,23 @@ class TFIDFMatrix:
         
         
         return {k:int(a*v+b) for (v,k) in l}
+  
+    def sum_word(self, word):
+            """returns the sum of the TFIDF values in the line of  "word" """
+            return sum(self.graph[word].values())  
+  
+    def sum_words(self):   
+        """returns a dict {word:sum of the TFIDF values in the line}"""
         
+        Sum = 0
+        dic = dict()
+        for word in self.graph.keys():
+            s = self.sum_word(word)
+#            print word,":",s
+            Sum += s
+            dic[word] = s
+#        print "Sum=",Sum
+        return {word:(value/Sum) for (word, value) in dic.items()}
         
 def load(filename):
     """File → Matrix Object"""
