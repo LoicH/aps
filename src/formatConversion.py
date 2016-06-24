@@ -34,10 +34,10 @@ def convertDict(dico, file_out):
 ###################################################################
 #conversion for timeLine
     
-timeSections=10 #number of time sections considered
+timeSections=2 #number of time sections considered default =10 for 6-month windows
 
 def convertToMatrice(totalFreqDictList): # standard input form : [{"a":0.3,"b":0,7},{"c":0.3,"d":0,7}] ordered chronologically
-    categoryDict=[]
+    categoryDict=dict()
     k=0
     for dic in totalFreqDictList:
         categories=dic.keys()
@@ -46,10 +46,26 @@ def convertToMatrice(totalFreqDictList): # standard input form : [{"a":0.3,"b":0
                     categoryDict[str(k)]=i
                     k+=1
     n = len(categoryDict)
-    M=np.zeroes((n,timeSections))
+    M=np.zeros((n,timeSections))
     for i in range(n):
         for j in range(timeSections):
-            if categoryDict[i] in totalFreqDictList[j]:
-                M[i][j]=totalFreqDictList[j][categoryDict[i]]
-    return M
-    
+            if categoryDict[str(i)] in totalFreqDictList[j]:
+                M[i][j]=totalFreqDictList[j][categoryDict[str(i)]]
+    s=""
+    (a,b)=np.shape(M)
+    for i in range(a-1):
+        s2=""
+        for j in range(b-1):
+            s2+=str(M[i][j])+","
+        s2+=str(M[i][b-1])
+        s+="["+s2+"],"
+    s2=""
+    for j in range(b-1):
+        s2+=str(M[a-1][j])
+        print s2
+    s+="["+s2+","+str(M[a-1][b-1])
+    result = """{"data":"""+"["+s+"]]}"
+    f=open("../src/templates/timelinejson","w")
+    f.write(result)
+    f.close()
+    return result
