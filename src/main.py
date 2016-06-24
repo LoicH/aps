@@ -20,7 +20,7 @@ data = app_path+os.sep+"data"
 src = app_path+os.sep+"src"
 
 
-#Getting the text from all PDF 
+##Getting the text from all PDF 
 print "Getting the text from the PDF"
 for filename in os.listdir(data):
     matchObj = re.match(r'(.*)\.pdf', filename)
