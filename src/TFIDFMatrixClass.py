@@ -5,7 +5,11 @@ Created on Tue Jun 21 11:09:45 2016
 @author: loic
 """
 
-"""Coding the class of a TFIDF Matrix"""
+"""Coding the class of a TFIDF Matrix
+1 word = 1 line
+1 doc = 1 column"""
+
+import codecs
 
 class TFIDFMatrix:
     """Contains a graph saving tfidf values of words"""
@@ -33,7 +37,7 @@ class TFIDFMatrix:
     
     def save(self, filename):
         """saves the matrix under the csv format"""
-        f = open(filename, "w")
+        f = codecs.open(filename, "w","utf-8")
         for doc in self.docs:
             f.write(","+doc)
         for word, dic in self.graph.items():
@@ -48,20 +52,45 @@ class TFIDFMatrix:
     
     def pretty_print(self):
         """pretty output"""
-        print "\t",
+        def fit(s):
+            if len(s)>=10:
+                return s[:9]
+            else:
+                return s+(9-len(s))*" "
+                
+        print " "*11,
         for doc in self.docs:
-            print doc,"|",
+            print fit(doc),"|",
         print "\n"
         for word, dic in self.graph.items():
-            print word,"|",
+            print fit(word),"|",
             for doc in self.docs:
                 if doc in dic.keys():
-                    print dic[doc],"|",
+                    print fit(str(dic[doc])),"|",
                 else:
-                    print 0,"|",
+                    print "    0    ","|",
             print "\n"
-
+            
+    def weights(self, number=25):
+        """returns the weight of the <number> first words, used for the word cloud"""
+        weights = dict()
+        for word in self.graph.keys():
+            weights[word] = sum(self.graph[word].values())
+        
+        l = sorted([(v,k) for (k,v) in weights.items()], reverse=True)[:number-1]
+        highest = l[0][0] #highest TFIDF value
+        lowest = l [-1][0]
+        
+        #linear transformation to put the highest value to 100 and the lowest to 1
+        a = (100 -  1)/(highest - lowest)
+        b = 1 - a * lowest        
+        
+        
+        return {k:int(a*v+b) for (v,k) in l}
+        
+        
 def load(filename):
+    """File → Matrix Object"""
     m = TFIDFMatrix([], [])
     f = open(filename, "r")
     
@@ -89,7 +118,7 @@ def load(filename):
 
 
 if __name__ == "__main__":
-    m = load("tfidf1.csv")
+    m = load("tfidf.csv")
     m.pretty_print()
         
                 

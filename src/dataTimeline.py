@@ -14,7 +14,7 @@ from timelineVisualization import getInfo
 
 
 
-def createTFIDMatrix(authorName, startDate, endDate): #date format : year monthNumber
+def createTFIDFMatrix(authorName, startDate, endDate): #date format : year monthNumber
     a = dict() #dictionary of frequency dictionaries for documents
     listTitle=getInfo(authorName)[0] #dictonnary of publications and dates and ids
     titleId=dict()
