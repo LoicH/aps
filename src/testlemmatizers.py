@@ -54,4 +54,8 @@ for i in p :
         print("Smart Lemmatization : " + lmtzr.lemmatize(i[0], get_wordnet_pos(i[1])))
         print("")
     
-
+for i in p :
+        print("Original word in text: " + i[0])
+        print("Smart Lemmatization : " + lmtzr.lemmatize(i[0], get_wordnet_pos(i[1])))
+        print("")
+    

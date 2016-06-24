@@ -72,15 +72,15 @@ def deleteStopWords(textWords):
             listCopy.remove(i[0])
     return listCopy
     
-def lemmatization(textWords):
-    #lemmatizes all the words
-    words = textWords
-    lmtzr=WordNetLemmatizer()
-    for i in range(len(words)):
-        words[i]=lmtzr.lemmatize(words[i])
-    return words
+#def lemmatization(textWords): basic lemmatizer
+#    #lemmatizes all the words
+#    words = textWords
+#    lmtzr=WordNetLemmatizer()
+#    for i in range(len(words)):
+#        words[i]=lmtzr.lemmatize(words[i])
+#    return words
     
-    
+
 #def compteur(text, wordList):
 #    text=delPunctuation(text)
 #    dictionnary={}
@@ -94,7 +94,28 @@ def lemmatization(textWords):
 #    return dictionnary
     
 
+def get_wordnet_pos(treebank_tag): # convert pos_tag from nltk to pos_tag from wordnet
 
+    if treebank_tag.startswith('J'):
+        return "a"
+    elif treebank_tag.startswith('V'):
+        return "v"
+    elif treebank_tag.startswith('N'):
+        return "n"
+    elif treebank_tag.startswith('R'):
+        return "r"
+    else:
+        return 'n'
+
+def lemmatization(textWords): 
+    #lemmatizes all the words
+    words = textWords
+    p = pos_tag(text)
+    lmtzr=WordNetLemmatizer()
+    for i in range(len(p)):
+        words[i]=lmtzr.lemmatize(p[i][0], get_wordnet_pos(p[i][1]))
+    return words
+        
 def frequency(textWords):
     #gives the frequency of each word in the text
     a=FreqDist(textWords)
@@ -120,14 +141,14 @@ def frequencyWithTreshold(textWords, occTreshold, lengthTreshold):
         a[i]=a[i]/float(nbMots)
     return a
 
-
-if __name__ == "__main__":
-    w= textToDictionnary(t, [])
-    d = frequency(w)
-    e = frequencyWithTreshold(w, 2, 0)
-    for word in d :
-        if word in e :
-            print(word)
+text = word_tokenize("""The aim of a probabilistic logic (also probability logic and probabilistic reasoning) is to combine the capacity of probability theory to handle uncertainty with the capacity of deductive logic to exploit structure of formal argument. The result is a richer and more expressive formalism with a broad range of possible application areas. Probabilistic logics attempt to find a natural extension of traditional logic truth tables: the results they define are derived through probabilistic expressions instead. A difficulty with probabilistic logics is that they tend to multiply the computational complexities of their probabilistic and logical components. Other difficulties include the possibility of counter-intuitive results, such as those of Dempster-Shafer theory. The need to deal with a broad variety of contexts and issues has led to many different proposals.""")
+#if __name__ == "__main__":
+#    w= textToDictionnary(t, [])
+#    d = frequency(w)
+#    e = frequencyWithTreshold(w, 2, 0)
+#    for word in d :
+#        if word in e :
+#            print(word)
     
 def textToDictionnary(text, blackList):
     #does all the functions above in one take
