@@ -61,22 +61,22 @@ def textToCatFreq(text) :
     URIs = getURIs(text)
     return categoryFrequency(getCategories(URIs[0], URIs[1]))
     
-def getWordsLinkedTo(category,URIList): #returns text words linked to a certain category
-    L=[]
-    for URI in URIList:
-        sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-        sparql.setQuery("""
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX dc: <http://purl.org/dc/terms/>
-            SELECT ?label
-            WHERE { """+ "<"+ URI + "> dc:subject ?label }"
-        )
-        sparql.setReturnFormat(JSON)
-        results = sparql.query().convert()
-        for result in results["results"]["bindings"]:
-            if result["label"]["value"].encode("UTF-8").split("/")[-1].replace("_"," ").replace("Category:","")== category:
-                L.append(URI.split("/")[-1].replace("_"," ")) 
-    return list(set(L))
+#def getWordsLinkedTo(category,URIList): #returns text words linked to a certain category
+#    L=[]
+#    for URI in URIList:
+#        sparql = SPARQLWrapper("http://dbpedia.org/sparql")
+#        sparql.setQuery("""
+#            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#            PREFIX dc: <http://purl.org/dc/terms/>
+#            SELECT ?label
+#            WHERE { """+ "<"+ URI + "> dc:subject ?label }"
+#        )
+#        sparql.setReturnFormat(JSON)
+#        results = sparql.query().convert()
+#        for result in results["results"]["bindings"]:
+#            if result["label"]["value"].encode("UTF-8").split("/")[-1].replace("_"," ").replace("Category:","")== category:
+#                L.append(URI.split("/")[-1].replace("_"," ")) 
+#    return list(set(L))
 
 
 def getAll(text): #returns relative frequency of a category, and words linked to categories

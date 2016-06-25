@@ -12,22 +12,18 @@ from TFIDFMatrixClass import TFIDFMatrix
 import os
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
-#tfid concepts : matrice
-# sommer par lignes et normaliser /total
-#faire moyennne pour 3 annnees
-#convertir au bon format
 
 
 
 def createTFIDFMatrix(authorName, startDate, endDate): #date format : year monthNumber
     a = dict() #dictionary of frequency dictionaries for documents
-    listTitle=getInfo(authorName)[0] #dictonnary of publications and dates and ids
+    listTitle=getInfo(authorName)[0] #dictonnary of publications, dates and ids e.g : {pubName : [date,id]}
     titleId=dict()
     for j in listTitle:
-        if formatDate(listTitle[j][0])>startDate and formatDate(listTitle[j][0])<endDate:
+        if formatDate(listTitle[j][0])>startDate and formatDate(listTitle[j][0])<endDate: #checks if text was published in a fixed time window
             titleId[j]=listTitle[j][1]
-    for title in titleId: #a modifier pour que ce soit la liste des textes et pas des titres
-        fileName=open(data+os.sep+str(titleId[title])+".txt","r")
+    for title in titleId:
+        fileName=open(data+os.sep+str(titleId[title])+".txt","r") #retrieves the txt of a given publication via its ID
         fileText = fileName.read().replace('\x0c','')
         fileName.close()
         a[title]=getAll(fileText)[0] #category frequencies of documents
@@ -36,7 +32,7 @@ def createTFIDFMatrix(authorName, startDate, endDate): #date format : year month
         fm.add_doc(k,a[k])
     return fm.to_TFIDF_Matrix()
 
-def median(matrixList):
+def median(matrixList): #returns average value of category frequencies for multiple TFIDF matrixes
     n=len(matrixList) #number of matrixes
     totalFreq=dict()
     dictList=[]  #list of all the total frequency dictionaries from the matrixes
