@@ -31,6 +31,22 @@ def convertDict(dico, file_out):
     f.write('{"frequency_list":['+ string+"]}")
     f.close()
     
+def convertDict2(dico, file_out): #used for the second type of word visualization
+    string=""
+    a= dict()
+    L=[]
+    for i in dico.keys():
+        a=Object(i,dico[i])
+        L.append(json.dumps(a.__dict__))
+        string=string+json.dumps(a.__dict__)+","
+    string = string[0:-1]
+    string=string.replace("text","key").replace("size","value")
+    string="var tags= ["+string+"]"
+    f = open(file_out,'w')
+    f.write(string)
+    f.close()
+
+    
 ###################################################################
 #conversion for timeLine
     
@@ -63,7 +79,7 @@ def convertToMatrice(totalFreqDictList, file_out): # standard input form : [{"a"
     s2=""
     for j in range(b-1):
         s2+=str(M[a-1][j])
-        print s2
+        print(s2)
     s+="["+s2+","+str(M[a-1][b-1])
     result = """{"data":"""+"["+s+"]]}"
     f=open(file_out,"w")
