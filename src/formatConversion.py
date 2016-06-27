@@ -94,7 +94,7 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections): # standard inpu
 def convertGraph(coauthorDict): #convert from coauthor dict to input format for graph
     s=""
     for i in coauthorDict:
-        s+="""{"name":"""+i+""""size":3000,"imports":"""+str(coauthorDict[i])+"},"
+        s+="""{"name":"""+i+"""", "size":3000,"imports":"""+str(coauthorDict[i])+"},"
     s=s[:-1]
     return "["+s+"]"
     

@@ -35,7 +35,7 @@ def getInfo(authorName): #name in the form of lastName
                 temp+=1
             for k in i["author"].replace(" ","").replace("{","").replace("}","").split("and"):
                 if k not in coauthors:
-                    coauthors.append(k.replace('}','').replace('{','').replace(" ",""))        
+                    coauthors.append(str(k.replace('}','').replace('{','').replace(" ","")))        
     coauthors=[i for i in coauthors if i!=authorName]     
     return datesAndIds, coauthors
 
