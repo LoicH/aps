@@ -8,7 +8,9 @@ Created on Thu Jun 23 10:33:11 2016
 
 
 def getText(fileName) :
-    """returns the content of the file in aps/data/"""
+    """returns the content of the file in aps/data/
+    @return: file data
+    @rtype: string"""
     f = open("../data/" + fileName, "r")
     content =f.read()
     f.close()
@@ -22,16 +24,19 @@ import retrieveCategories as ret
 def getLinkedWord(category, textList, numberWords = 20): 
     """returns the "numberWords" words linked to a category and with the most occurences
     @param category: The category you want the words linked to
-    @type category: ???
+    @type category: string
     
-    @param textList: ???
-    @type textList: ???
+    @param textList: The texts'filename you want to search category in
+    @type textList: string list
     
     @param numberWords: number of words you want
-    @type numberWords: int"""
+    @type numberWords: int
+    
+    @return: occurences number for each word in this category
+    @rtype: int list"""
     wordOcc = dict()      # A MODIFIER : ouvrir fichier dans dossier data
     for text in textList:
-        file = open("text", "r")
+        file = open(text, "r")
         content = file.read()
         URIs= ret.getURIs(content)
         categories=ret.getCategories(URIs[0],URIs[1])[1]
@@ -46,17 +51,20 @@ def getLinkedWord(category, textList, numberWords = 20):
     
 def getTextWithMostOccurenceOf(word, category, textList, numberTexts = 1): 
     """gets list of texts with the highest frequency of the word
-    @param word:
-    @type word:
+    @param word: /
+    @type word: string
     
-    @param category:
-    @type category:
+    @param category: one category the word is in 
+    @type category: string
     
     @param textList: the list of texts you want to search
-    @type textList:  list of <str/unicode ??>
+    @type textList:  list of string
     
     @param numberTexts: number of top texts you want
-    @type numberTexts: int"""
+    @type numberTexts: int
+    
+    @return: texts with most occurence (sorted)
+    @rtype: string list"""
     occWordByText= dict()
     for text in textList:
         i=0

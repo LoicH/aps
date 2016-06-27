@@ -82,3 +82,4 @@ def textToCatFreq(text) :
 def getAll(text): #returns relative frequency of a category, and words linked to categories
     categories=getCategories(getURIs(text)[0], getURIs(text)[1] )
     return categoryFrequency(categories[0]),categories[1]
+    
