@@ -56,9 +56,9 @@ svg.selectAll(".layer")
     .attr("d", function(d) { return area(d); })
     .style("fill", function(d, i) { return colors(i); });
 
-svg.append("text")
+        svg.append("text")
             .attr("text-anchor", "middle")
-            .attr("fill", "red")
-            .text(function(d) { return d[0] });
+            .attr("fill", "black")
+            .text("abc");
 
 });
