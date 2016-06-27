@@ -6,8 +6,8 @@ Created on Mon Jun 27 11:36:10 2016
 """
 
 import PDFdl
-import dateTimeline
 import numpy as np
+import timelineVisualization
 
 
 
@@ -27,13 +27,17 @@ def getAllAuthors(bibName): #renvoie la liste de tous les auteurs
     authorList=[]
     bib = PDFdl.openBibLib(bibName)
     for article in bib.entries:
-        authors=article["author"].replace("{","").replace("}","").split("and")
+        authors=article["author"].replace("{","").replace("}","").replace(" ","").split("and")
         for author in authors:
+            print author
             if author not in authorList:
                 authorList.append(author)
     return authorList
     
-def getdictCoauthors(authorList):
+def getdictCoauthors(bibName):
+    authorList=getAllAuthors(bibName)
     dictCoauthors=dict()
     for author in authorList:
-        
+        dictCoauthors[author]=timelineVisualization.getInfo(author)[1]
+    return dictCoauthors
+

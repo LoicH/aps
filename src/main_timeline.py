@@ -77,4 +77,4 @@ if periodNumber2>=2:                                                            
 periodFrequenciesList.append(dataTimeline.median([matrixList[-2],matrixList[-1]]))
 periodFreqJSON=formatConversion.convertToMatrice(periodFrequenciesList, src+os.sep+"templates"+os.sep+"timeline.json", periodNumber2) #converting to output format
 
-       
+      # test : python main_timeline.py "Concolato" "2015 jan" "2016 jan" 6        
