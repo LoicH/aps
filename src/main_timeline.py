@@ -12,7 +12,8 @@ import retrieveCategories
 import dataTimeline
 import sys
 import Timeline
-from datetime import datetime
+from datetime import date
+from dateutil.relativedelta import relativedelta
 import formatConversion
 
 #argv must be : main authorName startDate endDate periodLength(in months)
@@ -42,25 +43,24 @@ matrixList=[]
 authorName=sys.argv[1]
 startDate=Timeline.formatDate(sys.argv[2])
 endDate=Timeline.formatDate(sys.argv[3])
-startDateTime=datetime(int(startDate.split()[0]),int(startDate.split()[1]),1) #conversion to objects of type dateTime
-endDateTime=datetime(int(endDate.split()[0]),int(endDate.split()[1]),1)
+startDateTime=date(int(startDate.split()[0]),int(startDate.split()[1]),1) #conversion to objects of type dateTime
+endDateTime=date(int(endDate.split()[0]),int(endDate.split()[1]),1)
 periodLength=int(sys.argv[4])
 #monthNumber=(endDate.split()[0]-startDate.split()[0])*12 +endDate.split()[1]-startDate.split()[1]
 #periodNumber=monthNumber//periodLength 
-periodNumber2=(startDateTime-endDateTime).days%31%periodLength #number of periods considered
-date1=datetime(int(startDate.split()[0]),int(startDate.split()[1]),1)
-date2=date1+ datetime.timedelta(months=+periodLength)
-print date2
+periodNumber2=(endDateTime-startDateTime).days//31//periodLength #number of periods considered
+date1=date(int(startDate.split()[0]),int(startDate.split()[1]),1)
+date2=date1+ relativedelta(months=+periodLength)
 for i in range(periodNumber2):  #create TFDIDF Matrixes for each period
     matrixList.append(dataTimeline.createTFIDFMatrix(authorName, date1, date2))
     date1=date2
-    date2=date1+ datetime.timedelta(months=+periodLength)
+    date2=date1+ relativedelta(months=+periodLength)
 periodFrequenciesList.append(dataTimeline.median([matrixList[0],matrixList[1]]))                                    # 
 if periodNumber2>=2:                                                                                                # create period 
-    for i in range(1,periodNumber2):                                                                                # frequency List
-        periodFrequenciesList.append(dataTimeline.median([matrixList[i],matrixList[i+1],matrixList[i+2]]))          #
+    for i in range(1,periodNumber2-1):                                                                              # frequency List
+        periodFrequenciesList.append(dataTimeline.median([matrixList[i-1],matrixList[i],matrixList[i+1]]))          #
 periodFrequenciesList.append(dataTimeline.median([matrixList[-2],matrixList[-1]]))                                  #
-periodFreqJSON=formatConversion.convertToMatrice(periodFrequenciesList, src+os.sep+"templates"+os.sep+"timeline.json") #converting to output format
-
+print periodFrequenciesList
+periodFreqJSON=formatConversion.convertToMatrice(periodFrequenciesList, src+os.sep+"templates"+os.sep+"timeline.json", periodNumber2) #converting to output format
 print periodFreqJSON
        

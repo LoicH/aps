@@ -9,15 +9,15 @@ import urllib
 import re
 import bibtexparser
 import os
-
 #constantes
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
+static = app_path+os.sep+"static"
 src = app_path+os.sep+"src"
 regex=r'id=(\d+)'  
 
 def openBibLib(bibName): # e.g : 'document.bib'
-    with open(data+os.sep+'document.bib') as bibtex_file:  
+    with open(src+os.sep+bibName) as bibtex_file:  
         bibtex_database = bibtexparser.load(bibtex_file) 
         return bibtex_database
 
@@ -41,6 +41,15 @@ def downloadPDF(id):
     except IOError:
         print "No pdf or no memory left"
         
+        
+#def downloadPDFfrom(authorName):
+#    listTitle=timelineVisualization.getInfo(authorName)[0] #dictonnary of publications, dates and ids e.g : {pubName : [date,id]}
+#    print listTitle
+#    titleId=dict()
+#    for j in listTitle:
+#        titleId[j]=listTitle[j][1]
+#    for title in titleId:
+#        downloadPDF(titleId[title])
 
 def downloadAll(bibName): #downloads all files from a given bibTex library
     pos_Id_List = dict()
