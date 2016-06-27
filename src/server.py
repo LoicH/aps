@@ -23,6 +23,10 @@ def wordcloud():
     return render_template('WordCloud.html')    
     #return '<script type="text/javascript" src="'+data+os.sep+'WordCloud.js"></script>'
     
+@app.route('/testjs/')
+def testjs():
+    return render_template('testjs.html')  
+    
 @app.route('/author/<name>')
 def show_author(name):
     return "Welcome to the overview of <b> %s" % name
