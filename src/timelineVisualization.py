@@ -38,3 +38,4 @@ def getInfo(authorName): #name in the form of lastName
                     coauthors.append(k.replace('}','').replace('{','').replace(" ",""))        
     coauthors=[i for i in coauthors if i!=authorName]     
     return datesAndIds, coauthors
+

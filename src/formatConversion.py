@@ -50,7 +50,6 @@ def convertDict2(dico, file_out): #used for the second type of word visualizatio
 ###################################################################
 #conversion for timeLine
     
-#timeSections=2 #number of time sections considered default =10 for 6-month windows
 
 def convertToMatrice(totalFreqDictList, file_out, timeSections): # standard input form : [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically
     categoryDict=dict()
@@ -86,3 +85,16 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections): # standard inpu
     f.write(result)
     f.close()
     return result
+    
+    
+    ###################################################################
+#conversion for graph
+
+
+def convertGraph(coauthorDict): #convert from coauthor dict to input format for graph
+    s=""
+    for i in coauthorDict:
+        s+="""{"name":"""+i+""""size":3000,"imports":"""+str(coauthorDict[i])+"},"
+    s=s[:-1]
+    return "["+s+"]"
+    
