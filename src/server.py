@@ -18,7 +18,11 @@ def index():
     
 @app.route('/wordcloud/')
 def wordcloud():
-    return render_template('WordCloud.html')    
+    return render_template('wordcloud.html') 
+    
+@app.route('/timeline/')
+def timeline():
+    return render_template('timeline.html') 
     
 @app.route('/testjs/')
 def testjs():
@@ -26,9 +30,10 @@ def testjs():
     
 @app.route('/author/<name>')
 def show_author(name):
-    return "Welcome to the overview of <b> %s" % name
+    print "Name:",name
+    return render_template('author.html', name=name)
 
 if __name__ == "__main__":
-    print "Server running in",os.getcwd()
+    print "Starting server"
     app.run(debug=True, host='0.0.0.0')
     

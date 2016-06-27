@@ -2,18 +2,20 @@
 <html lang="en">
 <script type="text/javascript" src="{{url_for('static', filename='d3.js')}}"></script>
 
+<!--
 <script src="{{url_for('static', filename='d3.layout.cloud.js') }}"></script> 
+-->
 
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Time Line</title>
 </head>
 <body>
-	<ul>
-		<li><a href="{{url_for('wordcloud')}}">Word Cloud</a></li>
-		<li><a href="{{url_for('timeline')}}">Time Line</a></li>
-		<li><a href="{{url_for('show_author', name='John Doe')}}">Overview of an author</a></li>
-	</ul>
+    <h1> Time Line </h1>
+    <div>
+        <script type="text/javascript" src="{{url_for('static', filename='TimeLine.js') }}"></script>
+    </div>
 
+ 
 </body>
 </html>

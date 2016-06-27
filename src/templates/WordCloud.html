@@ -6,14 +6,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Word Cloud</title>
 </head>
 <body>
-	<ul>
-		<li><a href="{{url_for('wordcloud')}}">Word Cloud</a></li>
-		<li><a href="{{url_for('timeline')}}">Time Line</a></li>
-		<li><a href="{{url_for('show_author', name='John Doe')}}">Overview of an author</a></li>
-	</ul>
+    <h1> Word Cloud </h1>
+    <div id="vis"></div>
+        <script type="text/javascript" src="{{url_for('static', filename='WordCloud2.js') }}">
+			
+		</script>
 
+ 
 </body>
 </html>
