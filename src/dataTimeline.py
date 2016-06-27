@@ -10,6 +10,8 @@ from timelineVisualization import getInfo
 from Timeline import formatDate
 from TFIDFMatrixClass import TFIDFMatrix
 import os
+import re
+from datetime import date
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
 
@@ -20,14 +22,20 @@ def createTFIDFMatrix(authorName, startDate, endDate): #date format : year month
     listTitle=getInfo(authorName)[0] #dictonnary of publications, dates and ids e.g : {pubName : [date,id]}
     titleId=dict()
     for j in listTitle:
-        if formatDate(listTitle[j][0])>startDate and formatDate(listTitle[j][0])<endDate: #checks if text was published in a fixed time window
+        formatedDate=formatDate(listTitle[j][0])
+        pubDate=date(int(formatedDate.split()[0]),int(formatedDate.split()[1]),1)
+        if pubDate>startDate and pubDate<endDate: #checks if text was published in a fixed time window
             titleId[j]=listTitle[j][1]
-    for title in titleId:
-        fileName=open(data+os.sep+str(titleId[title])+".txt","r") #retrieves the txt of a given publication via its ID
-        fileText = fileName.read().replace('\x0c','')
-        fileName.close()
-        a[title]=getAll(fileText)[0] #category frequencies of documents
     fm=FreqMatrix([],[])
+    for title in titleId:
+        print titleId[title]
+        try:
+            fileName=open(data+os.sep+str(titleId[title])+"_out.txt","r") #retrieves the txt of a given publication via its ID
+            fileText = fileName.read().replace('\x0c','')
+            fileName.close()
+            a[title]=getAll(fileText)[0] #category frequencies of documents
+        except:
+                print "File "+ " not found in directory"
     for k in a:
         fm.add_doc(k,a[k])
     return fm.to_TFIDF_Matrix()
