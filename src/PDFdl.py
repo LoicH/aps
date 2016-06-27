@@ -27,15 +27,15 @@ def download(fileURL,writeFile):
 
 
 
-
-file = open("document.bib", "r")
-lines = file.readlines()
-str = ''                   #str = text of the file document.bib
-for i in range(len(lines)):
-    str += lines[i].rstrip('\n') + ' '
-
-
-pdfs=re.split(r'@[article|inproceedings|workshop|invite|incollection|grandpublic|proceedings|multimedia|book|inbook|booklet|manual|phdthesis|mastersthesis|rapcontrat|raprech|raphdr|techreport|reference|standardisation|brevet|unpublished|misc]+',str)
+if __name__ == "__main__":
+    f = open("document.bib", "r")
+    lines = f.readlines()
+    s = ''                   #str = text of the file document.bib
+    for i in range(len(lines)):
+        s += lines[i].rstrip('\n') + ' '
+    
+    
+    pdfs=re.split(r'@[article|inproceedings|workshop|invite|incollection|grandpublic|proceedings|multimedia|book|inbook|booklet|manual|phdthesis|mastersthesis|rapcontrat|raprech|raphdr|techreport|reference|standardisation|brevet|unpublished|misc]+',s)
 
 def createPDF(index):
     c=pdfs[index]

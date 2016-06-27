@@ -7,7 +7,7 @@ Analysis of scientific papers and results visualization
 
 2) Launch ```python src/server.py``` to launch the Flask server.
 
-3) Go to http://localhost:5000/wordcloud/
+3) Go to http://localhost:5000/
 
 4) Enjoy!
 

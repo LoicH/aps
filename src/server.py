@@ -14,14 +14,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Hello world!"
+    return render_template('index.html')    
     
 @app.route('/wordcloud/')
 def wordcloud():
-    jsonData = src+os.sep+"templates"+os.sep+"WordCloud.js"
-    d3wordcloudjs = src+os.sep+"templates"+os.sep+"d3.layout.cloud.js"
     return render_template('WordCloud.html')    
-    #return '<script type="text/javascript" src="'+data+os.sep+'WordCloud.js"></script>'
     
 @app.route('/testjs/')
 def testjs():
