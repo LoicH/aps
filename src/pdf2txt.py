@@ -27,6 +27,10 @@ from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 from cStringIO import StringIO
 
+app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
+data = app_path+os.sep+"data"
+src = app_path+os.sep+"src"
+
 def pdf_to_txt(path):
     rsrcmgr = PDFResourceManager()
     retstr = StringIO()

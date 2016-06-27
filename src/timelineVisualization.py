@@ -27,20 +27,14 @@ def getInfo(authorName): #name in the form of lastName
     coauthors=[]
     temp=0
     for i in entries:
-        if authorName in i["author"]:
+        if authorName.replace(" ","") in i["author"].replace(" ","").replace("{","").replace("}",""):
             try:
                 datesAndIds[i["title"]]=[i["year"]+" " + i["month"],int(re.findall(regex,i["annote"])[0])] #dictionnary pubName : [date,id]
             except KeyError:
                 print "no month available for document"
                 temp+=1
-            for k in i["author"].split("and"):
-                coauthors.append(k.replace('}','').replace('{','').replace(" ",""))
-                
-    coauthors=[i for i in coauthors if i!=authorName]
-    
-    coauthorsFreq = {a:coauthors.count(a) for a in coauthors}    
-    
-    return datesAndIds, coauthorsFreq
-        
-
-    
+            for k in i["author"].replace(" ","").replace("{","").replace("}","").split("and"):
+                if k not in coauthors:
+                    coauthors.append(k.replace('}','').replace('{','').replace(" ",""))        
+    coauthors=[i for i in coauthors if i!=authorName]     
+    return datesAndIds, coauthors

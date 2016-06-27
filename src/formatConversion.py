@@ -50,9 +50,9 @@ def convertDict2(dico, file_out): #used for the second type of word visualizatio
 ###################################################################
 #conversion for timeLine
     
-timeSections=2 #number of time sections considered default =10 for 6-month windows
+#timeSections=2 #number of time sections considered default =10 for 6-month windows
 
-def convertToMatrice(totalFreqDictList, file_out): # standard input form : [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically
+def convertToMatrice(totalFreqDictList, file_out, timeSections): # standard input form : [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically
     categoryDict=dict()
     k=0
     for dic in totalFreqDictList:

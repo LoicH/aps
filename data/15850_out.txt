@@ -1,0 +1,168 @@
+ 
+
+ 
+
+INTERNATIONAL ORGANISATION FOR STANDARDISATION 
+
+ORGANISATION INTERNATIONALE DE NORMALISATION 
+
+ISO/IEC JTC1/SC29/WG11 
+
+CODING OF MOVING PICTURES AND AUDIO 
+
+ 
+
+ISO/IEC JTC1/SC29/WG11 MPEG2015/M37251 
+October 2015, Geneva, Switzerland 
+ 
+ 
+
+ 
+Source  Telecom ParisTech, Canon Research Centre France 
+Status 
+Title 
+Author 
+
+For consideration at the 113th MPEG Meeting 
+Editorial comments on LHEVC File Format 
+Jean Le Feuvre, Cyril Concolato, Franck Denoual, Frédéric Mazé, Eric Nassor 
+
+Introduction 
+
+1 
+In this contribution we provide editorial and technical inputs on the DIS text. 
+
+2  Temporal Sub Layers  
+HEVC stores all temporal sublayers in the same track as the base layer. Reading the L-HEVC, 
+there seems to be no indication that temporal sublayers may be stored in different tracks than the 
+layer itself. Section 9.3 indicates: 
+“L-HEVC streams are stored in accordance with 8.2” (aka HEVC track Structure). 
+ 
+However  the  LayerInfoGroupEntry  seems  to  indicate  that  not  all  sublayers  can  be  in  a  track 
+(usage of min and max sublayers). This should be clarified, either by: 
+ 
+Adding to 9.3: 
+“Temporal  sublayers  of  an  L-HEVC  layer  shall  be  stored  in  the  same  track  as  the  L-HEVC 
+layer”. 
+and removing the references to min/max sublayers 
+ 
+Or updating in 9.3 sentence : 
+“L-HEVC  streams  are  stored  in  accordance  with  8.2”  (aka  HEVC  track  Structure),  with  the 
+exception that temporal sublayers of an L-HEVC layer may be stored in a different track as the 
+L-HEVC layer”. 
+
+3  L-HEVC samples and VCL 
+The specification states in section 9.6.2: 
+“After resolution of extractors, an L-HEVC sample shall contain at least one VCL NAL unit.” 
+ 
+This  may  not  be  the  case  for  tile  tracks  in  L-HEVC,  or  for  L-HEVC  if  we  allow  splitting  a 
+NALUs  of  a  given  layer_id  among  tracks  (not  forbidden  …);  in  some  cases,  we  could  end  up 
+with a sample of a track containing only parameter sets or SEI messages. We suggest clarifying 
+as follows: 
+ 
+
+ 
+
+ 
+
+“If explicit reconstruction is used, after resolution of extractors, an L-HEVC sample shall contain 
+at least one VCL NAL unit. If implicit reconstruction is used, an L-HEVC sample may contain 
+only non VCL NAL units.” 
+
+4  Data copy of NAL Units in tracks 
+As said in m36650, the current text allows for pure data copy of a NAL, as said in 9.7.2: 
+“Different tracks may logically share data. This sharing can take one of the following two forms: 
+
+a)  The sample data is duplicated in different tracks. 
+
+” 
+There is an editorial comment on this sentence (currently in DIS text: w15479): 
+“M36560  suggested  to  remove  the  ability  to  hard  copy  data  between  tracks  in  order  to  avoid 
+collecting several time the same AU when using implicit reconstruction, but the minutes are not 
+clear about that. Should we only allow extractors for data sharing (I really prefer this)?” 
+ 
+The  problem  is  that  when  the  AU  reconstruction  is  implicit  (without  extractors),  a  file  reader 
+reconstructing an AU from two tracks carrying duplicate NALUs from the same layer will have 
+no way to identify the duplication, resulting in a non-compliant reconstructed bitstream. 
+ 
+With SVC, this was not an issue since a single track (potentially with extractor to other tracks) 
+was used. MVC does not seem to allow data copy, since implicit reconstruction is used (this is 
+not very clear in the spec, but the section “data sharing and extraction” is not present for MVC).  
+ 
+We suggest removing the data copy possibility and replace: 
+“Different tracks may logically share data. This sharing can take one of the following two forms: 
+
+a)  The sample data is duplicated in different tracks. 
+b)  There may  be instructions on how to  perform this copy  at  the time that the file is  read. 
+
+For this case, Extractors (defined in A.3) are used.” 
+
+With 
+ 
+“Different  tracks  may  logically  share  data.  There  may  be  instructions  on  how  to  perform  this 
+copy  at  the  time  that  the  file  is  read.  For  this  case,  Extractors  (defined  in  A.3)  are  used. 
+Otherwise, implicit data sharing as described in this section can be used.” 
+
+5  Order of NAL Units in tracks 
+Currently there are no restrictions on how multiple layers are stored in a track when no extractors 
+are used. Especially, it is possible to store NAL units out of decoding order. When extractors are 
+used  this  is  not  the  case  (Section  9.6.2.  says:  “The  order  of  all  NAL  units  included  in  an 
+Aggregator  or  referenced  by  an  Extractor  is  exactly  the  decoding  order  as  if  these  NAL  units 
+were present in a sample not containing Aggregators/Extractors”). 
+We  believe  the  absence  of  a  restriction  on  layer  per  track  organization  complicates  a  lot  the 
+implicit  AU  reconstruction  process  in  terms  of  memory  processing.  We  suggest  including  the 
+following restriction in section 9.7.2: 
+“NAL units in an LHEVC track shall always be stored in increasing order of nuh_layer_id, 
+and for a same value of nuh_layer_id, in increasing order of temporal_id.” 
+ 
+ 
+
+ 
+
+ 
+
+Implicit reconstruction and extractors 
+
+6 
+In section 9.7.2 the specification states: 
+“Otherwise, an access unit is reconstructed from the respective samples in the required tracks, as 
+indicated by the Operating Points Information and Layer Information sample groups. Extractors 
+in the respective samples are ignored, and other NAL units are arranged...” 
+ 
+Ignored is not strong enough as it may lead to file readers not removing the extractors present in 
+the  sample.  We  suggest  being  more  specific:  “Extractors  in  the  respective  samples  shall  be 
+ignored and removed from the bitstream, and other NAL units shall be arranged...” 
+ 
+
+7  L-HEVC visual width and height 
+Section 9.7.4 indicates “otherwise they shall be the maximum visual width and height” 
+However  the  spec  says  in  4.6:  “If  the  width  or  height  of  the  sequence  changes,  then  a  new 
+sample entry is needed.” 
+ 
+The ISOBMFF spec also says generally that the maximum is used. 
+ 
+Which one should be picked? We believe the statement in 4.6 shall apply. 
+ 
+
+8  Sync sample 
+In 9.7.5, the specification says: “An L-HEVC sample is considered as a sync sample if the base 
+layer picture in the access unit is an IRAP picture as defined in ISO/IEC 23008-2.” 
+ 
+Given  the  Defect  Report  on  part  15,  shouldn’t  the  base  layer  be  a  “sync  sample”  rather  than  a 
+“IRAP picture” ? 
+ 
+
+9  Reference error 
+In section 10.6.1 the specification indicates Annex B for the extractor, it should be annex A: 
+“Both the HEVC/LHEVC tile track and the track containing the associated layer, as indicated by 
+the ‘tbas’ track reference, may use extractors, as defined in Annex A” 
+
+10 Conclusion 
+We suggest MPEG to issue a study text for ISO/IEC 14496-15 with the above issues addressed. 
+ 
+ 
+ 
+
+ 
+
+
