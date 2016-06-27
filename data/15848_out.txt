@@ -1,0 +1,3011 @@
+ 
+
+ 
+
+INTERNATIONAL ORGANISATION FOR STANDARDISATION 
+
+ORGANISATION INTERNATIONALE DE NORMALISATION 
+
+ISO/IEC JTC1/SC29/WG11 
+
+CODING OF MOVING PICTURES AND AUDIO 
+
+ 
+
+ISO/IEC JTC1/SC29/WG11 MPEG2015/M37249 
+October 2015, Geneva, Switzerland 
+ 
+ 
+
+ 
+Source  Telecom ParisTech, Canon Research Centre France 
+Status 
+Title 
+Author  Cyril Concolato, Jean Le Feuvre, Franck Denoual, Frédéric Mazé, Eric Nassor 
+
+For consideration at the 113th MPEG Meeting 
+Proposal for conformance of the Image File Format 
+
+Introduction 
+
+1 
+This document reviews MPEG's Image File Format standard, section by section and proposes a 
+list of test vectors to produce as part of the conformance for this standard.  
+
+IFF Conformance vs. Reference software 
+
+2 
+IFF is based on ISOBMFF. The ISOBMFF reference software enables parsing and producing of 
+files.  The  parsing  provides  a  first  level  of  content  validation,  but  more  complex  validation  for 
+instance  dependency  between  boxes,  not  at  the  syntactical  level,  is  not  provided.  As  there  are 
+complex rules in the IFF, such as the presence of a box given the item type, further validation (as 
+done by  ITEC's schema  validator for MPEG-DASH or as done by  the  DASH-IF Conformance 
+software) should be considered. 
+
+3  Section-by-section review 
+Some  sections  are  omitted  when  they  don't  require  any  test  vector  to  be  produced.  Each  test 
+vector is described by the following table row: 
+ 
+Test Vector Name  
+ 
+"positive" describes test vectors needed for conformance. 
+ 
+"negative" describes test vectors that could be produced to help implementations detect what is 
+not valid. They may not be part of the conformance. They are proposed here to make sure they 
+are indeed invalid.  
+
+Test type (positive, negative)  Description 
+
+3.1  Section 4 
+"A file may use both structures"  
+
+ 
+
+ 
+
+positive 
+
+A file with an image item and an 
+image sequence. 
+
+ 
+"A file […] may also use the structures of the ISO base media file format" 
+ 
+
+positive 
+
+A file with boxes not specified in 
+
+ 
+
+ 
+
+IFF. 
+
+3.2  Section 5.3 
+"Files  may  be  identified  as  compatible  with  other  standards  (using  brands)  than  those  defined  in  this 
+specification." 
+ 
+
+positive 
+
+a  file  with  additional  compatible 
+brands  and  unknown  boxes 
+everywhere. 
+
+3.3  Section 6.1 
+"A file may contain any number of image items." 
+Q: The sentence should rather be corrected to "A file shall contain one or more image items" 
+ 
+ 
+ 
+
+file with 1 image item 
+file with 2 image items 
+file with 10 image items 
+
+positive 
+positive 
+positive 
+
+3.4  Section 6.2 
+"A MetaBox ('meta'), as specified in ISO/IEC 14496-12, is required at file level." 
+ 
+
+negative 
+
+file  without  meta  box  but  with 
+mif1 brand. 
+
+ 
+"That MetaBox shall contain the boxes specified to be mandatorily present by ISO/IEC 14496-12." 
+ 
+
+negative 
+
+ISOBMFF 
+
+file  with  missing 
+mandatory boxes 
+
+ 
+"The MetaBox containing image items and the metadata items related to the image items for the brands 
+specified in this specification shall be included in the file-level MetaBox" 
+ 
+
+negative 
+
+MetaBox  in  the  'moov'  or  in  a 
+track 
+
+ 
+"The MetaBox […]shall not be included in any AdditionalMetadataContainerBox. " 
+ 
+ 
+"The file-level  MetaBox shall identify as its primary item an item that is a coded image or a derived 
+image item." 
+ 
+
+MetaBox in the 'meco' 
+
+negative 
+
+negative 
+
+use  mif1  brand  with  something 
+else  than  a  coded  image  or  a 
+derived image.  
+ 
+What  is  a  coded  image?  How  to 
+validate  that  something  is  or  is 
+not 
+image?  We 
+recommend adding a list of item 
+types  defining  coded 
+images, 
+maybe  through  the  registration 
+authority. 
+
+coded 
+
+a 
+
+ 
+"The primary item should be displayed when no other information is available on the preferred displaying 
+method of the image collection." 
+Q: How to check conformance that this is applied? 
+ 
+"It is recommended not to have a thumbnail image or an auxiliary image as a primary item." 
+
+ 
+
+ 
+
+ 
+ 
+ 
+"The handler type for the MetaBox shall be 'pict'." 
+ 
+
+positive 
+positive 
+
+negative 
+
+thumbnail image as primary 
+auxiliary as primary 
+
+mif1  brand  with  meta  with 
+handler type different from 'pict'  
+
+ 
+"All three construction methods specified for the ItemLocationBox […] are permitted" 
+ 
+ 
+ 
+
+positive 
+positive 
+positive 
+
+An image item using file offset  
+An image item using an idat box 
+An  image  item  using  offsets  in 
+an other item data. 
+
+ 
+"the DataReferenceBox may indicate the same or another file" 
+ 
+
+positive 
+
+ 
+
+positive 
+
+An  image  item  using  media  in 
+the file 
+An 
+outside the file 
+
+item  using  media 
+
+image 
+
+ 
+"By using extents, images may be interleaved with each other or other data" 
+ 
+ 
+ 
+
+positive 
+positive 
+positive 
+
+image item interleaving in mdat 
+image item interleaving in idat 
+image  item  interleaving  in  item 
+data 
+
+3.5  Section 6.3  
+Should we validate processing of images to produce output images and reconstructed images? 
+
+3.6  Section 6.4.1 
+"Images may be assigned different roles" 
+ 
+"The  role  or  the  purpose  is  independent  of  whether  the  image  is  represented  by  a  coded  image  or  a 
+derived image, or how the image is coded or transformed (by a transformative item property)." 
+ 
+ 
+
+positive 
+positive 
+
+ 
+
+positive 
+
+ 
+"the same image may have multiple roles." 
+ 
+ 
+
+positive 
+positive 
+
+ 
+
+ 
+
+positive 
+
+coded image with different roles 
+derived 
+image  with  different 
+roles 
+transformed image with different 
+roles 
+
+image  with  multiple 
+
+coded image with multiple roles 
+derived 
+roles 
+transformed image with  multiple 
+roles 
+
+3.7  Section 6.4.2 
+"A hidden image item has (flags & 1) equal to 1 in its ItemInfoEntry" 
+ 
+ 
+
+positive 
+
+file with a hidden image  
+
+ 
+
+ 
+
+"The primary item shall not be a hidden image item." 
+ 
+
+negative 
+
+ 
+
+negative 
+
+a  file  with  several  visible  image 
+items  and  a  hidden  image  as 
+primary item 
+ 
+a  file  with  a  single  item  that  is 
+hidden 
+
+ 
+"Any entity group of type 'altr' that includes image items, shall either include only hidden items or 
+only non-hidden items" 
+ 
+
+positive 
+
+ 
+
+ 
+
+positive 
+
+negative 
+
+an  'altr'  grouping  with  visible 
+items 
+an  'altr'  grouping  with  hidden 
+items 
+an  'altr'  grouping  mixing  visible 
+and hidden items 
+
+3.8  Section 6.4.3 
+"the  primary  item  of  the  MetaBox should  be  displayed  when  no  other  information  is  available  on  the 
+preference to display a collection of images." 
+Q: How can other information be provided? How to check this conformance? 
+
+3.9  Section 6.4.4 
+"A thumbnail image is a smaller-resolution representation of a master image." 
+ 
+ 
+
+negative 
+
+A  small-resolution  image  linked 
+to a larger  resolution image, but 
+both images not representing the 
+same content 
+*  This  one  may  be  hard  to 
+validate  since  it  requires  image 
+comparison 
+
+ 
+"The  thumbnail  image  and  the  master  image  are  linked  using  a  reference  type  'thmb'  from  the 
+thumbnail image to the master image." 
+ 
+
+positive 
+
+ 
+
+negative 
+
+ 
+"A thumbnail image shall not be linked to another thumbnail image with the 'thmb' item reference." 
+ 
+
+positive 
+
+a thumbnail image item 
+ 
+a 
+thumbnail 
+reversed link  
+
+image  with  a 
+
+a thumbnail image item linked to 
+another 
+item 
+reference different from 'thmb' 
+chained  thumbnail images  
+
+item  with  an 
+
+ 
+
+negative 
+
+3.10 Section 6.4.5 
+"Auxiliary images are images, which are not thumbnail images, related to a master image." 
+ 
+
+positive 
+
+auxiliary image 
+ 
+
+ 
+
+ 
+
+ 
+
+"The  auxiliary  image  and  the  master  image  are  linked  using  an  item  reference  of  'auxl' from  the 
+auxiliary image to the master image." 
+ 
+
+negative 
+
+auxiliary  image  with  reversed 
+item reference 
+ 
+
+3.11 Section 6.4.7 
+"If a coded image has been derived from others  – e.g. a composite HDR image derived from exposure-
+bracketed individual images – then it shall be linked to those images by item references of type 'base' 
+from the coded image to all images it derives from." 
+ 
+
+positive 
+
+pre-derived coded image 
+ 
+The  standard  should  have a  note 
+such as: 
+"The  link  direction  between  an 
+image  item  and  a  pre-derived 
+coded  image  item  is  arbitrary. 
+However,  when the  derivation is 
+irreversible  (such  as  a  crop),  the 
+link  should  be  in  the  direction 
+that  matches  the  way  the  pre-
+derived image was produced (e.g 
+from  the  entire  image  to  the 
+cropped image)." 
+
+3.12 Section 6.5.1 
+"Properties are ordered." 
+Q: how to test that assertion? 
+ 
+"Transformative properties apply to the image with preceding transformations applied." 
+Q: how to test that? 
+ 
+"The semantics of the descriptive properties specified in the subclauses of 6.5 are specified for the image 
+before the transformations, if any, are applied" 
+Q: how to test that? 
+ 
+"Readers shall allow and ignore descriptive properties following the first transformative or unrecognized 
+property, whichever is earlier, in the sequence associating properties with an item." 
+ 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+item  with  an  essential 
+an 
+unknown  property  after  the  first 
+transformative property 
+an  item  with  a  non-essential 
+unknown  property  after  the  first 
+transformative property 
+an 
+item  with  an  essential 
+descriptive  property    after  the 
+first transformative property (one 
+per type of descriptive prop) 
+an  item  with  a  non-essential 
+descriptive  property  after 
+the 
+first transformative property (one 
+per type of descriptive prop) 
+
+ 
+
+"Writers  should  arrange  the  descriptive  properties  specified  in  the  subclauses  of  6.5  prior  to  any  other 
+properties in the sequence associating properties with an item." 
+Q: How to test that assertion? 
+
+3.13 Section 6.5.3 
+"Every image item must be associated with at least one property of this type, prior to the association of all 
+transformative properties, that declares the width and height of the image." 
+ 
+ 
+
+positive 
+negative 
+
+ 
+
+negative 
+
+ 
+"image_width specifies the width of the reconstructed image in pixels," 
+“image_height” specifies the height of the reconstructed image in pixels 
+ 
+
+negative 
+
+image item with ispe box 
+0  'ispe'  box  associated  to  an 
+image item 
+2  'ispe'  boxes  associated  to  a 
+same image item 
+
+image_height not matching the 
+image  
+image_width  not  matching  the 
+image 
+
+image with pasp box 
+image with 2 pasp boxes 
+pasp not matching the image 
+
+image with colr box 
+image  with  colr  box  with 
+alternate color space 
+image with 2 colr boxes 
+
+image  with  pixi  box  with  1 
+channel 
+image  with  pixi  box  with  2 
+channels 
+image  with  pixi  box  with  3 
+channels 
+image  with  pixi  box  with  4 
+channels 
+image with 2 pixi boxes 
+image  with  pixi  information  not 
+matching the image in number of 
+channels  and/or  number  of  bits, 
+more or less 
+
+image  with  rloc  box  with  tbas 
+ref 
+
+ 
+
+ 
+
+3.14 Section 6.5.4 
+ 
+ 
+ 
+
+3.15 Section 6.5.5 
+ 
+ 
+
+ 
+
+3.16 Section 6.5.6 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+negative 
+
+positive 
+negative 
+negative 
+
+positive 
+positive 
+
+negative 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+negative 
+negative 
+
+3.17 Section 6.5.7 
+ 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+positive 
+
+negative 
+negative 
+
+negative 
+
+image  with  rloc  box  without 
+tbas ref 
+Q:  Should  we  fix  the  spec  to 
+only  allow  rloc  in  elements 
+with 'tbas' and make this test a 
+negative test? 
+image with tbas ref without rloc 
+image  with  tbas  ref  with  2  rloc 
+boxes 
+image  without  tbas  ref  with  2 
+rloc boxes 
+
+ 
+"The pixel sampling of the associated image item shall be identical to that of the related image item and 
+the sampling grids of the associated image item and the related image item shall be aligned (i.e., not have 
+a sub-pixel offset)." 
+ 
+
+negative 
+
+image  with  tbas  ref,  rloc  but 
+different pixel sampling and/or 
+alignment 
+
+3.18 Section 6.5.8 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+positive 
+negative 
+negative 
+
+negative 
+
+negative 
+
+image with auxC box 
+image with 2 auxC boxes 
+image  with  auxiliary 
+without auxC box 
+image  with  non-null    terminated 
+string 
+
+image 
+
+An ‘auxl’ reference type without 
+any ‘auxC’ property  
+(?and/or a different number?) 
+
+ 
+"AuxiliaryTypeProperty may additionally include other fields, as required by the URN." 
+ 
+
+positive 
+
+auxC with additional fields 
+
+3.19 Section 6.5.9 
+ 
+ 
+
+3.20 Section 6.5.10 
+ 
+ 
+
+3.21 Section 6.6 
+
+positive 
+positive 
+
+positive 
+positive 
+
+image with clap box 
+image with 2 clap boxes 
+
+image with irot box 
+image with 2 irot boxes 
+
+3.22 Section 6.6.1 
+"The  number  of  SingleItemTypeReferenceBoxes with  the  box  type  'dimg' and  with  the 
+same value of from_item_ID shall not be greater than 1." 
+ 
+
+positive 
+
+one  ItemReferenceBox  with  one 
+and 
+from_item_ID 
+reference_count  >1  (case  of 
+
+ 
+
+ 
+
+ 
+
+negative 
+
+the ‘grid’) 
+image 
+2 
+SingleItemTypeReferenceBoxes  
+with the 'dimg' type and the same 
+from_item_id 
+
+with 
+
+3.23 Section 6.6.2.1 
+"A derived image item of the item_type value 'iden' (identity transformation) may be used when 
+it is desired to use transformative properties to derive an image item." 
+ 
+ 
+"The derived image item shall have no item body (i.e. no extents)" 
+ 
+
+an image with an 'iden' item type 
+
+negative 
+
+positive 
+
+an image with an 'iden' item type 
+with a body 
+
+ 
+"reference_count for the 'dimg' item reference of a 'iden' derived image item shall be equal to 1." 
+ 
+
+negative 
+
+when  ‘iref”  for  the  ‘iden’  item 
+has a “reference_count” greater 
+than one 
+
+ 
+Q: What about an ‘iden’ item but no transformative properties declared: is it valid? 
+
+3.24 Section 6.6.2.2 
+"An  item  with  an  item_type value  of  'iovl' defines  a  derived  image  item  by  overlaying  one  or 
+more input images in a given layering order within a larger canvas." 
+ 
+ 
+
+positive 
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+referenced 
+transparency 
+
+an image with item type 'iovl' 
+an  image  with  item  type  'iovl' 
+with 1 referenced image 
+an  image  with  item  type  'iovl' 
+images 
+with  >1 
+without 
+in 
+the 
+images 
+an  image  with  item  type  'iovl' 
+with  >1  referenced  images  with 
+transparency  in  the  images  but 
+not in the canvas fill 
+an  image  with  item  type  'iovl' 
+with flags = 0 
+an  image  with  item  type  'iovl' 
+with flags = 1 
+ 
+an  image  with  item  type  'iovl' 
+with flags > 1 
+an  image  with  item  type  'iovl' 
+with  blanks  in  the  grid  and 
+canvas_fill_value 
+  with  some 
+channels only 
+an  image  with  item  type  'iovl' 
+with  blanks  in  the  grid  and 
+canvas_fill_value  fully opaque 
+an  image  with  item  type  'iovl' 
+with  blanks  in  the  grid  and 
+
+ 
+
+canvas_fill_value 
+transparent 
+ 
+
+fully 
+
+ 
+"Pixel locations with a negative offset value are not included in the reconstructed image." 
+ 
+
+positive 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+an  image  with  item  type  'iovl' 
+with negative horizontal_offset 
+an  image  with  item  type  'iovl' 
+with negative vertical_offset 
+an  image  with  item  type  'iovl' 
+when  an  image  is  entirely  in  the 
+negative area 
+
+or 
+
+equal 
+
+an  image  with  item  type  'iovl' 
+with  horizontal  pixel  locations 
+greater 
+than 
+to 
+output_width 
+an  image  with  item  type  'iovl' 
+locations 
+with  vertical  pixel 
+greater 
+than 
+to 
+output_height 
+an image with item type  'iovl' to 
+do 
+(image 
+greater 
+than  output  size  and 
+negative offsets) 
+
+cropping 
+
+image 
+
+equal 
+
+or 
+
+ 
+"Horizontal  pixel  locations  greater  than  or  equal  to  output_width  are  not  included  in  the 
+reconstructed  image.  Vertical  pixel  locations  greater  than  or  equal  to  output_height  are  not 
+included in the reconstructed image." 
+ 
+
+positive 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+3.25 Section 6.6.2.3 
+ 
+ 
+"All  input  images  shall  have  exactly  the  same  width  and  height;  call  those  tile_width  and 
+tile_height." 
+ 
+
+an image with item type grid 
+
+negative 
+
+positive 
+
+an image with item type grid but 
+with  images  not  with  the  same 
+width and/or height 
+
+ 
+"The  tiled  input  images  shall  completely  “cover”  the  reconstructed  image  grid  canvas,  where 
+tile_width*columns is greater than or equal to output_width and tile_height*rows is 
+greater than or equal to output_height." 
+positive 
+ 
+ 
+negative 
+
+an  image  with  item  type  'grid' 
+covering more than output  
+
+ 
+
+an  image  with  item  type  'grid' 
+but  with  images  covering  less 
+than output 
+
+ 
+"If the desired input images are not of a consistent size, then derived image items that scale or crop them, 
+as needed to make them consistent, can be used" 
+ 
+
+positive 
+ 
+
+an  image  with  item  type  'grid' 
+using  derived  image  to  crop 
+inputs 
+an  image  with  item  type  'grid' 
+
+ 
+
+ 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+positive 
+ 
+positive 
+ 
+positive 
+ 
+positive 
+ 
+
+with flags = 0 
+an  image  with  item  type  'grid' 
+with flags = 1 
+
+an  image  with  item  type  'grid' 
+with flags > 1 
+
+an  image  with  item  type  'grid' 
+with 1 row and 1 column 
+
+an  image  with  item  type  'grid' 
+with N rows and M columns 
+
+3.26 Section 6.7 
+"The metadata that describes an image is formed as the union of the items that refer from the metadata 
+item to the image item using the 'cdsc' (content describes) item reference." 
+ 
+
+an  image  with  more  than  one 
+'cdsc' item references 
+
+positive 
+ 
+
+3.27 Section 7 
+
+3.28 Section 7.1 
+"the handler type in the HandlerBox of the track is 'pict' to indicate an image sequence track" 
+ 
+
+a  sequence  with  a  'pict'  track 
+handler, without a meta box 
+
+ 
+"In particular, in an image sequence track, the timing is advisory: it may be the timing at collection (e.g. 
+of an image burst) or the suggested display timing (e.g. for a slide show)." 
+ 
+
+file with collection timing 
+
+ 
+
+file  with 
+timing 
+
+suggested  display 
+
+ 
+"Files containing an image sequence should also contain a file-level MetaBox with a primary item that 
+is an image item as specified in 6, for cases in which temporal presentation is either undesirable, or not 
+possible (e.g. printing)." 
+ 
+
+ 
+"The primary item may share coded data with one of the intra-coded images in the sequence" 
+ 
+
+positive 
+ 
+
+positive 
+ 
+positive 
+ 
+
+positive 
+ 
+
+positive 
+ 
+
+positive 
+ 
+
+file  with  a  pict  track  and  a  meta 
+box  with  a  primary  item  that  is 
+an image item 
+
+file  with  a  pict  track  and  a  meta 
+box  with  a  primary  item  that  is 
+an 
+item  which  shares 
+coded  data  with  an  image  in  the 
+sequence 
+
+image 
+
+a  file  with  a  pict  track  with  a 
+matrix specifying a rotation by 
+0° 
+a  file  with  a  pict  track  with  a 
+matrix specifying a rotation by 
+90° 
+
+ 
+"The syntax of the matrix syntax element is replaced with the following " 
+ 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+ 
+"The values of x and y are not constrained." 
+ 
+
+positive 
+
+ 
+
+positive 
+
+a  file  with  a  pict  track  with  a 
+matrix specifying a rotation by 
+180° 
+a  file  with  a  pict  track  with  a 
+matrix specifying a rotation by 
+270° 
+
+a  file  with  a  pict  track  with  a 
+matrix specifying a translation 
+a  file  with  a  pict  track  with  a 
+matrix  specifying  a  translation 
+and a rotation 
+
+  
+"Players  are  allowed  to  translate  the  image  implicitly  to  a  coordinate  space  with  non-negative 
+coordinates." 
+ 
+
+negative 
+
+a  file  with  a  pict  track  with  a 
+matrix 
+with 
+negative 
+translation values 
+
+ 
+"u and v shall be equal to 0 and w shall be equal to 0x40000000." 
+ 
+
+negative 
+
+a  file  with  a  pict  track  with  a 
+matrix  with  u  and  v  different 
+from  0  or  w  different  from 
+0x40000000 
+
+ 
+"As  implied  in  ISO/IEC  14496-12,  when  a  CleanApertureBox  is  present  in  a  sample  entry,  the 
+clipping specified by the CleanApertureBox takes place before applying the rotation specified by the 
+matrix syntax element." 
+ 
+
+positive 
+
+a  file  with  a  pict  track  with  a 
+rotation and a clap box 
+
+ 
+"Specifically,  when  handler_type is  equal  to  'pict',  the  VisualSampleEntry structure  is 
+used  in  the  SampleDescriptionBox and  the  VisualSampleGroupEntry structure  is  used  in 
+the SampleGroupDescriptionBox" 
+positive 
+ 
+
+track  with 
+
+pict 
+
+a 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+negative 
+
+negative 
+
+pict 
+
+a 
+VisualSampleEntry 
+a 
+track  with 
+VisualSampleGroupEntry 
+a 
+track  with 
+SampleEntry not Visual 
+a 
+SampleGroupEntry not Visual 
+
+track  with 
+
+pict 
+
+pict 
+
+a 
+
+an 
+
+an 
+
+3.29 Section 7.2.3 
+"The  CodingConstraintsBox  shall  be  present  in  the  sample  description  entry  for  tracks  with 
+handler_type equal to 'pict' and may be present for other tracks." 
+ 
+ 
+ 
+ 
+ 
+
+a 'pict' track with a ccst box 
+a 'vide' track with a ccst box 
+a 'soun' track with a ccst box 
+a pict track without a ccst box 
+a pict track with 2 ccst boxes 
+
+positive 
+positive 
+negative 
+negative 
+negative 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+3.30 Section 7.3 
+"An EditListBox may be used in such a track" 
+ 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+3.31 Section 7.4 
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+a 'pict' track with a ccst box with 
+all_ref_pics_intra set to 1 
+a 'pict' track with a ccst box with 
+all_ref_pics_intra set to 0 
+a 'pict' track with a ccst box with 
+intra_pred_used set to 0 
+a 'pict' track with a ccst box with 
+intra_pred_used    set  to  1  with 
+intra prediction effectively used 
+a 'pict' track with a ccst box with 
+intra_pred_used    set  to  1  with 
+intra prediction not used 
+a 'pict' track with a ccst box with 
+max_ref_per_pic set to 0 
+a 'pict' track with a ccst box with 
+max_ref_per_pic set to >0 <15 
+
+a pict track with an edit list, with 
+edits  indicating  "the  playback  of 
+more  than  one  sample"  with  no 
+hidden sample in the track 
+a pict track with an edit list, with 
+edits  indicating  "the  playback  of 
+more  than  one  sample"  with  no 
+hidden sample in the edits 
+a pict track with an edit list, with 
+edits  indicating  "the  playback  of 
+more  than  one  sample"  with 
+hidden sample in the edits 
+ 
+a pict track with an edit list, with 
+edits  indicating  the  playback  of 
+no sample 
+a pict track with an edit list, with 
+edits  indicating  the  playback  of 
+only one non-hidden sample 
+a pict track with an edit list, with 
+edits  indicating  the  playback  of 
+only one hidden sample 
+a pict track with no edit list with 
+hidden samples 
+a  pict  track  with  no  edit  list 
+without hidden samples 
+
+file  with  a  pict  track  with  a 
+DirectReferenceSamplesList  
+sample group 
+file with a pict track with several 
+DirectReferenceSamplesList  
+
+ 
+
+ [TO BE COMPLETED] 
+
+3.32 Section 7.5.1 
+ 
+
+ 
+
+ 
+
+3.33 Section 7.5.2 
+ 
+
+ 
+
+ 
+
+ 
+
+3.34 Section 7.5.3 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+positive 
+positive 
+
+positive 
+
+negative 
+
+negative 
+
+negative 
+
+sample groups 
+
+file  with  a  pict  track  and  video 
+track 
+file  with  a  pict  track  and  an 
+audio track 
+file  with  a  pict  track  and  a 
+subtitle track 
+
+file with 2 pict tracks linked by a 
+'thmb'  track  reference  within  an 
+alternate group 
+file with 2 pict tracks linked by a 
+'thmb'  track  reference  with  no 
+alternate group information 
+file  with  2  pict  tracks,  with  the 
+track_in_preview  flag  of 
+the thumbnail track set to 1 
+file  with  2  pict  tracks,  with  the 
+track_in_preview  flag  of 
+the thumbnail track set to 0 
+
+a file with one auxv track 
+a file with several auxv tracks 
+a file with one auxv track, with 
+the track_in_movie flag set to 0 
+a file with one auxv track, with 
+the track_in_movie flag set to 1 
+an track linked with 'auxl' 
+track reference without 'auxi' 
+box 
+an auxiliary track with 2 auxi 
+boxes 
+an non-null terminated string 
+in the auxi box 
+
+3.35 Section 8.1 
+"this standard supports the carriage of images and image sequences along with metadata written in 
+various metadata schematic languages. Examples of such schematic languages include Exif and 
+MPEG-7." 
+ 
+
+positive 
+
+a file with exif metadata for a 
+'pict' track 
+a file with MPEG-7 metadata 
+for a 'pict' track 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+
+3.36 Section 8.2 
+ 
+
+ 
+
+ 
+
+ 
+
+3.37 Section 8.3 
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+a file with exif metadata for 
+image items 
+a file with MPEG-7 metadata 
+for image items 
+a file with multiple redundant 
+metadata for image items 
+a file with multiple 
+complementary metadata for 
+image items 
+
+a file with multiple redundant 
+metadata for 'pict' tracks 
+a file with multiple 
+complementary metadata for 
+'pict' tracks 
+
+ 
+" If two or more metadata tracks linked to an image sequence track are parts of the same alternate 
+group, any one of these metadata tracks can be parsed to obtain applicable metadata for the image 
+sequence track." 
+ 
+ 
+
+positive 
+
+a file with multiple metadata 
+tracks, for a 'pict track, in the 
+same alternate group 
+
+ 
+" A track level MetaBox can be used to describe contents that are specific to the image sequence 
+as a whole." 
+ 
+
+positive 
+
+a file with a pict track with a 
+meta box at the track level 
+
+ 
+" When samples of an image sequence have to be linked to one more metadata items contained in a 
+MetaBox in track, the sample grouping SampleToMetadataItemEntry as defined in 9.7 is 
+used." 
+ 
+
+positive 
+
+a file with 
+SampleToMetadataItemEntry 
+
+3.38 Section 8.4 
+"When an entity does not understand the schematic language used for describing the metadata, it 
+shall ignore the contents of the metadata items using that schematic language in their syntax." 
+Q: how to check? 
+ 
+"The DataIntegrity item shall only occur in a MetaBox in a track (not in a movie or file-level 
+MetaBox)." 
+ 
+
+positive 
+
+a file with a DataIntegrity item in 
+a meta box in a track of different 
+types 
+a file with a DataIntegrity item in 
+a meta box at the movie level 
+a file with a DataIntegrity item in 
+a meta box at the file level 
+
+negative 
+
+negative 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ [TO BE COMPLETED] 
+
+3.39 Section 9 
+
+ 
+
+ 
+
+3.41 Section 9.3 
+ 
+ 
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+negative 
+negative 
+
+positive 
+
+a DataIntegrity  item with one 
+MD5IntegrityBox 
+a DataIntegrity  item with 
+multiple MD5IntegrityBoxes 
+a DataIntegrity  item with a 
+MD5IntegrityBox with 
+input_4cc = 'sgpd' and 
+flags = 0 
+a DataIntegrity  item with a 
+MD5IntegrityBox with 
+input_4cc = 'sgpd' and 
+flags = 1 
+a DataIntegrity  item with a 
+MD5IntegrityBox with 
+input_4cc = 'stsz' 
+a DataIntegrity  item with a 
+MD5IntegrityBox with 
+input_4cc = 'trak' 
+a DataIntegrity  item with a 
+MD5IntegrityBox with 
+input_4cc != 'sgpd', 
+'stsz', 'trak' 
+
+a file with an ItemInfoEntry box 
+with flags set to 1 on version = 0 
+a file with an ItemInfoEntry box 
+with flags set to 1 on version = 1 
+a file with an ItemInfoEntry box 
+with flags set to 1 on version = 2 
+
+a file with an 'iprp' box 
+a file with 2 'iprp' boxes 
+a file with an ‘iprp’ box with 2 
+'ipco' boxes 
+a file with an 'iprp' box with 2 
+'ipma' boxes 
+
+ 
+
+ 
+"the DataIntegrity item shall consist of one or more MD5IntegrityBoxes," 
+ 
+
+positive 
+
+3.40 Section 9.2 
+"The flags field of ItemInfoEntry with version greater than or equal to 2 is specified as 
+follows:" 
+ 
+
+positive 
+
+ 
+"The FreeSpaceBox as defined in ISO/IEC 14496-12 may occur in the 
+ItemPropertyContainerBox" 
+ 
+
+positive 
+
+a file with a 'free' box in the 'iprp' 
+box 
+
+ 
+
+ 
+
+ 
+
+"A reader shall not process an item that is associated with a property that is not recognized or not 
+supported by the reader and that is marked as essential to the item. A reader may ignore an 
+associated item property that is marked non-essential to the item." 
+ 
+ 
+ 
+
+negative 
+
+ 
+
+positive 
+
+a file with an image item 
+association with an undefined 
+property marked as essential 
+a file with an image item 
+association with an undefined 
+property marked as non-
+essential 
+
+ 
+ 
+"When defining item properties, it is recommended that they be small." 
+ 
+ 
+ 
+"Each ItemPropertyAssociation box must be ordered by increasing item_ID," 
+ 
+
+positive 
+positive 
+
+negative 
+
+a file with a small item property 
+a file with a large item property 
+
+a file with association in non-
+increasing order 
+
+ 
+"there must be at most one association box for each item_ID, in any 
+ItemPropertyAssociation box" 
+ 
+
+negative 
+
+a file with 2 association boxes for 
+a given item id 
+
+ 
+"The version 0 should be used unless 32-bit item_ID values are needed" 
+ 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+3.42 Section 9.4 
+ 
+
+ 
+
+ 
+
+a file with version 0 of ipma 
+ 
+a file with version 1 of ipma 
+
+a file with an 'ipco' box with no 
+property  
+a file with an 'ipco' box with 1 
+property 
+a file with an 'ipco' box with 
+several properties 
+
+a file with an 'ipma' box with no 
+association (entry_count = 0) 
+a file with an 'ipma' box with 
+entry but no association 
+(association_count = 0) 
+
+a file with a grpl box in a meta 
+box at the file level 
+ 
+a file with a grpl box in a meta 
+box at the movie level 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+3.43 Section 9.4.3 
+ 
+ 
+
+ 
+
+3.44 Section 9.5 
+ 
+
+ 
+
+ 
+
+ 
+
+3.45 Section 9.6 
+ 
+
+ 
+
+ 
+
+3.46 Section 9.7 
+ 
+
+ 
+
+ 
+
+positive 
+
+negative 
+
+negative 
+
+positive 
+
+positive 
+
+negative 
+
+positive 
+
+positive 
+positive 
+
+negative 
+
+positive 
+
+positive 
+
+positive 
+
+negative 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+a file with a grpl box in a meta 
+box at the track level 
+a file with more than one grpl 
+box in a meta box 
+a file with a grpl in a meta in a 
+meco 
+a file with a grpl box in a meta 
+box at the movie level with a 
+trackId = itemID 
+a file with a grpl box in a meta 
+box at the track level with a 
+trackId = itemID of the same 
+track or of a different track 
+a file with a grpl box in a meta 
+box at the file level with a trackId 
+= itemID 
+ 
+free boxes in the grpl box 
+
+'altr' grouping 
+grouping with 
+num_entities_in_group = 0 
+grouping with clashing ids 
+
+a thumbnail track linked to a 
+video track 
+a thumbnail track linked to an 
+audio track 
+a thumbnail track linked to an 
+subtitle track 
+a thumbnail track linked to 
+another thumbnail track 
+
+an edit list with a repeat flag, 
+repeating for an integer number 
+of times 
+an edit list with a repeat flag, 
+repeating for a non-integer 
+number of times 
+an edit list with a repeat flag, 
+repeating for infinite number of 
+times 
+
+a file with a 
+SampleToMetadataItemEntry 
+a file with a 
+SampleToMetadataItemEntry 
+
+ 
+
+ 
+
+ 
+
+3.47 Annex A 
+
+positive 
+
+negative 
+
+when multiple meta boxes with 
+the same handler are used 
+a file with a 
+SampleToMetadataItemEntry 
+with num_items = 0 
+a file with a 
+SampleToMetadataItemEntry 
+with a non-matching itemId 
+
+3.48 Section A.1 
+"When any of the brands specified in this specification is in the major_brand, the 
+minor_version shall be set to zero when writing the file, and ignored by readers." 
+ 
+ 
+
+positive 
+negative 
+
+ 
+ 
+
+positive 
+negative 
+
+file with mif1 as major brand 
+file with mif1 as major brand and 
+minor_version != 0 
+file with msf1 as major brand 
+file with msf1 as major brand 
+and minor_version != 0 
+
+3.49 Section A.2.1.1 
+"The following boxes are required in a file under the 'mif1' brand." 
+Q: 'iloc' is in general not mandatory in the ISOBMFF. In IFF, it is. Ok. 
+Q: 'iinf' is in general not mandatory in the ISOBMFF. In IFF; it is. Ok. 
+Q: 'pitm' is in general not mandatory in the ISOBMFF. In IFF; it is. Ok. 
+Q: 'iprp'. Why make it mandatory if there is no property? Why 'ipco' and 'ipma' not listed in the 
+tables (requirements on files and on readers)? 
+
+3.50 Section A.3.1.1 
+" At least one track of handler type 'pict', as defined in 7.2, is required." 
+ 
+
+positive 
+
+ 
+
+negative 
+
+ 
+" It is required that 'iso8' is present among the compatible brands array." 
+ 
+
+negative 
+
+ 
+
+negative 
+
+3.51 Section Annex B 
+"HEVC items may either be IDR, CRA or BLA pictures as defined ISO/IEC 23008-2." 
+ 
+
+positive 
+
+ 
+
+ 
+
+positive 
+
+a file with msf1 compatible 
+brand with a 'pict' track with no 
+sample 
+a file with msf1 compatible 
+brand without 'pict' track 
+
+a file with 'msf1' brand in the 
+major brand without 'iso8' 
+compatible brands 
+a file with 'msf1' brand in the 
+compatible brands without 'iso8' 
+compatible brands 
+
+a file with a 'hvc1' item type 
+corresponding to an IDR picture 
+a file with a 'hvc1' item type 
+corresponding to an BLA picture 
+
+ 
+
+ 
+
+positive 
+
+a file with a 'hvc1' item type 
+corresponding to an CRA picture 
+
+ 
+"There shall be no inter prediction between HEVC image items." 
+ 
+
+negative 
+
+file with HEVC image items with 
+inter prediction 
+
+ 
+"HEVCItemData shall not contain any extractor or aggregator NAL units" 
+ 
+
+negative 
+
+ 
+
+ 
+
+ 
+
+negative 
+
+negative 
+
+negative 
+
+file with an HEVC image item 
+with extractors or aggregators in 
+the data 
+a file with an HEVC image item 
+without 'hvcC' property box 
+a file with an HEVC image item 
+without 'hvcC' property 
+associated 
+a file with an HEVC image item 
+with two 'hvcC' property 
+associated 
+
+ 
+"essential shall be equal to 1 for an 'hvcC' item property associated with an image item of type 
+'hvc1'." 
+ 
+
+negative 
+
+a file with an HEVC image item 
+with an 'hvcC' property 
+associated as non-essential 
+
+Q: Should it also be 1 for ispe that is a mandatory property? 
+ 
+ 
+
+positive 
+
+3.52 Section B.2.4 
+ 
+
+ 
+
+ 
+
+positive 
+
+negative 
+
+negative 
+
+a file with an HEVC image item 
+with two different 'hvcC' 
+property boxes but only 1 
+associated to the item, with the 
+essential bit set. 
+
+a file with an HEVC item with a 
+subsample entry property 
+a file with an HEVC item with a 
+subsample entry property with 
+entry_count!= 1 
+a file with an HEVC item with a 
+subsample entry property with 
+sample_delta!= 0 
+
+ 
+"Zero or more properties of type 'subs' may be linked to the same item of type 'hvc1'." 
+ 
+
+positive 
+
+file with an HEVC item with more 
+than 1 subs property 
+
+3.53 Section B.2.5 
+ 
+ 
+
+positive 
+positive 
+
+ 
+
+an HEVC auxiliary image item 
+an HEVC auxiliary image item 
+with additional SEI message "that 
+are specific to the auxiliary image 
+
+ 
+
+ 
+
+ 
+
+3.54 Section B.2.6 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+negative 
+
+negative 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+type" 
+an HEVC auxiliary image item 
+without associated hvcC 
+property 
+an HEVC auxiliary image item 
+without associated ispe property 
+
+an HEVC tiled image with loop 
+filtering disabled 
+an HEVC tiled image with loop 
+filtering enabled 
+an HEVC tiled image with no slice 
+containing two tiles, all tiles 
+made of 1 slice, all slices made of 
+1 slice segment 
+an HEVC tiled image with no slice 
+containing two tiles, all tiles 
+made of 1 slice, some slices made 
+of several slice segments 
+an HEVC tiled image with no slice 
+containing two tiles, some tiles 
+made of several slices, all slices 
+made of 1 slice segment 
+an HEVC tiled image with no slice 
+containing two tiles, some tiles 
+made of several slices, some slice 
+made of several slice segments 
+an HEVC tiled image with no slice 
+containing two tiles, some tiles 
+grouped into a tile item not 
+spanning rows 
+an HEVC tiled image with no slice 
+containing two tiles, some tiles 
+grouped into a tile item spanning 
+rows 
+an HEVC tiled image with tile 
+items not describing all tiles 
+an HEVC tiled image with some 
+slices containing several tiles but 
+no slice segment containing two 
+tiles, each tile being a single slice 
+segment 
+an HEVC tiled image with some 
+slices containing several tiles but 
+no slice segment containing two 
+tiles, some tiles using several 
+slice segments 
+an HEVC tiled image using the 
+'dpnd' item reference from a tile 
+item containing a single tile 
+an HEVC tiled image using the 
+'dpnd' item reference from a tile 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+item containing several tiles on 
+different rows 
+an HEVC tiled image with some 
+slices containing several tiles, 
+some slice segments containing 
+several tiles 
+an HEVC tiled image with 
+subsample information 
+ 
+
+ 
+"Each HEVC tile item shall be associated with one HEVCConfigurationBox, one 
+ImageSpatialExtentsProperty and one RelativeLocationProperty." 
+ 
+
+negative 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+negative 
+
+negative 
+
+negative 
+
+negative 
+
+negative 
+
+an HEVC tile item not associated 
+with an hvcC box 
+an HEVC tile item not associated 
+with an ispe box 
+an HEVC tile item not associated 
+with an rloc box 
+an HEVC tile item associated with 
+several hvcC boxes 
+an HEVC tile item associated with 
+several ispe boxes 
+an HEVC tile item associated with 
+several rloc boxes 
+
+ 
+"The HEVCConfigurationBox shall contain all parameter sets required for decoding the tiles 
+present in the HEVC tile item." 
+ 
+
+negative 
+
+an HEVC tile item associated with 
+an hvcC box not containing all PS 
+
+ 
+"The RelativeLocationProperty shall indicate the position of the HEVC tile item within the 
+respective HEVC image item." 
+ 
+
+negative 
+
+an HEVC tile item associated with 
+an rloc box not corresponding to 
+the position of the tile in the 
+image 
+
+ 
+"The image_width and image_height of the ImageSpatialExtentsProperty shall be 
+set according to the width and height of the HEVC tile item." 
+ 
+
+negative 
+
+an HEVC tile item associated with 
+an ispe box not corresponding to 
+the size of the tiles in the item 
+
+ 
+
+3.55 Section B.3.2 
+"The sample entry of type 'hvc1' shall be used for an image sequence track coded with HEVC." 
+ 
+
+positive 
+
+track 
+
+image 
+
+sequence 
+
+An 
+coded with HEVC 
+An 
+track 
+coded  with  HEVC  not  signaled 
+with 'hvc1' 
+
+sequence 
+
+image 
+
+negative 
+
+ 
+
+ 
+
+ 
+
+ 
+
+"The HEVCSampleEntry shall be used as specified in ISO/IEC 14496-15." 
+ 
+
+negative 
+
+image 
+
+sequence 
+
+An 
+track 
+coded with HEVC not using the 
+HEVCSampleEntry 
+
+positive 
+
+ 
+"For  a  track  containing  an  HEVC  image  sequence,  either  all  samples  shall  be  sync  samples  or  the 
+all_ref_pics_intra field in the CodingConstraintsBox specified in 0 shall be set to one." 
+An 
+track 
+ 
+coded  with  HEVC  where  all 
+samples are sync samples. 
+An 
+track 
+coded  with  HEVC  where  all 
+samples are not sync samples. 
+An 
+track 
+coded  with  HEVC  where  none 
+the 
+of 
+sync 
+samples. 
+
+samples  are 
+
+sequence 
+
+sequence 
+
+sequence 
+
+positive 
+
+positive 
+
+image 
+
+image 
+
+image 
+
+ 
+
+ 
+
+ 
+
+3.56 Section B.3.3 
+"The SEI messages for the auxiliary channel follow the same principle as any other SEI message for an 
+'hvc1' sample  entry;  i.e.  they  may  be  included  in  the  decoder  configuration  record  of  the  'hvc1' 
+sample entry." 
+ 
+
+sequence 
+
+positive 
+
+image 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+ 
+
+ 
+
+positive 
+
+image 
+
+sequence 
+
+An 
+track 
+coded  with  HEVC  where  non-
+auxiliary  SEI  messages  are  not 
+in  the  decoder  configuration 
+record. 
+An 
+track 
+coded  with  HEVC  where 
+auxiliary  SEI  messages  are  not 
+in  the  decoder  configuration 
+record. 
+An 
+track 
+coded  with  HEVC  where  non-
+auxiliary  SEI  messages  are  in 
+the 
+configuration 
+record. 
+An 
+track 
+coded  with  HEVC  where 
+auxiliary  SEI  messages  are  in 
+the 
+configuration 
+record. 
+
+sequence 
+
+sequence 
+
+decoder 
+
+decoder 
+
+image 
+
+image 
+
+An 
+track 
+coded  with  HEVC  using  an 
+auxiliary  track  type  different 
+from  
+'urn:mpeg:hevc:2015:auxid:xxx'  
+An 
+track 
+
+sequence 
+
+image 
+
+"When  aux_track_type  is  equal  to  'urn:mpeg:hevc:2015:auxid:xxx'  (where  xxx  is  a  positive 
+integer), as specified in B.2.5, an HEVC SEI message describing the auxiliary image sequence should be 
+included in the sample entry." 
+ 
+
+sequence 
+
+positive 
+
+image 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+using 
+coded  with  HEVC 
+auxiliary  track  type  equal  to 
+'urn:mpeg:hevc:2015:auxid:xxx' 
+with  auxiliary  SEI  messages  in 
+the sample entry 
+track 
+An 
+sequence 
+coded  with  HEVC 
+using 
+auxiliary  track  type  equal  to 
+'urn:mpeg:hevc:2015:auxid:xxx' 
+with  auxiliary  SEI  messages  not 
+in the sample entry 
+
+image 
+
+3.57 Section B.4.1.1 
+" The brands 'heic' and 'heix' are specified in the following subclauses" 
+ 
+ 
+"The content of the item conforms to the Main profile or the Main Still Picture profile of HEVC." 
+ 
+
+positive 
+
+positive 
+
+An file using 'heic' and 'heix' 
+
+ 
+
+positive 
+
+ 
+"The content of the item conforms to the Main 10 profile or any of the format range extensions profiles of 
+HEVC. " 
+ 
+
+positive 
+
+An  HEVC  image  file  using  the 
+the  brand  'heic'  and  the  Main 
+Profile of HEVC 
+An  HEVC  image  file  using  the 
+the  brand  'heic'  and  the  Main 
+Still Picture Profile of HEVC 
+
+An  HEVC  image  file  using  the 
+the  brand  'heix'  and  the  Main 
+10 Profile of HEVC 
+An  HEVC  image  file  using  the 
+the  brand  'heix'  and  a  format 
+range  extension  profile  of 
+HEVC 
+
+An  HEVC  image  file  using  the 
+the brand 'heic' with a primary 
+coded image item  
+An  HEVC  image  file  using  the 
+the brand 'heic' with a primary 
+crop-and-rotate  derived  image 
+item  derived  from  a  coded 
+image 
+
+ 
+
+ 
+
+positive 
+
+3.58 Section B.4.1.2 
+"Files including 'heic' as a compatible brand shall contain an item that is mapped to a DataEntryBox 
+with (entry_flags & 1) equal to 1, that is either the primary item or any item from the alternate group 
+containing the primary item, and that fulfills one of the following constraints:  
+- The item is a coded image item conforming to the 'heic' brand as specified in B.4.1.1.  
+
+- The item is a crop-and-rotate derived image item, and each source image item of the item is either a crop-
+and-rotate derived image item or a coded image item conforming to the 'heic' brand as specified in 
+B.4.1.1. " 
+ 
+
+positive 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+An  HEVC  image  file  using  the 
+the brand 'heic' with a primary 
+crop-and-rotate  derived  image 
+item  derived  from  a  crop-and-
+rotate derived image 
+An  HEVC  image  file  using  the 
+the  brand 
+'heic'  with  an 
+alternate  group  containing  the 
+primary item  
+An  HEVC  image  file  using  the 
+the brand 'heix' with a primary 
+coded image item  
+An  HEVC  image  file  using  the 
+the brand 'heix' with a primary 
+crop-and-rotate  derived  image 
+item  derived  from  a  coded 
+image 
+An  HEVC  image  file  using  the 
+the brand 'heix' with a primary 
+crop-and-rotate  derived  image 
+item  derived  from  a  crop-and-
+rotate derived image 
+An  HEVC  image  file  using  the 
+the  brand 
+'heix'  with  an 
+alternate  group  containing  the 
+primary item  
+
+3.59 Section B.4.1.3 
+" File readers should support displaying of an image with opacity information specified by an associated 
+auxiliary image of aux_type equal to urn:mpeg:hevc:2015:auxid:1." 
+ 
+
+positive 
+
+of 
+
+An  HEVC  image  file  using  an 
+auxiliary 
+type 
+urn:mpeg:hevc:2015:auxid:1  for 
+opacity. 
+
+image 
+
+ 
+
+3.60 Section B.4.2.2 
+" Track_enabled shall  be  equal  to  1  and  Track_in_movie shall  be  equal  to  1  for  at  least  one  image 
+sequence track conforming to with the specifications in B.3." 
+ 
+
+positive 
+
+A  file  with  2  HEVC 
+image 
+sequence  tracks  with  only  one 
+using track_in_movie set to 1.  
+
+ 
+"When the 'hevc' brand is among the compatible brands, there shall be an image sequence track with 
+'hvc1' sample entry type,  Track_enabled equal to 1,  Track_in_movie equal to 1, and each 
+sample entry having a data_reference_index value such that it is mapped to a DataEntryBox 
+with  (entry_flags  &  1)  equal 
+to  1  or 
+(general_profile_compatibility_flags & 2(32 − 1)) is greater than 0." 
+ 
+
+to  1,  for  which  general_profile_idc 
+
+positive 
+
+is  equal 
+
+A file with HEVC image sequence 
+track with general_profile_idc set 
+to 1 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+0 
+
+A file with HEVC image sequence 
+track with general_profile_idc set 
+to 
+and 
+general_profile_compatibility_flags 
+& 2(32 − 1)) greater than 0. 
+A file with HEVC image sequence 
+track with general_profile_idc set 
+to 2. 
+A file with HEVC image sequence 
+track with general_profile_idc set 
+to 4. 
+
+ 
+"Readers  shall  support  all  values  allowed  by  7.2.1  for  the  matrix  syntax  element  of  the 
+TrackHeaderBox" 
+ 
+
+positive 
+
+Files  with  HEVC  image  sequence 
+track  with  different  matrix 
+operations 
+
+ 
+"Readers  shall  obey  the  CleanApertureBox of  the  visual  sample  entry  when  displaying  an  image 
+sequence track with 'hvc1' sample entry." 
+ 
+
+positive 
+
+A file with HEVC image sequence 
+track with a clean aperture box 
+
+ 
+"Displaying  of  an  image  sequence  track  with  opacity  information  specified  by  an  associated  auxiliary 
+track  of  aux_track_type equal  to  urn:mpeg:hevc:2015:auxid:1,  as  specified  in  B.3.3,  should  be 
+supported." 
+ 
+
+positive 
+
+A file with HEVC image sequence 
+track with an associated auxiliary 
+track  of  aux_track_type  equal  to 
+urn:mpeg:hevc:2015:auxid:1 
+
+3.61 Annex C 
+
+3.62 Annex C.2 
+"Exif metadata that is true for the entire track may be stored in a MetaBox in the TrackBox, in one or 
+more items of type 'Exif'." 
+ 
+
+positive 
+
+ 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+A  image  file  with  Exif  data  as  an 
+item at the file level 
+A  image  file  with  Exif  data  as  an 
+item at the movie level 
+A  image  file  with  Exif  data  as  an 
+item at the track level 
+A  image  file  with  Exif  data  as 
+multiple items at the track level 
+A  image  file  with  Exif  data  as  a 
+metadata track 
+
+ 
+"  If  the  TIFF  Header  is  the  first  byte  of  the  payload,  the  value  is  0.  Otherwise,  it  is  a  positive  number 
+skipping any other bytes before the TIFF Header" 
+ 
+
+positive 
+
+A  image  file  with  Exif  data  with 
+exif_tiff_header_offset set to 0 
+
+ 
+
+ 
+
+ 
+
+positive 
+
+A  image  file  with  Exif  data  with 
+exif_tiff_header_offset  set 
+to  a 
+value greater than 0 
+
+"There may be additional bytes before or after this Exif data but the all data shall be contained in the size 
+indicated by the item size." 
+ 
+
+positive 
+
+ 
+
+positive 
+
+ 
+"It is not required that every sample be a 'sync sample'." 
+ 
+
+positive 
+
+ 
+
+ 
+
+3.63 Annex C.3 
+ 
+
+ 
+
+ 
+
+3.64 Annex C.4 
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+positive 
+
+A  image  file  with  Exif  data  with 
+data before the exif data 
+A  image  file  with  data  after  the 
+Exif data  
+
+A  image  file  with  Exif  data  track 
+with all sample sync samples. 
+A  image  file  with  Exif  data  track 
+with  some  samples  being  sync 
+samples. 
+A  image  file  with  Exif  data  track 
+with  no  sample  being  sync 
+samples. 
+
+A image file with XMP item in the 
+meta box containing image items 
+A image file with XMP item in the 
+meta box at the track level 
+A  image  file  with  XMP  metadata 
+track 
+
+A image file with MPEG-7 item in 
+the  meta  box  containing  image 
+items 
+A image file with MPEG-7 item in 
+the meta box at the track level 
+A 
+metadata track 
+
+file  with  MPEG-7 
+
+image 
+
+4  Conclusion 
+We propose to adopt the above text as a Working Draft of Conformance for the IFF. 
+
+ 
+
+
