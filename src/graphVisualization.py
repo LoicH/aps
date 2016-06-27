@@ -40,4 +40,6 @@ def getdictCoauthors(bibName):
     for author in authorList:
         dictCoauthors[author]=timelineVisualization.getInfo(author)[1]
     return dictCoauthors
+    
+
 
