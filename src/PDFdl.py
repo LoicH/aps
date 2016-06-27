@@ -17,7 +17,7 @@ src = app_path+os.sep+"src"
 regex=r'id=(\d+)'  
 
 def openBibLib(bibName): # e.g : 'document.bib'
-    with open('document.bib') as bibtex_file:  
+    with open(data+os.sep+'document.bib') as bibtex_file:  
         bibtex_database = bibtexparser.load(bibtex_file) 
         return bibtex_database
 
@@ -30,14 +30,13 @@ class PDF(object):
         self.pubDate = pubDate
         
 
-def download(fileURL,writeFile):
-    testfile = urllib.URLopener()
-    try:
-        testfile.retrieve(fileURL, writeFile)  # example : testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11068", "file.pdf")
-    except IOError:
-        print "No pdf or no memory left"
+#def download(fileURL,writeFile):
+#    testfile = urllib.URLopener()
+#    try:
+#        testfile.retrieve(fileURL, writeFile)  # example : testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11068", "file.pdf")
+#    except IOError:
+#        print "No pdf or no memory left"
 
-        
 def downloadPDF(id):
     testfile = urllib.URLopener()
     print  "http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id="+str(id)
@@ -74,6 +73,9 @@ def createPDF(index):
                 id=int(temp[0])
         i+=1
     return PDF(title,author,id,pubDate)
+    except IOError:
+        print "No pdf or no memory left"
+        
     
     
 def createPDFList():
@@ -84,5 +86,5 @@ def createPDFList():
         downloadPDF(id)
         pos_Id_List[i]=id
         downloadPDF(id)
-        return pos_Id_List
+    return pos_Id_List
 

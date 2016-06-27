@@ -1,6 +1,27 @@
 # aps
 Analysis of scientific papers and results visualization
 
+# Plugins:
+
+nltk
+
+latexcodec
+
+Flask
+
+pdfMiner
+
+bibtexparser
+
+rdflib
+
+pyspotlight
+
+datetime
+
+
+→ sudo pip install nltk latexcodec Flask pdfMiner bibtexparser rdflib pyspotlight DateTime
+
 
 # How to:
 1) Launch ```python src/main.py``` to create ```src/static/frequency_list.json```.

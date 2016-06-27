@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="{{url_for('static', filename='d3.layout.cloud.js') }}"></script>
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Word Cloud</title>
 </head>
 <body>
-    <h3> Welcome to our final project </h3>
+	<img src="{{url_for('static', filename='Logo_D3.png') }}">
+    <h1> Word Cloud </h1>
+    <div id="word-cloud">
+        <script type="text/javascript" src="{{url_for('static', filename='WordCloud.js') }}">
+			
+		</script>
+    </div>
 
-	<ul>
-  <li>Click here to view the <a href="wordcloud">word cloud</a></li>
-  <li>Click here to view the timeline (not yet coded)</li>
-  <li>Click here to view the chord diagram (not yet coded)</li>
-  <li>Click here to see the <a href="author/foobar">overview of an author</a></li>
-</ul>
+    <h1> Time Line </h1>
+    <div>
+        <script type="text/javascript" src="TimeLine.js"></script>
+    </div>
 </body>
 </html>
