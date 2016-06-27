@@ -65,7 +65,9 @@ periodNumber2=monthdelta(startDateTime,endDateTime)//periodLength #number of per
 date1=startDateTime
 date2=date1+ relativedelta(months=+periodLength)
 for i in range(periodNumber2+1):  #create TFDIDF Matrixes for each period
-    matrixList.append(dataTimeline.createTFIDFMatrix(authorName, date1, date2))
+    m=dataTimeline.createTFIDFMatrix(authorName, date1, date2) #TFIDF Matrix with all words/concepts.
+    tops = m.weights(number=5) #dictionary {concept:weight} for the top 5 five concepts, weight of best concept = 100, least = 1
+    matrixList.append(m)
     date1=date2
     date2=date1+ relativedelta(months=+periodLength)
 periodFrequenciesList.append(dataTimeline.median([matrixList[0],matrixList[1]]))                                    # 
