@@ -49,12 +49,12 @@ periodLength=int(sys.argv[4])
 #periodNumber=monthNumber//periodLength 
 periodNumber2=(startDateTime-endDateTime).days%31%periodLength #number of periods considered
 date1=datetime(int(startDate.split()[0]),int(startDate.split()[1]),1)
-date2=date1+ datetime.relativedelta(months=+periodLength)
+date2=date1+ datetime.timedelta(months=+periodLength)
 print date2
 for i in range(periodNumber2):  #create TFDIDF Matrixes for each period
     matrixList.append(dataTimeline.createTFIDFMatrix(authorName, date1, date2))
     date1=date2
-    date2=date1+ datetime.relativedelta(months=+periodLength)
+    date2=date1+ datetime.timedelta(months=+periodLength)
 periodFrequenciesList.append(dataTimeline.median([matrixList[0],matrixList[1]]))                                    # 
 if periodNumber2>=2:                                                                                                # create period 
     for i in range(1,periodNumber2):                                                                                # frequency List
@@ -62,4 +62,5 @@ if periodNumber2>=2:                                                            
 periodFrequenciesList.append(dataTimeline.median([matrixList[-2],matrixList[-1]]))                                  #
 periodFreqJSON=formatConversion.convertToMatrice(periodFrequenciesList, src+os.sep+"templates"+os.sep+"timeline.json") #converting to output format
 
+print periodFreqJSON
        

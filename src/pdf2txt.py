@@ -11,20 +11,7 @@ import fnmatch #to match filename and implement testing
 import nltk    #words retriever
 import random  #used for testing
 
-sys.path.append("/usr/home/username/pdfminer") #? what's the use?
 
-app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
-
-
-"""Adding arguments for command-line use"""
-import argparse
-parser = argparse.ArgumentParser(description='Convert PDF to text')
-parser.add_argument('-f','--file', help="source file")
-parser.add_argument('-o', '--output', help="output file")
-parser.add_argument('-t', '--testing', help="""runs on sample files, it's the action 
-        by default if you invoke this script without arguments""", action="store_true")
-
-args = parser.parse_args()
 
 #import subprocess
 #s="python pdf2txt.py TP3.pdf"
@@ -107,6 +94,20 @@ def test_file(docname, trials):
     
 
 if __name__ == '__main__':
+    sys.path.append("/usr/home/username/pdfminer") #? what's the use?
+
+    app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
+    
+    
+    """Adding arguments for command-line use"""
+    import argparse
+    parser = argparse.ArgumentParser(description='Convert PDF to text')
+    parser.add_argument('-f','--file', help="source file")
+    parser.add_argument('-o', '--output', help="output file")
+    parser.add_argument('-t', '--testing', help="""runs on sample files, it's the action 
+            by default if you invoke this script without arguments""", action="store_true")
+    
+    args = parser.parse_args()
     if args.file :
         pdf_to_file(args.file, args.output)
     elif args.testing :

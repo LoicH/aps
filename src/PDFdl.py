@@ -17,7 +17,7 @@ src = app_path+os.sep+"src"
 regex=r'id=(\d+)'  
 
 def openBibLib(bibName): # e.g : 'document.bib'
-    with open('document.bib') as bibtex_file:  
+    with open(data+os.sep+'document.bib') as bibtex_file:  
         bibtex_database = bibtexparser.load(bibtex_file) 
         return bibtex_database
 

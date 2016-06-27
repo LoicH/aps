@@ -11,6 +11,16 @@ Flask
 
 pdfMiner
 
+bibtexparser
+
+rdflib
+
+pyspotlight
+
+datetime
+
+
+→ sudo pip install nltk latexcodec Flask pdfMiner bibtexparser rdflib pyspotlight DateTime
 
 
 # Contributors:
