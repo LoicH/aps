@@ -30,17 +30,37 @@ from nltk.corpus import wordnet
     #blackList=["abc","acb"]
 
 
-#deleting punctuation
+
 def delPunctuation(text):
+    """deleting punctuation
+    @param text : text you want to delete punctuation 
+    @type text : string
+    
+    @return : text without punctuation
+    @rtype: string """
     for char in string.punctuation: 
         text=text.replace(char,'')
     return text.replace('\x0c','')
     
 def getTextWords(text):
+    """tokenize words
+    @param text : text you want to tokenize
+    @type text : string
+    
+    @return : word list
+    @rtype: string list """
     return nltk.word_tokenize(text)
 
-#deleting useless words + lowercase
 def modifyText(textWords, blackList):
+    """deleting one letter words + lowercase
+    @param textWords : word list
+    @type textWords : string list
+    
+    @param blackList : words you want to delete in textWords
+    @type blacklist : string list
+    
+    @return : word list without one letter words. All words in lowercase, except acronyms
+    @rtype: string list """
     i=0
     for word in textWords:
         if len(word) == 1:
@@ -54,7 +74,12 @@ def modifyText(textWords, blackList):
     return textWords
     
 def deleteStopWords(textWords):
-    #deleting words of types determiners, conjonctions, cardinal numbers and stopwords
+    """deleting words of types determiners, conjonctions, cardinal numbers and stopwords
+    @param text : word list you want to delete stopwords from
+    @type text : string list
+    
+    @return : word list without stopwords, determiners ...
+    @rtype: string list """
     listCopy=textWords
     stopwords= nltk.corpus.stopwords.words("english")
     for sw in stopwords:
@@ -88,8 +113,13 @@ def deleteStopWords(textWords):
 #    return dictionnary
     
 
-def get_wordnet_pos(treebank_tag): # convert pos_tag from nltk to pos_tag from wordnet
-
+def get_wordnet_pos(treebank_tag): 
+    """convert pos_tag from nltk to pos_tag from wordnet
+    @param treebank_tag : tag from nltk
+    @type treebank_tag : string 
+    
+    @return : tag from wordnet
+    @rtype: string (one letter) """
     if treebank_tag.startswith('J'):
         return "a"
     elif treebank_tag.startswith('V'):
@@ -102,7 +132,12 @@ def get_wordnet_pos(treebank_tag): # convert pos_tag from nltk to pos_tag from w
         return 'n'
 
 def lemmatization(textWords): 
-    #lemmatizes all the words
+    """lemmatizes all the words
+    @param textWords : word list
+    @type textWords : string list
+    
+    @return : lemmatized words
+    @rtype: string list """
     words = textWords
     p = nltk.pos_tag(textWords)
     lmtzr=nltk.WordNetLemmatizer()
@@ -111,7 +146,13 @@ def lemmatization(textWords):
     return words
         
 def frequency(textWords):
-    #gives the frequency of each word in the text
+    """gives the frequency of each word in the text
+    
+    @param textWords : word list
+    @type textWords : string list
+    
+    @return : link each word with its frequency in the world list
+    @rtype: dict[ word (string) : frequency (float) ] """
     a=nltk.FreqDist(textWords)
     nbMots = 0
     for word in a :
@@ -121,6 +162,19 @@ def frequency(textWords):
     return a
 
 def frequencyWithTreshold(textWords, occTreshold, lengthTreshold):
+    """gives the frequency of each word in the text
+    
+    @param textWords : word list
+    @type textWords : string list
+    
+    @param occTreshold : world with less occurences than occTreshold will be wiped out
+    @type occTreshold : int
+    
+    @param occTreshold : world with less letters than lengthTreshold will be wiped out
+    @type occTreshold : int
+
+    @return : world list without the world below the two tresholds
+    @rtype: string list """
     a=nltk.FreqDist(textWords)
     nbMots = 0
     wordsToRemove = []
@@ -145,7 +199,7 @@ def frequencyWithTreshold(textWords, occTreshold, lengthTreshold):
 #            print(word)
     
 def textToDictionnary(text, blackList):
-    #does all the functions above in one take
+    """does all the functions above in one take"""
     f= frequency(lemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList))))
     dic = dict()
     for word in f.keys():
