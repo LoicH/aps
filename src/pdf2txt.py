@@ -71,7 +71,8 @@ def pdf_to_file(src_filepath, out_filepath):
     print "Done."
 
 def testing():
-    """Tests all the sample files in the current directory"""
+    """Tests all the sample files in the current directory
+    """
     trials = 1000
     print "Testing for", trials,"words."
     for filename in os.listdir(app_path+'/data/'):
