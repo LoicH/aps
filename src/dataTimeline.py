@@ -17,7 +17,7 @@ data = app_path+os.sep+"data"
 
 
 
-def createTFIDFMatrix(authorName, startDate, endDate): #date format: year monthNumber
+def createTFIDFMatrix(authorName, startDateString, endDateString): #date format : year monthNumber
     """ create TFIDF Matrix using documents written by an author during a selected period
     @param authorName: author's lastname
     @type authorName: string
@@ -34,8 +34,14 @@ def createTFIDFMatrix(authorName, startDate, endDate): #date format: year monthN
     listTitle=getInfo(authorName)[0] #dictonnary of publications, dates and ids e.g: {pubName: [date,id]}
     titleId=dict()
     for j in listTitle:
-        formatedDate=formatDate(listTitle[j][0])
+        
+        formatedDate=formatDate(dateString)
+        formatedStart=formatDate(startDateString)
+        startDate=date(int(formatedStart.split()[0]),int(formatedStart.split()[1],1))
+        formatedEnd=formatDate(endDateString)
+        endDate=date(int(formatedEnd.split()[0]),int(formatedEnd.split()[1]),1)
         pubDate=date(int(formatedDate.split()[0]),int(formatedDate.split()[1]),1)
+        
         if pubDate>startDate and pubDate<endDate: #checks if text was published in a fixed time window
             titleId[j]=listTitle[j][1]
     fm=FreqMatrix([],[])

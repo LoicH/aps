@@ -23,6 +23,13 @@ def getAll(index,bibName):
     return bibtexparser.customization.convert_to_unicode(entries[index]) 
 
 def getInfo(authorName): #name in the form of lastName
+""" gets dictionary ids and dates linked to an author
+    @param authorName : name of an author
+    @type string 
+    
+    @return : dictionary of publication names, dates and ids 
+    @rtype : dictionary  {pubName1 : [date,id], pubName2 : [date,id]...} """
+    
     datesAndIds = dict()
     coauthors=[]
     for i in entries:
@@ -37,7 +44,15 @@ def getInfo(authorName): #name in the form of lastName
     coauthors=[i for i in coauthors if i!=authorName]     
     return datesAndIds, coauthors
 
-def getCoauthors(authorName):
+def getCoauthors(authorName, minFreq): 
+
+""" gets coauthors List of an author with a given number of common publications
+    @param authorName : name of an author
+    @type string 
+    
+    @return : list of coauthors
+    @rtype : [coauthor1, coauthor2,... ] """
+    
     coauthors=[]
     for i in entries:
         if authorName.replace(" ","") in i["author"].replace(" ","").replace("{","").replace("}",""):
@@ -47,5 +62,5 @@ def getCoauthors(authorName):
                     coauthors.append(k.replace('}','').replace('{',''))        
     coauthors=[i for i in coauthors if i!=authorName]     
     coauthorsFreq = {a:coauthors.count(a) for a in coauthors}    
-    coauthors2=[i for i in coauthorsFreq if coauthorsFreq[i]>10]
+    coauthors2=[i for i in coauthorsFreq if coauthorsFreq[i]>minFreq]
     return coauthors2
