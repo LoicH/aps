@@ -136,7 +136,6 @@ def load(filename):
     
     #then lines = word;tfidf1;tfidf2;... 
     line_str = f.readline()
-    print line_str
     while line_str != '':
         line_split = line_str[:-2].split(",") #[:-2] removes '\n'
         word, tfidf_list = line_split[0], line_split[1:]

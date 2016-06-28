@@ -119,6 +119,45 @@ def _monthdelta(d1, d2):
             break
     return delta
             
+def _select_top_timeline(freq_list, number=10):
+    """
+    Returns the frequency list, but only with the best words, i.e. the words
+    that have the biggest sum of frequencies.
+    
+    @param freq_list: the list of dictionaries {word:frequency}
+    @type freq_list: dictionary {word (str or unicode?):float}
+    
+    @param number: the number of words you want
+    @type number: int
+    
+    @return: the list of dictionaries {word:frequency} reduced to the top words
+    @rtype: dictionary {word:float} (same as freq_list)"""   
+    
+    scores = dict()
+    for dic in freq_list:
+        for word,freq in dic.items():
+            if word in dic.keys():
+                scores[word] += freq
+            else:
+                scores[word] = freq
+                
+    #the top words:
+    top_words = sorted([k for (k,v) in scores.items()], reverse=True)[:number-1]
+    
+    #we copy freq_list in return_freq_list selecting only the top words
+    return_freq_list = []
+    for old_dic in freq_list:
+        new_dic = dict()
+        for word, freq in old_dic.items():
+            if word in top_words:
+                new_dic[word] = freq
+        return_freq_list.append(new_dic)
+   
+    return return_freq_list
+                
+        
+   
+    
 def make_json_timeline(authorName, startDate, endDate, periodLength, json_filepath):
     """Creates a JSON file for a timeline about a given author between two dates.
     
@@ -152,7 +191,7 @@ def make_json_timeline(authorName, startDate, endDate, periodLength, json_filepa
     endDateTime = date(int(endDate.split()[0]), int(endDate.split()[1]), 1)
     
     #number of periods considered
-    periodsNumber = monthdelta(startDateTime,endDateTime)//periodLength 
+    periodsNumber = _monthdelta(startDateTime,endDateTime)//periodLength 
     
     #create TFDIDF Matrixes for each period
     date1 = startDateTime
@@ -178,8 +217,10 @@ def make_json_timeline(authorName, startDate, endDate, periodLength, json_filepa
     #last data point:
     periodFrequenciesList.append(dataTimeline.median([matrixList[-2],matrixList[-1]]))
     
+    topFrequenciesList = _select_top_timeline(periodFrequenciesList, number=10)
+    
     #converting to output format
-    formatConversion.convertToMatrice(periodFrequenciesList, 
+    formatConversion.convertToMatrice(topFrequenciesList, 
         src+os.sep+"templates"+os.sep+"timeline.json", periodsNumber) 
 
 
@@ -188,4 +229,5 @@ def make_json_timeline(authorName, startDate, endDate, periodLength, json_filepa
 
 if __name__ == "__main__":
     make_json_wordcloud2(data+os.sep+"concolato.bib")
-    
+    make_json_timeline("C. Concolato", "2012 01", "2015 12", 6, 
+        src+os.sep+"static"+os.sep+"timeline"+os.sep+"timeline.json")

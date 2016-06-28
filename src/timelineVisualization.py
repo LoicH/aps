@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Jun 23 11:19:24 2016
-
-@author: asueur
-"""
 
 import PDFdl
 import bibtexparser
 import re
+import os
 
+app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
+data = app_path+os.sep+"data"
+src = app_path+os.sep+"src"
 
+regex=r'id=(\d+)' 
+bib = data+os.sep+'document.bib'  ### bib name (can be modified)
+entries=PDFdl.openBibLib(bib).entries #all of the bib's articles
 
 class article:
     def __init__(self, title, author):
@@ -38,6 +40,4 @@ def getInfo(authorName): #name in the form of lastName
     return datesAndIds, coauthors
 
 if __name__ == "__main__": 
-   regex=r'id=(\d+)' 
-   bib = 'document.bib'  ### bib name (can be modified)
-   entries=PDFdl.openBibLib(bib).entries #all of the bib's articles
+    print "main"
