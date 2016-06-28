@@ -1,1 +1,10 @@
-{"data":[[5,10], [6,2], [7,3], [5,8]]}
+{
+  "toto" :
+  [
+  {"label": "Marcel", "values":[17, 4, 2, 7]},
+  {"label": "Jean", "values":[2, 2, 5, 10]},
+  {"label": "Jacques", "values":[2, 4, 7, 2]},
+  {"label": "Rene", "values":[1, 7, 8, 2]},
+  {"label": "balbla", "values":[1, 6, 1, 2]}
+  ]
+}
