@@ -6,7 +6,8 @@ Created on Tue Jun 21 13:46:30 2016
 """
 import json
 import numpy as np
-
+import codecs
+import os
 
 ###################################################################
 #conversion for wordCloud
@@ -92,9 +93,18 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections): # standard inpu
 
 
 def convertGraph(coauthorDict): #convert from coauthor dict to input format for graph
-    s=""
+    s="["
     for i in coauthorDict:
-        s+="""{"name":"""+i+"""", "size":3000,"imports":"""+str(coauthorDict[i])+"},"
+        s+="""{"name":"""+'"'+i.replace(".","")+'"'+""","size":3000,"imports":["""
+        for k in coauthorDict[i]:
+            s+='"'+k.replace(".","")+'"'+","  #problem name :""
+        if s[-1]!="[":
+            s=s[:-1]
+        s=s+"]},"
     s=s[:-1]
-    return "["+s+"]"
+    s+="]"
+    f=f = codecs.open("templates" + os.sep+"readme-flare-imports.json","w","utf-8")
+    f.write(s)
+    f.close()
+    return s
     
