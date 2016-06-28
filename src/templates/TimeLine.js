@@ -26,11 +26,11 @@ var colors = d3.scale.category20();
 
 var x = d3.scale.linear()
     .range([0, width])
-    .domain([0,3]);
+    .domain([0,data2[0].values.length-1]);
 
 var y = d3.scale.linear()
     .range([height, 0])
-    .domain([0,25]);
+    .domain([0,22]);
 
 
 var z = d3.scale.category20c();

@@ -26,7 +26,7 @@ d3.json("wordcloud/tags.json", function(error, json) {
         })
         .on("end", draw);
 
-    var svg = d3.select("#vis").append("svg")
+    var svg = d3.select("#wc").append("svg")
         .attr("width", w)
         .attr("height", h);
 
