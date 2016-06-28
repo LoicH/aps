@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script type="text/javascript" src="bower_components/d3/d3.js"></script>
-<script src="{{url_for('static', filename='d3.layout.cloud.js') }}"></script>
+<script src=""></script>
 <script type="text/javascript" src="bower_components/d3-cloud/build/d3.layout.cloud.js"></script>
 
 <head>
@@ -9,15 +9,15 @@
     <title>Word Cloud</title>
 </head>
 <body>
-	<img src="{{url_for('static', filename='Logo_D3.png') }}">
+	<!--<img src="{{url_for('static', filename='Logo_D3.png') }}">-->
     <h1> Word Cloud </h1>
     <div id="vis"></div>
-        <script type="text/javascript" src="{{url_for('static', filename='WordCloud.js') }}"> <!-- WordCloud2 ? -->
+        <script type="text/javascript" src="WordCloud2.js"> <!-- WordCloud2 ? -->
 			
 		</script>
 
     <h1> Time Line </h1>
-    <div>
+    <div id="tl">
         <script type="text/javascript" src="TimeLine.js"></script>
     </div>
     <h1> Graph </h1>
@@ -26,3 +26,7 @@
     </div>
 </body>
 </html>
+
+
+<!--{{url_for('static', filename='WordCloud.js') }}-->
+<!--{{url_for('static', filename='d3.layout.cloud.js') }}-->
