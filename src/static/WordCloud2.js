@@ -88,8 +88,8 @@ d3.json("/static/wordcloud/tags.json", function(error, json) {
     }
 
     function update() {
-        layout.font('impact').spiral('archimedean');
-        fontSize = d3.scale['sqrt']().range([10, 100]);
+        layout.font('monospace').spiral('archimedean');
+        fontSize = d3.scale['sqrt']().range([50, 100]);
         if (tags.length) {
             fontSize.domain([+tags[tags.length - 1].value || 1, +tags[0].value]);
         }
