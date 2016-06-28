@@ -38,7 +38,7 @@ class FreqMatrix:
         return words_dict
         
     def word_appearance(self, word):
-        """returns all frequency of a word : dict {doc : frequency of word in this doc}"""
+        """returns all frequency of a word: dict {doc: frequency of word in this doc}"""
         return self.graph[word]
 
         

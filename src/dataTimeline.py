@@ -17,9 +17,21 @@ data = app_path+os.sep+"data"
 
 
 
-def createTFIDFMatrix(authorName, startDate, endDate): #date format : year monthNumber
+def createTFIDFMatrix(authorName, startDate, endDate): #date format: year monthNumber
+    """ create TFIDF Matrix using documents written by an author during a selected period
+    @param authorName: author's lastname
+    @type authorName: string
+    
+    @param startName: start of the period you want to select
+    @type startName: string "year monthNumber"
+    
+    @param endName: end of the period you want to select
+    @type endName: string "year monthNumber"
+    
+    @return: TFIDF Matrix using documents selected
+    @rtype: TDIDFMatrix object """
     a = dict() #dictionary of frequency dictionaries for documents
-    listTitle=getInfo(authorName)[0] #dictonnary of publications, dates and ids e.g : {pubName : [date,id]}
+    listTitle=getInfo(authorName)[0] #dictonnary of publications, dates and ids e.g: {pubName: [date,id]}
     titleId=dict()
     for j in listTitle:
         formatedDate=formatDate(listTitle[j][0])

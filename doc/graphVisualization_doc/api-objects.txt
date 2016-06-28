@@ -1,0 +1,6 @@
+graphVisualization	graphVisualization-module.html
+graphVisualization.getdictCoauthors	graphVisualization-module.html#getdictCoauthors
+graphVisualization.__package__	graphVisualization-module.html#__package__
+graphVisualization.getAllAuthors	graphVisualization-module.html#getAllAuthors
+graphVisualization.similarityMatrix	graphVisualization-module.html#similarityMatrix
+graphVisualization.distanceTFIDF	graphVisualization-module.html#distanceTFIDF

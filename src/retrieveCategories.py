@@ -10,7 +10,15 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 #test <http://dbpedia.org/page/Computer_science>
 
-def getURIs(text): #returns all the URIs linked to words or word groups in the text #unknown influence of parameters
+def getURIs(text): 
+    """returns all the URIs linked to words or word groups in the text #unknown influence of parameters
+    @param text: text you want to get URIs from
+    @type text: string
+    
+    @return: all URIs DBpedia found linked to the words in text and all words that dbpedia found URIs linked to
+    @rtype: string list tuple"""
+
+    
     URIList=[]
     annotatedWords=[]
     annotations = spotlight.annotate('http://spotlight.sztaki.hu:2222/rest/annotate',text,confidence=0.4, support=20, spotter='Default')
@@ -23,7 +31,18 @@ def getURIs(text): #returns all the URIs linked to words or word groups in the t
 
 
     
-def getCategories(URIList, annotatedWords): #returns all the categories linked to an URL list. Produces duplicates on purpose
+def getCategories(URIList, annotatedWords):
+    """returns all the categories linked to an URL list. Produces duplicates on purpose
+    
+    @param URIList: URIs you want the categories linked to
+    @type URIList: string list
+    
+    @param annotatedWords: words that are linked to each URIs in the URIlist
+    @type annotatedWords: string list
+    
+    @return[0]: list of all categories found with duplicates and match each Categories to the words linked to
+    @rtype[0]: tuple(string list, dict{URI (string): list word (list string)})"""
+    
     L=[]
     wordByCategory=dict()
     i=0
@@ -47,17 +66,24 @@ def getCategories(URIList, annotatedWords): #returns all the categories linked t
         i+=1
     return L, wordByCategory
     
-def categoryFrequency(categoryList): #returns relative frequency of a category
+def categoryFrequency(categoryList): 
+    """returns relative frequency of a category
+    @param categoryList: raw categories list (with duplicates)
+    @type categoryList: string list
+    
+    @return: match each Categories to its frequency
+    @rtype: dict{category (string): frequency (float)}"""
     n=len(categoryList)
     freq = dict()
-    for i in categoryList :
+    for i in categoryList:
         if i in freq.keys():
             freq[i]=freq[i]+1/float(n)
         else:
             freq[i]=1/float(n)
     return freq
     
-def textToCatFreq(text) :
+def textToCatFreq(text):
+    """returns dict{category: frequency } for each category found in the text"""
     URIs = getURIs(text)
     return categoryFrequency(getCategories(URIs[0], URIs[1]))
     
@@ -79,6 +105,14 @@ def textToCatFreq(text) :
 #    return list(set(L))
 
 
-def getAll(text): #returns relative frequency of a category, and words linked to categories
+def getAll(text): 
+    """returns relative frequency of a category, and words linked to categories
+    
+    @param text: text you want to get category frequency from
+    @type text: string    
+    
+    @return: link categories to their frequencies and match each Categories to the words linked to
+    @rtype: tuple(dict{category (string): frequency (float)}, dict{category (string): list word (list string)})"""
     categories=getCategories(getURIs(text)[0], getURIs(text)[1] )
     return categoryFrequency(categories[0]),categories[1]
+    

@@ -13,7 +13,6 @@ import os
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
 src = app_path+os.sep+"src"
-
 """Directing the routes"""
 app = Flask(__name__)
 

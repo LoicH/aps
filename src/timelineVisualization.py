@@ -28,10 +28,10 @@ def getInfo(authorName): #name in the form of lastName
     for i in entries:
         if authorName.replace(" ","") in i["author"].replace(" ","").replace("{","").replace("}",""):
             try:
-                datesAndIds[i["title"]]=[i["year"]+" " + i["month"],int(re.findall(regex,i["annote"])[0])] #dictionnary pubName : [date,id]
+                datesAndIds[i["title"]]=[i["year"]+" " + i["month"],int(re.findall(regex,i["annote"])[0])] #dictionnary pubName: [date,id]
             except KeyError:
                 print "no month available for document"
-            for k in i["author"].replace(" ","").replace("{","").replace("}","").split("and"):
+            for k in i["author"].replace(" ","").replace("{","").replace("}","").split(" and "):
                 if k not in coauthors:
                     coauthors.append(k.replace('}','').replace('{','').replace(" ",""))        
     coauthors=[i for i in coauthors if i!=authorName]     
@@ -41,8 +41,10 @@ def getCoauthors(authorName):
     coauthors=[]
     for i in entries:
         if authorName.replace(" ","") in i["author"].replace(" ","").replace("{","").replace("}",""):
-            for k in i["author"].replace(" ","").replace("{","").replace("}","").split("and"):
-                coauthors.append(k.replace('}','').replace('{','').replace(" ",""))        
+            for k in i["author"].replace("{","").replace("}","").split(" and "):
+                a=k.replace('}','').replace('{','')
+                if a.replace(" ","")!="":
+                    coauthors.append(k.replace('}','').replace('{',''))        
     coauthors=[i for i in coauthors if i!=authorName]     
     coauthorsFreq = {a:coauthors.count(a) for a in coauthors}    
     coauthors2=[i for i in coauthorsFreq if coauthorsFreq[i]>10]

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PDFdl</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;PDFdl
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PDFdl-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PDFdl-module.html">Module PDFdl</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">Created on Tue Jun 21 18:08:59 2016</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">@author: asueur</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">urllib</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">bibtexparser</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment">#constantes</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable PDFdl.app_path=PDFdl-module.html#app_path,Variable dataTimeline.app_path=dataTimeline-module.html#app_path,Variable main.app_path=main-module.html#app_path,Variable main_timeline.app_path=main_timeline-module.html#app_path,Variable pdf2txt.app_path=pdf2txt-module.html#app_path,Variable server.app_path=server-module.html#app_path"><a title="PDFdl.app_path
+dataTimeline.app_path
+main.app_path
+main_timeline.app_path
+pdf2txt.app_path
+server.app_path" class="py-name" href="#" onclick="return doclink('link-0', 'app_path', 'link-0');">app_path</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getcwd</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable PDFdl.data=PDFdl-module.html#data,Variable dataTimeline.data=dataTimeline-module.html#data,Variable main.data=main-module.html#data,Variable main_timeline.data=main_timeline-module.html#data,Variable pdf2txt.data=pdf2txt-module.html#data,Variable server.data=server-module.html#data"><a title="PDFdl.data
+dataTimeline.data
+main.data
+main_timeline.data
+pdf2txt.data
+server.data" class="py-name" href="#" onclick="return doclink('link-1', 'data', 'link-1');">data</a></tt> <tt class="py-op">=</tt> <tt id="link-2" class="py-name"><a title="PDFdl.app_path
+dataTimeline.app_path
+main.app_path
+main_timeline.app_path
+pdf2txt.app_path
+server.app_path" class="py-name" href="#" onclick="return doclink('link-2', 'app_path', 'link-0');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"data"</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable PDFdl.src=PDFdl-module.html#src,Variable main.src=main-module.html#src,Variable main_timeline.src=main_timeline-module.html#src,Variable pdf2txt.src=pdf2txt-module.html#src,Variable server.src=server-module.html#src"><a title="PDFdl.src
+main.src
+main_timeline.src
+pdf2txt.src
+server.src" class="py-name" href="#" onclick="return doclink('link-3', 'src', 'link-3');">src</a></tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="PDFdl.app_path
+dataTimeline.app_path
+main.app_path
+main_timeline.app_path
+pdf2txt.app_path
+server.app_path" class="py-name" href="#" onclick="return doclink('link-4', 'app_path', 'link-0');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"src"</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable PDFdl.regex=PDFdl-module.html#regex,Variable Timeline.regex=Timeline-module.html#regex,Variable timelineVisualization.regex=timelineVisualization-module.html#regex"><a title="PDFdl.regex
+Timeline.regex
+timelineVisualization.regex" class="py-name" href="#" onclick="return doclink('link-5', 'regex', 'link-5');">regex</a></tt><tt class="py-op">=</tt><tt class="py-string">r'id=(\d+)'</tt>   </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
+<a name="openBibLib"></a><div id="openBibLib-def"><a name="L19"></a><tt class="py-lineno">19</tt> <a class="py-toggle" href="#" id="openBibLib-toggle" onclick="return toggle('openBibLib');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PDFdl-module.html#openBibLib">openBibLib</a><tt class="py-op">(</tt><tt class="py-param">bibName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> <tt class="py-comment"># e.g: 'document.bib'</tt> </tt>
+</div><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-keyword">with</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt id="link-6" class="py-name"><a title="PDFdl.src
+main.src
+main_timeline.src
+pdf2txt.src
+server.src" class="py-name" href="#" onclick="return doclink('link-6', 'src', 'link-3');">src</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt id="link-7" class="py-name" targets="Variable timelineVisualization.bibName=timelineVisualization-module.html#bibName"><a title="timelineVisualization.bibName" class="py-name" href="#" onclick="return doclink('link-7', 'bibName', 'link-7');">bibName</a></tt><tt class="py-op">)</tt> <tt class="py-keyword">as</tt> <tt class="py-name">bibtex_file</tt><tt class="py-op">:</tt>   </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">            <tt class="py-name">bibtex_database</tt> <tt class="py-op">=</tt> <tt class="py-name">bibtexparser</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Function TFIDFMatrixClass.load()=TFIDFMatrixClass-module.html#load"><a title="TFIDFMatrixClass.load" class="py-name" href="#" onclick="return doclink('link-8', 'load', 'link-8');">load</a></tt><tt class="py-op">(</tt><tt class="py-name">bibtex_file</tt><tt class="py-op">)</tt>  </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">bibtex_database</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-comment">#def download(fileURL,writeFile):</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-comment">#    testfile = urllib.URLopener()</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-comment">#    try:</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-comment">#        testfile.retrieve(fileURL, writeFile)  # example: testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11068", "file.pdf")</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-comment">#    except IOError:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-comment">#        print "No pdf or no memory left"</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"> </tt>
+<a name="downloadPDF"></a><div id="downloadPDF-def"><a name="L32"></a><tt class="py-lineno">32</tt> <a class="py-toggle" href="#" id="downloadPDF-toggle" onclick="return toggle('downloadPDF');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PDFdl-module.html#downloadPDF">downloadPDF</a><tt class="py-op">(</tt><tt class="py-param">id</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="downloadPDF-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="downloadPDF-expanded"><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">    <tt class="py-name">testfile</tt> <tt class="py-op">=</tt> <tt class="py-name">urllib</tt><tt class="py-op">.</tt><tt class="py-name">URLopener</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt>  <tt class="py-string">"http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id="</tt><tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt><tt class="py-op">(</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-string">".pdf"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">listdir</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="PDFdl.data
+dataTimeline.data
+main.data
+main_timeline.data
+pdf2txt.data
+server.data" class="py-name" href="#" onclick="return doclink('link-9', 'data', 'link-1');">data</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> <tt class="py-comment">#checks if the file already exists</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"File already present"</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">id</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">            <tt class="py-name">testfile</tt><tt class="py-op">.</tt><tt class="py-name">retrieve</tt><tt class="py-op">(</tt><tt class="py-string">"http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id="</tt><tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"/tmp"</tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-string">".pdf"</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">IOError</tt><tt class="py-op">:</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"No pdf or no memory left"</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">         </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"> </tt>
+<a name="downloadAll"></a><div id="downloadAll-def"><a name="L45"></a><tt class="py-lineno">45</tt> <a class="py-toggle" href="#" id="downloadAll-toggle" onclick="return toggle('downloadAll');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PDFdl-module.html#downloadAll">downloadAll</a><tt class="py-op">(</tt><tt class="py-param">bibName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> <tt class="py-comment">#downloads all files from a given bibTex library</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">    <tt class="py-name">pos_Id_List</tt> <tt class="py-op">=</tt> <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">    <tt class="py-name">bibtex_database</tt><tt class="py-op">=</tt><tt id="link-10" class="py-name" targets="Function PDFdl.openBibLib()=PDFdl-module.html#openBibLib"><a title="PDFdl.openBibLib" class="py-name" href="#" onclick="return doclink('link-10', 'openBibLib', 'link-10');">openBibLib</a></tt><tt class="py-op">(</tt><tt id="link-11" class="py-name"><a title="timelineVisualization.bibName" class="py-name" href="#" onclick="return doclink('link-11', 'bibName', 'link-7');">bibName</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">bibtex_database</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Variable timelineVisualization.entries=timelineVisualization-module.html#entries"><a title="timelineVisualization.entries" class="py-name" href="#" onclick="return doclink('link-12', 'entries', 'link-12');">entries</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">            <tt class="py-name">annote</tt><tt class="py-op">=</tt><tt class="py-name">bibtex_database</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="timelineVisualization.entries" class="py-name" href="#" onclick="return doclink('link-13', 'entries', 'link-12');">entries</a></tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">"annote"</tt><tt class="py-op">]</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"No id found"</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">i</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">        <tt class="py-name">id</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">findall</tt><tt class="py-op">(</tt><tt id="link-14" class="py-name"><a title="PDFdl.regex
+Timeline.regex
+timelineVisualization.regex" class="py-name" href="#" onclick="return doclink('link-14', 'regex', 'link-5');">regex</a></tt><tt class="py-op">,</tt><tt class="py-name">annote</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt id="link-15" class="py-name" targets="Function PDFdl.downloadPDF()=PDFdl-module.html#downloadPDF"><a title="PDFdl.downloadPDF" class="py-name" href="#" onclick="return doclink('link-15', 'downloadPDF', 'link-15');">downloadPDF</a></tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-name">pos_Id_List</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">id</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt id="link-16" class="py-name"><a title="PDFdl.downloadPDF" class="py-name" href="#" onclick="return doclink('link-16', 'downloadPDF', 'link-15');">downloadPDF</a></tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">pos_Id_List</tt> </tt>
+</div><a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Jun 28 18:46:00 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

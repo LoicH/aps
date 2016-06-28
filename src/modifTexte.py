@@ -9,7 +9,7 @@ Created on Thu Jun 16 16:42:50 2016
 
 
 
-# blackList : banned words list
+# blackList: banned words list
 import string
 import nltk
 from nltk.corpus import wordnet
@@ -30,17 +30,37 @@ from nltk.corpus import wordnet
     #blackList=["abc","acb"]
 
 
-#deleting punctuation
+
 def delPunctuation(text):
+    """deleting punctuation
+    @param text: text you want to delete punctuation 
+    @type text: string
+    
+    @return: text without punctuation
+    @rtype: string """
     for char in string.punctuation: 
         text=text.replace(char,'')
     return text.replace('\x0c','')
     
 def getTextWords(text):
+    """tokenize words
+    @param text: text you want to tokenize
+    @type text: string
+    
+    @return: word list
+    @rtype: string list """
     return nltk.word_tokenize(text)
 
-#deleting useless words + lowercase
 def modifyText(textWords, blackList):
+    """deleting one letter words + lowercase (except acronyms)
+    @param textWords: word list
+    @type textWords: string list
+    
+    @param blackList: words you want to delete in textWords
+    @type blacklist: string list
+    
+    @return: word list without one letter words. All words in lowercase, except acronyms
+    @rtype: string list """
     i=0
     for word in textWords:
         if len(word) == 1:
@@ -49,12 +69,17 @@ def modifyText(textWords, blackList):
         elif not word.isupper():
             textWords[i]=word.lower()
         i += 1
-    for w in blackList :
+    for w in blackList:
         textWords = textWords.replace(w,'')
     return textWords
     
 def deleteStopWords(textWords):
-    #deleting words of types determiners, conjonctions, cardinal numbers and stopwords
+    """deleting words of types determiners, conjonctions, cardinal numbers and stopwords
+    @param text: word list you want to delete stopwords from
+    @type text: string list
+    
+    @return: word list without stopwords, determiners ...
+    @rtype: string list """
     listCopy=textWords
     stopwords= nltk.corpus.stopwords.words("english")
     for sw in stopwords:
@@ -62,7 +87,7 @@ def deleteStopWords(textWords):
     types = nltk.pos_tag(listCopy)    
     #print types
     for i in types:
-        if i[1] in ["DT","CC", "CD", "PRP", "PRP$", "PDT"] :  
+        if i[1] in ["DT","CC", "CD", "PRP", "PRP$", "PDT"]:  
             listCopy.remove(i[0])
     return listCopy
     
@@ -88,8 +113,13 @@ def deleteStopWords(textWords):
 #    return dictionnary
     
 
-def get_wordnet_pos(treebank_tag): # convert pos_tag from nltk to pos_tag from wordnet
-
+def get_wordnet_pos(treebank_tag): 
+    """convert pos_tag from nltk to pos_tag from wordnet
+    @param treebank_tag: tag from nltk
+    @type treebank_tag: string 
+    
+    @return: tag from wordnet
+    @rtype: string (one letter) """
     if treebank_tag.startswith('J'):
         return "a"
     elif treebank_tag.startswith('V'):
@@ -102,7 +132,12 @@ def get_wordnet_pos(treebank_tag): # convert pos_tag from nltk to pos_tag from w
         return 'n'
 
 def lemmatization(textWords): 
-    #lemmatizes all the words
+    """lemmatizes all the words
+    @param textWords: word list
+    @type textWords: string list
+    
+    @return: lemmatized words
+    @rtype: string list """
     words = textWords
     p = nltk.pos_tag(textWords)
     lmtzr=nltk.WordNetLemmatizer()
@@ -111,25 +146,44 @@ def lemmatization(textWords):
     return words
         
 def frequency(textWords):
-    #gives the frequency of each word in the text
+    """gives the frequency of each word in the text
+    
+    @param textWords: word list
+    @type textWords: string list
+    
+    @return: link each word with its frequency in the world list
+    @rtype: dict[ word (string): frequency (float) ] """
     a=nltk.FreqDist(textWords)
     nbMots = 0
-    for word in a :
+    for word in a:
         nbMots = nbMots + a[word]
     for i in a.keys():
         a[i]=a[i]/float(nbMots)
     return a
 
 def frequencyWithTreshold(textWords, occTreshold, lengthTreshold):
+    """gives the frequency of each word in the text
+    
+    @param textWords: word list
+    @type textWords: string list
+    
+    @param occTreshold: world with less occurences than occTreshold will be wiped out
+    @type occTreshold: int
+    
+    @param occTreshold: world with less letters than lengthTreshold will be wiped out
+    @type occTreshold: int
+
+    @return: world list without the world below the two tresholds
+    @rtype: string list """
     a=nltk.FreqDist(textWords)
     nbMots = 0
     wordsToRemove = []
-    for word in a :
+    for word in a:
         if a[word] <= occTreshold or len(word) <= lengthTreshold:
             wordsToRemove.append(word)
-        else :
+        else:
             nbMots = nbMots + a[word]
-    for word in wordsToRemove :
+    for word in wordsToRemove:
         del a[word]
     for i in a.keys():
         a[i]=a[i]/float(nbMots)
@@ -140,12 +194,12 @@ def frequencyWithTreshold(textWords, occTreshold, lengthTreshold):
 #    w= textToDictionnary(t, [])
 #    d = frequency(w)
 #    e = frequencyWithTreshold(w, 2, 0)
-#    for word in d :
-#        if word in e :
+#    for word in d:
+#        if word in e:
 #            print(word)
     
 def textToDictionnary(text, blackList):
-    #does all the functions above in one take
+    """does all the functions above in one take"""
     f= frequency(lemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList))))
     dic = dict()
     for word in f.keys():
@@ -190,7 +244,7 @@ it would indicate to the interpreters that these pixels (corre-
 sponding to the previously mentioned black clusters) deserve"""
     print estimate_language(t)
     
-    t = """Albert Einstein (en allemand : [ˈalbɐt ˈaɪnʃtaɪn] Prononciation du titre dans sa version originale Écouter) né le 14 mars 1879 N 1 à Ulm, Wurtemberg, et mort le 18 avril 1955 à Princeton, New Jersey est un physicien théoricien qui fut successivement allemand, apatride (1896), suisse (1901) et sous la double nationalité helvético-américaine (1940)1. Il publie sa théorie de la relativité restreinte en 1905, et sa théorie de la gravitation dite relativité générale en 1915. Il contribue largement au développement de la mécanique quantique et de la cosmologie, et reçoit le prix Nobel de physique de 1921 pour son explication de l’effet photoélectrique2. Son travail est notamment connu du grand public pour l’équation E=mc2, qui établit une équivalence entre la matière et l’énergie d’un système.Il est aujourd'hui considéré comme l'un des plus grands scientifiques de l'histoire, et sa renommée dépasse largement le milieu scientifique. Il est la personnalité du XXe siècle selon l'hebdomadaire Time."""
+    t = """Albert Einstein (en allemand: [ˈalbɐt ˈaɪnʃtaɪn] Prononciation du titre dans sa version originale Écouter) né le 14 mars 1879 N 1 à Ulm, Wurtemberg, et mort le 18 avril 1955 à Princeton, New Jersey est un physicien théoricien qui fut successivement allemand, apatride (1896), suisse (1901) et sous la double nationalité helvético-américaine (1940)1. Il publie sa théorie de la relativité restreinte en 1905, et sa théorie de la gravitation dite relativité générale en 1915. Il contribue largement au développement de la mécanique quantique et de la cosmologie, et reçoit le prix Nobel de physique de 1921 pour son explication de l’effet photoélectrique2. Son travail est notamment connu du grand public pour l’équation E=mc2, qui établit une équivalence entre la matière et l’énergie d’un système.Il est aujourd'hui considéré comme l'un des plus grands scientifiques de l'histoire, et sa renommée dépasse largement le milieu scientifique. Il est la personnalité du XXe siècle selon l'hebdomadaire Time."""
     print estimate_language(t)
     
     t = u"""Acknowledgements
@@ -205,7 +259,7 @@ References
 
 [1] Pierre Alquier and Olivier Wintenberger. Model selection
 for weakly dependent time series forecasting. Bernoulli,
-18(3) : 883-913, 2012.
+18(3): 883-913, 2012.
 
 [2] Olivier Catoni and Jean Picard. Statistical Learning The-
 ory and Stochastic Optimization: Ecole D’´et´e de Prob-
@@ -215,15 +269,15 @@ Verlag, 2004.
 
 [3] Krzysztof Łatuszy´nski and Wojciech Niemiro. Rigorous
 conﬁdence bounds for MCMC under a geometric drift
-condition. J. Complexity, 27(1) : 23-38, 2011.
+condition. J. Complexity, 27(1): 23-38, 2011.
 
 [4] K. L. Mengersen and R. L. Tweedie. Rates of convergence
 of the Hastings and Metropolis algorithms. Ann. Statist.,
-24(1) : 101-121, 1996.
+24(1): 101-121, 1996.
 
 [5] Eric Moulines, Pierre Priouret, and Franc¸ois Roueﬀ. On
 recursive estimation for time varying autoregressive pro-
-cesses. Ann. Statist., 33(6) : 2610-2654, 2005.
+cesses. Ann. Statist., 33(6): 2610-2654, 2005.
 
 [6] Emmanuel Rio. In´egalit´es de Hoeﬀding pour les fonc-
 tions lipschitziennes de suites d´ependantes. Comptes

@@ -26,7 +26,7 @@ def openBibLib(bibName):
 #def download(fileURL,writeFile):
 #    testfile = urllib.URLopener()
 #    try:
-#        testfile.retrieve(fileURL, writeFile)  # example : testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11068", "file.pdf")
+#        testfile.retrieve(fileURL, writeFile)  # example: testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11068", "file.pdf")
 #    except IOError:
 #        print "No pdf or no memory left"
 
