@@ -12,8 +12,9 @@ import TFIDFMatrixClass
 
 
 #similarity matrix 
-def similarityMatrix(matrice):
-    similarity = np.dot(matrice, matrice.T)
+def similarityMatrix(matrix):
+    """ tell if documents in a matrix are close or not"""
+    similarity = np.dot(matrix, matrix.T)
     square_mag = np.diag(similarity)
     inv_square_mag = 1.0 / square_mag
     inv_square_mag[np.isinf(inv_square_mag)] = 0
@@ -27,7 +28,13 @@ def distanceTFIDF(A,B):
     B.sum_words()
     return 
 
-def getAllAuthors(bibName): #renvoie la liste de tous les auteurs
+def getAllAuthors(bibName): 
+    """ return a list with all the authors in the bib
+    @param bibName : the bib you want to get the authors from
+    @type bibName : string
+                             
+    @return: all authors from the bib
+    @rtype: string list """
     authorList=[]
     bibli = PDFdl.openBibLib(bibName)
     for article in bibli.entries:
@@ -38,6 +45,12 @@ def getAllAuthors(bibName): #renvoie la liste de tous les auteurs
     return authorList
     
 def getdictCoauthors(bibName):
+    """ return a list with all the coauthors in the bib
+    @param bibName : the bib you want to get the coauthors from
+    @type bibName : string
+                             
+    @return: all coauthors from the bib linked to the authors
+    @rtype: dictionnary[author (string) : list coauthors (string list)] """
     authorList=getAllAuthors(bibName)
     n=len(authorList)
     dictCoauthors=dict()

@@ -12,7 +12,16 @@ import freqMatrixClass
 
 regex = r"(\d+) ([a-zA-Z]+)"
 
-def selecDocsByAuthor(listDocs, author) : #  select the docs written by an author
+def selecDocsByAuthor(listDocs, author) : 
+    """select the docs written by an author
+    @param listDocs : all docs in a corpus
+    @type listDocs : doc list
+    
+    @param author : author name
+    @type author : string
+    
+    @return : all docs written by the author in the corpus
+    @rtype: doc list"""
     l = []
     for doc in listDocs :
         if doc.author == author :
@@ -22,7 +31,8 @@ def formatMonth(string): # turn month from string to number
     switcher = { "jan" : "01","feb": "02", "mar": "03", "apr" : "04","may" : "05", "jun" : "06", "jul" : "07", "aug" : "08", "sep" : "09", "oct" : "10", "nov" : "11", "dec" : "12" }      
     return switcher.get(string)
     
-def formatDate(string) : # turn "2015 feb" in "2015 02" for example
+def formatDate(string) : 
+    """turn "2015 feb" in "2015 02" for instance"""
     if re.search(regex, string):        # return 0 if the string doesn't match
         match = re.search(r"(\d+) ([a-zA-Z]+)", string)
         date = match.group(0)
@@ -83,12 +93,6 @@ def allCategories(listCategoriesDocs) : # get all categories from all the docs
             if category not in listAllCategories :
                 listAllCategories.append(category)
     return listAllCategories
-
-
-d=dict()
-d["les oiseaux"] = "2015 jan"
-d["les animaux"] = "2014 dec"
-d["n"] = "2015 may"
 
 
 

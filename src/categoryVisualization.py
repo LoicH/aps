@@ -6,12 +6,14 @@ Created on Thu Jun 23 10:33:11 2016
 """
 # coding: utf8
 
-#concolato_out.txt
 
-def getText(nameFile) :
-    file = open("../data/" + nameFile, "r")
-    content =file.read()
-    file.close()
+def getText(fileName) :
+    """returns the content of the file in aps/data/
+    @return: file data
+    @rtype: string"""
+    f = open("../data/" + fileName, "r")
+    content =f.read()
+    f.close()
     return content
 
 import retrieveCategories as ret
@@ -19,8 +21,20 @@ import retrieveCategories as ret
 #garder mot avec plus grande fréquence
 # quand on clique sur un mot : parcourir l'ensemble des mots liés à ce concept dans chaque document et compter nombre occurences
 
-def getLinkedWord(category, textList, numberWords = 20): #returns the 20 words linked to a category and with the most occurences
-    wordOcc = dict()                                     # A MODIFIER : ouvrir fichier dans dossier data
+def getLinkedWord(category, textList, numberWords = 20): 
+    """returns the "numberWords" words linked to a category and with the most occurences
+    @param category: The category you want the words linked to
+    @type category: string
+    
+    @param textList: The texts'filename you want to search category in
+    @type textList: string list
+    
+    @param numberWords: number of words you want
+    @type numberWords: int
+    
+    @return: occurences number for each word in this category
+    @rtype: int list"""
+    wordOcc = dict()      # A MODIFIER : ouvrir fichier dans dossier data
     for text in textList:
         file = open(text, "r")
         content = file.read()
@@ -35,7 +49,22 @@ def getLinkedWord(category, textList, numberWords = 20): #returns the 20 words l
     sortedOcc= sorted([(k) for (k,v) in wordOcc.items()],reverse=True)[:numberWords]
     return sortedOcc
     
-def getTextWithMostOccurenceOf(word, category, textList, numberTexts = 1): #gets list of texts with the highest frequency of the word
+def getTextWithMostOccurenceOf(word, category, textList, numberTexts = 1): 
+    """gets list of texts with the highest frequency of the word
+    @param word: /
+    @type word: string
+    
+    @param category: one category the word is in 
+    @type category: string
+    
+    @param textList: the list of texts you want to search
+    @type textList:  list of string
+    
+    @param numberTexts: number of top texts you want
+    @type numberTexts: int
+    
+    @return: texts with most occurence (sorted)
+    @rtype: string list"""
     occWordByText= dict()
     for text in textList:
         i=0

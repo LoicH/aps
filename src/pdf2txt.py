@@ -32,6 +32,13 @@ data = app_path+os.sep+"data"
 src = app_path+os.sep+"src"
 
 def pdf_to_txt(path):
+    """converts pdf into a string
+    @param path : path to the file
+    @type path : string
+    
+    @return: pdf content
+    @rtype: string"""
+    
     rsrcmgr = PDFResourceManager()
     retstr = StringIO()
     laparams = LAParams()
@@ -51,7 +58,9 @@ def pdf_to_txt(path):
     return s
     
 def pdf_to_file(src_filepath, out_filepath):
-    """Outputs a file to out_filepath"""
+    """Outputs a file to out_filepath   
+    @return: pdf content
+    @rtype: txt file"""
     print "Processing...",
     raw_txt = pdf_to_txt(src_filepath)
     src_filename = src_filepath.split(os.path.sep)[-1] #with .pdf at the end
@@ -62,7 +71,8 @@ def pdf_to_file(src_filepath, out_filepath):
     print "Done."
 
 def testing():
-    """Tests all the sample files in the current directory"""
+    """Tests all the sample files in the current directory
+    """
     trials = 1000
     print "Testing for", trials,"words."
     for filename in os.listdir(app_path+'/data/'):

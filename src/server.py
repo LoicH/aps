@@ -9,7 +9,6 @@ app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
 src = app_path+os.sep+"src"
 from flask import Flask, render_template
-
 app = Flask(__name__)
 
 @app.route('/')
