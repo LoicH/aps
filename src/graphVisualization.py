@@ -30,8 +30,8 @@ def distanceTFIDF(A,B):
 
 def getAllAuthors(bibName): 
     """ return a list with all the authors in the bib
-    @param bibName : the bib you want to get the authors from
-    @type bibName : string
+    @param bibName: the bib you want to get the authors from
+    @type bibName: string
                              
     @return: all authors from the bib
     @rtype: string list """
@@ -46,11 +46,11 @@ def getAllAuthors(bibName):
     
 def getdictCoauthors(bibName):
     """ return a list with all the coauthors in the bib
-    @param bibName : the bib you want to get the coauthors from
-    @type bibName : string
+    @param bibName: the bib you want to get the coauthors from
+    @type bibName: string
                              
     @return: all coauthors from the bib linked to the authors
-    @rtype: dictionnary[author (string) : list coauthors (string list)] """
+    @rtype: dictionnary[author (string): list coauthors (string list)] """
     authorList=getAllAuthors(bibName)
     n=len(authorList)
     dictCoauthors=dict()

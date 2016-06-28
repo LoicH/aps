@@ -33,8 +33,8 @@ src = app_path+os.sep+"src"
 
 def pdf_to_txt(path):
     """converts pdf into a string
-    @param path : path to the file
-    @type path : string
+    @param path: path to the file
+    @type path: string
     
     @return: pdf content
     @rtype: string"""
@@ -99,7 +99,7 @@ def test_file(docname, trials):
         chosen_word = random.choice(words_src)
         if chosen_word in dest_txt:
             count += 1
-#        else :
+#        else:
 #            print chosen_word,"not in destination"
     print "Success rate:",float(count)/trials
     return (float(count)/trials >= 0.7)
@@ -122,9 +122,9 @@ if __name__ == '__main__':
             by default if you invoke this script without arguments""", action="store_true")
     
     args = parser.parse_args()
-    if args.file :
+    if args.file:
         pdf_to_file(args.file, args.output)
-    elif args.testing :
+    elif args.testing:
         testing()
         
 

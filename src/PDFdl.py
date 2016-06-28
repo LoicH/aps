@@ -16,7 +16,7 @@ data = app_path+os.sep+"data"
 src = app_path+os.sep+"src"
 regex=r'id=(\d+)'  
 
-def openBibLib(bibName): # e.g : 'document.bib'
+def openBibLib(bibName): # e.g: 'document.bib'
         with open(src+os.sep+bibName) as bibtex_file:  
             bibtex_database = bibtexparser.load(bibtex_file) 
         return bibtex_database
@@ -25,7 +25,7 @@ def openBibLib(bibName): # e.g : 'document.bib'
 #def download(fileURL,writeFile):
 #    testfile = urllib.URLopener()
 #    try:
-#        testfile.retrieve(fileURL, writeFile)  # example : testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11068", "file.pdf")
+#        testfile.retrieve(fileURL, writeFile)  # example: testfile.retrieve("http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11068", "file.pdf")
 #    except IOError:
 #        print "No pdf or no memory left"
 

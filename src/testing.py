@@ -191,8 +191,8 @@ uris2 = retrieveCategories.getURIs(info)
 categories2 = retrieveCategories.getCategories(uris2[0], uris2[1])
 
 categories = []
-for category in categories1[0] :
-    if category in categories2[0] :
+for category in categories1[0]:
+    if category in categories2[0]:
         categories.append(category)
 
 l = categoryVisualization.getLinkedWord("Randomness", textList)

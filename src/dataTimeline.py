@@ -17,9 +17,9 @@ data = app_path+os.sep+"data"
 
 
 
-def createTFIDFMatrix(authorName, startDate, endDate): #date format : year monthNumber
+def createTFIDFMatrix(authorName, startDate, endDate): #date format: year monthNumber
     """ create TFIDF Matrix using documents written by an author during a selected period
-    @param authorName : author's lastname
+    @param authorName: author's lastname
     @type authorName: string
     
     @param startName: start of the period you want to select
@@ -31,7 +31,7 @@ def createTFIDFMatrix(authorName, startDate, endDate): #date format : year month
     @return: TFIDF Matrix using documents selected
     @rtype: TDIDFMatrix object """
     a = dict() #dictionary of frequency dictionaries for documents
-    listTitle=getInfo(authorName)[0] #dictonnary of publications, dates and ids e.g : {pubName : [date,id]}
+    listTitle=getInfo(authorName)[0] #dictonnary of publications, dates and ids e.g: {pubName: [date,id]}
     titleId=dict()
     for j in listTitle:
         formatedDate=formatDate(listTitle[j][0])
@@ -55,9 +55,9 @@ def createTFIDFMatrix(authorName, startDate, endDate): #date format : year month
 def median(matrixList): 
     """returns average value of category frequencies for multiple TFIDF matrixes
     @param matrixList: TFIDF Matrixes you want average value from
-    @type matrixList : list of objects TFIDFMatrix
+    @type matrixList: list of objects TFIDFMatrix
     
-    @return : average value of category frequencies for all categories in those matrices
+    @return: average value of category frequencies for all categories in those matrices
     @rtype: float list """
     n=len(matrixList) #number of matrixes
     totalFreq=dict()

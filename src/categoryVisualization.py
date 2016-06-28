@@ -7,7 +7,7 @@ Created on Thu Jun 23 10:33:11 2016
 # coding: utf8
 
 
-def getText(fileName) :
+def getText(fileName):
     """returns the content of the file in aps/data/
     @return: file data
     @rtype: string"""
@@ -19,7 +19,7 @@ def getText(fileName) :
 import retrieveCategories as ret
 #trouver mots liés concept dans dictionnaire de chacun des documents / concaténer
 #garder mot avec plus grande fréquence
-# quand on clique sur un mot : parcourir l'ensemble des mots liés à ce concept dans chaque document et compter nombre occurences
+# quand on clique sur un mot: parcourir l'ensemble des mots liés à ce concept dans chaque document et compter nombre occurences
 
 def getLinkedWord(category, textList, numberWords = 20): 
     """returns the "numberWords" words linked to a category and with the most occurences
@@ -34,7 +34,7 @@ def getLinkedWord(category, textList, numberWords = 20):
     
     @return: occurences number for each word in this category
     @rtype: int list"""
-    wordOcc = dict()      # A MODIFIER : ouvrir fichier dans dossier data
+    wordOcc = dict()      # A MODIFIER: ouvrir fichier dans dossier data
     for text in textList:
         file = open(text, "r")
         content = file.read()

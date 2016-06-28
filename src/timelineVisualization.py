@@ -28,7 +28,7 @@ def getInfo(authorName): #name in the form of lastName
     for i in entries:
         if authorName.replace(" ","") in i["author"].replace(" ","").replace("{","").replace("}",""):
             try:
-                datesAndIds[i["title"]]=[i["year"]+" " + i["month"],int(re.findall(regex,i["annote"])[0])] #dictionnary pubName : [date,id]
+                datesAndIds[i["title"]]=[i["year"]+" " + i["month"],int(re.findall(regex,i["annote"])[0])] #dictionnary pubName: [date,id]
             except KeyError:
                 print "no month available for document"
             for k in i["author"].replace(" ","").replace("{","").replace("}","").split(" and "):

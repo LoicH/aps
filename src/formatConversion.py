@@ -23,11 +23,11 @@ class Object(object):
 
 def convertDict(dico, file_out):
     """ convert a dictionnary to a json file used by the first worldcloud
-    @param dico : dictionnary you want to convert
-    @type dico : dictionnary
+    @param dico: dictionnary you want to convert
+    @type dico: dictionnary
     
-    @param file_out : path you want to save the file to
-    @type file_out : string"""
+    @param file_out: path you want to save the file to
+    @type file_out: string"""
     string=""
     a= dict()
     L=[]
@@ -42,11 +42,11 @@ def convertDict(dico, file_out):
     
 def convertDict2(dico, file_out): #used for the second type of word visualization
     """ convert a dictionnary to a json file used by the second worldcloud
-    @param dico : dictionnary you want to convert
-    @type dico : dictionnary
+    @param dico: dictionnary you want to convert
+    @type dico: dictionnary
     
-    @param file_out : path you want to save the file to
-    @type file_out : string"""
+    @param file_out: path you want to save the file to
+    @type file_out: string"""
     string=""
     a= dict()
     L=[]
@@ -67,18 +67,18 @@ def convertDict2(dico, file_out): #used for the second type of word visualizatio
     
 
 def convertToMatrice(totalFreqDictList, file_out, timeSections): 
-    """ standard input form : [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically
-    @param totalFreqDictList : all category frequencies for all periods previously selected
-    @type totalFreqDictList: list of dictionnary[category (string) : frequency (float)] ordered chronologically
-                             example : [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] 
+    """ standard input form: [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically
+    @param totalFreqDictList: all category frequencies for all periods previously selected
+    @type totalFreqDictList: list of dictionnary[category (string): frequency (float)] ordered chronologically
+                             example: [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] 
                              
-    @param file_out : path you want to save the file to
-    @type file_out : string
+    @param file_out: path you want to save the file to
+    @type file_out: string
     
-    @param timeSections : number of periods chosen
-    @type timeSections : int
+    @param timeSections: number of periods chosen
+    @type timeSections: int
     
-    @return: Matrix used by the timeline (ligns : categories, columns : timeSections, coef : category weight in this timeSection)
+    @return: Matrix used by the timeline (ligns: categories, columns: timeSections, coef: category weight in this timeSection)
     @rtype: TDIDFMatrix object """
     categoryDict=dict()
     k=0
@@ -90,7 +90,7 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections):
                     k+=1
     n = len(categoryDict)
     M=np.zeros((n,timeSections))
-    for i in range(n): # creating the matrix (format : python array)
+    for i in range(n): # creating the matrix (format: python array)
         for j in range(timeSections):
             if categoryDict[str(i)] in totalFreqDictList[j]:
                 M[i][j]=totalFreqDictList[j][categoryDict[str(i)]]
@@ -132,11 +132,11 @@ for department in departments:
 
 def convertGraph(coauthorDict): 
     """ convert from coauthor dict to input format for graph
-    @param coauthorDict : link each author to his coauthor
-    @type coauthorDict : dictionnary [author (string) : list coauthors (list string)]
+    @param coauthorDict: link each author to his coauthor
+    @type coauthorDict: dictionnary [author (string): list coauthors (list string)]
     
-    @return : format for graph coauthor
-    @rtype : [{"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
+    @return: format for graph coauthor
+    @rtype: [{"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
     s=""
     for i in coauthorDict:
         dpt=""
@@ -156,6 +156,7 @@ def convertGraph(coauthorDict):
             except:
                 print "non regular name"
             s+='"'+dpt+k.replace(".","")+'"'+","
+            s+='"'+k.replace(".","")+'"'+","  #problem name:""
         if s[-1]!="[":
             s=s[:-1]
         s=s+"]},"

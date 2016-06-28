@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>dataTimeline</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;dataTimeline
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="dataTimeline-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="dataTimeline-module.html">Module dataTimeline</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">Created on Fri Jun 24 10:43:42 2016</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">@author: asueur</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module freqMatrixClass=freqMatrixClass-module.html"><a title="freqMatrixClass" class="py-name" href="#" onclick="return doclink('link-0', 'freqMatrixClass', 'link-0');">freqMatrixClass</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Class freqMatrixClass.FreqMatrix=freqMatrixClass.FreqMatrix-class.html"><a title="freqMatrixClass.FreqMatrix" class="py-name" href="#" onclick="return doclink('link-1', 'FreqMatrix', 'link-1');">FreqMatrix</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module retrieveCategories=retrieveCategories-module.html"><a title="retrieveCategories" class="py-name" href="#" onclick="return doclink('link-2', 'retrieveCategories', 'link-2');">retrieveCategories</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Function retrieveCategories.getAll()=retrieveCategories-module.html#getAll,Function timelineVisualization.getAll()=timelineVisualization-module.html#getAll"><a title="retrieveCategories.getAll
+timelineVisualization.getAll" class="py-name" href="#" onclick="return doclink('link-3', 'getAll', 'link-3');">getAll</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-4" class="py-name" targets="Module timelineVisualization=timelineVisualization-module.html"><a title="timelineVisualization" class="py-name" href="#" onclick="return doclink('link-4', 'timelineVisualization', 'link-4');">timelineVisualization</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Function timelineVisualization.getInfo()=timelineVisualization-module.html#getInfo"><a title="timelineVisualization.getInfo" class="py-name" href="#" onclick="return doclink('link-5', 'getInfo', 'link-5');">getInfo</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-6" class="py-name" targets="Module Timeline=Timeline-module.html"><a title="Timeline" class="py-name" href="#" onclick="return doclink('link-6', 'Timeline', 'link-6');">Timeline</a></tt> <tt class="py-keyword">import</tt> <tt id="link-7" class="py-name" targets="Function Timeline.formatDate()=Timeline-module.html#formatDate"><a title="Timeline.formatDate" class="py-name" href="#" onclick="return doclink('link-7', 'formatDate', 'link-7');">formatDate</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-8" class="py-name" targets="Module TFIDFMatrixClass=TFIDFMatrixClass-module.html"><a title="TFIDFMatrixClass" class="py-name" href="#" onclick="return doclink('link-8', 'TFIDFMatrixClass', 'link-8');">TFIDFMatrixClass</a></tt> <tt class="py-keyword">import</tt> <tt id="link-9" class="py-name" targets="Class TFIDFMatrixClass.TFIDFMatrix=TFIDFMatrixClass.TFIDFMatrix-class.html"><a title="TFIDFMatrixClass.TFIDFMatrix" class="py-name" href="#" onclick="return doclink('link-9', 'TFIDFMatrix', 'link-9');">TFIDFMatrix</a></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">datetime</tt> <tt class="py-keyword">import</tt> <tt class="py-name">date</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable PDFdl.app_path=PDFdl-module.html#app_path,Variable dataTimeline.app_path=dataTimeline-module.html#app_path,Variable main.app_path=main-module.html#app_path,Variable main_timeline.app_path=main_timeline-module.html#app_path,Variable pdf2txt.app_path=pdf2txt-module.html#app_path,Variable server.app_path=server-module.html#app_path"><a title="PDFdl.app_path
+dataTimeline.app_path
+main.app_path
+main_timeline.app_path
+pdf2txt.app_path
+server.app_path" class="py-name" href="#" onclick="return doclink('link-10', 'app_path', 'link-10');">app_path</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getcwd</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt id="link-11" class="py-name" targets="Variable PDFdl.data=PDFdl-module.html#data,Variable dataTimeline.data=dataTimeline-module.html#data,Variable main.data=main-module.html#data,Variable main_timeline.data=main_timeline-module.html#data,Variable pdf2txt.data=pdf2txt-module.html#data,Variable server.data=server-module.html#data"><a title="PDFdl.data
+dataTimeline.data
+main.data
+main_timeline.data
+pdf2txt.data
+server.data" class="py-name" href="#" onclick="return doclink('link-11', 'data', 'link-11');">data</a></tt> <tt class="py-op">=</tt> <tt id="link-12" class="py-name"><a title="PDFdl.app_path
+dataTimeline.app_path
+main.app_path
+main_timeline.app_path
+pdf2txt.app_path
+server.app_path" class="py-name" href="#" onclick="return doclink('link-12', 'app_path', 'link-10');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"data"</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="createTFIDFMatrix"></a><div id="createTFIDFMatrix-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="createTFIDFMatrix-toggle" onclick="return toggle('createTFIDFMatrix');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="dataTimeline-module.html#createTFIDFMatrix">createTFIDFMatrix</a><tt class="py-op">(</tt><tt class="py-param">authorName</tt><tt class="py-op">,</tt> <tt class="py-param">startDate</tt><tt class="py-op">,</tt> <tt class="py-param">endDate</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> <tt class="py-comment">#date format: year monthNumber</tt> </tt>
+</div><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">    <tt class="py-docstring">""" create TFIDF Matrix using documents written by an author during a selected period</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">    @param authorName: author's lastname</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">    @type authorName: string</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">    @param startName: start of the period you want to select</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">    @type startName: string "year monthNumber"</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">    @param endName: end of the period you want to select</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">    @type endName: string "year monthNumber"</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">    @return: TFIDF Matrix using documents selected</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">    @rtype: TDIDFMatrix object """</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-name">a</tt> <tt class="py-op">=</tt> <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-comment">#dictionary of frequency dictionaries for documents</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt class="py-name">listTitle</tt><tt class="py-op">=</tt><tt id="link-13" class="py-name"><a title="timelineVisualization.getInfo" class="py-name" href="#" onclick="return doclink('link-13', 'getInfo', 'link-5');">getInfo</a></tt><tt class="py-op">(</tt><tt id="link-14" class="py-name" targets="Variable main_timeline.authorName=main_timeline-module.html#authorName"><a title="main_timeline.authorName" class="py-name" href="#" onclick="return doclink('link-14', 'authorName', 'link-14');">authorName</a></tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-comment">#dictonnary of publications, dates and ids e.g: {pubName: [date,id]}</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt class="py-name">titleId</tt><tt class="py-op">=</tt><tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">j</tt> <tt class="py-keyword">in</tt> <tt class="py-name">listTitle</tt><tt class="py-op">:</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">formatedDate</tt><tt class="py-op">=</tt><tt id="link-15" class="py-name"><a title="Timeline.formatDate" class="py-name" href="#" onclick="return doclink('link-15', 'formatDate', 'link-7');">formatDate</a></tt><tt class="py-op">(</tt><tt class="py-name">listTitle</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">pubDate</tt><tt class="py-op">=</tt><tt class="py-name">date</tt><tt class="py-op">(</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">formatedDate</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">formatedDate</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">pubDate</tt><tt class="py-op">&gt;</tt><tt id="link-16" class="py-name" targets="Variable main_timeline.startDate=main_timeline-module.html#startDate"><a title="main_timeline.startDate" class="py-name" href="#" onclick="return doclink('link-16', 'startDate', 'link-16');">startDate</a></tt> <tt class="py-keyword">and</tt> <tt class="py-name">pubDate</tt><tt class="py-op">&lt;</tt><tt id="link-17" class="py-name" targets="Variable main_timeline.endDate=main_timeline-module.html#endDate"><a title="main_timeline.endDate" class="py-name" href="#" onclick="return doclink('link-17', 'endDate', 'link-17');">endDate</a></tt><tt class="py-op">:</tt> <tt class="py-comment">#checks if text was published in a fixed time window</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">            <tt class="py-name">titleId</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">listTitle</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-name">fm</tt><tt class="py-op">=</tt><tt id="link-18" class="py-name"><a title="freqMatrixClass.FreqMatrix" class="py-name" href="#" onclick="return doclink('link-18', 'FreqMatrix', 'link-1');">FreqMatrix</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">title</tt> <tt class="py-keyword">in</tt> <tt class="py-name">titleId</tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">titleId</tt><tt class="py-op">[</tt><tt class="py-name">title</tt><tt class="py-op">]</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">            <tt class="py-name">fileName</tt><tt class="py-op">=</tt><tt class="py-name">open</tt><tt class="py-op">(</tt><tt id="link-19" class="py-name"><a title="PDFdl.data
+dataTimeline.data
+main.data
+main_timeline.data
+pdf2txt.data
+server.data" class="py-name" href="#" onclick="return doclink('link-19', 'data', 'link-11');">data</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">titleId</tt><tt class="py-op">[</tt><tt class="py-name">title</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-string">"_out.txt"</tt><tt class="py-op">,</tt><tt class="py-string">"r"</tt><tt class="py-op">)</tt> <tt class="py-comment">#retrieves the txt of a given publication via its ID</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">            <tt class="py-name">fileText</tt> <tt class="py-op">=</tt> <tt class="py-name">fileName</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'\x0c'</tt><tt class="py-op">,</tt><tt class="py-string">''</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">            <tt class="py-name">fileName</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">            <tt class="py-name">a</tt><tt class="py-op">[</tt><tt class="py-name">title</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt id="link-20" class="py-name"><a title="retrieveCategories.getAll
+timelineVisualization.getAll" class="py-name" href="#" onclick="return doclink('link-20', 'getAll', 'link-3');">getAll</a></tt><tt class="py-op">(</tt><tt class="py-name">fileText</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-comment">#category frequencies of documents</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"File "</tt><tt class="py-op">+</tt> <tt class="py-string">" not found in directory"</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">k</tt> <tt class="py-keyword">in</tt> <tt class="py-name">a</tt><tt class="py-op">:</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">fm</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method TFIDFMatrixClass.TFIDFMatrix.add_doc()=TFIDFMatrixClass.TFIDFMatrix-class.html#add_doc,Method freqMatrixClass.FreqMatrix.add_doc()=freqMatrixClass.FreqMatrix-class.html#add_doc"><a title="TFIDFMatrixClass.TFIDFMatrix.add_doc
+freqMatrixClass.FreqMatrix.add_doc" class="py-name" href="#" onclick="return doclink('link-21', 'add_doc', 'link-21');">add_doc</a></tt><tt class="py-op">(</tt><tt class="py-name">k</tt><tt class="py-op">,</tt><tt class="py-name">a</tt><tt class="py-op">[</tt><tt class="py-name">k</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">fm</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method freqMatrixClass.FreqMatrix.to_TFIDF_Matrix()=freqMatrixClass.FreqMatrix-class.html#to_TFIDF_Matrix"><a title="freqMatrixClass.FreqMatrix.to_TFIDF_Matrix" class="py-name" href="#" onclick="return doclink('link-22', 'to_TFIDF_Matrix', 'link-22');">to_TFIDF_Matrix</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="median"></a><div id="median-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="median-toggle" onclick="return toggle('median');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="dataTimeline-module.html#median">median</a><tt class="py-op">(</tt><tt class="py-param">matrixList</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+</div><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt class="py-docstring">"""returns average value of category frequencies for multiple TFIDF matrixes</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">    @param matrixList: TFIDF Matrixes you want average value from</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">    @type matrixList: list of objects TFIDFMatrix</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">    @return: average value of category frequencies for all categories in those matrices</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">    @rtype: float list """</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-name">n</tt><tt class="py-op">=</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-23" class="py-name" targets="Variable main_timeline.matrixList=main_timeline-module.html#matrixList"><a title="main_timeline.matrixList" class="py-name" href="#" onclick="return doclink('link-23', 'matrixList', 'link-23');">matrixList</a></tt><tt class="py-op">)</tt> <tt class="py-comment">#number of matrixes</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt class="py-name">totalFreq</tt><tt class="py-op">=</tt><tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt class="py-name">dictList</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt>  <tt class="py-comment">#list of all the total frequency dictionaries from the matrixes</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">m</tt> <tt class="py-keyword">in</tt> <tt id="link-24" class="py-name"><a title="main_timeline.matrixList" class="py-name" href="#" onclick="return doclink('link-24', 'matrixList', 'link-23');">matrixList</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name">m</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method TFIDFMatrixClass.TFIDFMatrix.pretty_print()=TFIDFMatrixClass.TFIDFMatrix-class.html#pretty_print,Method freqMatrixClass.FreqMatrix.pretty_print()=freqMatrixClass.FreqMatrix-class.html#pretty_print"><a title="TFIDFMatrixClass.TFIDFMatrix.pretty_print
+freqMatrixClass.FreqMatrix.pretty_print" class="py-name" href="#" onclick="return doclink('link-25', 'pretty_print', 'link-25');">pretty_print</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">wordDict</tt><tt class="py-op">=</tt><tt class="py-name">m</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Method TFIDFMatrixClass.TFIDFMatrix.sum_words()=TFIDFMatrixClass.TFIDFMatrix-class.html#sum_words"><a title="TFIDFMatrixClass.TFIDFMatrix.sum_words" class="py-name" href="#" onclick="return doclink('link-26', 'sum_words', 'link-26');">sum_words</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-name">dictList</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">wordDict</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-name">wordList</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> <tt class="py-comment">#list of all possible categories/words</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">d</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dictList</tt><tt class="py-op">:</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">word</tt> <tt class="py-keyword">in</tt> <tt class="py-name">d</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">word</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">wordList</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                <tt class="py-name">wordList</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">word</tt> <tt class="py-keyword">in</tt> <tt class="py-name">wordList</tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">d</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dictList</tt><tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">word</tt> <tt class="py-keyword">in</tt> <tt class="py-name">d</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">word</tt> <tt class="py-keyword">in</tt> <tt class="py-name">totalFreq</tt><tt class="py-op">:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                    <tt class="py-name">totalFreq</tt><tt class="py-op">[</tt><tt class="py-name">word</tt><tt class="py-op">]</tt><tt class="py-op">+=</tt><tt class="py-name">d</tt><tt class="py-op">[</tt><tt class="py-name">word</tt><tt class="py-op">]</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">                    <tt class="py-name">totalFreq</tt><tt class="py-op">[</tt><tt class="py-name">word</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">d</tt><tt class="py-op">[</tt><tt class="py-name">word</tt><tt class="py-op">]</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">totalFreq</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-name">totalFreq</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">totalFreq</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">/</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt class="py-name">n</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">totalFreq</tt> </tt>
+</div><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">         </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-name">m1</tt><tt class="py-op">=</tt><tt id="link-27" class="py-name"><a title="freqMatrixClass.FreqMatrix" class="py-name" href="#" onclick="return doclink('link-27', 'FreqMatrix', 'link-1');">FreqMatrix</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-name">m2</tt><tt class="py-op">=</tt><tt id="link-28" class="py-name"><a title="freqMatrixClass.FreqMatrix" class="py-name" href="#" onclick="return doclink('link-28', 'FreqMatrix', 'link-1');">FreqMatrix</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-name">m</tt> <tt class="py-op">=</tt> <tt id="link-29" class="py-name"><a title="freqMatrixClass.FreqMatrix" class="py-name" href="#" onclick="return doclink('link-29', 'FreqMatrix', 'link-1');">FreqMatrix</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-name">m</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="TFIDFMatrixClass.TFIDFMatrix.add_doc
+freqMatrixClass.FreqMatrix.add_doc" class="py-name" href="#" onclick="return doclink('link-30', 'add_doc', 'link-21');">add_doc</a></tt><tt class="py-op">(</tt><tt class="py-string">"data science book"</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">"big data"</tt><tt class="py-op">:</tt><tt class="py-number">0.5</tt><tt class="py-op">,</tt> <tt class="py-string">"machine learning"</tt><tt class="py-op">:</tt><tt class="py-number">0.7</tt><tt class="py-op">,</tt> <tt class="py-string">"programming"</tt><tt class="py-op">:</tt><tt class="py-number">0.5</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-name">m1</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="TFIDFMatrixClass.TFIDFMatrix.add_doc
+freqMatrixClass.FreqMatrix.add_doc" class="py-name" href="#" onclick="return doclink('link-31', 'add_doc', 'link-21');">add_doc</a></tt><tt class="py-op">(</tt><tt class="py-string">"data science book"</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">"big data"</tt><tt class="py-op">:</tt><tt class="py-number">0.5</tt><tt class="py-op">,</tt> <tt class="py-string">"machine learning"</tt><tt class="py-op">:</tt><tt class="py-number">0.7</tt><tt class="py-op">,</tt> <tt class="py-string">"programming"</tt><tt class="py-op">:</tt><tt class="py-number">0.5</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-name">m2</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="TFIDFMatrixClass.TFIDFMatrix.add_doc
+freqMatrixClass.FreqMatrix.add_doc" class="py-name" href="#" onclick="return doclink('link-32', 'add_doc', 'link-21');">add_doc</a></tt><tt class="py-op">(</tt><tt class="py-string">"data science book"</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">"big data"</tt><tt class="py-op">:</tt><tt class="py-number">0.5</tt><tt class="py-op">,</tt> <tt class="py-string">"machine learning"</tt><tt class="py-op">:</tt><tt class="py-number">0.7</tt><tt class="py-op">,</tt> <tt class="py-string">"programming"</tt><tt class="py-op">:</tt><tt class="py-number">0.5</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-name">m2</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="TFIDFMatrixClass.TFIDFMatrix.add_doc
+freqMatrixClass.FreqMatrix.add_doc" class="py-name" href="#" onclick="return doclink('link-33', 'add_doc', 'link-21');">add_doc</a></tt><tt class="py-op">(</tt><tt class="py-string">"systems course"</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">"operating systems"</tt><tt class="py-op">:</tt><tt class="py-number">0.8</tt><tt class="py-op">,</tt> <tt class="py-string">"programming"</tt><tt class="py-op">:</tt><tt class="py-number">0.36</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt class="py-name">m1</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="TFIDFMatrixClass.TFIDFMatrix.add_doc
+freqMatrixClass.FreqMatrix.add_doc" class="py-name" href="#" onclick="return doclink('link-34', 'add_doc', 'link-21');">add_doc</a></tt><tt class="py-op">(</tt><tt class="py-string">"knuth 101"</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">"programming"</tt><tt class="py-op">:</tt><tt class="py-number">0.45</tt><tt class="py-op">,</tt> <tt class="py-string">"operating systems"</tt><tt class="py-op">:</tt><tt class="py-number">0.3</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-name">m</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="TFIDFMatrixClass.TFIDFMatrix.add_doc
+freqMatrixClass.FreqMatrix.add_doc" class="py-name" href="#" onclick="return doclink('link-35', 'add_doc', 'link-21');">add_doc</a></tt><tt class="py-op">(</tt><tt class="py-string">"knuth 101"</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">"programming"</tt><tt class="py-op">:</tt><tt class="py-number">0.45</tt><tt class="py-op">,</tt> <tt class="py-string">"operating systems"</tt><tt class="py-op">:</tt><tt class="py-number">0.3</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt class="py-name">m</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="TFIDFMatrixClass.TFIDFMatrix.add_doc
+freqMatrixClass.FreqMatrix.add_doc" class="py-name" href="#" onclick="return doclink('link-36', 'add_doc', 'link-21');">add_doc</a></tt><tt class="py-op">(</tt><tt class="py-string">"artificial intelligence course"</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">"programming"</tt><tt class="py-op">:</tt><tt class="py-number">0.25</tt><tt class="py-op">,</tt><tt class="py-string">"machine learning"</tt><tt class="py-op">:</tt><tt class="py-number">0.5</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt class="py-name">m</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="TFIDFMatrixClass.TFIDFMatrix.add_doc
+freqMatrixClass.FreqMatrix.add_doc" class="py-name" href="#" onclick="return doclink('link-37', 'add_doc', 'link-21');">add_doc</a></tt><tt class="py-op">(</tt><tt class="py-string">"systems course"</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">"operating systems"</tt><tt class="py-op">:</tt><tt class="py-number">0.8</tt><tt class="py-op">,</tt> <tt class="py-string">"programming"</tt><tt class="py-op">:</tt><tt class="py-number">0.36</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">    <tt class="py-name">tm</tt> <tt class="py-op">=</tt> <tt class="py-name">m</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="freqMatrixClass.FreqMatrix.to_TFIDF_Matrix" class="py-name" href="#" onclick="return doclink('link-38', 'to_TFIDF_Matrix', 'link-22');">to_TFIDF_Matrix</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">    <tt class="py-name">tm1</tt> <tt class="py-op">=</tt> <tt class="py-name">m1</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="freqMatrixClass.FreqMatrix.to_TFIDF_Matrix" class="py-name" href="#" onclick="return doclink('link-39', 'to_TFIDF_Matrix', 'link-22');">to_TFIDF_Matrix</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt class="py-name">tm2</tt> <tt class="py-op">=</tt> <tt class="py-name">m2</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="freqMatrixClass.FreqMatrix.to_TFIDF_Matrix" class="py-name" href="#" onclick="return doclink('link-40', 'to_TFIDF_Matrix', 'link-22');">to_TFIDF_Matrix</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Jun 28 18:46:00 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

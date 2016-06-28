@@ -47,15 +47,15 @@ text = word_tokenize("""The aim of a probabilistic logic (also probability logic
 p = pos_tag(text)
 
 #print words that are different with and without taking account of post_tag
-for i in p :
-    if(lmtzr.lemmatize(i[0]) != lmtzr.lemmatize(i[0], get_wordnet_pos(i[1])))  :
+for i in p:
+    if(lmtzr.lemmatize(i[0]) != lmtzr.lemmatize(i[0], get_wordnet_pos(i[1]))):
         print("Original word in text: " + i[0])
-        print("Basic Lemmatization : " + lmtzr.lemmatize(i[0]))
-        print("Smart Lemmatization : " + lmtzr.lemmatize(i[0], get_wordnet_pos(i[1])))
+        print("Basic Lemmatization: " + lmtzr.lemmatize(i[0]))
+        print("Smart Lemmatization: " + lmtzr.lemmatize(i[0], get_wordnet_pos(i[1])))
         print("")
     
-for i in p :
+for i in p:
         print("Original word in text: " + i[0])
-        print("Smart Lemmatization : " + lmtzr.lemmatize(i[0], get_wordnet_pos(i[1])))
+        print("Smart Lemmatization: " + lmtzr.lemmatize(i[0], get_wordnet_pos(i[1])))
         print("")
     

@@ -17,6 +17,10 @@ from dateutil.relativedelta import relativedelta
 import formatConversion
 from calendar import monthrange
 
+#argv must be: main authorName startDate endDate periodLength(in months)
+app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
+data = app_path+os.sep+"data"
+src = app_path+os.sep+"src"
 
 def monthdelta(d1, d2):
     delta = 0
@@ -29,11 +33,7 @@ def monthdelta(d1, d2):
             break
     return delta
 
-#argv must be : main authorName startDate endDate periodLength(in months)
 
-app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
-data = app_path+os.sep+"data"
-src = app_path+os.sep+"src"
 
 
 #Getting the text from all PDF 
@@ -59,8 +59,6 @@ endDate=Timeline.formatDate(sys.argv[3])
 startDateTime=date(int(startDate.split()[0]),int(startDate.split()[1]),1) #conversion to objects of type dateTime
 endDateTime=date(int(endDate.split()[0]),int(endDate.split()[1]),1)
 periodLength=int(sys.argv[4])
-#monthNumber=(endDate.split()[0]-startDate.split()[0])*12 +endDate.split()[1]-startDate.split()[1]
-#periodNumber=monthNumber//periodLength 
 periodNumber2=monthdelta(startDateTime,endDateTime)//periodLength #number of periods considered
 date1=startDateTime
 date2=date1+ relativedelta(months=+periodLength)
@@ -77,4 +75,4 @@ if periodNumber2>=2:                                                            
 periodFrequenciesList.append(dataTimeline.median([matrixList[-2],matrixList[-1]]))
 periodFreqJSON=formatConversion.convertToMatrice(periodFrequenciesList, src+os.sep+"templates"+os.sep+"timeline.json", periodNumber2) #converting to output format
 
-      # test : python main_timeline.py "Concolato" "2015 jan" "2016 jan" 6        
+      # test: python main_timeline.py "Concolato" "2015 jan" "2016 jan" 6        
