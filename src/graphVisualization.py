@@ -8,7 +8,7 @@ Created on Mon Jun 27 11:36:10 2016
 import PDFdl
 import numpy as np
 import timelineVisualization
-
+import TFIDFMatrixClass
 
 
 #similarity matrix 
@@ -22,24 +22,31 @@ def similarityMatrix(matrice):
     cosine = cosine.T * inv_mag
     return cosine
     
+def distanceTFIDF(A,B):
+    A.sum_words()
+    B.sum_words()
+    return 
 
 def getAllAuthors(bibName): #renvoie la liste de tous les auteurs
     authorList=[]
-    bib = PDFdl.openBibLib(bibName)
-    for article in bib.entries:
+    bibli = PDFdl.openBibLib(bibName)
+    for article in bibli.entries:
         authors=article["author"].replace("{","").replace("}","").replace(" ","").split("and")
         for author in authors:
-            print author
             if author not in authorList:
                 authorList.append(author)
     return authorList
     
 def getdictCoauthors(bibName):
     authorList=getAllAuthors(bibName)
+    n=len(authorList)
     dictCoauthors=dict()
+    i=0
     for author in authorList:
-        dictCoauthors[author]=timelineVisualization.getInfo(author)[1]
+        if author!='':
+            dictCoauthors[unicode(author)]=timelineVisualization.getCoauthors(author)
+        i+=1
+        if i%100==0:
+            print str(100*float(i)/n) + "% completed"
     return dictCoauthors
     
-
-

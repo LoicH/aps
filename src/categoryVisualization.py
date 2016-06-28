@@ -31,7 +31,7 @@ def getLinkedWord(category, textList, numberWords = 20):
     @type numberWords: int"""
     wordOcc = dict()      # A MODIFIER : ouvrir fichier dans dossier data
     for text in textList:
-        file = open("text", "r")
+        file = open(text, "r")
         content = file.read()
         URIs= ret.getURIs(content)
         categories=ret.getCategories(URIs[0],URIs[1])[1]
