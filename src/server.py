@@ -4,14 +4,20 @@ Created on Wed Jun 22 17:33:59 2016
 
 @author: loic
 """
+
+from flask import Flask, render_template
+import threading
+import initServer
 import os
+
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
 src = app_path+os.sep+"src"
-from flask import Flask, render_template
 
+"""Directing the routes"""
 app = Flask(__name__)
 
+print "In server.py, __name__ =",__name__
 @app.route('/')
 def index():
     return render_template('index.html')    
@@ -33,7 +39,14 @@ def show_author(name):
     print "Name:",name
     return render_template('author.html', name=name)
 
+@app.route('/init/')
+def init():
+    threading.Thread(initServer.make_json_wordcloud2(data+os.sep+"concolato.bib"))
+    return "Initialisation"
+
+
+
+
+
 if __name__ == "__main__":
-    print "Starting server"
-    app.run(debug=True, host='0.0.0.0')
-    
+    app.run(debug=True, host='0.0.0.0', threaded=True)

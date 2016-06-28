@@ -51,7 +51,7 @@ def pdf_to_txt(path):
     return s
     
 def pdf_to_file(src_filepath, out_filepath):
-    """Outputs a file to out_filepath"""
+    """Outputs a file to out_filepath, in utf-8 file"""
     print "Processing...",
     raw_txt = pdf_to_txt(src_filepath)
     src_filename = src_filepath.split(os.path.sep)[-1] #with .pdf at the end

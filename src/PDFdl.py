@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Jun 21 18:08:59 2016
-
 @author: asueur
 """
 
@@ -9,26 +8,20 @@ import urllib
 import re
 import bibtexparser
 import os
+
+
 #constantes
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
-static = app_path+os.sep+"static"
 src = app_path+os.sep+"src"
 regex=r'id=(\d+)'  
 
-def openBibLib(bibName): # e.g : 'document.bib'
-    with open(src+os.sep+bibName) as bibtex_file:  
+def openBibLib(bibName): 
+    """bibName = the complete filepath of the bibtex file"""
+    with open(bibName) as bibtex_file:  
         bibtex_database = bibtexparser.load(bibtex_file) 
-        return bibtex_database
+    return bibtex_database
 
-class PDF(object):
-    """__init__() functions as the class constructor"""
-    def __init__(self, title=None, author=None, id=None, pubDate=None, status=None):
-        self.title = title
-        self.author = author
-        self.id = id
-        self.pubDate = pubDate
-        
 
 #def download(fileURL,writeFile):
 #    testfile = urllib.URLopener()
@@ -37,63 +30,67 @@ class PDF(object):
 #    except IOError:
 #        print "No pdf or no memory left"
 
-def downloadPDF(id):
+def downloadPDF(pdf_id, pdf_out_dir, txt_out_dir):
+    """downloads the pdf with a given ID and puts it into pdf_out_dir
+    if the "pdf"_out.txt is not in txt_out_dir
+    @param pdf_id: the ID of the doc
+    @type bibName: str
+    
+    @param pdf_out_dir: the directory where you want to put the pdf files (e.g. /tmp/aps/)
+    @type pdf_out_dir: str
+    
+    @param txt_out_dir: the directory where the *_out.txt are
+    @type txt_out_dir: str
+    """
     testfile = urllib.URLopener()
-    print  "http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id="+str(id)
+    print  "Examinating PDF n°"+str(pdf_id)
     try:
-        if( str(id)+".pdf" in os.listdir(data)): #checks if the file already exists
-            print "File already present"
+        if str(pdf_id)+".pdf" in os.listdir(pdf_out_dir): 
+        #checks if the file already exists
+            print str(pdf_id)+".pdf already downloaded"
+        elif str(pdf_id)+"_out.txt" in os.listdir(txt_out_dir):
+            print "The text from %s is already extracted." %  str(pdf_id)+".pdf"
+        else:
+            print "Trying to download the file"
+            testfile.retrieve("""http://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id="""
+            +str(pdf_id), pdf_out_dir+os.sep+str(pdf_id)+".pdf")
+    except IOError as e:
+        print "No pdf or no memory left (Error message: \"%s\")." % e
+        raise e
+        
 
-def createPDF(index):
-    c=pdfs[index]
-    fields=c.split(",") #fields separation
-    for i in range(len(fields)):    
-        fields[i]=fields[i].split("=")  #values separation
-    i=0
-    regex2=r'(\d+)'
-    pubDate=''
-    while i<len(fields):
-        if "author" in fields[i][0]:
-            author=fields[i][1]
-        if "title" in fields[i][0] and not "booktitle" in fields[i][0]:
-            title=fields[i][1]
-        if "year" in fields[i][0]:
-            year=fields[i][1]
-            pubDate+=year
-        if "month" in fields[i][0]:
-            month=fields[i][1]
-            pubDate+=month
-        if(index>3110):
-            print fields[i]
-        if "annote" in fields[i][0]:
-            temp =re.findall(regex2,fields[i][-1])
-            if len(temp)==0:
-                return 
-            else:
-                id=int(temp[0])
-        i+=1
-    return PDF(title,author,id,pubDate)
-    except IOError:
-        print "No pdf or no memory left"
-        
-        
-#def downloadPDFfrom(authorName):
-#    listTitle=timelineVisualization.getInfo(authorName)[0] #dictonnary of publications, dates and ids e.g : {pubName : [date,id]}
-#    print listTitle
-#    titleId=dict()
-#    for j in listTitle:
-#        titleId[j]=listTitle[j][1]
-#    for title in titleId:
-#        downloadPDF(titleId[title])
+def downloadAll(bibName, pdf_out_dir, txt_out_dir): 
+    """downloads all files from a given bibTex library 
+    and puts them into out_dir if the "pdf"_out.txt is not in txt_out_dir
+    @param bibName: the path of the bibtex file
+    @type bibName: str
     
+    @param pdf_out_dir: the directory where you want to put the pdf files (e.g. /tmp/aps/)
+    @type pdf_out_dir: str
     
-def createPDFList():
-    L=[]
-    for i in range(1,len(pdfs)):
+    @param txt_out_dir: the directory where the *_out.txt are
+    @type txt_out_dir: str
+    
+    @return: a dictionary {position in bibtex:id of pdf}
+    @rtype: dict
+    """
+    pos_Id_List = dict()
+    print "Opening the bib file...",
+    bibtex_database=openBibLib(bibName)
+    print "done."
+    for i in range(len(bibtex_database.entries)):
+        try:
+            annote=bibtex_database.entries[i]["annote"]
+        except KeyError:
+            print "No id found"
         print i
-        id=int(re.findall(regex,annote)[0])
-        downloadPDF(id)
-        pos_Id_List[i]=id
-        downloadPDF(id)
+        pdf_id=int(re.findall(regex,annote)[0])
+        try:
+            downloadPDF(pdf_id, pdf_out_dir, txt_out_dir)
+            pos_Id_List[i]=pdf_id
+        except IOError:
+            pass
     return pos_Id_List
-
+    
+if __name__ == "__main__":
+    downloadAll(data+os.sep+"concolato.bib", "/tmp/aps", data)

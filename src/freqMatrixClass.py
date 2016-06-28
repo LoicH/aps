@@ -9,7 +9,7 @@ Class defining matrix behavior
 
 from math import log
 
-from TFIDFMatrixClass import *
+import TFIDFMatrixClass
 import codecs
 
 class FreqMatrix:
@@ -103,7 +103,7 @@ class FreqMatrix:
             
     def to_TFIDF_Matrix(self):
         """returns the TFIDF matrix associated with self"""
-        tfidfMatrix = TFIDFMatrix(self.graph.keys(), self.docs)
+        tfidfMatrix = TFIDFMatrixClass.TFIDFMatrix(self.graph.keys(), self.docs)
         for word in self.graph.keys():
             #print "Computing for \"",word,"\"..."
             tfidfMatrix.add_word(word, self.compute_TFIDF(word))

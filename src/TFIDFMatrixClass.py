@@ -10,6 +10,9 @@ Created on Tue Jun 21 11:09:45 2016
 1 doc = 1 column"""
 
 import codecs
+import os
+import modifTexte
+import freqMatrixClass
 
 class TFIDFMatrix:
     """Contains a graph saving tfidf values of words"""
@@ -93,7 +96,7 @@ class TFIDFMatrix:
             return sum(self.graph[word].values())  
   
     def sum_words(self):   
-        """returns a dict {word:sum of the TFIDF values in the line}"""
+        """returns a dict {word:sum of the TFIDF values in the line} *normalized*"""
         
         Sum = 0
         dic = dict()
@@ -104,7 +107,30 @@ class TFIDFMatrix:
             dic[word] = s
 #        print "Sum=",Sum
         return {word:(value/Sum) for (word, value) in dic.items()}
-        
+  
+
+def analyse_files(file_list, directory):
+    """computes the TFIDF Matrix for all the files in directory listed
+    by file_list
+    @param file_list: the list of files you want to examine: ['1234_out.txt',...]
+    @type file_list: list of str
+    @param directory: the directory of the files: "data"
+    @type directory: str
+    
+    @return: the TFIDF matrix of the top 100 words inside the files
+    @rtype: TFIDFMatrix"""
+    fmatrix = freqMatrixClass.FreqMatrix([],[])
+    for filename in file_list:
+        f = codecs.open(directory+os.sep+filename, 'r', "utf-8")
+        txt = f.read()
+        f.close()
+        dic = modifTexte.textToDictionnary(txt,[])
+        l = sorted([(v,k) for (k,v) in dic.items()], reverse=True)[:99]
+        first = {k:v for (v,k) in l}
+        fmatrix.add_doc(filename[:-8], first)
+    return fmatrix.to_TFIDF_Matrix()
+           
+      
 def load(filename):
     """File → Matrix Object"""
     m = TFIDFMatrix([], [])

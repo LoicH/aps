@@ -1,2 +1,4 @@
 *.pyc
-data/*
+data/*.pdf
+data/*_out.txt
+data/tfidf*.csv
