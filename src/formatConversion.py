@@ -12,6 +12,8 @@ import os
 ###################################################################
 #conversion for wordCloud
 
+
+
 class Object(object):
     """__init__() functions as the class constructor"""
     def __init__(self, text=None, size=None):
@@ -114,7 +116,17 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections):
     
     
     ###################################################################
+    
 #conversion for graph
+
+f=codecs.open("departments.json","r","utf-8") #json of departments
+departments=json.load(f)
+dptDict=dict()
+for department in departments:
+    for groups in department["groups"]:
+        for person in groups["people"]:
+            dptDict[person["name"].title()]=department["name"]+"."+groups["name"]+"."
+        
 
 
 
@@ -127,15 +139,29 @@ def convertGraph(coauthorDict):
     @rtype : [{"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
     s=""
     for i in coauthorDict:
-        s+="""{"name":"""+'"'+i.replace(".","")+'"'+""","size":3000,"imports":["""
+        dpt=""
+        try:
+            name=i.split(".")[1].replace(" ","")
+            if name in dptDict.keys():
+                dpt=dptDict[name]
+        except:
+            print "non regular name"
+        s+="""{"name":"""+'"'+dpt+i.replace(".","")+'"'+""","size":3000,"imports":["""
         for k in coauthorDict[i]:
-            s+='"'+k.replace(".","")+'"'+","  #problem name :""
+            dpt=""
+            try:
+                name=k.split(".")[1].replace(" ","")
+                if name in dptDict.keys():
+                    dpt=dptDict[name]
+            except:
+                print "non regular name"
+            s+='"'+dpt+k.replace(".","")+'"'+","
         if s[-1]!="[":
             s=s[:-1]
         s=s+"]},"
     s=s[:-1]
     s+="]"
-    f=f = codecs.open("templates" + os.sep+"readme-flare-imports.json","w","utf-8")
+    f= codecs.open("templates" + os.sep+"readme-flare-imports.json","w","utf-8")
     f.write(s)
     f.close()
     return s

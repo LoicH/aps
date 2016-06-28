@@ -38,7 +38,7 @@ def getAllAuthors(bibName):
     authorList=[]
     bibli = PDFdl.openBibLib(bibName)
     for article in bibli.entries:
-        authors=article["author"].replace("{","").replace("}","").replace(" ","").split("and")
+        authors=article["author"].replace("{","").replace("}","").split(" and ")
         for author in authors:
             if author not in authorList:
                 authorList.append(author)
@@ -57,9 +57,15 @@ def getdictCoauthors(bibName):
     i=0
     for author in authorList:
         if author!='':
-            dictCoauthors[unicode(author)]=timelineVisualization.getCoauthors(author)
+            coauthors=timelineVisualization.getCoauthors(author)
+            if coauthors!=[]:
+                dictCoauthors[unicode(author)]=coauthors
         i+=1
         if i%100==0:
             print str(100*float(i)/n) + "% completed"
+    for i in dictCoauthors.values():
+        for k in i:
+            if k not in dictCoauthors.keys():
+                dictCoauthors[k]=[]
     return dictCoauthors
     
