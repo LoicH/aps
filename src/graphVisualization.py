@@ -29,16 +29,19 @@ def getAllAuthors(bibName): #renvoie la liste de tous les auteurs
     for article in bib.entries:
         authors=article["author"].replace("{","").replace("}","").replace(" ","").split("and")
         for author in authors:
-            print author
             if author not in authorList:
-                authorList.append(author)
+                authorList.append(str(author))
     return authorList
     
 def getdictCoauthors(bibName):
     authorList=getAllAuthors(bibName)
     dictCoauthors=dict()
+    i=0
     for author in authorList:
-        dictCoauthors[author]=timelineVisualization.getInfo(author)[1]
+        dictCoauthors[str(author)]=timelineVisualization.getInfo(author)[1]
+        if i==3:
+            break
+        i+=1
     return dictCoauthors
     
 
