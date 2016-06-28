@@ -40,7 +40,11 @@ def createTFIDFMatrix(authorName, startDate, endDate): #date format : year month
         fm.add_doc(k,a[k])
     return fm.to_TFIDF_Matrix()
 
-def median(matrixList): #returns average value of category frequencies for multiple TFIDF matrixes
+def median(matrixList): 
+    """
+    returns average value of category frequencies for multiple TFIDF matrixes
+    return type : dictionary {word:float}
+    """
     n=len(matrixList) #number of matrixes
     totalFreq=dict()
     dictList=[]  #list of all the total frequency dictionaries from the matrixes

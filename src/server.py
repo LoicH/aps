@@ -39,10 +39,10 @@ def show_author(name):
     print "Name:",name
     return render_template('author.html', name=name)
 
-@app.route('/init/')
-def init():
+@app.route('/init_wordcloud/')
+def init_wordcloud():
     threading.Thread(initServer.make_json_wordcloud2(data+os.sep+"concolato.bib"))
-    return "Initialisation"
+    return "Word Cloud done"
 
 
 

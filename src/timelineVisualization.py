@@ -9,9 +9,7 @@ import PDFdl
 import bibtexparser
 import re
 
-regex=r'id=(\d+)' 
-bib = 'document.bib'  ### bib name (can be modified)
-entries=PDFdl.openBibLib(bib).entries #all of the bib's articles
+
 
 class article:
     def __init__(self, title, author):
@@ -39,3 +37,7 @@ def getInfo(authorName): #name in the form of lastName
     coauthors=[i for i in coauthors if i!=authorName]     
     return datesAndIds, coauthors
 
+if __name__ == "__main__": 
+   regex=r'id=(\d+)' 
+   bib = 'document.bib'  ### bib name (can be modified)
+   entries=PDFdl.openBibLib(bib).entries #all of the bib's articles

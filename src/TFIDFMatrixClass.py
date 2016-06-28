@@ -111,7 +111,7 @@ class TFIDFMatrix:
 
 def analyse_files(file_list, directory):
     """computes the TFIDF Matrix for all the files in directory listed
-    by file_list
+    by file_list, only if the tfidf.csv is older than the doc.bib
     @param file_list: the list of files you want to examine: ['1234_out.txt',...]
     @type file_list: list of str
     @param directory: the directory of the files: "data"
@@ -119,16 +119,8 @@ def analyse_files(file_list, directory):
     
     @return: the TFIDF matrix of the top 100 words inside the files
     @rtype: TFIDFMatrix"""
-    fmatrix = freqMatrixClass.FreqMatrix([],[])
-    for filename in file_list:
-        f = codecs.open(directory+os.sep+filename, 'r', "utf-8")
-        txt = f.read()
-        f.close()
-        dic = modifTexte.textToDictionnary(txt,[])
-        l = sorted([(v,k) for (k,v) in dic.items()], reverse=True)[:99]
-        first = {k:v for (v,k) in l}
-        fmatrix.add_doc(filename[:-8], first)
-    return fmatrix.to_TFIDF_Matrix()
+    
+
            
       
 def load(filename):
@@ -144,14 +136,15 @@ def load(filename):
     
     #then lines = word;tfidf1;tfidf2;... 
     line_str = f.readline()
+    print line_str
     while line_str != '':
         line_split = line_str[:-2].split(",") #[:-2] removes '\n'
         word, tfidf_list = line_split[0], line_split[1:]
         dic = dict()
         i = 0
         for value in tfidf_list:
-            if value > 0:
-                dic[docs_list[i]] = value
+            if value != '' and float(value) > 0:
+                dic[docs_list[i]] = float(value)
             i += 1
         m.add_word(word, dic)
         line_str = f.readline()
@@ -160,8 +153,12 @@ def load(filename):
 
 
 if __name__ == "__main__":
-    m = load("tfidf.csv")
+    app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
+    data = app_path+os.sep+"data"
+    src = app_path+os.sep+"src"
+    m = load(data+os.sep+"concolato_tfidf.csv")
     m.pretty_print()
+    print m.sum_words()
         
                 
             

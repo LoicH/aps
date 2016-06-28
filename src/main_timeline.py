@@ -30,7 +30,8 @@ def monthdelta(d1, d2):
     return delta
 
 #argv must be : main authorName startDate endDate periodLength(in months)
-
+#example: python main_timeline.py "Concolato" "2015 jan" "2016 jan" 6      
+  
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
 src = app_path+os.sep+"src"
@@ -77,4 +78,3 @@ if periodNumber2>=2:                                                            
 periodFrequenciesList.append(dataTimeline.median([matrixList[-2],matrixList[-1]]))
 periodFreqJSON=formatConversion.convertToMatrice(periodFrequenciesList, src+os.sep+"templates"+os.sep+"timeline.json", periodNumber2) #converting to output format
 
-      # test : python main_timeline.py "Concolato" "2015 jan" "2016 jan" 6        

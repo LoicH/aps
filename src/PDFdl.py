@@ -42,6 +42,10 @@ def downloadPDF(pdf_id, pdf_out_dir, txt_out_dir):
     @param txt_out_dir: the directory where the *_out.txt are
     @type txt_out_dir: str
     """
+    try:
+        os.mkdir(pdf_out_dir)
+    except:
+        "Error creating the temporary PDF folder"
     testfile = urllib.URLopener()
     print  "Examinating PDF n°"+str(pdf_id)
     try:

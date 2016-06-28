@@ -52,7 +52,7 @@ def convertDict2(dico, file_out): #used for the second type of word visualizatio
     
 
 def convertToMatrice(totalFreqDictList, file_out, timeSections): 
-# standard input form : [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically
+    """ standard input form : [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically"""
     categoryDict=dict()
     k=0
     for dic in totalFreqDictList:
