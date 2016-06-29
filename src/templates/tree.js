@@ -39,7 +39,7 @@ function treeDesign(mot) {
             })
             .attr("font-family", "impact")
             .attr("fill", "black")
-            .attr("font-size","25px");
+            .attr("font-size","25px")
             .on("click", function() {
                 d3.select("#overlay").html("");
             });
