@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>server</title>
+  <title>dataGraph</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -34,7 +34,7 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        Module&nbsp;server
+        Module&nbsp;dataGraph
       </span>
     </td>
     <td>
@@ -44,15 +44,16 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="server-module.html"
+            >]&nbsp;|&nbsp;<a href="dataGraph-module.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module server</h1><p class="nomargin-top"><span class="codelink"><a href="server-pysrc.html">source&nbsp;code</a></span></p>
-<p>Module managing the server and redirecting the inputs</p>
+<h1 class="epydoc">Module dataGraph</h1><p class="nomargin-top"><span class="codelink"><a href="dataGraph-pysrc.html">source&nbsp;code</a></span></p>
+<p>Performs computations for the graph visualization, like 
+  timelineVisualization</p>
 
 <!-- ==================== FUNCTIONS ==================== -->
 <a name="section-Functions"></a>
@@ -73,13 +74,15 @@
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">float</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="server-module.html#index" class="summary-sig-name">index</a>()</span></td>
+          <td><span class="summary-sig"><a href="dataGraph-module.html#distanceTFIDF" class="summary-sig-name">distanceTFIDF</a>(<span class="summary-sig-arg">A</span>,
+        <span class="summary-sig-arg">B</span>)</span><br />
+      return a number related to the similarity between matrixes</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#index">source&nbsp;code</a></span>
+            <span class="codelink"><a href="dataGraph-pysrc.html#distanceTFIDF">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -89,13 +92,14 @@
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">string list</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="server-module.html#wordcloud" class="summary-sig-name">wordcloud</a>()</span></td>
+          <td><span class="summary-sig"><a href="dataGraph-module.html#getAllAuthors" class="summary-sig-name">getAllAuthors</a>(<span class="summary-sig-arg">bibli</span>)</span><br />
+      return a list with all the authors in the bib</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#wordcloud">source&nbsp;code</a></span>
+            <span class="codelink"><a href="dataGraph-pysrc.html#getAllAuthors">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -105,61 +109,15 @@
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">dictionary {author (string): list coauthors (string list)}</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="server-module.html#timeline" class="summary-sig-name">timeline</a>()</span></td>
+          <td><span class="summary-sig"><a href="dataGraph-module.html#getdictCoauthors" class="summary-sig-name">getdictCoauthors</a>(<span class="summary-sig-arg">bibName</span>,
+        <span class="summary-sig-arg">minFreq</span>)</span><br />
+      return a list with all the coauthors in the bib</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#timeline">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="server-module.html#testjs" class="summary-sig-name">testjs</a>()</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#testjs">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="server-module.html#show_author" class="summary-sig-name">show_author</a>(<span class="summary-sig-arg">name</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#show_author">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="server-module.html#init_wordcloud" class="summary-sig-name">init_wordcloud</a>()</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#init_wordcloud">source&nbsp;code</a></span>
+            <span class="codelink"><a href="dataGraph-pysrc.html#getdictCoauthors">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -189,13 +147,6 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="app"></a><span class="summary-name">app</span> = <code title="&lt;Flask 'server'&gt;">&lt;Flask 'server'&gt;</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
         <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="None">None</code>
     </td>
   </tr>
@@ -218,141 +169,82 @@
   </td>
 </tr>
 </table>
-<a name="index"></a>
+<a name="distanceTFIDF"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">index</span>()</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">distanceTFIDF</span>(<span class="sig-arg">A</span>,
+        <span class="sig-arg">B</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#index">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="dataGraph-pysrc.html#distanceTFIDF">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  
+  <p>return a number related to the similarity between matrixes</p>
   <dl class="fields">
-    <dt>Decorators:</dt>
+    <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><code>@app.route('/')</code></li>
+        <li><strong class="pname"><code>A</code></strong> (TFIDFMatrix) - TFIDF matrix to compare</li>
+        <li><strong class="pname"><code>B</code></strong> (TFIDFMatrix) - TFIDF matrix to compare</li>
     </ul></dd>
+    <dt>Returns: float</dt>
+        <dd>similarity coefficient</dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="wordcloud"></a>
+<a name="getAllAuthors"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">wordcloud</span>()</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAllAuthors</span>(<span class="sig-arg">bibli</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#wordcloud">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="dataGraph-pysrc.html#getAllAuthors">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  
+  <p>return a list with all the authors in the bib</p>
   <dl class="fields">
-    <dt>Decorators:</dt>
+    <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><code>@app.route('/wordcloud/')</code></li>
+        <li><strong class="pname"><code>bibli</code></strong> (bibDatabase) - the file containing the information about authors</li>
     </ul></dd>
+    <dt>Returns: string list</dt>
+        <dd>all authors from the bib</dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="timeline"></a>
+<a name="getdictCoauthors"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">timeline</span>()</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getdictCoauthors</span>(<span class="sig-arg">bibName</span>,
+        <span class="sig-arg">minFreq</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#timeline">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="dataGraph-pysrc.html#getdictCoauthors">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  
+  <p>return a list with all the coauthors in the bib</p>
   <dl class="fields">
-    <dt>Decorators:</dt>
+    <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><code>@app.route('/timeline/')</code></li>
+        <li><strong class="pname"><code>bibName</code></strong> (string) - the path to the bib you want to get the coauthors from</li>
+        <li><strong class="pname"><code>minFreq</code></strong> (int) - the minimum of publications authors must have in common</li>
     </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="testjs"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">testjs</span>()</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#testjs">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  
-  <dl class="fields">
-    <dt>Decorators:</dt>
-    <dd><ul class="nomargin-top">
-        <li><code>@app.route('/testjs/')</code></li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="show_author"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">show_author</span>(<span class="sig-arg">name</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#show_author">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  
-  <dl class="fields">
-    <dt>Decorators:</dt>
-    <dd><ul class="nomargin-top">
-        <li><code>@app.route('/author/<name>')</code></li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="init_wordcloud"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">init_wordcloud</span>()</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#init_wordcloud">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  
-  <dl class="fields">
-    <dt>Decorators:</dt>
-    <dd><ul class="nomargin-top">
-        <li><code>@app.route('/init_wordcloud/')</code></li>
-    </ul></dd>
+    <dt>Returns: dictionary {author (string): list coauthors (string list)}</dt>
+        <dd>all coauthors from the bib linked to the authors</dd>
   </dl>
 </td></tr></table>
 </div>

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun 16 15:55:42 2016
-
-@author: AntoineTelecom
+Module used to transform PDF files into raw (utf8) text files
 """
 import sys
 import os      #file manipulation

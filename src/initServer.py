@@ -11,11 +11,7 @@ from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
 from calendar import monthrange
 
-app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
-data = app_path+os.sep+"data"
-src = app_path+os.sep+"src"
-tmp_pdf_dir = "/tmp/aps"
-
+import variables
 import pdf2txt
 import TFIDFMatrixClass
 import freqMatrixClass
@@ -47,10 +43,10 @@ def _compute_tfidf(bib_path):
     bib_name = bib_path.split(os.sep)[-1][:-4]    
     
     csv_name = bib_name + "_tfidf.csv"  # "document_tfidf.csv"
-    csv_path = data + os.sep + csv_name # "/home/user/aps/data/document_tfidf.csv"
+    csv_path = variables.data_dir + os.sep + csv_name # "/home/user/aps/data/document_tfidf.csv"
     
     #if the .csv is newer than the .bib file, don't bother re-computing the TFIDF matrix
-    if csv_name in os.listdir(data) and os.path.getctime(csv_path) > os.path.getctime(bib_path) :
+    if csv_name in os.listdir(variables.data_dir) and os.path.getctime(csv_path) > os.path.getctime(bib_path) :
         print "I already computed the TFIDF for this bibtex!"
         tmatrix = TFIDFMatrixClass.load(csv_path)
     
@@ -58,23 +54,23 @@ def _compute_tfidf(bib_path):
         #Downloading the PDF file
         print "Downloading the files...",
         #the theoritical pdf files downloaded from the bibtex:
-        pdf_ids_list = PDFdl.downloadAll(bib_path, tmp_pdf_dir, data).values()
+        pdf_ids_list = PDFdl.downloadAll(bib_path, variables.tmp_pdf_dir, variables.data_dir).values()
         print "done."
         
         #Extract the text out of PDF
         print "Getting the text from the PDF..."
         for pdf_id in pdf_ids_list:
             print "PDF id =",pdf_id,
-            if str(pdf_id)+"_out.txt" in os.listdir(data):
-                print "is already in data folder"
+            if str(pdf_id)+"_out.txt" in os.listdir(variables.data_dir):
+                print "is already in variables.data_dir folder"
             else:
-                pdf2txt.pdf_to_file(tmp_pdf_dir+os.sep+str(pdf_id)+".pdf", data+os.sep+str(pdf_id)+"_out.txt")
-                os.remove(tmp_pdf_dir+os.sep+str(pdf_id)+".pdf")
+                pdf2txt.pdf_to_file(variables.tmp_pdf_dir+os.sep+str(pdf_id)+".pdf", variables.data_dir+os.sep+str(pdf_id)+"_out.txt")
+                os.remove(variables.tmp_pdf_dir+os.sep+str(pdf_id)+".pdf")
         
         #Create the frequency matrix for the docs
         fmatrix = freqMatrixClass.FreqMatrix([],[])
         for pdf_id in pdf_ids_list:
-            f = codecs.open(data+os.sep+str(pdf_id)+"_out.txt", 'r', "utf-8")
+            f = codecs.open(variables.data_dir+os.sep+str(pdf_id)+"_out.txt", 'r', "utf-8")
             txt = f.read()
             f.close()
             dic = modifTexte.textToDictionnary(txt,[])
@@ -89,7 +85,7 @@ def _compute_tfidf(bib_path):
     return tmatrix
     
 
-def make_json_wordcloud2(bibtex):
+def make_json_wordcloud(bibtex):
     """
     Creates a JSON file from a bibtex file to visualize the 2nd version 
     of the wordcloud.
@@ -102,8 +98,8 @@ def make_json_wordcloud2(bibtex):
     """
     tmatrix = _compute_tfidf(bibtex)
     print "Saving the JSON file"
-    formatConversion.convertDict2(tmatrix.weights(50), 
-        src+os.sep+"static"+os.sep+"wordcloud"+os.sep+"tags.json")
+    formatConversion.convertDict(tmatrix.weights(50), 
+        variables.src_dir+os.sep+"static"+os.sep+"tags.json")
     print "All done!"
   
 
@@ -237,14 +233,15 @@ def make_json_timeline(authorName, startDate, endDate, periodLength, json_filepa
     
     #converting to output format
     formatConversion.convertToMatrice(topFrequenciesList, 
-        src+os.sep+"templates"+os.sep+"timeline.json", periodsNumber) 
+        variables.json_dir+os.sep+"timeline.json", periodsNumber) 
 
 
         
     
 
 if __name__ == "__main__":
-    threading.Thread(PDFdl.downloadAll(data+os.sep+"document.bib",tmp_pdf_dir,data)).start()
-    make_json_wordcloud2(data+os.sep+"concolato.bib")
+    threading.Thread(PDFdl.downloadAll(variables.data_dir+os.sep+"concolato.bib",
+            variables.tmp_pdf_dir, variables.data_dir)).start()
+    make_json_wordcloud(variables.data_dir+os.sep+"concolato.bib")
     make_json_timeline("C. Concolato", "2012 01", "2015 12", 6, 
-        src+os.sep+"static"+os.sep+"timeline"+os.sep+"timeline.json")
+        variables.json_dir+os.sep+"timeline.json")

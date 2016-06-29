@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun 16 16:42:50 2016
-
-@author: asueur
+Module cleaning the text extracted from PDF: deleting stopwords, punctuaction...
 """
 
 
@@ -12,43 +10,27 @@ Created on Thu Jun 16 16:42:50 2016
 # blackList: banned words list
 import string
 import nltk
-from nltk.corpus import wordnet
-
-
-
-#tests
-#if __name__ == "__main__":
-    
-    #pdfPath = "/cal/homes/asueur/Downloads/TP3.pdf"
-    #text1 = "abc Abc bAc.... bBc bacb acb acb acb and ant ham"
-    #randomText="""Still court no small think death so an wrote. Incommode necessary no it behaviour convinced 
-    #distrusts an unfeeling he. Could death since do we hoped is in. Exquisite no my attention extensive. 
-    #The determine conveying moonlight age. Avoid for see marry sorry child. Sitting so totally 
-    #forbade hundred to.Their could can widen ten she any. As so we smart those money in. Am wrote up whole 
-    #so tears sense oh. Absolute required of reserved in offering no. How sense found our those gay again 
-    #taken the. Had mrs outweigh desirous sex overcame. Improved property reserved disposal do offering me"""
-    #blackList=["abc","acb"]
 
 
 
 def delPunctuation(text):
     """deleting punctuation
     @param text: text you want to delete punctuation 
-    @type text: string
+    @type text: string or unicode
     
     @return: text without punctuation
     @rtype: string """
     for char in string.punctuation: 
         text=text.replace(char,'')
-    return text.replace('\x0c','')
+    return text.replace('\x0c','') #special character messing around
     
 def getTextWords(text):
     """tokenize words
     @param text: text you want to tokenize
-    @type text: string
+    @type text: string or unicode
     
     @return: word list
-    @rtype: string list """
+    @rtype: string or unicode list """
     return nltk.word_tokenize(text)
 
 def modifyText(textWords, blackList):
@@ -91,28 +73,6 @@ def deleteStopWords(textWords):
         if i[1] in ["DT","CC", "CD", "PRP", "PRP$", "PDT"]:  
             listCopy.remove(i[0])
     return listCopy
-    
-#def lemmatization(textWords): basic lemmatizer
-#    #lemmatizes all the words
-#    words = textWords
-#    lmtzr=WordNetLemmatizer()
-#    for i in range(len(words)):
-#        words[i]=lmtzr.lemmatize(words[i])
-#    return words
-    
-
-#def compteur(text, wordList):
-#    text=delPunctuation(text)
-#    dictionnary={}
-#    textWords=text.split()
-#    for word in wordList:
-#        a=0
-#        for word2 in textWords:
-#            if (word==word2):
-#                a+=1
-#            dictionnary[word]=str(a/float(len(textWords)))
-#    return dictionnary
-    
 
 def get_wordnet_pos(treebank_tag): 
     """convert pos_tag from nltk to pos_tag from wordnet
@@ -190,26 +150,27 @@ def frequencyWithTreshold(textWords, occTreshold, lengthTreshold):
         a[i]=a[i]/float(nbMots)
     return a
 
-#if __name__ == "__main__":
-#    text = word_tokenize("""The aim of a probabilistic logic (also probability logic and probabilistic reasoning) is to combine the capacity of probability theory to handle uncertainty with the capacity of deductive logic to exploit structure of formal argument. The result is a richer and more expressive formalism with a broad range of possible application areas. Probabilistic logics attempt to find a natural extension of traditional logic truth tables: the results they define are derived through probabilistic expressions instead. A difficulty with probabilistic logics is that they tend to multiply the computational complexities of their probabilistic and logical components. Other difficulties include the possibility of counter-intuitive results, such as those of Dempster-Shafer theory. The need to deal with a broad variety of contexts and issues has led to many different proposals.""")
-#    w= textToDictionnary(t, [])
-#    d = frequency(w)
-#    e = frequencyWithTreshold(w, 2, 0)
-#    for word in d:
-#        if word in e:
-#            print(word)
-    
 def textToDictionnary(text, blackList):
-    """does all the functions above in one take"""
-    f= frequency(lemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList))))
+    """Cleans a raw text: delete stop words, punctuaction, put everything in lowercase
+    (except for acronyms as XML, UE) and returns the words with their frequency
+    
+    @param text: The text you want to make a dictionary of.
+    @type text: unicode
+    
+    @param blackList: words to suppress 
+        (for instance "GPAC" is a software and an athletic conference...)
+    @type blackList: unicode list
+    
+     """
+    f= frequency(lemmatization(deleteStopWords(modifyText(
+        getTextWords(delPunctuation(text)),blackList))))
     dic = dict()
     for word in f.keys():
         dic[word] = f[word]
     return dic
     
-"""Estimating the language of a text"""
-
-
+    
+    
 
 def estimate_language(text):
     """returns the most probable language of the text.
@@ -286,3 +247,9 @@ Rendus de l’Acad´emie des Sciences Series I Mathemat-
 ics, 330(10):905908, 2000."""
 
     print textToDictionnary(t, [])
+    
+    
+    text = nltk.word_tokenize("""The aim of a probabilistic logic (also probability logic and probabilistic reasoning) is to combine the capacity of probability theory to handle uncertainty with the capacity of deductive logic to exploit structure of formal argument. The result is a richer and more expressive formalism with a broad range of possible application areas. Probabilistic logics attempt to find a natural extension of traditional logic truth tables: the results they define are derived through probabilistic expressions instead. A difficulty with probabilistic logics is that they tend to multiply the computational complexities of their probabilistic and logical components. Other difficulties include the possibility of counter-intuitive results, such as those of Dempster-Shafer theory. The need to deal with a broad variety of contexts and issues has led to many different proposals.""")
+    w= textToDictionnary(t, [])
+    d = frequency(w)
+    print d

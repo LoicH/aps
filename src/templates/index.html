@@ -57,25 +57,27 @@
 
 </style>
 <body>
-	<!--<img src="{{url_for('static', filename='Logo_D3.png') }}">-->
     <h1> Word Cloud </h1>
     <div>
         <div id="wc">
-            <script type="text/javascript" src="WordCloud2.js"></script><!-- WordCloud2 ? -->
+            <script type="text/javascript" src="{{url_for('static', filename='WordCloud.js') }}"></script><!-- WordCloud2 ? -->
         </div>
         <div id="overlay" style="position: absolute; top: 70px ; width: 100%; background: white">
-            <script type="text/javascript" ></script>
         </div>
     </div>
 
-    <h1> Time Line </h1>
-    <div id="tl">
-        <script type="text/javascript" src="TimeLine.js"></script>
-    </div>
+
     <h1> Graph </h1>
     <div id="graph">
         <script type="text/javascript" src="{{url_for('static', filename='Graph.js') }}"></script>
+<!--
     </div>
+    
+    <h1> TimeLine </h1>
+    <div id="tl">
+        <script type="text/javascript" src="{{url_for('static', filename='TimeLine.js') }}"></script>
+    </div>
+-->
 </body>
 </html>
 

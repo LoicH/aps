@@ -7,55 +7,42 @@ import numpy as np
 import codecs
 import os
 
+import variables
 ###################################################################
 #conversion for wordCloud
-
-import initServer #for global path variables
 
 class Object(object):
     """Used to convert an objet into JSON format"""
     def __init__(self, text=None, size=None):
         self.text = text
         self.size = size
-
-
+    
 def convertDict(dico, file_out):
-    """ convert a dictionary to a json file used by the first worldcloud
+    """ convert a dictionary to a json file used by the worldcloud
+    
+        >>> convertDict({"streaming":50,"latency":20}, "static/frequency_list.json")    
+    
     @param dico: dictionary you want to convert
     @type dico: dictionary
     
-    @param file_out : path you want to save the file to
-    @type file_out : string"""
-    string=""
-    a= dict()
-    L=[]
-    for i in dico.keys():
-        a=Object(i,dico[i])
-        L.append(json.dumps(a.__dict__))
-        string=string+json.dumps(a.__dict__)+","
-    string = string[0:-1]
-    f = open(file_out,'w')
-    f.write('{"tags":['+ string+"]}")
-    f.close()
+    @param file_out: path you want to save the file to
+    @type file_out: string
     
-def convertDict2(dico, file_out): #used for the second type of word visualization
-    """ convert a dictionary to a json file used by the second worldcloud
-    @param dico: dictionary you want to convert
-    @type dico: dictionary
-    
-    @param file_out : path you want to save the file to
-    @type file_out : string"""
+    @return: Nothing
+    @rtype: None"""
     string=""
-    a= dict()
-    L=[]
+    a = dict()
+    L = []
+    
+    #l1 is the dico but sorted by values
     l1 = sorted([(v,k) for (k,v) in dico.items()], reverse=True)
     for (v,k) in l1:
-        a=Object(k,v)
+        a = Object(k,v)
         L.append(json.dumps(a.__dict__))
         string=string+json.dumps(a.__dict__)+","
     string = string[0:-1]
     string=string.replace("text","key").replace("size","value")
-    string='{ "tags" : ['+string+']}'
+    string='{ "tags": ['+string+']}'
     f = open(file_out,'w')
     f.write(string)
     f.close()
@@ -66,29 +53,28 @@ def convertDict2(dico, file_out): #used for the second type of word visualizatio
     
 
 def convertToMatrice(totalFreqDictList, file_out, timeSections): 
-    """ standard input form : [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically
+    """ standard input form: [{"a":0.3,"b":0.7},{"a":0.4,"b":0.6}] ordered chronologically
     Used to view the evolution in time of the weights of words
     
     @param totalFreqDictList: list of dictionaries saving the weights of each word 
         at a given time point
     @type totalFreqDictList: list of dictionary {category (string): frequency (float)} 
         ordered chronologically
-        example: [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] 
+        example: [{"a":0.3,"b":0.7},{"a":0.4,"b":0.6}] 
                              
-    @param file_out : path you want to save the file to
-    @type file_out : string
+    @param file_out: path you want to save the file to
+    @type file_out: string
     
-    @param timeSections : number of periods chosen
-    @type timeSections : int
+    @param timeSections: number of periods chosen
+    @type timeSections: int
     
-    @return: Matrix used by the timeline (ligns : categories, columns : timeSections, coef : category weight in this timeSection)
-    @rtype: TDIDFMatrix object """
+    @return: the TFIDF matrix
+    @rtype: TDIDFMatrix """
     categoryDict=dict()
     k=0
     for dic in totalFreqDictList: 
-    # search all categories and link each one to an index using a dictionnary
-        categories=dic.keys()
-        for i in categories:
+    # search all categories and link each one to an index using a dictionary
+        for i in dic.keys():
             if i not in categoryDict:
                     categoryDict[str(k)]=i
                     k+=1
@@ -125,7 +111,7 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections):
     
 #conversion for graph
 
-f=codecs.open(initServer.data+os.sep+"departments.json","r","utf-8") #json of departments
+f=codecs.open(variables.json_dir + os.sep + "departments.json","r","utf-8")
 departments=json.load(f)
 dptDict=dict() # dictionary linking people and the department they work in 
 for department in departments:
@@ -139,12 +125,13 @@ for department in departments:
 def convertGraph(coauthorDict): 
     """ convert from coauthor dict to input format for graph
     @param coauthorDict: link each author to his coauthor
-    @type coauthorDict: dictionnary {author (string): list coauthors (list string)}
+    @type coauthorDict: dictionary {author (string): list coauthors (list string)}
     
 
-    @return : format for graph coauthor
+    @return: format for graph coauthor
     @rtype: string {"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
     
+    print "convertGraph is computing the JSON file"    
     jsondata="["
     for i in coauthorDict:
         dpt=""
@@ -170,18 +157,20 @@ def convertGraph(coauthorDict):
         jsondata=jsondata+"]},"
     jsondata=jsondata[:-1]
     jsondata+="]"
-    f= codecs.open("templates" + os.sep+"readme-flare-imports.json","w","utf-8")
+    f= codecs.open(variables.json_dir + os.sep+"readme-flare-imports.json","w","utf-8")
     f.write(jsondata)
     f.close()
     return jsondata
     
 def convertGraphTelecom(coauthorDict):
-    """ convert from coauthor dict to input format for graph // only keeps researchers at Telecom Paristech
-    @param coauthorDict : link each author to his coauthor
-    @type coauthorDict : dictionnary [author (string) : list coauthors (list string)]
+    """ convert from coauthor dict to input format for graph. 
+    Only keeps researchers at Telecom Paristech
+        
+    @param coauthorDict: link each author to his coauthor
+    @type coauthorDict: dictionary [author (string): list coauthors (list string)]
     
-    @return : format for graph coauthor
-    @rtype : [{"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
+    @return: format for graph coauthor
+    @rtype: [{"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
     
     jsondata="["
     for author, coauthors in coauthorDict.items():
@@ -209,7 +198,7 @@ def convertGraphTelecom(coauthorDict):
         
     jsondata=jsondata[:-1]
     jsondata+="]"
-    f= codecs.open("templates" + os.sep+"readme-flare-imports.json","w","utf-8")
+    f= codecs.open(variables.json_dir + os.sep+"readme-flare-imports.json","w","utf-8")
     f.write(jsondata)
     f.close()
     return jsondata

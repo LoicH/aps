@@ -54,97 +54,52 @@
 <pre class="py-src">
 <a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
 <a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">Created on Wed Jun 22 17:33:59 2016</tt> </tt>
-<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">@author: loic</tt> </tt>
-<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
-<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">flask</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Flask</tt><tt class="py-op">,</tt> <tt class="py-name">render_template</tt> </tt>
-<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">threading</tt> </tt>
-<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module initServer=initServer-module.html"><a title="initServer" class="py-name" href="#" onclick="return doclink('link-0', 'initServer', 'link-0');">initServer</a></tt> </tt>
-<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
-<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
-<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable PDFdl.app_path=PDFdl-module.html#app_path,Variable dataTimeline.app_path=dataTimeline-module.html#app_path,Variable initServer.app_path=initServer-module.html#app_path,Variable main_timeline.app_path=main_timeline-module.html#app_path,Variable makeFrequencyList.app_path=makeFrequencyList-module.html#app_path,Variable pdf2txt.app_path=pdf2txt-module.html#app_path,Variable server.app_path=server-module.html#app_path,Variable timelineVisualization.app_path=timelineVisualization-module.html#app_path"><a title="PDFdl.app_path
-dataTimeline.app_path
-initServer.app_path
-main_timeline.app_path
-makeFrequencyList.app_path
-pdf2txt.app_path
-server.app_path
-timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-1', 'app_path', 'link-1');">app_path</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getcwd</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt> </tt>
-<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable PDFdl.data=PDFdl-module.html#data,Variable dataTimeline.data=dataTimeline-module.html#data,Variable initServer.data=initServer-module.html#data,Variable main_timeline.data=main_timeline-module.html#data,Variable makeFrequencyList.data=makeFrequencyList-module.html#data,Variable pdf2txt.data=pdf2txt-module.html#data,Variable server.data=server-module.html#data,Variable timelineVisualization.data=timelineVisualization-module.html#data"><a title="PDFdl.data
-dataTimeline.data
-initServer.data
-main_timeline.data
-makeFrequencyList.data
-pdf2txt.data
-server.data
-timelineVisualization.data" class="py-name" href="#" onclick="return doclink('link-2', 'data', 'link-2');">data</a></tt> <tt class="py-op">=</tt> <tt id="link-3" class="py-name"><a title="PDFdl.app_path
-dataTimeline.app_path
-initServer.app_path
-main_timeline.app_path
-makeFrequencyList.app_path
-pdf2txt.app_path
-server.app_path
-timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-3', 'app_path', 'link-1');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"data"</tt> </tt>
-<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable PDFdl.src=PDFdl-module.html#src,Variable initServer.src=initServer-module.html#src,Variable main_timeline.src=main_timeline-module.html#src,Variable makeFrequencyList.src=makeFrequencyList-module.html#src,Variable pdf2txt.src=pdf2txt-module.html#src,Variable server.src=server-module.html#src,Variable timelineVisualization.src=timelineVisualization-module.html#src"><a title="PDFdl.src
-initServer.src
-main_timeline.src
-makeFrequencyList.src
-pdf2txt.src
-server.src
-timelineVisualization.src" class="py-name" href="#" onclick="return doclink('link-4', 'src', 'link-4');">src</a></tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="PDFdl.app_path
-dataTimeline.app_path
-initServer.app_path
-main_timeline.app_path
-makeFrequencyList.app_path
-pdf2txt.app_path
-server.app_path
-timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-5', 'app_path', 'link-1');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"src"</tt> </tt>
-<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-string">"""Directing the routes"""</tt> </tt>
-<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable server.app=server-module.html#app"><a title="server.app" class="py-name" href="#" onclick="return doclink('link-6', 'app', 'link-6');">app</a></tt> <tt class="py-op">=</tt> <tt class="py-name">Flask</tt><tt class="py-op">(</tt><tt class="py-name">__name__</tt><tt class="py-op">)</tt> </tt>
-<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
-<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-keyword">print</tt> <tt class="py-string">"In server.py, __name__ ="</tt><tt class="py-op">,</tt><tt class="py-name">__name__</tt> </tt>
-<a name="index"></a><div id="index-def"><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">)</tt> </tt>
-<a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="index-toggle" onclick="return toggle('index');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#index">index</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="index-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="index-expanded"><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'index.html'</tt><tt class="py-op">)</tt>     </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">Module managing the server and redirecting the inputs</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">flask</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Flask</tt><tt class="py-op">,</tt> <tt class="py-name">render_template</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">threading</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module initServer=initServer-module.html"><a title="initServer" class="py-name" href="#" onclick="return doclink('link-0', 'initServer', 'link-0');">initServer</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module variables=variables-module.html"><a title="variables" class="py-name" href="#" onclick="return doclink('link-1', 'variables', 'link-1');">variables</a></tt>  </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-string">"""Directing the routes"""</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable server.app=server-module.html#app"><a title="server.app" class="py-name" href="#" onclick="return doclink('link-2', 'app', 'link-2');">app</a></tt> <tt class="py-op">=</tt> <tt class="py-name">Flask</tt><tt class="py-op">(</tt><tt class="py-name">__name__</tt><tt class="py-op">)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-keyword">print</tt> <tt class="py-string">"In server.py, __name__ ="</tt><tt class="py-op">,</tt><tt class="py-name">__name__</tt> </tt>
+<a name="index"></a><div id="index-def"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt> <a class="py-toggle" href="#" id="index-toggle" onclick="return toggle('index');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#index">index</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="index-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="index-expanded"><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'index.html'</tt><tt class="py-op">)</tt>     </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">     </tt>
+<a name="wordcloud"></a><div id="wordcloud-def"><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/wordcloud/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="wordcloud-toggle" onclick="return toggle('wordcloud');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#wordcloud">wordcloud</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="wordcloud-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="wordcloud-expanded"><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'wordcloud.html'</tt><tt class="py-op">)</tt>  </tt>
 </div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">     </tt>
-<a name="wordcloud"></a><div id="wordcloud-def"><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/wordcloud/'</tt><tt class="py-op">)</tt> </tt>
-<a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="wordcloud-toggle" onclick="return toggle('wordcloud');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#wordcloud">wordcloud</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="wordcloud-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="wordcloud-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'wordcloud.html'</tt><tt class="py-op">)</tt>  </tt>
+<a name="timeline"></a><div id="timeline-def"><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/timeline/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="timeline-toggle" onclick="return toggle('timeline');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#timeline">timeline</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="timeline-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="timeline-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'timeline.html'</tt><tt class="py-op">)</tt>  </tt>
 </div><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">     </tt>
-<a name="timeline"></a><div id="timeline-def"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/timeline/'</tt><tt class="py-op">)</tt> </tt>
-<a name="L29"></a><tt class="py-lineno">29</tt> <a class="py-toggle" href="#" id="timeline-toggle" onclick="return toggle('timeline');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#timeline">timeline</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="timeline-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="timeline-expanded"><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'timeline.html'</tt><tt class="py-op">)</tt>  </tt>
+<a name="testjs"></a><div id="testjs-def"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/testjs/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt> <a class="py-toggle" href="#" id="testjs-toggle" onclick="return toggle('testjs');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#testjs">testjs</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="testjs-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="testjs-expanded"><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'testjs.html'</tt><tt class="py-op">)</tt>   </tt>
 </div><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">     </tt>
-<a name="testjs"></a><div id="testjs-def"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/testjs/'</tt><tt class="py-op">)</tt> </tt>
-<a name="L33"></a><tt class="py-lineno">33</tt> <a class="py-toggle" href="#" id="testjs-toggle" onclick="return toggle('testjs');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#testjs">testjs</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="testjs-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="testjs-expanded"><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'testjs.html'</tt><tt class="py-op">)</tt>   </tt>
-</div><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">     </tt>
-<a name="show_author"></a><div id="show_author-def"><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/author/&lt;name&gt;'</tt><tt class="py-op">)</tt> </tt>
-<a name="L37"></a><tt class="py-lineno">37</tt> <a class="py-toggle" href="#" id="show_author-toggle" onclick="return toggle('show_author');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#show_author">show_author</a><tt class="py-op">(</tt><tt class="py-param">name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="show_author-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="show_author-expanded"><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Name:"</tt><tt class="py-op">,</tt><tt class="py-name">name</tt> </tt>
-<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'author.html'</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-name">name</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"> </tt>
-<a name="init_wordcloud"></a><div id="init_wordcloud-def"><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/init_wordcloud/'</tt><tt class="py-op">)</tt> </tt>
-<a name="L42"></a><tt class="py-lineno">42</tt> <a class="py-toggle" href="#" id="init_wordcloud-toggle" onclick="return toggle('init_wordcloud');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#init_wordcloud">init_wordcloud</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="init_wordcloud-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="init_wordcloud-expanded"><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">    <tt class="py-name">threading</tt><tt class="py-op">.</tt><tt class="py-name">Thread</tt><tt class="py-op">(</tt><tt id="link-7" class="py-name"><a title="initServer" class="py-name" href="#" onclick="return doclink('link-7', 'initServer', 'link-0');">initServer</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Function initServer.make_json_wordcloud2()=initServer-module.html#make_json_wordcloud2"><a title="initServer.make_json_wordcloud2" class="py-name" href="#" onclick="return doclink('link-8', 'make_json_wordcloud2', 'link-8');">make_json_wordcloud2</a></tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="PDFdl.data
-dataTimeline.data
-initServer.data
-main_timeline.data
-makeFrequencyList.data
-pdf2txt.data
-server.data
-timelineVisualization.data" class="py-name" href="#" onclick="return doclink('link-9', 'data', 'link-2');">data</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"concolato.bib"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-string">"Word Cloud done"</tt> </tt>
-</div><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"> </tt>
-<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"> </tt>
-<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"> </tt>
-<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
-<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"> </tt>
-<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
-<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">    <tt id="link-10" class="py-name"><a title="server.app" class="py-name" href="#" onclick="return doclink('link-10', 'app', 'link-6');">app</a></tt><tt class="py-op">.</tt><tt class="py-name">run</tt><tt class="py-op">(</tt><tt class="py-name">debug</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">host</tt><tt class="py-op">=</tt><tt class="py-string">'0.0.0.0'</tt><tt class="py-op">,</tt> <tt class="py-name">threaded</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
-<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="show_author"></a><div id="show_author-def"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/author/&lt;name&gt;'</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt> <a class="py-toggle" href="#" id="show_author-toggle" onclick="return toggle('show_author');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#show_author">show_author</a><tt class="py-op">(</tt><tt class="py-param">name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="show_author-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="show_author-expanded"><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Name:"</tt><tt class="py-op">,</tt><tt class="py-name">name</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'author.html'</tt><tt class="py-op">,</tt> <tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-name">name</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt>
+<a name="init_wordcloud"></a><div id="init_wordcloud-def"><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/init_wordcloud/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt> <a class="py-toggle" href="#" id="init_wordcloud-toggle" onclick="return toggle('init_wordcloud');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="server-module.html#init_wordcloud">init_wordcloud</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="init_wordcloud-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="init_wordcloud-expanded"><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">    <tt class="py-name">bib</tt> <tt class="py-op">=</tt> <tt class="py-string">"concolato.bib"</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">    <tt class="py-name">threading</tt><tt class="py-op">.</tt><tt class="py-name">Thread</tt><tt class="py-op">(</tt><tt id="link-3" class="py-name"><a title="initServer" class="py-name" href="#" onclick="return doclink('link-3', 'initServer', 'link-0');">initServer</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Function initServer.make_json_wordcloud()=initServer-module.html#make_json_wordcloud"><a title="initServer.make_json_wordcloud" class="py-name" href="#" onclick="return doclink('link-4', 'make_json_wordcloud', 'link-4');">make_json_wordcloud</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt id="link-5" class="py-name"><a title="variables" class="py-name" href="#" onclick="return doclink('link-5', 'variables', 'link-1');">variables</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Variable variables.data_dir=variables-module.html#data_dir"><a title="variables.data_dir" class="py-name" href="#" onclick="return doclink('link-6', 'data_dir', 'link-6');">data_dir</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-name">bib</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-string">"Word Cloud for "</tt><tt class="py-op">+</tt><tt class="py-name">bib</tt><tt class="py-op">+</tt><tt class="py-string">" done"</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">    <tt id="link-7" class="py-name"><a title="server.app" class="py-name" href="#" onclick="return doclink('link-7', 'app', 'link-2');">app</a></tt><tt class="py-op">.</tt><tt class="py-name">run</tt><tt class="py-op">(</tt><tt class="py-name">debug</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">host</tt><tt class="py-op">=</tt><tt class="py-string">'0.0.0.0'</tt><tt class="py-op">,</tt> <tt class="py-name">threaded</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -175,7 +130,7 @@ expandto(location.href);
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Jun 29 09:18:16 2016
+    on Wed Jun 29 19:58:07 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

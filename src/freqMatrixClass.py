@@ -11,18 +11,16 @@ import codecs
 
 class FreqMatrix:
     """Contains a graph linking documents and words"""
-    def __init__(self, words_list, docs_list):
-        self.docs = docs_list
+    def __init__(self):
+        self.docs = []
         self.graph = dict()
-        for word in words_list:
-            self.graph[word] = dict()
         
     def coef(self, word, doc):
         """returns the frequency of a word in doc"""
         try:
             return self.graph[word][doc]
         except:
-            return 0
+            return 0.
     
     def doc_contains(self,doc):
         """returns all interesting words in a doc, with their frequencies
@@ -48,7 +46,10 @@ class FreqMatrix:
         @return: a dictionary of all the docs that contain this word, 
             and the frequency of this word in every doc
         @rtype: dict {docname (string): frequency (float)}"""
-        return self.graph[word]
+        try:
+            return self.graph[word]
+        except:
+            return None
 
         
     def add_doc(self, docname, dic):
@@ -76,7 +77,7 @@ class FreqMatrix:
                 
         print " "*11,
         for doc in self.docs:
-            print fit(doc),"|",
+            print fit(str(doc)),"|",
         print "\n"
         for word, dic in self.graph.items():
             print fit(word),"|",
@@ -110,27 +111,27 @@ class FreqMatrix:
         """compute the TFIDF value of the word"""
         #compute IDF
         appearance = self.word_appearance(word)
-        print "\""+word+"\" appears in",len(appearance)," docs."
+        ##print "\""+word+"\" appears in",len(appearance)," docs."
         idf = log(float(len(self.docs))/len(appearance))
         
         #compute TF * IDF line for a word
         tfidf = dict()
         for doc, freq in appearance.items():
             tfidf[doc] = freq * idf
-        print "TFIDF is", tfidf
+        ##print "TFIDF is", tfidf
         return tfidf
             
     def to_TFIDF_Matrix(self):
         """returns the TFIDF matrix associated with self"""
-        tfidfMatrix = TFIDFMatrixClass.TFIDFMatrix(self.graph.keys(), self.docs)
+        tfidfMatrix = TFIDFMatrixClass.TFIDFMatrix()
         for word in self.graph.keys():
-            print "Computing for \"",word,"\"..."
+            #print "Computing for \"",word,"\"..."
             tfidfMatrix.add_word(word, self.compute_TFIDF(word))
         return tfidfMatrix
         
 if __name__ == "__main__":
-    m = FreqMatrix(["big data", "machine learning", "programming", "operating systems"],
-                   ["data science book", "artificial intelligence course", "systems course"])
+    
+    m = FreqMatrix()
     m.add_doc("data science book", {"big data":0.5, "machine learning":0.7, "programming":0.5})
     m.add_doc("knuth 101", {"programming":0.45, "operating systems":0.3})
     m.add_doc("artificial intelligence course", {"programming":0.25,"machine learning":0.5})
@@ -138,4 +139,3 @@ if __name__ == "__main__":
     print m.word_appearance("programming")
     tm = m.to_TFIDF_Matrix()
     tm.pretty_print()
-    tm.save("../data/tfidf1.csv")

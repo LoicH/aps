@@ -52,13 +52,11 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module initServer</h1><p class="nomargin-top"><span class="codelink"><a href="initServer-pysrc.html">source&nbsp;code</a></span></p>
-<p>Created on Tue Jun 28 11:53:50 2016</p>
+<p>Creates the JSON files for visualization from bibtex files The server 
+  will call the functions make_json_timeline and make_json_wordcloud2 to 
+  create the JSON files when needed</p>
 
-<hr />
-<div class="fields">      <p><strong>Author:</strong>
-        loic
-      </p>
-</div><!-- ==================== FUNCTIONS ==================== -->
+<!-- ==================== FUNCTIONS ==================== -->
 <a name="section-Functions"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
@@ -95,14 +93,15 @@
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">None</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="initServer-module.html#make_json_wordcloud2" class="summary-sig-name">make_json_wordcloud2</a>(<span class="summary-sig-arg">bibtex</span>)</span><br />
-      Creates a JSON file from a bibtex file.</td>
+          <td><span class="summary-sig"><a href="initServer-module.html#make_json_wordcloud" class="summary-sig-name">make_json_wordcloud</a>(<span class="summary-sig-arg">bibtex</span>)</span><br />
+      Creates a JSON file from a bibtex file to visualize the 2nd version 
+      of the wordcloud.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="initServer-pysrc.html#make_json_wordcloud2">source&nbsp;code</a></span>
+            <span class="codelink"><a href="initServer-pysrc.html#make_json_wordcloud">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -112,12 +111,13 @@
   </tr>
 <tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">int</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="_monthdelta"></a><span class="summary-sig-name">_monthdelta</span>(<span class="summary-sig-arg">d1</span>,
-        <span class="summary-sig-arg">d2</span>)</span></td>
+          <td><span class="summary-sig"><a href="initServer-module.html#_monthdelta" class="summary-sig-name" onclick="show_private();">_monthdelta</a>(<span class="summary-sig-arg">d1</span>,
+        <span class="summary-sig-arg">d2</span>)</span><br />
+      Computes the months difference between two dates</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="initServer-pysrc.html#_monthdelta">source&nbsp;code</a></span>
             
@@ -147,7 +147,7 @@
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">None</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -185,34 +185,6 @@
     </table>
   </td>
 </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="app_path"></a><span class="summary-name">app_path</span> = <code title="'/home/loic/Programmation/aps'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps</code><code class="variable-quote">'</code></code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="data"></a><span class="summary-name">data</span> = <code title="'/home/loic/Programmation/aps/data'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps/data</code><code class="variable-quote">'</code></code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="src"></a><span class="summary-name">src</span> = <code title="'/home/loic/Programmation/aps/src'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps/src</code><code class="variable-quote">'</code></code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="tmp_pdf_dir"></a><span class="summary-name">tmp_pdf_dir</span> = <code title="'/tmp/aps'"><code class="variable-quote">'</code><code class="variable-string">/tmp/aps</code><code class="variable-quote">'</code></code>
-    </td>
-  </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -267,23 +239,56 @@
   </dl>
 </td></tr></table>
 </div>
-<a name="make_json_wordcloud2"></a>
+<a name="make_json_wordcloud"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">make_json_wordcloud2</span>(<span class="sig-arg">bibtex</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">make_json_wordcloud</span>(<span class="sig-arg">bibtex</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="initServer-pysrc.html#make_json_wordcloud2">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="initServer-pysrc.html#make_json_wordcloud">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Creates a JSON file from a bibtex file.</p>
-  <p>bibtex is the complete path of the file.</p>
+  <p>Creates a JSON file from a bibtex file to visualize the 2nd version of
+  the wordcloud.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>bibtex</code></strong> (string) - the path to the bibtex file</li>
+    </ul></dd>
+    <dt>Returns: None</dt>
+        <dd>Nothing</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_monthdelta"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_monthdelta</span>(<span class="sig-arg">d1</span>,
+        <span class="sig-arg">d2</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="initServer-pysrc.html#_monthdelta">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Computes the months difference between two dates</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>d1</code></strong> (date object) - the first date</li>
+        <li><strong class="pname"><code>d2</code></strong> (date object) - the second date</li>
+    </ul></dd>
+    <dt>Returns: int</dt>
+        <dd>the number of months between the two dates</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -349,6 +354,8 @@
         <li><strong class="pname"><code>json_filepath</code></strong> (string) - Complete path of the JSON output: 
           &quot;src/static/timeline/timeline.json&quot;</li>
     </ul></dd>
+    <dt>Returns: None</dt>
+        <dd>Nothing</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -377,7 +384,7 @@
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Jun 29 09:18:16 2016
+    on Wed Jun 29 19:58:07 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

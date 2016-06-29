@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jun 22 17:33:59 2016
-
-@author: loic
+Module managing the server and redirecting the inputs
 """
 
+import os
 from flask import Flask, render_template
 import threading
 import initServer
-import os
+import variables 
 
-app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
-data = app_path+os.sep+"data"
-src = app_path+os.sep+"src"
 """Directing the routes"""
 app = Flask(__name__)
 
@@ -40,10 +36,10 @@ def show_author(name):
 
 @app.route('/init_wordcloud/')
 def init_wordcloud():
-    threading.Thread(initServer.make_json_wordcloud2(data+os.sep+"concolato.bib"))
-    return "Word Cloud done"
-
-
+    bib = "concolato.bib"
+    threading.Thread(initServer.make_json_wordcloud(
+        variables.data_dir+os.sep+bib))
+    return "Word Cloud for "+bib+" done"
 
 
 

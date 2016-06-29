@@ -2,20 +2,38 @@
 """
 Performs computations for the timeline (moving average, TFIDF matrix creation)
 """
-from freqMatrixClass import FreqMatrix
-from retrieveCategories import getAll
-from timelineVisualization import getInfo
-from Timeline import formatDate
-import initServer
-import pdf2txt
-import PDFdl
 
 import os
 from requests.exceptions import HTTPError
 from datetime import date
+import re
 
-app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
-data = app_path+os.sep+"data"
+
+from freqMatrixClass import FreqMatrix
+from retrieveCategories import getAll
+from timelineVisualization import getInfo
+import initServer
+import pdf2txt
+import PDFdl
+
+import variables
+
+def formatMonth(string):
+    """ converts from number to month"""
+    switcher = { "jan": "01","feb": "02", "mar": "03", "apr": "04","may": "05", "jun": "06", "jul": "07", "aug": "08", "sep": "09", "oct": "10", "nov": "11", "dec": "12" }      
+    return switcher.get(string)
+    
+def formatDate(string): 
+    """turns "2015 feb" into "2015 02" for instance"""
+    
+    matchObject = re.search(r"(\d+) ([a-zA-Z]+)", string)    
+    if matchObject:        # return 0 if the string doesn't match
+        date = matchObject.group(0)
+        month = matchObject.group(2)
+        return date.replace(month, formatMonth(month))
+    else:
+        print "The date is wrongly formatted, can't convert it."
+        return 0
 
 def getCategories(filepath):
     """
@@ -36,16 +54,22 @@ def getCategories(filepath):
         print 'Error getting categories for %s: "%s"'% (filepath, e.message)
         return dict()
     
-def createTFIDFMatrix(authorName, startDateString, endDateString):
-    """ create TFIDF Matrix using documents written by an author during a selected period
+def createTFIDFMatrix(authorName, startDate, endDate, bibName):
+    """
+    create TFIDF Matrix using documents written by an author 
+    during a selected period
+        
     @param authorName: author's lastname
     @type authorName: string
     
-    @param startDateString: start of the period you want to select
-    @type startDateString: string "year monthNumber"
+    @param startDate: start of the period you want to select
+    @type startDate: datetime.date
     
-    @param endDateString: end of the period you want to select
-    @type endDateString: string "year monthNumber"
+    @param endDate: end of the period you want to select
+    @type endDate: datetime.date
+    
+    @param bibName: the path to the corpus
+    @type bibName: string 
     
     @return: TFIDF Matrix using documents selected
     @rtype: TDIDFMatrix object """
@@ -55,7 +79,7 @@ def createTFIDFMatrix(authorName, startDateString, endDateString):
     
     
     #dictonary of publications, dates and ids e.g: {pubName: [date,id]}
-    title_dict = getInfo(authorName)[0]    
+    title_dict = getInfo(authorName, bibName)[0]    
     
     #dictionary of publications {pubname:id} only for those in the selected time interval
     titleId = dict()
@@ -68,30 +92,25 @@ def createTFIDFMatrix(authorName, startDateString, endDateString):
         pubDate=date(int(formatedDate.split()[0]),int(formatedDate.split()[1]),1)
         #pubDate = date object : (2015, 2, 1) or 1st feb. 2015
         
-        #converting the date arguments from string to date objects
-        formatedStart = formatDate(startDateString)
-        startDate = date(int(formatedStart.split()[0]),int(formatedStart.split()[1]),1)
-        formatedEnd = formatDate(endDateString)
-        endDate = date(int(formatedEnd.split()[0]),int(formatedEnd.split()[1]),1)
-        
         #checks if text was published in a fixed time window        
         if pubDate >= startDate and pubDate < endDate: 
             titleId[title] = pdf_id
     
 
     #construting the frequency matrix for the concerned documents        
-    fm=FreqMatrix([],[])
+    fm=FreqMatrix()
     for title, pdf_id in titleId.items():
         print pdf_id
         
         #Trying to get the data from this pdf:
         
         #the text is already extracted from the PDF
-        if str(pdf_id)+"_out.txt" in os.listdir(data):
-            fm.add_doc(pdf_id, getCategories(initServer.data+os.sep+str(pdf_id)+"_out.txt"))
+        if str(pdf_id)+"_out.txt" in os.listdir(variables.data_dir):
+            fm.add_doc(pdf_id, getCategories(
+                variables.data_dir+os.sep+str(pdf_id)+"_out.txt"))
         
         #the PDF is downloaded but no text is extracted
-        elif str(pdf_id)+".pdf" in os.listdir(initServer.tmp_pdf_dir):
+        elif str(pdf_id)+".pdf" in os.listdir(variables.tmp_pdf_dir):
             print "File "+str(pdf_id)+"_out.txt not found in data directory" ,
             print "But the PDF is in temporary directory."
             pdf2txt.pdf_to_file(initServer.tmp_pdf_dir+os.sep+str(pdf_id)+".pdf",
@@ -150,6 +169,9 @@ def median(matrixList):
         
 
 if __name__ == "__main__":
-    createTFIDFMatrix("C. Concolato", "2012 jan", "2015 dec").pretty_print()
+    start = date(2012, 1, 1)
+    end = date(2015, 12, 1)
+    t = createTFIDFMatrix("C. Concolato", start, end, 
+                      variables.data_dir + os.sep + "concolato.bib")
     
     

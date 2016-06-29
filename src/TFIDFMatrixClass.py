@@ -1,33 +1,36 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jun 21 11:09:45 2016
-
-@author: loic
-"""
-
-"""Coding the class of a TFIDF Matrix
-1 word = 1 line
-1 doc = 1 column"""
+Class handling TFIDF values and storing lots of zeroes (like FreqMatrix)"""
 
 import codecs
-import os
-import modifTexte
-import freqMatrixClass
 
 class TFIDFMatrix:
     """Contains a graph saving tfidf values of words"""
-    def __init__(self, words_list, docs_list):
-        self.docs = docs_list #words list to link words to index
+    def __init__(self):
+        self.docs = []
         self.graph = dict()
-        for word in words_list:
-            self.graph[word] = dict()
             
     def add_word(self, word, dic):
-        """adds a word with his dictionary {doc:tfidf by doc}"""
+        """Add a word in the matrix with the coefficients for each doc
+        
+        @param word: the word
+        @type word: unicode
+        
+        @param dic: the dictionary containing all doc names (generally ID)
+            and their TFIDF value for the word
+        @type dic: dict {document name (string): tfidf (float)}
+        
+        @return: Nothing
+        @rtype: None"""
+        #print "Adding",word
         if word not in self.graph:
             self.graph[word] = dict()
         for doc, tfidf in dic.items():
-            self.graph[word][doc] = tfidf
+            #print "Coef in",doc,"is",tfidf
+            if tfidf > 0:
+                if doc not in self.docs:
+                    self.docs.append(doc)
+                self.graph[word][doc] = tfidf
             
     def add_doc(self, doc, dic):
         """adds a doc with his dictionary {word:tfidf by word}"""
@@ -63,7 +66,7 @@ class TFIDFMatrix:
                 
         print " "*11,
         for doc in self.docs:
-            print fit(doc),"|",
+            print fit(str(doc)),"|",
         print "\n"
         for word, dic in self.graph.items():
             print fit(word),"|",
@@ -134,15 +137,14 @@ def analyse_files(file_list, directory):
            
       
 def load(filename):
-    """File → Matrix Object"""
-    m = TFIDFMatrix([], [])
+    """CSV File → Matrix Object"""
     f = open(filename, "r")
     
     #first line = docs
     docs = f.readline() #string = ";d1;d2;d3"
     docs_list = docs.split(",")[1:] #first element = ''
     
-    m = TFIDFMatrix([],docs_list)
+    m = TFIDFMatrix()
     
     #then lines = word;tfidf1;tfidf2;... 
     line_str = f.readline()
@@ -159,15 +161,6 @@ def load(filename):
         line_str = f.readline()
     return m
     
-
-
-if __name__ == "__main__":
-    app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
-    data = app_path+os.sep+"data"
-    src = app_path+os.sep+"src"
-    m = load(data+os.sep+"concolato_tfidf.csv")
-    m.pretty_print()
-    print m.sum_words()
         
                 
             

@@ -6,10 +6,7 @@ using DBpedia Spotlight & SPARQLWrapper
 
 import spotlight
 from SPARQLWrapper import SPARQLWrapper, JSON
-import os 
 
-app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
-data = app_path+os.sep+"data"
 
 def getURIs(text): 
     """returns all the URIs linked to words or word groups in the text
@@ -32,6 +29,7 @@ def getURIs(text):
         try:
             annotatedWords.append(i["surfaceForm"].encode("utf-8"))
         except AttributeError as e:
+            annotatedWords.append("")
             print 'Error adding this word: "%s" (%s)'% (i["surfaceForm"], e.message)
     return URIList, annotatedWords
                           
@@ -68,6 +66,10 @@ def getCategories(URIList, annotatedWords):
             category=result["label"]["value"].encode("UTF-8").split("/")[-1].replace("_"," ").replace("Category:","")
             L.append(category)
             if category in wordByCategory:
+                if i>= len(annotatedWords):
+                    print "getCategories is computing URI=",URI
+                    print "Trying to append element number",i,
+                    print "from a list having",len(annotatedWords),"elements."
                 wordByCategory[category].append(annotatedWords[i])
             else:
                 wordByCategory[category]=[annotatedWords[i]]
@@ -91,29 +93,6 @@ def categoryFrequency(categoryList):   #TODO delete units
     sortedFreq=sorted([(v,k) for (k,v) in freq.items()], reverse = True)[:10]
     freq=dict([(k,v) for (v,k) in sortedFreq])
     return freq
-    
-#def textToCatFreq(text):
-#    """returns dict{category: frequency } for each category found in the text"""
-#    URIs = getURIs(text)
-#    return categoryFrequency(getCategories(URIs[0], URIs[1]))
-    
-#def getWordsLinkedTo(category,URIList): #returns text words linked to a certain category
-#    L=[]
-#    for URI in URIList:
-#        sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-#        sparql.setQuery("""
-#            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-#            PREFIX dc: <http://purl.org/dc/terms/>
-#            SELECT ?label
-#            WHERE { """+ "<"+ URI + "> dc:subject ?label }"
-#        )
-#        sparql.setReturnFormat(JSON)
-#        results = sparql.query().convert()
-#        for result in results["results"]["bindings"]:
-#            if result["label"]["value"].encode("UTF-8").split("/")[-1].replace("_"," ").replace("Category:","")== category:
-#                L.append(URI.split("/")[-1].replace("_"," ")) 
-#    return list(set(L))
-
 
 def getAll(text): 
     """returns relative frequency of a category, and words linked to categories

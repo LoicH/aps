@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jun 25 16:27:21 2016
-
-@author: asueur
+The script to create the JSON used in the timeline
+(Work In Progress)
 """
 
 import os
 import re
 import pdf2txt
-import retrieveCategories
 import dataTimeline
 import sys
 import Timeline
@@ -18,10 +16,16 @@ import formatConversion
 from calendar import monthrange
 import PDFdl
 
-bibName="testbib.bib"
-entries=PDFdl.openBibLib(bibName).entries 
+import variables
+
+bibName="concolato.bib"
+entries=PDFdl.openBibLib(variables.data_dir + os.sep + bibName).entries 
 
 #argv must be: main authorName startDate endDate periodLength(in months)
+#example: python main_timeline.py "Concolato" "2015 jan" "2016 jan" 6      
+
+argv = ["program name", "Concolato","2011 jan", "2016 dec", "12"]
+
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
 data = app_path+os.sep+"data"
 src = app_path+os.sep+"src"
@@ -37,7 +41,6 @@ def monthdelta(d1, d2):
             break
     return delta
 
-#example: python main_timeline.py "Concolato" "2015 jan" "2016 jan" 6      
   
 
 
@@ -58,19 +61,20 @@ for filename in os.listdir(data):
 #Constructing TFIDFMatrixes for every concerned time period
 periodFrequenciesList=[]
 matrixList=[]
-authorName=sys.argv[1]
-startDate=Timeline.formatDate(sys.argv[2])
-endDate=Timeline.formatDate(sys.argv[3])
+authorName=argv[1]
+startDate=Timeline.formatDate(argv[2])
+endDate=Timeline.formatDate(argv[3])
 startDateTime=date(int(str(startDate).split()[0]),int(str(startDate).split()[1]),1) #conversion to objects of type dateTime
 endDateTime=date(int(str(endDate).split()[0]),int(str(endDate).split()[1]),1)
-periodLength=int(sys.argv[4])
+periodLength=int(argv[4])
 periodNumber2=monthdelta(startDateTime,endDateTime)//periodLength #number of periods considered
 date1=startDateTime
 date2=date1+ relativedelta(months=+periodLength)
 
 for i in range(periodNumber2+1):  #create TFDIDF Matrixes for each period
     print i
-    m=dataTimeline.createTFIDFMatrix(authorName, date1, date2) #TFIDF Matrix with all words/concepts.
+    m=dataTimeline.createTFIDFMatrix(authorName, date1, date2, 
+            variables.data_dir + os.sep + bibName) #TFIDF Matrix with all words/concepts.
 #    tops = m.weights(number=5) #dictionary {concept:weight} for the top 5 five concepts, weight of best concept = 100, least = 1
     matrixList.append(m)
     date1=date2
@@ -106,6 +110,7 @@ for old_dic in periodFrequenciesList:
     filteredFrequenciesList.append(filtered_dic)
 
 
-periodFreqJSON=formatConversion.convertToMatrice(filteredFrequenciesList, src+os.sep+"templates"+os.sep+"timeline.json", periodNumber2) #converting to output format
+periodFreqJSON=formatConversion.convertToMatrice(filteredFrequenciesList, 
+                                                 variables.json_dir+os.sep+"timeline.json", periodNumber2) #converting to output format
 
       # test: python main_timeline.py "Concolato" "2015 jan" "2016 jan" 6        

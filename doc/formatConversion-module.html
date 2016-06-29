@@ -99,13 +99,13 @@
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">None</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="formatConversion-module.html#convertDict" class="summary-sig-name">convertDict</a>(<span class="summary-sig-arg">dico</span>,
         <span class="summary-sig-arg">file_out</span>)</span><br />
-      convert a dictionary to a json file used by the first worldcloud</td>
+      convert a dictionary to a json file used by the worldcloud</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="formatConversion-pysrc.html#convertDict">source&nbsp;code</a></span>
             
@@ -117,25 +117,7 @@
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="formatConversion-module.html#convertDict2" class="summary-sig-name">convertDict2</a>(<span class="summary-sig-arg">dico</span>,
-        <span class="summary-sig-arg">file_out</span>)</span><br />
-      convert a dictionary to a json file used by the second worldcloud</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="formatConversion-pysrc.html#convertDict2">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">TDIDFMatrix object</span>
+      <span class="summary-type">TDIDFMatrix</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -143,7 +125,7 @@
         <span class="summary-sig-arg">file_out</span>,
         <span class="summary-sig-arg">timeSections</span>)</span><br />
       standard input form: 
-      [{&quot;a&quot;:0.3,&quot;b&quot;:0.7},{&quot;c&quot;:0.3,&quot;d&quot;:0.7}]
+      [{&quot;a&quot;:0.3,&quot;b&quot;:0.7},{&quot;a&quot;:0.4,&quot;b&quot;:0.6}]
       ordered chronologically Used to view the evolution in time of the 
       weights of words</td>
           <td align="right" valign="top">
@@ -176,6 +158,26 @@
       
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">[{&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
+      list}, 
+      {&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
+      list}, ... ]</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="formatConversion-module.html#convertGraphTelecom" class="summary-sig-name">convertGraphTelecom</a>(<span class="summary-sig-arg">coauthorDict</span>)</span><br />
+      convert from coauthor dict to input format for graph.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="formatConversion-pysrc.html#convertGraphTelecom">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 </table>
 <!-- ==================== VARIABLES ==================== -->
 <a name="section-Variables"></a>
@@ -198,7 +200,8 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="formatConversion-module.html#f" class="summary-name">f</a> = <code title="codecs.open(initServer.data+ os.sep+ &quot;departments.json&quot;, &quot;r&quot;, &quot;utf-8&quot;)">codecs.open(initServer.data+ os.sep+ &quot;departments.json&quot;, &quot;<code class="variable-ellipsis">...</code></code>
+        <a href="formatConversion-module.html#f" class="summary-name">f</a> = <code title="codecs.open(variables.json_dir+ os.sep+ &quot;departments.json&quot;, &quot;r&quot;, &quot;utf-\
+8&quot;)">codecs.open(variables.json_dir+ os.sep+ &quot;departments.json&quot;<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
@@ -309,38 +312,17 @@
     </td>
   </tr></table>
   
-  <p>convert a dictionary to a json file used by the first worldcloud</p>
+  <p>convert a dictionary to a json file used by the worldcloud</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>convertDict({<span class="py-string">&quot;streaming&quot;</span>:50,<span class="py-string">&quot;latency&quot;</span>:20}, <span class="py-string">&quot;static/frequency_list.json&quot;</span>)</pre>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>dico</code></strong> (dictionary) - dictionary you want to convert</li>
         <li><strong class="pname"><code>file_out</code></strong> (string) - path you want to save the file to</li>
     </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="convertDict2"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">convertDict2</span>(<span class="sig-arg">dico</span>,
-        <span class="sig-arg">file_out</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="formatConversion-pysrc.html#convertDict2">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>convert a dictionary to a json file used by the second worldcloud</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>dico</code></strong> (dictionary) - dictionary you want to convert</li>
-        <li><strong class="pname"><code>file_out</code></strong> (string) - path you want to save the file to</li>
-    </ul></dd>
+    <dt>Returns: None</dt>
+        <dd>Nothing</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -361,7 +343,7 @@
   </tr></table>
   
   <p>standard input form: 
-  [{&quot;a&quot;:0.3,&quot;b&quot;:0.7},{&quot;c&quot;:0.3,&quot;d&quot;:0.7}]
+  [{&quot;a&quot;:0.3,&quot;b&quot;:0.7},{&quot;a&quot;:0.4,&quot;b&quot;:0.6}]
   ordered chronologically Used to view the evolution in time of the weights
   of words</p>
   <dl class="fields">
@@ -369,14 +351,13 @@
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>totalFreqDictList</code></strong> (list of dictionary {category (string): frequency (float)} ordered
           chronologically example: 
-          [{&quot;a&quot;:0.3,&quot;b&quot;:0.7},{&quot;c&quot;:0.3,&quot;d&quot;:0.7}]) - list of dictionaries saving the weights of each word at a given 
+          [{&quot;a&quot;:0.3,&quot;b&quot;:0.7},{&quot;a&quot;:0.4,&quot;b&quot;:0.6}]) - list of dictionaries saving the weights of each word at a given 
           time point</li>
         <li><strong class="pname"><code>file_out</code></strong> (string) - path you want to save the file to</li>
         <li><strong class="pname"><code>timeSections</code></strong> (int) - number of periods chosen</li>
     </ul></dd>
-    <dt>Returns: TDIDFMatrix object</dt>
-        <dd>Matrix used by the timeline (ligns: categories, columns: 
-          timeSections, coef: category weight in this timeSection)</dd>
+    <dt>Returns: TDIDFMatrix</dt>
+        <dd>the TFIDF matrix</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -398,10 +379,39 @@
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>coauthorDict</code></strong> (dictionnary {author (string): list coauthors (list string)}) - link each author to his coauthor</li>
+        <li><strong class="pname"><code>coauthorDict</code></strong> (dictionary {author (string): list coauthors (list string)}) - link each author to his coauthor</li>
     </ul></dd>
     <dt>Returns: string 
       {&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
+      list}, 
+      {&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
+      list}, ... ]</dt>
+        <dd>format for graph coauthor</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="convertGraphTelecom"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">convertGraphTelecom</span>(<span class="sig-arg">coauthorDict</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="formatConversion-pysrc.html#convertGraphTelecom">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>convert from coauthor dict to input format for graph. Only keeps 
+  researchers at Telecom Paristech</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>coauthorDict</code></strong> (dictionary [author (string): list coauthors (list string)]) - link each author to his coauthor</li>
+    </ul></dd>
+    <dt>Returns: [{&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
       list}, 
       {&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
       list}, ... ]</dt>
@@ -440,7 +450,8 @@
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-codecs.open(initServer.data+ os.sep+ &quot;departments.json&quot;, &quot;r&quot;, &quot;utf-8&quot;)
+codecs.open(variables.json_dir+ os.sep+ &quot;departments.json&quot;, &quot;r&quot;, &quot;utf-<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+8&quot;)
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -593,7 +604,7 @@ codecs.open(initServer.data+ os.sep+ &quot;departments.json&quot;, &quot;r&quot;
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Jun 29 09:18:16 2016
+    on Wed Jun 29 19:58:07 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

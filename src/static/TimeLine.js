@@ -13,7 +13,7 @@ var margin = {top: 20, right: 30, bottom: 30, left: 40},
 
 
 
-d3.json("/static/timeline/timeline.json", function(error, json) {
+d3.json("/static/timeline.json", function(error, json) {
     if (error) return console.warn(error);
     var data2 = json.toto;
 

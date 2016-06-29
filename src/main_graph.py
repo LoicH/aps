@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jun 28 21:35:31 2016
-
-@author: asueur
+Work flow used to create the co-authoring graph
 """
 
-from graphVisualization import getdictCoauthors
+from dataGraph import getdictCoauthors
 from formatConversion import convertGraph
-import sys
+import PDFdl
+import variables
+import os
 
-min Freq=sys.argv[1]
-convertGraph(getdictCoauthors("testbib.bib"), minFreq)
+bibName = variables.data_dir+os.sep+"telecom.bib"
+
+bibli = PDFdl.openBibLib(bibName)
+
+minFreq=3
+convertGraph(getdictCoauthors(bibli, minFreq))

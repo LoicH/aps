@@ -52,27 +52,29 @@
 </b></center><br />
 <h1 class="epydoc">Module Hierarchy</h1>
 <ul class="nomargin-top">
-    <li> <strong class="uidlink"><a href="PDFdl-module.html">PDFdl</a></strong>: <em class="summary">Created on Tue Jun 21 18:08:59 2016</em>    </li>
-    <li> <strong class="uidlink"><a href="TFIDFMatrixClass-module.html">TFIDFMatrixClass</a></strong>: <em class="summary">Created on Tue Jun 21 11:09:45 2016</em>    </li>
-    <li> <strong class="uidlink"><a href="Timeline-module.html">Timeline</a></strong>: <em class="summary">Module used essentially for formatting dates from &quot;2012 
-        dec&quot; to &quot;2012 12&quot;</em>    </li>
-    <li> <strong class="uidlink"><a href="categoryVisualization-module.html">categoryVisualization</a></strong>: <em class="summary">Only used for testing purposes</em>    </li>
+    <li> <strong class="uidlink"><a href="PDFdl-module.html">PDFdl</a></strong>: <em class="summary">Used to download PDF files</em>    </li>
+    <li> <strong class="uidlink"><a href="TFIDFMatrixClass-module.html">TFIDFMatrixClass</a></strong>: <em class="summary">Class handling TFIDF values and storing lots of zeroes (like 
+        FreqMatrix)</em>    </li>
+    <li> <strong class="uidlink"><a href="dataGraph-module.html">dataGraph</a></strong>: <em class="summary">Performs computations for the graph visualization, like 
+        timelineVisualization</em>    </li>
     <li> <strong class="uidlink"><a href="dataTimeline-module.html">dataTimeline</a></strong>: <em class="summary">Performs computations for the timeline (moving average, TFIDF 
         matrix creation)</em>    </li>
     <li> <strong class="uidlink"><a href="formatConversion-module.html">formatConversion</a></strong>: <em class="summary">Converts data to JSON files</em>    </li>
     <li> <strong class="uidlink"><a href="freqMatrixClass-module.html">freqMatrixClass</a></strong>: <em class="summary">Matrix saving the frequencies for each word in every document.</em>    </li>
-    <li> <strong class="uidlink"><a href="graphVisualization-module.html">graphVisualization</a></strong>: <em class="summary">Created on Mon Jun 27 11:36:10 2016</em>    </li>
-    <li> <strong class="uidlink"><a href="initServer-module.html">initServer</a></strong>: <em class="summary">Created on Tue Jun 28 11:53:50 2016</em>    </li>
-    <li> <strong class="uidlink"><a href="main-module.html">main</a></strong>: <em class="summary">Created on Tue Jun 21 17:19:28 2016</em>    </li>
-    <li> <strong class="uidlink"><a href="main_timeline-module.html">main_timeline</a></strong>: <em class="summary">Created on Sat Jun 25 16:27:21 2016</em>    </li>
-    <li> <strong class="uidlink"><a href="makeFrequencyList-module.html">makeFrequencyList</a></strong>: <em class="summary">Created on Tue Jun 21 17:19:28 2016</em>    </li>
-    <li> <strong class="uidlink"><a href="modifTexte-module.html">modifTexte</a></strong>: <em class="summary">Created on Thu Jun 16 16:42:50 2016</em>    </li>
-    <li> <strong class="uidlink"><a href="pdf2txt-module.html">pdf2txt</a></strong>: <em class="summary">Created on Thu Jun 16 15:55:42 2016</em>    </li>
+    <li> <strong class="uidlink"><a href="initServer-module.html">initServer</a></strong>: <em class="summary">Creates the JSON files for visualization from bibtex files The 
+        server will call the functions make_json_timeline and 
+        make_json_wordcloud2 to create the JSON files when needed</em>    </li>
+    <li> <strong class="uidlink"><a href="main_graph-module.html">main_graph</a></strong>: <em class="summary">Work flow used to create the co-authoring graph</em>    </li>
+    <li> <strong class="uidlink"><a href="main_timeline-module.html">main_timeline</a></strong>: <em class="summary">The script to create the JSON used in the timeline (Work In 
+        Progress)</em>    </li>
+    <li> <strong class="uidlink"><a href="modifTexte-module.html">modifTexte</a></strong>: <em class="summary">Module cleaning the text extracted from PDF: deleting stopwords, 
+        punctuaction...</em>    </li>
+    <li> <strong class="uidlink"><a href="pdf2txt-module.html">pdf2txt</a></strong>: <em class="summary">Module used to transform PDF files into raw (utf8) text files</em>    </li>
     <li> <strong class="uidlink"><a href="retrieveCategories-module.html">retrieveCategories</a></strong>: <em class="summary">Module used to retrieve informations and concepts linked to a given
         text using DBpedia Spotlight &amp; SPARQLWrapper</em>    </li>
-    <li> <strong class="uidlink"><a href="server-module.html">server</a></strong>: <em class="summary">Created on Wed Jun 22 17:33:59 2016</em>    </li>
-    <li> <strong class="uidlink"><a href="testlemmatizers-module.html">testlemmatizers</a></strong>: <em class="summary">Main module used only to test the lemmatization of words</em>    </li>
+    <li> <strong class="uidlink"><a href="server-module.html">server</a></strong>: <em class="summary">Module managing the server and redirecting the inputs</em>    </li>
     <li> <strong class="uidlink"><a href="timelineVisualization-module.html">timelineVisualization</a></strong>: <em class="summary">Module used to view the timeline.</em>    </li>
+    <li> <strong class="uidlink"><a href="variables-module.html">variables</a></strong>: <em class="summary">Module used to share global variables</em>    </li>
 </ul>
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
@@ -98,7 +100,7 @@
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Jun 29 09:18:16 2016
+    on Wed Jun 29 19:58:07 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

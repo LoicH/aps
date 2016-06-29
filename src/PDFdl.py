@@ -1,19 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jun 21 18:08:59 2016
-@author: asueur
+Used to download PDF files
 """
 
 import urllib
 import re
 import bibtexparser
+
+#converts weird char in the bibtex file
+from bibtexparser.bparser import BibTexParser
+from bibtexparser.customization import convert_to_unicode
+
 import os
 
+import variables 
 
-#constantes
-app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
-data = app_path+os.sep+"data"
-src = app_path+os.sep+"src"
 regex=r'id=(\d+)'  
 
 def openBibLib(bibName): 
@@ -25,7 +26,9 @@ def openBibLib(bibName):
     @return: the BibDatabase object with all the information
     @rtype: BibDatabase"""
     with open(bibName) as bibtex_file:  
-        bibtex_database = bibtexparser.load(bibtex_file) 
+        parser = BibTexParser()
+        parser.customization = convert_to_unicode
+        bibtex_database = bibtexparser.load(bibtex_file, parser=parser) 
     return bibtex_database
 
 
@@ -104,4 +107,5 @@ def downloadAll(bibName, pdf_out_dir, txt_out_dir):
     return pos_Id_List
     
 if __name__ == "__main__":
-    downloadAll(data+os.sep+"concolato.bib", "/tmp/aps", data)
+    downloadAll(variables.data_dir+os.sep+"concolato.bib", 
+                variables.tmp_pdf_dir, variables.data_dir)

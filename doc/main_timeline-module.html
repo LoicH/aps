@@ -52,13 +52,10 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module main_timeline</h1><p class="nomargin-top"><span class="codelink"><a href="main_timeline-pysrc.html">source&nbsp;code</a></span></p>
-<p>Created on Sat Jun 25 16:27:21 2016</p>
+<p>The script to create the JSON used in the timeline (Work In 
+  Progress)</p>
 
-<hr />
-<div class="fields">      <p><strong>Author:</strong>
-        asueur
-      </p>
-</div><!-- ==================== FUNCTIONS ==================== -->
+<!-- ==================== FUNCTIONS ==================== -->
 <a name="section-Functions"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
@@ -114,106 +111,319 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="app_path"></a><span class="summary-name">app_path</span> = <code title="os.getcwd().split(os.sep+ &quot;aps&quot;) [0]+ os.sep+ &quot;aps&quot;">os.getcwd().split(os.sep+ &quot;aps&quot;) [0]+ os.sep+ &quot;aps&quot;</code>
+        <a name="bibName"></a><span class="summary-name">bibName</span> = <code title="'concolato.bib'"><code class="variable-quote">'</code><code class="variable-string">concolato.bib</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="data"></a><span class="summary-name">data</span> = <code title="app_path+ os.sep+ &quot;data&quot;">app_path+ os.sep+ &quot;data&quot;</code>
+        <a href="main_timeline-module.html#entries" class="summary-name">entries</a> = <code title="[{'ENTRYTYPE': u'inproceedings',
+  'ID': 'CC:MMSys-2016',
+  u'address': u'Klagenfurt, Austria',
+  u'annote': u'category=inproceedings language=en audience=2 state=toa\
+ppear dept=tsi group=mm id=16023',
+  u'author': u'O. {Niamut} and E. {Thomas} and D. {Mico} and C. {Conco\
+lato} and F. {Denoual} and S. Y. {Lim}',
+  u'booktitle': u'ACM MMSys',
+..."><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">ENTRYTYPE</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">inproceedings</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">ID</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">CC:MMSys-201</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="src"></a><span class="summary-name">src</span> = <code title="app_path+ os.sep+ &quot;src&quot;">app_path+ os.sep+ &quot;src&quot;</code>
+        <a href="main_timeline-module.html#argv" class="summary-name">argv</a> = <code title="['program name', 'Concolato', '2011 jan', '2016 dec', '12']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">program name</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Concolato</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">2011 jan</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">2016 dec</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="periodFrequenciesList"></a><span class="summary-name">periodFrequenciesList</span> = <code title="[]">[]</code>
+        <a name="app_path"></a><span class="summary-name">app_path</span> = <code title="'/home/loic/Programmation/aps'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="matrixList"></a><span class="summary-name">matrixList</span> = <code title="[]">[]</code>
+        <a name="data"></a><span class="summary-name">data</span> = <code title="'/home/loic/Programmation/aps/data'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps/data</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="authorName"></a><span class="summary-name">authorName</span> = <code title="sys.argv [1]">sys.argv [1]</code>
+        <a name="src"></a><span class="summary-name">src</span> = <code title="'/home/loic/Programmation/aps/src'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps/src</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="startDate"></a><span class="summary-name">startDate</span> = <code title="Timeline.formatDate(sys.argv [2])">Timeline.formatDate(sys.argv [2])</code>
+        <a href="main_timeline-module.html#periodFrequenciesList" class="summary-name">periodFrequenciesList</a> = <code title="[{'2000 establishments in the United States': 0.0232496158635,
+  'American inventions': 0.00798656022968,
+  'Avionics': 0.0133891101491,
+  'College sports in Iowa': 0.0232496158635,
+  'College sports in Nebraska': 0.0232496158635,
+  'College sports in South Dakota': 0.0232496158635,
+  'Communication design': 0.0203528470369,
+  'Computing input devices': 0.00654264434953,
+..."><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">2000 establishments in the United S</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="endDate"></a><span class="summary-name">endDate</span> = <code title="Timeline.formatDate(sys.argv [3])">Timeline.formatDate(sys.argv [3])</code>
+        <a href="main_timeline-module.html#matrixList" class="summary-name">matrixList</a> = <code title="[&lt;TFIDFMatrixClass.TFIDFMatrix object&gt;,
+ &lt;TFIDFMatrixClass.TFIDFMatrix object&gt;,
+ &lt;TFIDFMatrixClass.TFIDFMatrix object&gt;,
+ &lt;TFIDFMatrixClass.TFIDFMatrix object&gt;,
+ &lt;TFIDFMatrixClass.TFIDFMatrix object&gt;,
+ &lt;TFIDFMatrixClass.TFIDFMatrix object&gt;]"><code class="variable-group">[</code>&lt;TFIDFMatrixClass.TFIDFMatrix object&gt;<code class="variable-op">, </code>&lt;TFIDFMat<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="main_timeline-module.html#startDateTime" class="summary-name">startDateTime</a> = <code title="date(int(startDate.split() [0]), int(startDate.split() [1]), 1)">date(int(startDate.split() [0]), int(startDate<code class="variable-ellipsis">...</code></code>
+        <a name="authorName"></a><span class="summary-name">authorName</span> = <code title="'Concolato'"><code class="variable-quote">'</code><code class="variable-string">Concolato</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="main_timeline-module.html#endDateTime" class="summary-name">endDateTime</a> = <code title="date(int(endDate.split() [0]), int(endDate.split() [1]), 1)">date(int(endDate.split() [0]), int(endDate.split<code class="variable-ellipsis">...</code></code>
+        <a name="startDate"></a><span class="summary-name">startDate</span> = <code title="'2011 01'"><code class="variable-quote">'</code><code class="variable-string">2011 01</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="periodLength"></a><span class="summary-name">periodLength</span> = <code title="int(sys.argv [4])">int(sys.argv [4])</code>
+        <a name="endDate"></a><span class="summary-name">endDate</span> = <code title="'2016 12'"><code class="variable-quote">'</code><code class="variable-string">2016 12</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="main_timeline-module.html#periodNumber2" class="summary-name">periodNumber2</a> = <code title="monthdelta(startDateTime, endDateTime)// periodLength">monthdelta(startDateTime, endDateTime)// perio<code class="variable-ellipsis">...</code></code>
+        <a name="startDateTime"></a><span class="summary-name">startDateTime</span> = <code title="datetime.date(2011, 1, 1)">datetime.date(2011, 1, 1)</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="main_timeline-module.html#date1" class="summary-name">date1</a> = <code title="date(int(startDate.split() [0]), int(startDate.split() [1]), 1)">date(int(startDate.split() [0]), int(startDate.split()<code class="variable-ellipsis">...</code></code>
+        <a name="endDateTime"></a><span class="summary-name">endDateTime</span> = <code title="datetime.date(2016, 12, 1)">datetime.date(2016, 12, 1)</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="date2"></a><span class="summary-name">date2</span> = <code title="date1+ relativedelta(months=+ periodLength)">date1+ relativedelta(months=+ periodLength)</code>
+        <a name="periodLength"></a><span class="summary-name">periodLength</span> = <code title="12">12</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="main_timeline-module.html#periodFreqJSON" class="summary-name">periodFreqJSON</a> = <code title="formatConversion.convertToMatrice(periodFrequenciesList, src+ os.sep+ \
-&quot;templates&quot;+ os.sep+ &quot;timeline.json&quot;, periodNumber2)">formatConversion.convertToMatrice(periodFrequ<code class="variable-ellipsis">...</code></code>
+        <a name="periodNumber2"></a><span class="summary-name">periodNumber2</span> = <code title="5">5</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="date1"></a><span class="summary-name">date1</span> = <code title="datetime.date(2017, 1, 1)">datetime.date(2017, 1, 1)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="date2"></a><span class="summary-name">date2</span> = <code title="datetime.date(2018, 1, 1)">datetime.date(2018, 1, 1)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="main_timeline-module.html#dic" class="summary-name">dic</a> = <code title="{'Application layer protocols': 0.0210045674203,
+ 'Audio codecs': 0.0266978292254,
+ 'Codecs': 0.0218436784571,
+ 'Computer file formats': 0.0242707538412,
+ 'Digital signal processing': 0.0218436784571,
+ 'Engineering concepts': 0.0384448740845,
+ 'Government agencies established in 1861': 0.0155137682844,
+ 'Hypertext Transfer Protocol': 0.0155208877296,
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">Application layer protocols</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0210045674203<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Audio </code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="filename"></a><span class="summary-name">filename</span> = <code title="'11064_out.txt'"><code class="variable-quote">'</code><code class="variable-string">11064_out.txt</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="main_timeline-module.html#filtered_dic" class="summary-name">filtered_dic</a> = <code title="{'Engineering concepts': 0.0384448740845,
+ 'Government agencies established in 1861': 0.0155137682844,
+ 'ITU-T recommendations': 0.0242707538412,
+ 'Law enforcement agencies of the District of Columbia': 0.01551376828\
+44,
+ 'MPEG': 0.0266978292254,
+ 'Metropolitan Police Department of the District of Columbia': 0.01551\
+37682844,
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">Engineering concepts</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0384448740845<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Gove</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="frequency"></a><span class="summary-name">frequency</span> = <code title="0.0218436784571">0.0218436784571</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="i"></a><span class="summary-name">i</span> = <code title="4">4</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="m"></a><span class="summary-name">m</span> = <code title="&lt;TFIDFMatrixClass.TFIDFMatrix object&gt;">&lt;TFIDFMatrixClass.TFIDFMatrix object&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="matchObj"></a><span class="summary-name">matchObj</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="main_timeline-module.html#old_dic" class="summary-name">old_dic</a> = <code title="{'Application layer protocols': 0.0210045674203,
+ 'Audio codecs': 0.0266978292254,
+ 'Codecs': 0.0218436784571,
+ 'Computer file formats': 0.0242707538412,
+ 'Digital signal processing': 0.0218436784571,
+ 'Engineering concepts': 0.0384448740845,
+ 'Government agencies established in 1861': 0.0155137682844,
+ 'Hypertext Transfer Protocol': 0.0155208877296,
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">Application layer protocols</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0210045674203<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Au</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="score"></a><span class="summary-name">score</span> = <code title="0.0880637679759">0.0880637679759</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="word"></a><span class="summary-name">word</span> = <code title="'Digital signal processing'"><code class="variable-quote">'</code><code class="variable-string">Digital signal processing</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;word: score}</th></tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="main_timeline-module.html#scores" class="summary-name">scores</a> = <code title="{'1861 establishments in Washington, D.C.': 0.0646950785145,
+ '2000 establishments in the United States': 0.0387493597725,
+ 'American inventions': 0.0133109337161,
+ 'Application layer protocols': 0.049010657314,
+ 'Audio codecs': 0.0622949348592,
+ 'Avionics': 0.0223151835818,
+ 'Codecs': 0.0509685830666,
+ 'College sports in Iowa': 0.0387493597725,
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">1861 establishments in Washington, D.C.</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0646950<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="main_timeline-module.html#sorted_items" class="summary-name">sorted_items</a> = <code title="[(0.113226682106, 'World Wide Web Consortium standards'),
+ (0.103501827912, 'MPEG'),
+ (0.100893871178,
+  'Metropolitan Police Department of the District of Columbia'),
+ (0.100893871178,
+  'Law enforcement agencies of the District of Columbia'),
+ (0.100893871178, 'Government agencies established in 1861'),
+ (0.0925748521521, 'Network protocols'),
+..."><code class="variable-group">[</code><code class="variable-group">(</code>0.113226682106<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">World Wide Web Consortium st</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="main_timeline-module.html#best_words" class="summary-name">best_words</a> = <code title="['World Wide Web Consortium standards',
+ 'MPEG',
+ 'Metropolitan Police Department of the District of Columbia',
+ 'Law enforcement agencies of the District of Columbia',
+ 'Government agencies established in 1861',
+ 'Network protocols',
+ 'ITU-T recommendations',
+ 'Engineering concepts',
+..."><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">World Wide Web Consortium standards</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">MPEG</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="main_timeline-module.html#filteredFrequenciesList" class="summary-name">filteredFrequenciesList</a> = <code title="[{'Film and video technology': 0.0116313677325,
+  'Network protocols': 0.0118510248569,
+  'World Wide Web Consortium standards': 0.00933321468216},
+ {'Film and video technology': 0.0306469635178,
+  'Government agencies established in 1861': 0.0215650261715,
+  'ITU-T recommendations': 0.0114463591814,
+  'Law enforcement agencies of the District of Columbia': 0.0215650261\
+715,
+..."><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">Film and video technology</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.011<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="main_timeline-module.html#periodFreqJSON" class="summary-name">periodFreqJSON</a> = <code title="'{&quot;toto&quot;:[{&quot;label&quot;:&quot;a&quot;,&quot;values&quot;:[0.27257357171,0.444981975645,0.263266\
+261172,0.5161615554,0.252895294228]},{&quot;label&quot;:&quot;a&quot;,&quot;values&quot;:[0.21466393\
+769,0.622001597119,0.478892305326,0.710253317606,0.231361012281]},{&quot;la\
+bel&quot;:&quot;a&quot;,&quot;values&quot;:[0.267521457847,0.704880160909,0.526532522344,0.5265\
+32522344,0.0]},{&quot;label&quot;:&quot;a&quot;,&quot;values&quot;:[0.27257357171,0.444981975645,0.2\
+63266261172,0.5161615554,0.252895294228]},{&quot;label&quot;:&quot;a&quot;,&quot;values&quot;:[0.0,0\
+.263266261172,0.263266261172,0.635417820071,0.372151558899]},{&quot;label&quot;:\
+&quot;a&quot;,&quot;values&quot;:[0.0,0.315919513407,0.315919513407,0.725286228195,0.40936\
+..."><code class="variable-quote">'</code><code class="variable-string">{&quot;toto&quot;:[{&quot;label&quot;:&quot;a&quot;,&quot;values&quot;:[0.2725735717</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 </table>
@@ -235,73 +445,198 @@
   </td>
 </tr>
 </table>
-<a name="startDateTime"></a>
+<a name="entries"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">startDateTime</h3>
+  <h3 class="epydoc">entries</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-date(int(startDate.split() [0]), int(startDate.split() [1]), 1)
+<code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">ENTRYTYPE</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">inproceedings</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">ID</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">CC:MMSys-2016</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">u'</code><code class="variable-string">address</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Klagenfurt, Austria</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">u'</code><code class="variable-string">annote</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">category=inproceedings language=en audience=2 state=toa</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">ppear dept=tsi group=mm id=16023</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">u'</code><code class="variable-string">author</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">O. {Niamut} and E. {Thomas} and D. {Mico} and C. {Conco</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">lato} and F. {Denoual} and S. Y. {Lim}</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">u'</code><code class="variable-string">booktitle</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">ACM MMSys</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
 </pre></td></tr></table>
 </dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="endDateTime"></a>
+<a name="argv"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">endDateTime</h3>
+  <h3 class="epydoc">argv</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-date(int(endDate.split() [0]), int(endDate.split() [1]), 1)
+<code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">program name</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Concolato</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">2011 jan</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">2016 dec</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">12</code><code class="variable-quote">'</code><code class="variable-group">]</code>
 </pre></td></tr></table>
 </dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="periodNumber2"></a>
+<a name="periodFrequenciesList"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">periodNumber2</h3>
+  <h3 class="epydoc">periodFrequenciesList</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-monthdelta(startDateTime, endDateTime)// periodLength
+<code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">2000 establishments in the United States</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0232496158635<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">American inventions</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.00798656022968<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">Avionics</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0133891101491<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">College sports in Iowa</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0232496158635<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">College sports in Nebraska</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0232496158635<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">College sports in South Dakota</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0232496158635<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">Communication design</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0203528470369<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">Computing input devices</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.00654264434953<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
 </pre></td></tr></table>
 </dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="date1"></a>
+<a name="matrixList"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">date1</h3>
+  <h3 class="epydoc">matrixList</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-date(int(startDate.split() [0]), int(startDate.split() [1]), 1)
+<code class="variable-group">[</code>&lt;TFIDFMatrixClass.TFIDFMatrix object&gt;<code class="variable-op">,</code>
+ &lt;TFIDFMatrixClass.TFIDFMatrix object&gt;<code class="variable-op">,</code>
+ &lt;TFIDFMatrixClass.TFIDFMatrix object&gt;<code class="variable-op">,</code>
+ &lt;TFIDFMatrixClass.TFIDFMatrix object&gt;<code class="variable-op">,</code>
+ &lt;TFIDFMatrixClass.TFIDFMatrix object&gt;<code class="variable-op">,</code>
+ &lt;TFIDFMatrixClass.TFIDFMatrix object&gt;<code class="variable-group">]</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="scores"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">scores</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">1861 establishments in Washington, D.C.</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0646950785145<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">2000 establishments in the United States</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0387493597725<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">American inventions</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0133109337161<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Application layer protocols</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.049010657314<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Audio codecs</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0622949348592<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Avionics</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0223151835818<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Codecs</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0509685830666<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">College sports in Iowa</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0387493597725<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sorted_items"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">sorted_items</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-group">(</code>0.113226682106<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">World Wide Web Consortium standards</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code>0.103501827912<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">MPEG</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code>0.100893871178<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">Metropolitan Police Department of the District of Columbia</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code>0.100893871178<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">Law enforcement agencies of the District of Columbia</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code>0.100893871178<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Government agencies established in 1861</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code>0.0925748521521<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Network protocols</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="best_words"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">best_words</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">World Wide Web Consortium standards</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">MPEG</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Metropolitan Police Department of the District of Columbia</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Law enforcement agencies of the District of Columbia</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Government agencies established in 1861</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Network protocols</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">ITU-T recommendations</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Engineering concepts</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="filteredFrequenciesList"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">filteredFrequenciesList</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">Film and video technology</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0116313677325<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">Network protocols</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0118510248569<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">World Wide Web Consortium standards</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.00933321468216<code class="variable-group">}</code><code class="variable-op">,</code>
+ <code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">Film and video technology</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0306469635178<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">Government agencies established in 1861</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0215650261715<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">ITU-T recommendations</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0114463591814<code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">Law enforcement agencies of the District of Columbia</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0215650261<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+715<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -319,8 +654,93 @@ date(int(startDate.split() [0]), int(startDate.split() [1]), 1)
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-formatConversion.convertToMatrice(periodFrequenciesList, src+ os.sep+ <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-&quot;templates&quot;+ os.sep+ &quot;timeline.json&quot;, periodNumber2)
+<code class="variable-quote">'</code><code class="variable-string">{&quot;toto&quot;:[{&quot;label&quot;:&quot;a&quot;,&quot;values&quot;:[0.27257357171,0.444981975645,0.263266</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">261172,0.5161615554,0.252895294228]},{&quot;label&quot;:&quot;a&quot;,&quot;values&quot;:[0.21466393</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">769,0.622001597119,0.478892305326,0.710253317606,0.231361012281]},{&quot;la</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">bel&quot;:&quot;a&quot;,&quot;values&quot;:[0.267521457847,0.704880160909,0.526532522344,0.5265</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">32522344,0.0]},{&quot;label&quot;:&quot;a&quot;,&quot;values&quot;:[0.27257357171,0.444981975645,0.2</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">63266261172,0.5161615554,0.252895294228]},{&quot;label&quot;:&quot;a&quot;,&quot;values&quot;:[0.0,0</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">.263266261172,0.263266261172,0.635417820071,0.372151558899]},{&quot;label&quot;:</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">&quot;a&quot;,&quot;values&quot;:[0.0,0.315919513407,0.315919513407,0.725286228195,0.40936</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="dic"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">dic</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">Application layer protocols</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0210045674203<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Audio codecs</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0266978292254<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Codecs</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0218436784571<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Computer file formats</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0242707538412<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Digital signal processing</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0218436784571<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Engineering concepts</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0384448740845<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Government agencies established in 1861</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0155137682844<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Hypertext Transfer Protocol</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0155208877296<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="filtered_dic"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">filtered_dic</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">Engineering concepts</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0384448740845<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Government agencies established in 1861</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0155137682844<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">ITU-T recommendations</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0242707538412<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Law enforcement agencies of the District of Columbia</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.01551376828<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+44<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">MPEG</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0266978292254<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Metropolitan Police Department of the District of Columbia</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.01551<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+37682844<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="old_dic"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">old_dic</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">Application layer protocols</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0210045674203<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Audio codecs</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0266978292254<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Codecs</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0218436784571<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Computer file formats</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0242707538412<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Digital signal processing</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0218436784571<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Engineering concepts</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0384448740845<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Government agencies established in 1861</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0155137682844<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Hypertext Transfer Protocol</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0155208877296<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -351,7 +771,7 @@ formatConversion.convertToMatrice(periodFrequenciesList, src+ os.sep+ <span clas
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Jun 29 09:18:16 2016
+    on Wed Jun 29 19:58:07 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

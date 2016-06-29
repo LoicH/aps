@@ -5,21 +5,16 @@ Module used to view the timeline.
 import PDFdl
 import bibtexparser
 import re
-import os
-
-app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
-data = app_path+os.sep+"data"
-src = app_path+os.sep+"src"
-
-regex=r'id=(\d+)' 
-bib = data+os.sep+'document.bib'  ### bib name (can be modified)
-entries=PDFdl.openBibLib(bib).entries  #all of the bib's articles
 
 
-def getAll(index,bibName):
+ 
+
+
+
+def getAll(index, bibName):
     """returns the information about an article at a given position in a bibtex file
     
-    >>> getAll(3, "toto")
+    >>> getAll(3, "telecom.bib")
     {u'author': u'S. {Durand} and J. P. {Bello} and B. {DAVID} and G. {Richard}',
      u'title': u'Feature Adapted Convolutional Neural Networks for Downbeat Tracking',
      u'year': u'2016'}
@@ -28,7 +23,7 @@ def getAll(index,bibName):
     @param index: the position of the article in the corpus
     @type index: int
     
-    @param bibName: the path leading to the bibtex file (useless)
+    @param bibName: the path leading to the bibtex file
     @type bibName: string
     
     @return: a dictionary of the information about the article, all the strings are in unicode
@@ -36,9 +31,10 @@ def getAll(index,bibName):
     
     
     """
+    entries=PDFdl.openBibLib(bibName).entries #all the articles
     return bibtexparser.customization.convert_to_unicode(entries[index]) 
 
-def getInfo(authorName): 
+def getInfo(authorName, bibName): 
     u"""returns the publication and colleagues of a given author 
     
         >>> pub, colleagues = getInfo(u"Clémençon")
@@ -53,6 +49,9 @@ def getInfo(authorName):
     @param authorName: the last name of the author        
     @type authorName: unicode
     
+    @param bibName: the path leading to the bibtex file
+    @type bibName: string
+    
     @return: the publications informations and the colleagues of a given author
     @rtype: tuple (dict {title (unicode): [date (unicode), ID (int)]}, 
     unicode list)
@@ -62,10 +61,12 @@ def getInfo(authorName):
     #datesAndIds : {pubName:[date,id]}
     datesAndIds = dict()
     coauthors=[]
+    entries=PDFdl.openBibLib(bibName).entries
+    
     for i in entries:
         if authorName.replace(" ","") in i["author"].replace(" ","").replace("{","").replace("}",""):
             try:
-                datesAndIds[i["title"]]=[i["year"]+" " + i["month"],int(re.findall(regex,i["annote"])[0])] #dictionnary pubName: [date,id]
+                datesAndIds[i["title"]]=[i["year"]+" " + i["month"],int(re.findall(r'id=(\d+)',i["annote"])[0])] #dictionary pubName: [date,id]
             except KeyError:
                 print "no month available for document"
             for k in i["author"].replace(" ","").replace("{","").replace("}","").split(" and "):
@@ -74,10 +75,10 @@ def getInfo(authorName):
     coauthors=[i for i in coauthors if i!=authorName]     
     return datesAndIds, coauthors
 
-def getCoauthors(authorName, minFreq): 
+def getCoauthors(authorName, minFreq, biblib): 
     u"""returns the colleagues of a given author if they have enough co-publications
     
-        >>> getCoauthors(u'Mazé', 5)
+        >>> getCoauthors(u'Mazé', 5, "data/telecom.bib")
         [u'E. Nassor', u'F. Denoual', u'F. Maz\xe9', u'C. Concolato', u'J. Le Feuvre']
     
     @param authorName: the last name of an author
@@ -86,12 +87,17 @@ def getCoauthors(authorName, minFreq):
     @param minFreq: the min number of co-publications
     @type minFreq: int
     
+    @param biblib: the bib database containing information
+    @type biblib: BibDatabase
+    
     @return: a list of all the colleagues
     @rtype: unicode list
     
    
 """
     coauthors=[]
+    entries=biblib.entries
+
     for i in entries:
         if authorName.replace(" ","") in i["author"].replace(" ","").replace("{","").replace("}",""):
             for k in i["author"].replace("{","").replace("}","").split(" and "):
