@@ -26,7 +26,7 @@ d3.json("/static/wordcloud/tags.json", function(error, json) {
         })
         .on("end", draw);
 
-    var svg = d3.select("#vis").append("svg")
+    var svg = d3.select("#wc").append("svg")
         .attr("width", w)
         .attr("height", h);
 
@@ -82,6 +82,9 @@ d3.json("/static/wordcloud/tags.json", function(error, json) {
             })
             .text(function (d) {
                 return d.text;
+            })
+            .on("click", function() {
+              treeDesign(this.textContent);
             });
 
         vis.transition().attr("transform", "translate(" + [w >> 1, h >> 1] + ")scale(" + scale + ")");

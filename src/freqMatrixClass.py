@@ -110,20 +110,21 @@ class FreqMatrix:
         """compute the TFIDF value of the word"""
         #compute IDF
         appearance = self.word_appearance(word)
-        #print "\""+word+"\" appears in",len(appearance)," docs."
+        print "\""+word+"\" appears in",len(appearance)," docs."
         idf = log(float(len(self.docs))/len(appearance))
         
         #compute TF * IDF line for a word
         tfidf = dict()
         for doc, freq in appearance.items():
             tfidf[doc] = freq * idf
+        print "TFIDF is", tfidf
         return tfidf
             
     def to_TFIDF_Matrix(self):
         """returns the TFIDF matrix associated with self"""
         tfidfMatrix = TFIDFMatrixClass.TFIDFMatrix(self.graph.keys(), self.docs)
         for word in self.graph.keys():
-            #print "Computing for \"",word,"\"..."
+            print "Computing for \"",word,"\"..."
             tfidfMatrix.add_word(word, self.compute_TFIDF(word))
         return tfidfMatrix
         

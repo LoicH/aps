@@ -16,6 +16,7 @@ if __name__ == "__main__":
 
     print "Starting server"
 #    app.run(debug=True, host='0.0.0.0')
+formatConversion.convertDict2(weights, src+os.sep+"templates"+os.sep+"wordcloud"+os.sep+"tags.json")
     
     """ Running on C. Concolato's files"""
     print "Server launched"

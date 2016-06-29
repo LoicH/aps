@@ -1,0 +1,113 @@
+ 
+
+ 
+
+INTERNATIONAL ORGANISATION FOR STANDARDISATION 
+
+ORGANISATION INTERNATIONALE DE NORMALISATION 
+
+ISO/IEC JTC1/SC29/WG11 
+
+CODING OF MOVING PICTURES AND AUDIO 
+
+ 
+
+ISO/IEC JTC1/SC29/WG11 MPEG2015/M37252 
+October 2015, Geneva, Switzerland 
+ 
+ 
+
+ 
+Source  Telecom ParisTech, Canon Research Centre France 
+Status 
+Title 
+Author 
+
+For consideration at the 113th MPEG Meeting 
+Comments on extractors usage in 14496-15 
+Jean Le Feuvre, Cyril Concolato, Franck Denoual, Frédéric Mazé, Eric Nassor 
+
+Introduction 
+
+1 
+During  MPEG  112  in  Warsaw,  contribution  m36547  carefully  reviewed  the  impact  of  badly 
+formatted “extension” NAL units in AVC or HEVC when interpreted by an annex B (so-called 
+“byte-stream” format) parser. Based on this contribution, both Defect Report and 14496-15 DIS 
+have been edited. This contribution discusses these edits and proposes to replace them. 
+
+2  Specification Review 
+ 
+The SVC specification states in 6.2: 
+“Aggregators  and  Extractors  shall  be  processed  as  defined  in  this  International  Standard  (e.g. 
+shall not directly be placed in the output buffer while accessing the file)” 
+ 
+The MVC specification states in 7.3: 
+“Aggregators  and  Extractors  shall  be  processed  as  defined  in  this  International  Standard  (e.g. 
+shall not directly be placed in the output buffer while accessing the file).” 
+ 
+The L-HEVC specification states in 9.3: 
+“Aggregators and Extractors shall not be directly output by file parsers” 
+ 
+Annex A states: 
+“Aggregators  and  Extractors  are  file  format  internal  structures  enabling  efficient  grouping  of 
+NAL units or extraction of NAL units from other tracks. 
+Aggregators and Extractors use the NAL unit syntax. These structures are seen as NAL units in 
+the context of the sample structure. While accessing a sample, Aggregators  must  be  removed 
+(leaving their contained or referenced NAL units) and Extractors must be replaced by the data 
+they reference. Aggregators  and  Extractors  must  not  be  present  in a  stream outside the file 
+format.” 
+ 
+We therefore fail to see where the problem is: since readers not removing/solving extractors are 
+not compliant, changing the syntax of the extractors / aggregator for HEVC is not needed. 
+
+ 
+
+ 
+
+3  Possible Solutions 
+Our analysis is that the issue comes for avc only (since l-hevc is not out there). 
+The  issue  can  be  summarized  as  follows:  SVC  or  MVC  streams  may  be  stored  in  a  track  with 
+‘avc1’  sample  description,  and  the  SVC  or  MVC  components  may  use  extractors/aggregators 
+(not the base).  
+
+3.1  Approach 1 
+As  seen  previously,  compliant  readers  (e.g.  existing  ones)  shall  remove  aggregators  and 
+extractors. We therefore suggest adding the following note after Table 4:  
+ 
+“Note:  When  a  track  with  ‘avc1’  sample  description  contains  an  svcC  configuration,  readers 
+should be aware that extractors/aggregators may be present and shall be resolved, as indicated in 
+Annex A.” 
+ 
+and adding the following note after Table 6 or Table 9:  
+ 
+“Note:  When  a  track  with  ‘avc1’  sample  description  contains  an  mvcC  configuration,  readers 
+should be aware that extractors/aggregators may be present and shall be resolved, as indicated in 
+Annex A.” 
+ 
+The same logic could be applied to hvc1/hev1.  
+ 
+
+3.2  Approach 2 
+If true backward compatibility with avc1 is required (i.e. compatibility with readers having never 
+implemented something else than avc1), we suggest to issue a corrigendum forbidding usage of 
+extractors and aggregators in avc1, but still allowing SVC/MVC NAL units if an svcC /mvcC is 
+present in avc1. 
+ 
+The  same  approach  could  be  applied  to  hevc,  forbidding  aggregators/extractors  in  hvc1/hev1, 
+and allowing them only in hvc2/hev2 or lhv1/lhe1. 
+
+4  Conclusion 
+We suggest MPEG to issue a study text for ISO/IEC 14496-15 that: 
+
+- 
+- 
+
+removes the modifications on extractors for HEVC, and  
+adds the edits suggested in this contribution, preferably approach 2. 
+
+ 
+ 
+ 
+
+ 
+

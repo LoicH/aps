@@ -24,8 +24,8 @@ def convertDict(dico, file_out):
     @param dico: dictionary you want to convert
     @type dico: dictionary
     
-    @param file_out: path you want to save the file to
-    @type file_out: string"""
+    @param file_out : path you want to save the file to
+    @type file_out : string"""
     string=""
     a= dict()
     L=[]
@@ -35,7 +35,7 @@ def convertDict(dico, file_out):
         string=string+json.dumps(a.__dict__)+","
     string = string[0:-1]
     f = open(file_out,'w')
-    f.write('{"frequency_list":['+ string+"]}")
+    f.write('{"tags":['+ string+"]}")
     f.close()
     
 def convertDict2(dico, file_out): #used for the second type of word visualization
@@ -43,13 +43,14 @@ def convertDict2(dico, file_out): #used for the second type of word visualizatio
     @param dico: dictionary you want to convert
     @type dico: dictionary
     
-    @param file_out: path you want to save the file to
-    @type file_out: string"""
+    @param file_out : path you want to save the file to
+    @type file_out : string"""
     string=""
     a= dict()
     L=[]
-    for i in dico.keys():
-        a=Object(i,dico[i])
+    l1 = sorted([(v,k) for (k,v) in dico.items()], reverse=True)
+    for (v,k) in l1:
+        a=Object(k,v)
         L.append(json.dumps(a.__dict__))
         string=string+json.dumps(a.__dict__)+","
     string = string[0:-1]
@@ -65,7 +66,7 @@ def convertDict2(dico, file_out): #used for the second type of word visualizatio
     
 
 def convertToMatrice(totalFreqDictList, file_out, timeSections): 
-    """ standard input form: [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically
+    """ standard input form : [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically
     Used to view the evolution in time of the weights of words
     
     @param totalFreqDictList: list of dictionaries saving the weights of each word 
@@ -74,13 +75,13 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections):
         ordered chronologically
         example: [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] 
                              
-    @param file_out: path you want to save the file to
-    @type file_out: string
+    @param file_out : path you want to save the file to
+    @type file_out : string
     
-    @param timeSections: number of periods chosen
-    @type timeSections: int
+    @param timeSections : number of periods chosen
+    @type timeSections : int
     
-    @return: Matrix used by the timeline (ligns: categories, columns: timeSections, coef: category weight in this timeSection)
+    @return: Matrix used by the timeline (ligns : categories, columns : timeSections, coef : category weight in this timeSection)
     @rtype: TDIDFMatrix object """
     categoryDict=dict()
     k=0
@@ -107,13 +108,12 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections):
         for j in range(b-1):
             s2+=str(M[i][j])+","
         s2+=str(M[i][b-1])
-        s+="["+s2+"],"
+        s+='{"label":"a","values":'+"["+s2+"]},"
     s2=""
     for j in range(b-1):
         s2+=str(M[a-1][j])
-        print(s2)
-    s+="["+s2+","+str(M[a-1][b-1])
-    result = """{"data":"""+"["+s+"]]}"
+    s+='{"label":"a","values":'+"["+s2+","+str(M[a-1][b-1])
+    result = """{"toto":"""+"["+s+"]}]}"
     f=open(file_out,"w") 
     # saving the matrix in json format
     f.write(result) 
@@ -127,7 +127,7 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections):
 
 f=codecs.open(initServer.data+os.sep+"departments.json","r","utf-8") #json of departments
 departments=json.load(f)
-dptDict=dict()
+dptDict=dict() # dictionary linking people and the department they work in 
 for department in departments:
     for groups in department["groups"]:
         for person in groups["people"]:
@@ -141,9 +141,11 @@ def convertGraph(coauthorDict):
     @param coauthorDict: link each author to his coauthor
     @type coauthorDict: dictionnary {author (string): list coauthors (list string)}
     
-    @return: format for graph coauthor
+
+    @return : format for graph coauthor
     @rtype: string {"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
-    s=""
+    
+    jsondata="["
     for i in coauthorDict:
         dpt=""
         try:
@@ -152,7 +154,7 @@ def convertGraph(coauthorDict):
                 dpt=dptDict[name]
         except:
             print "non regular name"
-        s+="""{"name":"""+'"'+dpt+i.replace(".","")+'"'+""","size":3000,"imports":["""
+        jsondata+="""{"name":"""+'"'+dpt+i.replace(".","")+'"'+""","size":3000,"imports":["""
         for k in coauthorDict[i]:
             dpt=""
             try:
@@ -161,15 +163,54 @@ def convertGraph(coauthorDict):
                     dpt=dptDict[name]
             except:
                 print "non regular name"
-            s+='"'+dpt+k.replace(".","")+'"'+","
-            s+='"'+k.replace(".","")+'"'+","  #problem name:""
-        if s[-1]!="[":
-            s=s[:-1]
-        s=s+"]},"
-    s=s[:-1]
-    s+="]"
+
+            jsondata+='"'+dpt+k.replace(".","")+'"'+","
+        if jsondata[-1]!="[":
+            jsondata=jsondata[:-1]
+        jsondata=jsondata+"]},"
+    jsondata=jsondata[:-1]
+    jsondata+="]"
     f= codecs.open("templates" + os.sep+"readme-flare-imports.json","w","utf-8")
-    f.write(s)
+    f.write(jsondata)
     f.close()
-    return s
+    return jsondata
+    
+def convertGraphTelecom(coauthorDict):
+    """ convert from coauthor dict to input format for graph // only keeps researchers at Telecom Paristech
+    @param coauthorDict : link each author to his coauthor
+    @type coauthorDict : dictionnary [author (string) : list coauthors (list string)]
+    
+    @return : format for graph coauthor
+    @rtype : [{"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
+    
+    jsondata="["
+    for author, coauthors in coauthorDict.items():
+        dpt=""
+        try:
+            name=author.split(".")[1].replace(" ","")
+            if name in dptDict.keys():
+                dpt=dptDict[name]
+                jsondata+="""{"name":"""+'"'+dpt+author.replace(".","")+'"'+""","size":3000,"imports":["""
+                for coauthor in coauthors:
+                    dpt=""
+                    try:
+                        name=coauthor.split(".")[1].replace(" ","")
+                        if name in dptDict.keys():
+                            dpt=dptDict[name]
+                            jsondata+='"'+dpt+coauthor.replace(".","")+'"'+","
+                    except:
+                        print "non regular name"  
+                if jsondata[-1]!="[":
+                    jsondata=jsondata[:-1]
+                jsondata=jsondata+"]},"
+        except:
+            print "non regular name"  
+                
+        
+    jsondata=jsondata[:-1]
+    jsondata+="]"
+    f= codecs.open("templates" + os.sep+"readme-flare-imports.json","w","utf-8")
+    f.write(jsondata)
+    f.close()
+    return jsondata
     

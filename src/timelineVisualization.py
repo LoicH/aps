@@ -74,14 +74,17 @@ def getInfo(authorName):
     coauthors=[i for i in coauthors if i!=authorName]     
     return datesAndIds, coauthors
 
-def getCoauthors(authorName):
-    u"""returns the colleagues of a given author.
+def getCoauthors(authorName, minFreq): 
+    u"""returns the colleagues of a given author if they have enough co-publications
     
-        >>> getCoauthors(u'Mazé')
+        >>> getCoauthors(u'Mazé', 5)
         [u'E. Nassor', u'F. Denoual', u'F. Maz\xe9', u'C. Concolato', u'J. Le Feuvre']
     
     @param authorName: the last name of an author
     @type authorName: unicode
+    
+    @param minFreq: the min number of co-publications
+    @type minFreq: int
     
     @return: a list of all the colleagues
     @rtype: unicode list
@@ -97,5 +100,5 @@ def getCoauthors(authorName):
                     coauthors.append(k.replace('}','').replace('{',''))        
     coauthors=[i for i in coauthors if i!=authorName]     
     coauthorsFreq = {a:coauthors.count(a) for a in coauthors}    
-    coauthors2=[i for i in coauthorsFreq if coauthorsFreq[i]>10]
+    coauthors2=[i for i in coauthorsFreq if coauthorsFreq[i]>minFreq]
     return coauthors2

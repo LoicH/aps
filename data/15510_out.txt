@@ -1,0 +1,747 @@
+Rule Mining for Semantifying Wikilinks
+
+Luis Galárraga, Danai Symeonidou, Jean-Claude Moissinac
+
+Télécom ParisTech, Paris, France
+
+{luis.galarraga, danai.symeonidou, jean-claude.moissinac}@telecom-paristech.fr
+
+ABSTRACT
+Wikipedia-centric Knowledge Bases (KBs) such as YAGO
+and DBpedia store the hyperlinks between articles in Wiki-
+pedia using wikilink relations. While wikilinks are signals of
+semantic connection between entities, the meaning of such
+connection is most of the times unknown to KBs, e.g., for
+89% of wikilinks in DBpedia no other relation between the
+entities is known. The task of discovering the exact relations
+that hold between the endpoints of a wikilink is called wik-
+ilink semantiﬁcation. In this paper, we apply rule mining
+techniques on the already semantiﬁed wikilinks to propose
+relations for the unsemantiﬁed wikilinks in a subset of DB-
+pedia. By mining highly supported and conﬁdent logical
+rules from KBs, we can semantify wikilinks with very high
+precision.
+
+1.
+
+INTRODUCTION
+
+Some of the most prominent KBs such as DBpedia [1]
+or YAGO [19] build upon accurate information extraction
+on the semi-structured parts of Wikipedia articles such as
+infoboxes, Wikipedia categories and hyperlinks between ar-
+ticles, namely wikilinks. Even though wikilinks account for
+more than 25% of the non-literal facts in DBpedia, they
+are rarely exploited. Nevertheless, the fact that two entities
+are connected via a hyperlink accurately suggests a seman-
+tic connection between them. The goal of this paper is to
+discover the exact meanings of such connections.
+
+Some wikilinks are already semantiﬁed in KBs. YAGO
+and DBpedia, for example, know that Barack Obama links
+to USA and is also a citizen and the President of that coun-
+try. KBs can extract such information because it is usually
+available in the infoboxes; however if the information lies
+somewhere outside the infoboxes, KBs will not see it, lead-
+ing to unsemantiﬁed wikilinks (see [9, 21] for automatic pop-
+ulation of infoboxes from text). This is the case for 89% of
+wikilinks in DBpedia. For instance, the Wikipedia article of
+Barack Obama links to the article of the 2009 Nobel Prize,
+but DBpedia does not know that he won the Nobel Prize.
+
+Copyright is held by the owner/author(s).
+WWW2015 Workshop: Linked Data on the Web (LDOW2015).
+
+In some other cases, the semantic connection encoded in a
+wikilink can be vague and opaque and even not modeled in
+the schema of the KB. For example, Obama’s article also
+links to the articles for cocaine and ovarian cancer.
+
+In this work, we show how to leverage the already seman-
+tiﬁed wikilinks to semantify the others. This is achieved
+by learning frequent semantic patterns from the relations in
+the KB and the wikilinks. If we observe that people often
+link to the countries where they come from, we can suggest
+that unsemantiﬁed wikilinks from people to countries con-
+vey a nationality relationship. This example also implies
+that the types of entities play an important role when se-
+mantifying wikilinks. For instance, the fact that France links
+to Spain suggests that the implicit relation carried by the
+wikilink holds between countries (or even places) and there-
+fore discards any relation with an incompatible signature. If
+we assume that wikilinks between countries encode a trade
+partnership, we can formulate this pattern as a logical rule:
+linksTo(x, y)∧is(x, Country)∧is(y, Country) ⇒ deals(x, y)
+
+Given an unsemantiﬁed wikilink between two countries, this
+rule will predict that they must be trade partners. Such
+predictions could be proposed as candidate facts to popu-
+late KBs. Still, this application scenario would require the
+rules to have certain quality, i.e., they should be statistically
+signiﬁcant and draw correct conclusions in most cases. This
+would avoid capturing noisy or irrelevant patterns and make
+wrong predictions.
+
+The process of learning logical rules from structured data
+is known as Rule Mining.
+In this paper, we resort to a
+method called AMIE [6] to mine logical rules from KBs. We
+then use the rules to draw conclusions and compute a list
+of the most likely candidate meanings (relations) between
+the entities of unsemantiﬁed wikilinks. Using a straightfor-
+ward inference method, we can discover meanings for 180K
+unsemantiﬁed wikilinks with very high precision.
+
+In addition to the semantiﬁcation of wikilinks, and to fur-
+ther emphasize their value, we discuss their eﬀect in the
+task of rule mining. We observe that sometimes, they can
+increase the conﬁdence of the obtained rules. For instance,
+assuming that a rule mining approach learns the rule:
+
+currentM ember(x, y) ⇒ team(x, y)
+
+we observe that by requiring the existing of a wikilink be-
+tween the entities:
+
+linksT o(x, y) ∧ currentM ember(x, y) ⇒ team(x, y)
+
+we achieve higher conﬁdence. This observation could be
+
+leveraged by data inference and link prediction approaches.
+It also provides additional insights about the KB.
+
+2. RELATED WORK
+
+Link prediction. The task of discovering semantic links
+between entities in KBs is often referred in the literature
+as link prediction. Due to the prominence of the Semantic
+Web, the problem has been extensively studied using multi-
+ple paradigms.
+
+Statistical graphical models such as Bayesian Networks [5]
+and Markov Logic Networks (MLN) [17] oﬀer a theoretically
+rigorous framework for data inference in KBs. Given a KB
+and a set of soft weighted rules expressed in ﬁrst order logic,
+MLNs support multiple inference tasks such as probability
+calculation for queries and predictions, and MAP (Maximum
+a Posteriori) inference. The major drawback of such meth-
+ods is that in the original formulation they do not scale to the
+size of current KBs. Nevertheless, there have been initiatives
+to extend the applicability of MLNs to large datasets [14].
+
+Some approaches represent KBs as matrices or tensors [12,
+13]. Under this paradigm, for instance, a KB can be repre-
+sented as a three-dimensional tensor where the fact r(x, y) is
+encoded as 1 in the cell with coordinates (r, x, y). Methods
+such as RESCAL [12], among others [13, 18] resort to tensor
+factorization and latent factor analysis on the matrix repre-
+sentation of the KB, in order to estimate the conﬁdence of
+the missing cells, i.e., how likely the missing facts are true
+based on the latent features in the data. Even though the
+scores are often given a probabilistic interpretation, they are
+not probabilities in a strict sense. Unlike our approach, this
+line of methods does not rely on explicitly formulated rules
+to perform inference.
+
+A third family of approaches [7, 20, 3] resorts to em-
+bedding models to formulate the link prediction problem.
+In [20], entities are represented as vectors in an embed-
+ding space, while relations are deﬁned as transformations
+on those vectors, e.g., the transformation nationality maps
+the vector of Barack Obama to the vector of USA. Methods
+based on embedding methods are very eﬀective at predicting
+values for functional relations, e.g., place of birth and still
+perform fairly well for one-to-many relations, e.g., children.
+Unlike the previous methods, the approach proposed in [10]
+relies on a graph representation for KBs and applies ran-
+dom walks and path ranking methods to discover new facts
+in large KBs. In a similar fashion [11] mines frequent meta-
+paths on data graphs, i.e., sequences of data types connected
+by labeled edges, and uses them to predict links between en-
+tities.
+
+All the approaches mentioned so far tackle the link pre-
+diction problem in KBs in a general way. Our approach in
+contrast, has a more focused scope, since we aim at predict-
+ing semantic links for entities for which there exists a signal
+of semantic connection, namely a wikilink.
+
+Wikilinks for type induction. Some approaches have
+leveraged the semantic value conveyed by wikilinks for the
+task of type inference in KBs. The work presented in [15]
+represents the set of wikilinks as a directed graph where
+each entity is replaced by its more speciﬁc type in the DB-
+pedia type hierarchy. The method discovers frequent sub-
+graph patterns on such graph. These are called Encyclopedic
+Knowledge Patterns (EKP). EKPs can be used to describe
+classes of entities and therefore predict the types for untyped
+entities, e.g., instances of soccer players will often link to in-
+
+stances of coaches and soccer leagues. While this method
+also makes use of the instance information to mine patterns,
+it does not aim to discover relations between entities. Thus,
+it does not make use of any other relations holding between
+the endpoints of wikilinks.
+In the same spirit, [16] builds
+upon EKPs and uses the instance information to map both
+entities and classes to a vector space. A similarity function
+on this space is used to compute the distance of an entity to
+the prototypical vector of classes and predict the types for
+untyped entities.
+
+3. PRELIMINARIES
+3.1 Rule Mining
+
+Our proposal to semantify wikilinks relies on logical rules
+mined from a KB and its wikilinks. In this paper we use a
+logical notation to represent rules and facts in a KB, e.g., the
+fact that Angela Merkel is a citizen of Germany is expressed
+as nationality(Angela Merkel, Germany). An atom is a fact
+where at least one of the arguments of the relation is a vari-
+able, e.g., nationality(x, Germany). We say that an atom
+holds in a KB if there exists an assignment for the variables
+in the atom that results in a fact in the KB. Moreover,we say
+that two atoms are connected if they share at least one vari-
+able. The building blocks for logical rules are conjunctions
+of transitively connected atoms. For example, the rule that
+says that married couples have the same nationality can be
+expressed as:
+
+nationality(x, y) ∧ spouse(x, z) ⇒ nationality(z, y)
+
+This is a Horn rule. The left-hand side of the implication is a
+conjunction of connected atoms called the body, whereas the
+right-hand side is the head. In this paper, we focus on closed
+Horn rules, i.e., rules where each variable occurs in at least
+two atoms of the rule. Closed Horn rules always conclude
+concrete facts for assignments of the variables to values in
+the KB. If the KB knows nationality(Barack Obama, USA)
+and spouse(Barack Obama, Michelle Obama), our example
+rule will conclude nationality(Michelle Obama, USA). If the
+conclusion of a rule does not exist in the KB, we call it
+a prediction. Rule Mining approaches require a notion of
+counter-examples and precision for rules, to account for the
+cases where the rules err. In the next section we describe
+such notions as well as a method to learn closed Horn rules
+from potentially incomplete KBs.
+3.2 AMIE
+
+AMIE [6] is a system that learns closed Horn rules of the
+
+form:
+
+B1 ∧ ··· ∧ Bn ⇒ r(x, y) Abbrev. B ⇒ r(x, y)
+
+AMIE assesses the quality of rules in two dimensions: sta-
+tistical signiﬁcance and conﬁdence. The ﬁrst dimension is
+measured by the support of the rule. This metric is deﬁned
+according to the following formula:
+
+supp(B ⇒ r(x, y)) := #(x, y) : ∃z1, ..., zm : B ∧ r(x, y)
+
+In other words, the support is the number of distinct assign-
+ments of the head variables for which the rule concludes a
+fact in the KB. Support is deﬁned to be monotonic; given
+a rule, the addition of a new atom will never increase its
+support. Moreover, support is a measure of statistical evi-
+dence, thus, it does not gauge the precision of the rule, i.e.,
+
+how often it draws correct or incorrect conclusions. This
+requires a notion of negative examples. Since KBs do not
+encode negative information, rule mining approaches resort
+to diﬀerent assumptions to derive counter-evidence. Meth-
+ods based on traditional association rule mining [8] resort to
+the Closed World Assumption (CWA). Under the CWA, any
+conclusion of the rule that is absent in the KB, is a counter-
+example. This mechanism, however, contradicts the Open
+World Assumption that KBs make.
+In constrast, AMIE
+uses the Partial Completeness Assumption (PCA) to deduce
+counter-examples. The PCA is the assumption that if a KB
+knows some r-values for an instance, then it knows all its
+values.
+If a rule predicts a second nationality for Barack
+Obama, knowing that he is American, the PCA will count
+such deduction as a counter-example. On other hand if the
+KB did not know any nationality for Obama, then such case
+would be disregarded as evidence, while the CWA would still
+count it as negative evidence. Notice that, the PCA is per-
+fectly safe for functional relations, e.g., place of birth and
+still feasible for quasi-functions such as nationality.
+
+The conﬁdence of a rule under the PCA follows the for-
+
+mula:
+pcaconf (B ⇒ r(x, y)) :=
+
+supp(B ⇒ r(x, y))
+
+#(x, y) : ∃z1, . . . , zk, y(cid:48) : B ∧ r(x, y(cid:48))
+
+The PCA conﬁdence normalizes the support of the rule (num-
+ber of positive examples) over the number of both the posi-
+tive and the negative examples according to the PCA.
+
+AMIE uses support and conﬁdence as quality metrics for
+rules and the user can threshold on these metrics. In ad-
+dition, AMIE implements a set of strategies to guarantee
+good runtime and rules of good quality. Examples of such
+strategies are prune by support and the skyline technique. To
+prune the search space eﬃciently, AMIE relies on the mono-
+tonicity of support, that is, once a rule has dropped below
+the given support threshold, the system can safely discard
+the rule and all its derivations with more atoms. The skyline
+technique, on the other hand, is an application of the Occam
+Razor principle: among a set of hypotheses with the same
+predictive power, the one with fewer assumptions (the sim-
+plest) should be preferred. If the system has already learned
+a rule of the form B ⇒ r(x, y) and then ﬁnds a more speciﬁc
+version of the rule, i.e., B ∧ rn(xn, yn) ⇒ r(x, y), the more
+speciﬁc rule will be output only if it has higher conﬁdence.
+
+4. SEMANTIFYING WIKILINKS
+
+Our approach to semantify wikilinks relies on the intu-
+ition that (a) wikilinks often convey a semantic connection
+between entities, (b) some of them are already semantiﬁed
+in KBs, (c) the types of the entities in the wikilink deﬁne the
+signature of its implicit relation and (d) the already semanti-
+ﬁed wikilinks can help us semantify the others. The already
+semantiﬁed wikilinks constitute our training set. From this
+training set, we mine a set of semantic patterns in the form
+of logical rules.
+
+To justify our intuition, we look at the types of the end-
+points of semantiﬁed wikilinks in DBpedia. We restrict our
+analysis to the classes Person, Place and Organization. Ta-
+ble 1 shows the most common relations holding between
+pairs of those entities for which there exists at least one wik-
+ilink. For example, we observe that when a person links to a
+place, in 56% of the cases, the person was born in that place.
+Similarly, when an organization links to a place, in 19% of
+
+the cases, this corresponds to its location. We also observe
+that in our dataset, 81% of the links for these classes are
+not semantiﬁed. Rule mining techniques can help us learn
+the patterns suggested by Table 1 and semantify more links.
+For example, the fact that organizations link to the places
+where they are located can be expressed as:
+
+linksT o(x, y) ∧ is(x, Org) ∧ is(y, Loc) ⇒ location(x, y)
+
+Such a rule would allow us to predict the relation location
+for unsemantiﬁed wikilinks between organizations and loca-
+tions. This is a link prediction task and has a great value
+for web-extracted KBs such as YAGO or DBpedia.
+We start by constructing a training set K from DBpedia
+3.81 consisting of 4.2M facts and 1.7M entities, including
+people, places and organizations. We enhance this dataset
+with the type information about the entities, i.e., 8M rdf:type
+statements, and the wikilinks between those entities. Since
+we can only learn from already semantiﬁed wikilinks, we
+restrict the set of wikilinks to those where both endpoints
+participate in a relation in the data, i.e., linksT o(a, b) ∈ K
+iﬀ ∃ r, r(cid:48), x, y : (r(x, a) ∨ r(a, x)) ∧ (r(cid:48)(y, a) ∨ r(cid:48)(a, y)). This
+procedure led us to a training set K with a total of 18M
+facts. We ran AMIE on this dataset and conﬁgured it to
+mine closed Horn rules of the form:
+
+∗
+linksT o
+
+(x, y) ∧ B ∧ is(x, C) ∧ is(y, C
+
+(cid:48)
+
+) ⇒ r(x, y)
+
+where linksTo is an alias for wikiPageWikiLink, linksTo*
+denotes either linksTo or linksTo−1, ”is” is a synonym for
+rdf:type and B is a conjunction of up to 2 atoms. We call
+them semantiﬁcation rules. With support and PCA conﬁ-
+dence thresholds 100 and 0.2 respectively, AMIE found 3546
+semantiﬁcation rules on the training set K. Table 2 shows
+examples of those rules.
+
+We then use the rules to draw predictions of the form
+i.e., r(a, b) /∈ K. We restrict even further
+p := r(a, b),
+the set of predictions, by requiring the arguments to be
+the endpoints of unsemantiﬁed wikilinks, more precisely,
+(cid:64) r(cid:48) : r(cid:48) (cid:54)= linksT o ∧ r(cid:48)(a, b) ∈ K. Recall that those predic-
+tions may have a diﬀerent degree of conﬁdence depending
+on the conﬁdence of the rules that are used to deduce them.
+Moreover, a prediction can in principle be deduced by multi-
+ple rules since AMIE explores the search space of rules in an
+exhaustive fashion. To take this observation into account,
+we deﬁne the conﬁdence of a prediction p according to the
+following formula:
+
+|R|(cid:89)
+
+conf (p) := 1 −
+
+(1 − [φ(Ri, p) × pcaconf (Ri)])
+
+(1)
+
+i=1
+
+where R is the set of semantiﬁcation rules and φ(Ri, p) = 1
+if Ri (cid:96) p, i.e., if p is concluded from rule Ri; otherwise
+φ(Ri, p) = 0. The rationale behind Formula 1 is that the
+more rules lead to a prediction, the higher the conﬁdence on
+that prediction should be. The conﬁdence is then deﬁned as
+the probability that at least one of the rules Ri that con-
+cludes p applies. This can be calculated as 1 minus the prob-
+ability that none of the rules holds. The latter probability
+is deﬁned as the product of the probabilities that each rule
+in isolation does not hold, in other words (1− pcaconf (Ri)).
+Formula 1 thus, makes two strong assumptions. First, it
+confers a probabilistic interpretation to the PCA conﬁdence.
+
+1We learn rules on DBpedia 3.8 to corroborate some of their
+predictions automatically in DBpedia 3.9
+
+Domain
+
+Person
+Person
+Person
+Place
+Place
+Place
+
+Organization
+Organization Organization
+Organization
+Organization
+
+Person
+Place
+
+Range
+Person
+Place
+
+Organization
+
+Place
+Person
+
+Relation - % occurrences
+
+successor
+birthPlace
+team
+isPartOf
+leaderName
+owner
+sisterStation
+currentMember
+location
+
+18% associatedBand
+56% deathPlace
+53% almaMater
+29% country
+42% architect
+24% tenant
+18% associatedBand
+22% bandMember
+19% city
+
+party
+
+11% associatedMusicalArtist
+18% nationality
+8%
+28% location
+32% saint
+16% operatedBy
+15% associatedMusicalArtist
+20% formerBandMember
+17% hometown
+
+11%
+8%
+5%
+13%
+12%
+12%
+15%
+20%
+13%
+
+Table 1: Top-3 relations encoded in wikilinks between instances of Person, Place and Organization in DBpedia.
+
+Rule
+linksT o(x, y) ∧ parent(x, y) ∧ successor(y, x) ∧ is(x, P erson) ∧ is(y, P erson) ⇒ predecessor(x, y)
+linksT o(x, y) ∧ picture(x, y) ∧ is(x, ArchitecturalStructure) ∧ is(y, P opulatedP lace) ⇒ location(x, y)
+linksT o(y, x) ∧ owner(x, y) ∧ subsidiary(y, x) ∧ is(y, Co.) ∧ is(x, Co.) ⇒ owningCompany(x, y)
+
+PCA. Conf.
+
+1.0
+0.94
+1.0
+
+Table 2: Some semantiﬁcation rules mined by AMIE on DBpedia.
+
+Precision@1 Precision@3
+0.77 ± 0.10
+0.67 ± 0.07
+
+Table 3: Average MAP@1 and MAP@3 scores for
+semantiﬁcation of wikilinks on DBpedia.
+
+Rules without wikilink
+Rules with wikilink
+Rules with conﬁdence gain
+Weighted average gain (wag)
+Rules with gain ≥ 0.1
+
+857
+1509
+1389
+0.03
+139
+
+Second, it assumes that rules are independent events. While
+we do not claim these assumptions to be correct, they still
+provide a naive baseline to estimate the likelihood of facts
+without resorting to more sophisticated approaches for data
+inference. As we show later, such a naive estimator delivers
+satisfactory results in our scenario.
+
+Given an unsemantiﬁed wikilink l := linksT o(a, b), For-
+mula 1 allows us to propose a list of candidate meanings for
+l. If among the set of predictions there are several facts of
+the form ri(a, b), then each relation ri is a semantiﬁcation
+candidate for l with conﬁdence conf (ri(a, b)). For each un-
+semantiﬁed link, we propose a list of semantiﬁcation candi-
+dates sorted by conﬁdence. Our procedure proposes relation
+candidates for 180K unsemantiﬁed wikilinks in the training
+set. Since, we can semantify only 1% of them by automat-
+ically checking our predictions in DBpedia 3.9, we evaluate
+the precision of our approach on a sample of 60 unseman-
+tiﬁed wikilinks. We then evaluate the correcteness of their
+rankings of semantiﬁcation candidates as follows: for each
+wikilink we count the number of correct candidates at top
+1 and top 3 of the ranking, we then add up these counts
+and divide them by the total number of candidates at top
+1 and top 3 respectively. This gives us an estimation of the
+precision of our approach. Table 3 shows the estimated pre-
+cision values drawn from the sample as well as the size of
+the Wilson Score Interval [4] at conﬁdence 95%. The results
+imply that, for example, the precision at top 1 for the whole
+set of wikilinks lies in the interval 77% ± 10% with 95%
+probability.
+
+Table 4 shows some examples of wikilinks and the rank-
+ing of semantiﬁcation candidates proposed by our approach.
+The number in parentheses corresponds to the conﬁdence of
+the semantiﬁcation candidate. The candidates evaluated as
+correct according to the our evaluation are in italics.
+
+Table 5: Statistics about rule mining with and with-
+out wikilinks.
+
+5. WIKILINKS FOR RULE MINING
+
+The skyline technique implemented in AMIE prevents the
+system from reporting low quality rules. If AMIE ﬁnds two
+rules B ⇒ r(x, y) and B ∧ rn(xn, yn) ⇒ r(x, y) and the
+latter has lower conﬁdence, the system will not output it
+because it is worse in all dimensions, i.e., it has also lower
+support. We therefore investigate the conﬁdence gain car-
+ried by the addition of wikilink atoms in rules.
+
+We ﬁrst run AMIE on the DBpedia mapping-based triples.
+In a second run, we add the wikilinks to the mapping-based
+triples and instruct the system to mine, when possible, rules
+of the form linksT o∗(x, y) ∧ B ⇒ r(x, y), i.e., if the skyline
+technique does not prune the longer rule. In both cases, we
+set a threshold of 100 positive examples for support and no
+conﬁdence threshold. We report our ﬁndings in Table 5. We
+observe that requiring the head variables to be connected via
+a wikilink increases the number of rules from 857 to 1509.
+This occurs because in the second run, AMIE sometimes
+mines versions of the rules with and without the linksTo∗
+atom. In other words, for some rules the addition of a wik-
+ilink atom provides a conﬁdence gain. This is the case for
+1389 rules as Table 5 shows. We are interested in ﬁnding
+how much conﬁdence gain is carried by those rules. Thus,
+we deﬁne the gain of a wikilink rule as a variant of the gain
+metric used in association rule mining [2]:
+gain(R) := supp(R) × (pcaconf (R) − pcaconf (R¬linksTo))
+That is, the gain of a wikilink rule is the product of its
+support and the diﬀerence in conﬁdence with respect to the
+rule without the linksTo∗ atom. Table 5 reports an aver-
+age gain of 0.03. We ﬁnd, however, that for 10% of rules,
+
+WikiLink
+Interstate 76 (west) → Colorado State Highway
+J. Bracken Lee → Herbert B. Maw
+WHQX → WTZE
+
+Semantiﬁcation candidates
+routeJunction (1.0)
+predecessor (1.0), parent(0.998), governor(0.882)
+sisterStation (1.0)
+
+Table 4: Some examples of semantiﬁcation candidates for wikilinks. The correct candidates are in italics.
+
+Rule
+producer(x, y) ∧ recordLabel(x, y) ⇒ artist(x, y)
+debutT eam(x, y) ⇒ team(x, y)
+of f icialLanguage(x, y) ⇒ spokenIn(x, y)
+
+∆-conf
+
+0.34
+0.28
+0.19
+
+Table 6: Conﬁdence gain for some rules when spe-
+cialized with a linksTo atom on the head variables.
+
+the gain can be higher than 0.1. We show some of those
+rules with their corresponding conﬁdence gain in Table 6. It
+follows that, in the majority of cases, the wikilinks do not
+provide a signiﬁcant conﬁdence gain to rule mining in DB-
+pedia. The reason lies on the fact that for 99% of the triples
+in the DBpedia mapping-based dataset, there is a wikilink
+between the arguments of the triples, that is, the addition
+of a wikilink atom does not provide additional information
+to the rule. On the other hand, for certain relations, the ar-
+guments are not sometimes not connected with a wikilink.
+This is the case for 100K triples. In such cases, the addition
+of a linksT o∗ atom may convey a conﬁdence gain that can
+be used to improve the quality of the rules.
+
+All our datasets and experimental results are available un-
+der http://luisgalarraga.de/semantifying-wikilinks.
+
+6. CONCLUSIONS
+
+While none of the major Wikipedia-centric KBs make fur-
+ther use of the wikilinks, in this work we have shown that
+they often encode latent relations between entities. Such re-
+lations may not be captured in KBs. We have shown that
+rule mining techniques and naive inference methods are a
+feasible alternative to accurately discover those implicit se-
+mantics. This wikilink semantiﬁcation task can be seen as a
+particular case of the link prediction problem in KBs. With
+this work, we aim at turning the attention to the wikilinks,
+as they convey valuable information that can help improve
+the completeness of KBs.
+
+7. ACKNOWLEDGMENTS
+
+This work is supported by the Chair “Machine Learning
+for Big Data” of T´el´ecom ParisTech and Labex DigiCosme
+(project ANR-11-LABEX-0045-DIGICOSME) operated by
+ANR as part of the program “In- vestissement d’Avenir” Idex
+Paris-Saclay (ANR-11-IDEX-0003-02).
+
+8. REFERENCES
+[1] S. Auer, C. Bizer, G. Kobilarov, J. Lehmann,
+
+R. Cyganiak, and Z. Ives. DBpedia: A nucleus for a
+web of open data. In ISWC, 2007.
+
+[2] R. J. Bayardo. Mining the most interesting rules.
+
+pages 145–154, 1999.
+
+[3] A. Bordes, N. Usunier, A. Garc´ıa-Dur´an, J. Weston,
+
+and O. Yakhnenko. Translating embeddings for
+modeling multi-relational data. In NIPS, 2013.
+
+[4] L. D. Brown, T. T. Cai, and A. DasGupta. Interval
+
+estimation for a binomial proportion. Statistical
+Science, 2001.
+
+[5] N. Friedman, L. Getoor, D. Koller, and A. Pfeﬀer.
+Learning probabilistic relational models. In IJCAI,
+1999.
+
+[6] L. Gal´arraga, C. Teﬂioudi, K. Hose, and F. Suchanek.
+
+AMIE: Association rule mining under incomplete
+evidence in ontological knowledge bases. In WWW,
+2013.
+
+[7] A. Garc´ıa-Dur´an, A. Bordes, and N. Usunier. Eﬀective
+
+blending of two and three-way interactions for
+modeling multi-relational data. In ECML-PKDD,
+2014.
+
+[8] B. Goethals and J. Van den Bussche. Relational
+
+Association Rules: Getting WARMER. In Pattern
+Detection and Discovery, volume 2447. Springer Berlin
+/ Heidelberg, 2002.
+
+[9] D. Lange, C. B¨ohm, and F. Naumann. Extracting
+structured information from wikipedia articles to
+populate infoboxes. In CIKM, 2010.
+
+[10] N. Lao, T. Mitchell, and W. W. Cohen. Random walk
+inference and learning in a large scale knowledge base.
+In EMNLP, 2011.
+
+[11] C. Meng, R. Cheng, S. Maniu, P. Senellart, and
+
+W. Zhang. Discovering meta-paths in large
+heterogeneous information networks. In WWW, 2015.
+
+[12] M. Nickel, V. Tresp, and H.-P. Kriegel. A three-way
+
+model for collective learning on multi-relational data.
+In ICML, 2011.
+
+[13] M. Nickel, V. Tresp, and H.-P. Kriegel. Factorizing
+
+YAGO: Scalable machine learning for linked data. In
+WWW, 2012.
+
+[14] F. Niu, C. R´e, A. Doan, and J. Shavlik. Tuﬀy: Scaling
+up statistical inference in markov logic networks using
+an rdbms. VLDB Endowment., 2011.
+
+[15] A. Nuzzolese, A. Gangemi, V. Presutti, and
+
+P. Ciancarini. Encyclopedic knowledge patterns from
+wikipedia links. In ISWC. 2011.
+
+[16] A. G. Nuzzolese, A. Gangemi, V. Presutti, and
+
+P. Ciancarini. Type inference through the analysis of
+wikipedia links. In LDOW, 2012.
+
+[17] M. Richardson and P. Domingos. Markov logic
+
+networks. Mach. Learn., 62(1-2):107–136, Feb. 2006.
+
+[18] A. P. Singh and G. J. Gordon. Relational learning via
+
+collective matrix factorization. In KDD, 2008.
+
+[19] F. M. Suchanek, G. Kasneci, and G. Weikum. Yago: A
+
+Core of Semantic Knowledge. In WWW, 2007.
+
+[20] Z. Wang, J. Zhang, J. Feng, and Z. Chen. Knowledge
+
+graph embedding by translating on hyperplanes. In
+AAAI, 2014.
+
+[21] F. Wu and D. S. Weld. Autonomously semantifying
+
+wikipedia. In CIKM, 2007.
+

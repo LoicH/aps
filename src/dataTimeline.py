@@ -112,7 +112,7 @@ def createTFIDFMatrix(authorName, startDateString, endDateString):
                 print 'Error downloading the file'
             
                 
-      
+    fm.pretty_print()
     return fm.to_TFIDF_Matrix()
 
 def median(matrixList): 

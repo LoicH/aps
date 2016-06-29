@@ -2404,13 +2404,13 @@ the size of the tiles in the item
 "The sample entry of type 'hvc1' shall be used for an image sequence track coded with HEVC." 
  
 
-positive 
+sequence 
 
-track 
+positive 
 
 image 
 
-sequence 
+track 
 
 An 
 coded with HEVC 
@@ -2586,10 +2586,11 @@ integer), as specified in B.2.5, an HEVC SEI message describing the auxiliary im
 included in the sample entry." 
  
 
+sequence 
+
 positive 
 
-image 
-
+ 
  
 
  

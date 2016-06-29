@@ -6,18 +6,79 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>APS</title>
 </head>
-<body>
-	<ul>
-		<li><a href="{{url_for('wordcloud')}}">Word Cloud</a></li>
-		<li><a href="{{url_for('timeline')}}">Time Line</a></li>
-		<li><a href="{{url_for('show_author', name='John Doe')}}">Overview of an author</a></li>
-	</ul>
 
+<style>
+
+    .node {
+        font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        fill: #bbb;
+    }
+
+    .node:hover {
+        fill: #000;
+    }
+
+    .link {
+        stroke: steelblue;
+        stroke-opacity: .4;
+        fill: none;
+        pointer-events: none;
+    }
+
+    .node:hover,
+    .node--source,
+    .node--target {
+        font-weight: 700;
+    }
+
+    .node--source {
+        fill: #2ca02c;
+    }
+
+    .node--target {
+        fill: #2ca02c;
+    }
+
+    .link--source,
+    .link--target {
+        stroke-opacity: 1;
+        stroke-width: 2px;
+    }
+
+    .link--source {
+        stroke: #2ca02c;
+    }
+
+    .link--target {
+        stroke: #2ca02c;
+    }
+
+</style>
+<body>
+	<!--<img src="{{url_for('static', filename='Logo_D3.png') }}">-->
+    <h1> Word Cloud </h1>
+    <div>
+        <div id="wc">
+            <script type="text/javascript" src="WordCloud2.js"></script><!-- WordCloud2 ? -->
+        </div>
+        <div id="overlay" style="position: absolute; top: 70px ; width: 100%; background: white">
+            <script type="text/javascript" ></script>
+        </div>
+    </div>
+
+    <h1> Time Line </h1>
+    <div id="tl">
+        <script type="text/javascript" src="TimeLine.js"></script>
+    </div>
     <h1> Graph </h1>
     <div id="graph">
         <script type="text/javascript" src="{{url_for('static', filename='Graph.js') }}"></script>
     </div>
 </body>
 </html>
+
+
+<!--{{url_for('static', filename='WordCloud.js') }}-->
+<!--{{url_for('static', filename='d3.layout.cloud.js') }}-->
