@@ -83,7 +83,9 @@ d3.json("wordcloud/tags.json", function(error, json) {
             .text(function (d) {
                 return d.text;
             })
-            .on("click", function() {alert("ok");});
+            .on("click", function() {
+              treeDesign(this.textContent);
+            });
 
         vis.transition().attr("transform", "translate(" + [w >> 1, h >> 1] + ")scale(" + scale + ")");
     }

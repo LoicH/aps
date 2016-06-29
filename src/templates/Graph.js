@@ -1,3 +1,6 @@
+d3.json("readme-flare-imports.json", function(error, classes) {
+    if (error) throw error;
+
 var diameter = 960,
     radius = diameter / 2,
     innerRadius = radius - 120;
@@ -24,8 +27,7 @@ var svg = d3.select("#graph").append("svg")
 var link = svg.append("g").selectAll(".link"),
     node = svg.append("g").selectAll(".node");
 
-d3.json("readme-flare-imports.json", function(error, classes) {
-    if (error) throw error;
+
 
     var nodes = cluster.nodes(packageHierarchy(classes)),
         links = packageImports(nodes);
@@ -47,7 +49,7 @@ d3.json("readme-flare-imports.json", function(error, classes) {
         .text(function(d) { return d.key; })
         .on("mouseover", mouseovered)
         .on("mouseout", mouseouted);
-});
+
 
 function mouseovered(d) {
     node
@@ -119,3 +121,5 @@ function packageImports(nodes) {
 
     return imports;
 }
+
+});

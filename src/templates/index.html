@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script type="text/javascript" src="bower_components/d3/d3.js"></script>
-<script src=""></script>
+<script src="tree.js"></script>
 <script type="text/javascript" src="bower_components/d3-cloud/build/d3.layout.cloud.js"></script>
 
 <head>
@@ -59,10 +59,14 @@
 <body>
 	<!--<img src="{{url_for('static', filename='Logo_D3.png') }}">-->
     <h1> Word Cloud </h1>
-    <div id="wc"></div>
-        <script type="text/javascript" src="WordCloud2.js"> <!-- WordCloud2 ? -->
-			
-		</script>
+    <div>
+        <div id="wc">
+            <script type="text/javascript" src="{{url_for('static', filename='WordCloud2.js') }}"></script><!-- WordCloud2 ? -->
+        </div>
+        <div id="overlay" style="position: absolute; top: 50px ; background: white">
+            <script type="text/javascript" ></script>
+        </div>
+    </div>
 
     <h1> Time Line </h1>
     <div id="tl">
