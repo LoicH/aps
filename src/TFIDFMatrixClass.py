@@ -82,7 +82,10 @@ class TFIDFMatrix:
         lowest = l [-1][0]
         
         #linear transformation to put the highest value to 100 and the lowest to 1
-        a = (100 -  1)/(highest - lowest)
+        if highest-lowest!=0:
+            a = (26 -  1)/(highest - lowest)
+        else :
+            a=26
         b = 1 - a * lowest        
         
         

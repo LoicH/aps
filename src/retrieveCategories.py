@@ -7,6 +7,10 @@ Created on Mon Jun 20 16:24:43 2016
 
 import spotlight
 from SPARQLWrapper import SPARQLWrapper, JSON
+import os 
+
+app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
+data = app_path+os.sep+"data"
 
 #test <http://dbpedia.org/page/Computer_science>
 
@@ -66,7 +70,7 @@ def getCategories(URIList, annotatedWords):
         i+=1
     return L, wordByCategory
     
-def categoryFrequency(categoryList): 
+def categoryFrequency(categoryList):   #TODO delete units
     """returns relative frequency of the 20 most prominent categories
     @param categoryList: raw categories list (with duplicates)
     @type categoryList: string list
@@ -80,7 +84,7 @@ def categoryFrequency(categoryList):
             freq[i]=freq[i]+1/float(n)
         else:
             freq[i]=1/float(n)
-    sortedFreq=sorted([(v,k) for (k,v) in freq.items()], reverse = True)[:20]
+    sortedFreq=sorted([(v,k) for (k,v) in freq.items()], reverse = True)[:10]
     freq=dict([(k,v) for (v,k) in sortedFreq])
     return freq
     

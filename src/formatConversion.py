@@ -37,7 +37,7 @@ def convertDict(dico, file_out):
         string=string+json.dumps(a.__dict__)+","
     string = string[0:-1]
     f = open(file_out,'w')
-    f.write('{"frequency_list":['+ string+"]}")
+    f.write('{"tags":['+ string+"]}")
     f.close()
     
 def convertDict2(dico, file_out): #used for the second type of word visualization
@@ -50,13 +50,14 @@ def convertDict2(dico, file_out): #used for the second type of word visualizatio
     string=""
     a= dict()
     L=[]
-    for i in dico.keys():
-        a=Object(i,dico[i])
+    l1 = sorted([(v,k) for (k,v) in dico.items()], reverse=True)
+    for (v,k) in l1:
+        a=Object(k,v)
         L.append(json.dumps(a.__dict__))
         string=string+json.dumps(a.__dict__)+","
     string = string[0:-1]
     string=string.replace("text","key").replace("size","value")
-    string="var tags= ["+string+"]"
+    string='{"tags":'+ "["+string+"]}"
     f = open(file_out,'w')
     f.write(string)
     f.close()
@@ -102,13 +103,12 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections):
         for j in range(b-1):
             s2+=str(M[i][j])+","
         s2+=str(M[i][b-1])
-        s+="["+s2+"],"
+        s+='{"label":"a","values":'+"["+s2+"]},"
     s2=""
     for j in range(b-1):
         s2+=str(M[a-1][j])
-        print(s2)
-    s+="["+s2+","+str(M[a-1][b-1])
-    result = """{"data":"""+"["+s+"]]}"
+    s+='{"label":"a","values":'+"["+s2+","+str(M[a-1][b-1])
+    result = """{"toto":"""+"["+s+"]}]}"
     f=open(file_out,"w") # saving the matrix in json format
     f.write(result) 
     f.close()

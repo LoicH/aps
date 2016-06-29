@@ -17,7 +17,7 @@ data = app_path+os.sep+"data"
 
 
 
-def createTFIDFMatrix(authorName, startDate, endDate): #date format : year monthNumber
+def createTFIDFMatrix(authorName, startDate, endDate): #date format : date(2015,11,1)
     """ create TFIDF Matrix using documents written by an author during a selected period
     @param authorName: author's lastname
     @type authorName: string
@@ -35,7 +35,7 @@ def createTFIDFMatrix(authorName, startDate, endDate): #date format : year month
     titleId=dict()
     for j in listTitle:
         formatedDate=formatDate(listTitle[j][0])
-        pubDate=date(int(formatedDate.split()[0]),int(formatedDate.split()[1]),1)
+        pubDate=date(int(str(formatedDate).split()[0]),int(str(formatedDate).split()[1]),1)
         if pubDate>startDate and pubDate<endDate: #checks if text was published in a fixed time window
             titleId[j]=listTitle[j][1]
     fm=FreqMatrix([],[])
@@ -50,6 +50,7 @@ def createTFIDFMatrix(authorName, startDate, endDate): #date format : year month
                 print "File "+ " not found in directory"
     for k in a:
         fm.add_doc(k,a[k])
+    fm.pretty_print()
     return fm.to_TFIDF_Matrix()
 
 def median(matrixList): 

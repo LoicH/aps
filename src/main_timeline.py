@@ -16,6 +16,10 @@ from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
 import formatConversion
 from calendar import monthrange
+import PDFdl
+
+bibName="testbib.bib"
+entries=PDFdl.openBibLib(bibName).entries 
 
 #argv must be: main authorName startDate endDate periodLength(in months)
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
@@ -56,15 +60,17 @@ matrixList=[]
 authorName=sys.argv[1]
 startDate=Timeline.formatDate(sys.argv[2])
 endDate=Timeline.formatDate(sys.argv[3])
-startDateTime=date(int(startDate.split()[0]),int(startDate.split()[1]),1) #conversion to objects of type dateTime
-endDateTime=date(int(endDate.split()[0]),int(endDate.split()[1]),1)
+startDateTime=date(int(str(startDate).split()[0]),int(str(startDate).split()[1]),1) #conversion to objects of type dateTime
+endDateTime=date(int(str(endDate).split()[0]),int(str(endDate).split()[1]),1)
 periodLength=int(sys.argv[4])
 periodNumber2=monthdelta(startDateTime,endDateTime)//periodLength #number of periods considered
 date1=startDateTime
 date2=date1+ relativedelta(months=+periodLength)
+
 for i in range(periodNumber2+1):  #create TFDIDF Matrixes for each period
+    print i
     m=dataTimeline.createTFIDFMatrix(authorName, date1, date2) #TFIDF Matrix with all words/concepts.
-    tops = m.weights(number=5) #dictionary {concept:weight} for the top 5 five concepts, weight of best concept = 100, least = 1
+#    tops = m.weights(number=5) #dictionary {concept:weight} for the top 5 five concepts, weight of best concept = 100, least = 1
     matrixList.append(m)
     date1=date2
     date2=date1+ relativedelta(months=+periodLength)
@@ -73,6 +79,32 @@ if periodNumber2>=2:                                                            
     for i in range(1,periodNumber2):                                                                              # frequency List
         periodFrequenciesList.append(dataTimeline.median([matrixList[i-1],matrixList[i],matrixList[i+1]]))          #
 periodFrequenciesList.append(dataTimeline.median([matrixList[-2],matrixList[-1]]))
-periodFreqJSON=formatConversion.convertToMatrice(periodFrequenciesList, src+os.sep+"templates"+os.sep+"timeline.json", periodNumber2) #converting to output format
+
+#selecting the 10 best words
+
+#computing the scores
+scores = dict() #{word: score}
+for dic in periodFrequenciesList:
+    for word, frequency in dic.items():
+        if word in scores.keys():
+            scores[word] += frequency
+        else:
+            scores[word] = frequency
+
+#selecting the best:
+sorted_items = sorted([(score, word) for (word, score) in scores.items()], reverse=True)[:9]
+best_words = [word for (score, word) in sorted_items]
+
+#filtering the periodFrequenciesList to keep only the best words:
+filteredFrequenciesList = []
+for old_dic in periodFrequenciesList:
+    filtered_dic = dict()
+    for word, frequency in old_dic.items():
+        if word in best_words:
+            filtered_dic[word] = frequency
+    filteredFrequenciesList.append(filtered_dic)
+
+
+periodFreqJSON=formatConversion.convertToMatrice(filteredFrequenciesList, src+os.sep+"templates"+os.sep+"timeline.json", periodNumber2) #converting to output format
 
       # test: python main_timeline.py "Concolato" "2015 jan" "2016 jan" 6        
