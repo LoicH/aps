@@ -7,5 +7,7 @@ Created on Tue Jun 28 21:35:31 2016
 
 from graphVisualization import getdictCoauthors
 from formatConversion import convertGraph
+import sys
 
-convertGraph(getdictCoauthors("testbib.bib"))
+min Freq=sys.argv[1]
+convertGraph(getdictCoauthors("testbib.bib"), minFreq)
