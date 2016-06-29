@@ -68,7 +68,7 @@ def _compute_tfidf(bib_path):
                 os.remove(variables.tmp_pdf_dir+os.sep+str(pdf_id)+".pdf")
         
         #Create the frequency matrix for the docs
-        fmatrix = freqMatrixClass.FreqMatrix([],[])
+        fmatrix = freqMatrixClass.FreqMatrix()
         for pdf_id in pdf_ids_list:
             f = codecs.open(variables.data_dir+os.sep+str(pdf_id)+"_out.txt", 'r', "utf-8")
             txt = f.read()

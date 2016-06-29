@@ -21,7 +21,8 @@ Analysis of scientific papers and results visualization
 
 → ```sudo pip install nltk latexcodec Flask pdfMiner bibtexparser rdflib pyspotlight dateutil```
 
-
+(The list of requirements may be not up-to-date, if you have an import error, please message us
+and we'll update the list!)
 
 # How to view the wordcloud:
 
