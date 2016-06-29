@@ -23,12 +23,14 @@ def getAll(index,bibName):
     return bibtexparser.customization.convert_to_unicode(entries[index]) 
 
 def getInfo(authorName): #name in the form of lastName
-""" gets dictionary ids and dates linked to an author
+    """ 
+    gets dictionary ids and dates linked to an author
     @param authorName : name of an author
     @type string 
     
     @return : dictionary of publication names, dates and ids 
-    @rtype : dictionary  {pubName1 : [date,id], pubName2 : [date,id]...} """
+    @rtype : dictionary  {pubName1 : [date,id], pubName2 : [date,id]...} 
+    """
     
     datesAndIds = dict()
     coauthors=[]
@@ -46,12 +48,14 @@ def getInfo(authorName): #name in the form of lastName
 
 def getCoauthors(authorName, minFreq): 
 
-""" gets coauthors List of an author with a given number of common publications
+    """ 
+    gets coauthors List of an author with a given number of common publications
     @param authorName : name of an author
     @type string 
     
     @return : list of coauthors
-    @rtype : [coauthor1, coauthor2,... ] """
+    @rtype : [coauthor1, coauthor2,... ] 
+    """
     
     coauthors=[]
     for i in entries:

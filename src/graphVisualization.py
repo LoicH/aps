@@ -10,6 +10,7 @@ import numpy as np
 import timelineVisualization
 import TFIDFMatrixClass
 import dataTimeline
+from datetime import date
 
 
 #similarity matrix 
@@ -46,12 +47,13 @@ def distanceTFIDF(A,B):
     return scal
     
 def getPredictedAuthors(bibName):
+    
         predictedDict=dict()
         TFIDFdict=dict()
         authorList=getAllAuthors(bibName)
         for authorName in authorList:
             predictedDict[authorName]=dict()
-            TFIDFdict[authorName]=dataTimeline.createTFIDFMatrix(authorName, "2014 jan","2016 jan") #similarity on recent years
+            TFIDFdict[authorName]=dataTimeline.createTFIDFMatrix(authorName, date(2015,1,1),date(2016,1,1)) #similarity on recent years
         n= len (authorList)
         for i in range(n):
             for j in range(n):
@@ -104,7 +106,7 @@ def getdictCoauthors(bibName, minFreq):
                 dictCoauthors[unicode(author)]=coauthors
         i+=1
         if i%100==0:
-            print str(100*float(i)/n) + "% completed"
+            print str(int(100*float(i)/n)) + "% completed"
     for i in dictCoauthors.values():
         for k in i:
             if k not in dictCoauthors.keys():

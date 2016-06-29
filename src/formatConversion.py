@@ -140,7 +140,6 @@ def convertGraph(coauthorDict):
     @rtype : [{"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
     
     jsondata="["
->>>>>>> c1071abfbed27bffad3e30801e52d9d84a06e796
     for i in coauthorDict:
         dpt=""
         try:
@@ -204,7 +203,6 @@ def convertGraphTelecom(coauthorDict):
         
     jsondata=jsondata[:-1]
     jsondata+="]"
->>>>>>> c1071abfbed27bffad3e30801e52d9d84a06e796
     f= codecs.open("templates" + os.sep+"readme-flare-imports.json","w","utf-8")
     f.write(jsondata)
     f.close()

@@ -67,7 +67,7 @@ def getCategories(URIList, annotatedWords):
     return L, wordByCategory
     
 def categoryFrequency(categoryList): 
-    """returns relative frequency of a category
+    """returns relative frequency of the 20 most prominent categories
     @param categoryList: raw categories list (with duplicates)
     @type categoryList: string list
     
@@ -80,12 +80,14 @@ def categoryFrequency(categoryList):
             freq[i]=freq[i]+1/float(n)
         else:
             freq[i]=1/float(n)
+    sortedFreq=sorted([(v,k) for (k,v) in freq.items()], reverse = True)[:20]
+    freq=dict([(k,v) for (v,k) in sortedFreq])
     return freq
     
-def textToCatFreq(text):
-    """returns dict{category: frequency } for each category found in the text"""
-    URIs = getURIs(text)
-    return categoryFrequency(getCategories(URIs[0], URIs[1]))
+#def textToCatFreq(text):
+#    """returns dict{category: frequency } for each category found in the text"""
+#    URIs = getURIs(text)
+#    return categoryFrequency(getCategories(URIs[0], URIs[1]))
     
 #def getWordsLinkedTo(category,URIList): #returns text words linked to a certain category
 #    L=[]
