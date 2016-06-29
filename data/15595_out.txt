@@ -61,7 +61,7 @@ from BL, while EL2 does not use extractors at all but depends on EL1.
 
  
 
- 
+ 
 
 EL2 
 
@@ -150,7 +150,7 @@ Layer
 
  
 
- 
+ 
 
 The following storage options would be possible: 
  
@@ -222,7 +222,7 @@ derivation, without relying on profile and levels to identify the type of scalab
 
  
 
- 
+ 
 
 - 
 
@@ -284,4 +284,3 @@ AhG to consider this input and to integrate it in the DIS text to be produced.
 
  
 
-

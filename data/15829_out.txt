@@ -63,7 +63,7 @@ We  recommend  updating  the  RFC  to  mention  subtitle-only  file  and  to  cl
 
  
 
- 
+ 
 
 3  Codecs parameter for TTML in MP4 
 ISO/IEC  14496-30  defines  the  carriage  of  TTML  in  MP4  files  using  the  generic  carriage  of 
@@ -113,4 +113,3 @@ simplify the tasks of file writers and dash segmenters.
 
  
 
-

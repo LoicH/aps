@@ -65,7 +65,7 @@ complex file processing (i.e. iloc processing).
 
  
 
- 
+ 
 
  
 As  a  general  design  rule,  we  believe  items  should  be  reserved  for  storing  data  that  is  not 
@@ -137,7 +137,7 @@ thereby reducing the number of items. It did not however allow information shari
 
  
 
- 
+ 
 
 This  contribution  proposes  a  merge  of  the  above  solutions  and  is  based  on  the  following  key 
 aspects: 
@@ -249,7 +249,7 @@ HEVC Image (at file offset X, with length Y)
 
  
 
- 
+ 
 
 major-brand = 'heic', compatible-brands = 'heic' 
 
@@ -405,7 +405,7 @@ ItemInfoBox:
 
  
 
- 
+ 
 
  
 
@@ -565,7 +565,7 @@ others. That would simplify even more the spec.
 
  
 
- 
+ 
 
 FileTypeBox: 
 MetaBox: (container) 
@@ -767,7 +767,7 @@ SharedItemPropertiesBox:
 
  
 
- 
+ 
 
 itemID = 1, extent_count = 1, extent_offset = X, extent_length = Y; 
 itemID = 2, extent_count = 1, extent_offset = P0, extent_length = Q0; 
@@ -954,7 +954,7 @@ item properties indices: 0, 1
 
  
 
- 
+ 
 
  
  
@@ -1151,7 +1151,7 @@ SharedItemPropertiesBox:
 
  
 
-itemID = 1, extent_count = 1, extent_offset = W, extent_length = X; 
+itemID = 1, extent_count = 1, extent_offset = W, extent_length = X; 
 itemID = 2, extent_count = 1, extent_offset = Y, extent_length = Z;
 
 ItemLocationBox:   
@@ -1332,7 +1332,7 @@ MediaDataBox:
 
 HEVC Image (at file offset X, with length Q0+Q1+Q2+Q3) 
 
- 
+ 
 
 3.3.13 Auxiliary  Image  with  same  HEVC  configuration  and  dimensions  as  the  master 
 
@@ -1481,7 +1481,7 @@ Movie header, tracks (including track 1 with at least 1 sample desc), etc.
 
  
 
- 
+ 
 
 4  Conclusion 
 We  recommend  MPEG  to  adopt  the  attached  edits  to  the  current  draft  and  to  reissue  an  FDIS 
@@ -1490,4 +1490,3 @@ draft or to re-ballot the text as a new DIS text if NB comments are deemed neces
 
  
 
-

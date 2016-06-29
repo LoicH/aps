@@ -63,7 +63,7 @@ as follows:
 
  
 
- 
+ 
 
 “If explicit reconstruction is used, after resolution of extractors, an L-HEVC sample shall contain 
 at least one VCL NAL unit. If implicit reconstruction is used, an L-HEVC sample may contain 
@@ -119,7 +119,7 @@ and for a same value of nuh_layer_id, in increasing order of temporal_id.”
 
  
 
- 
+ 
 
 Implicit reconstruction and extractors 
 
@@ -165,4 +165,3 @@ We suggest MPEG to issue a study text for ISO/IEC 14496-15 with the above issues
 
  
 
-

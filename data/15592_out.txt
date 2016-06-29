@@ -68,7 +68,7 @@ because the reference list is not empty.
 
  
 
- 
+ 
 
 IDR_W_RADL are RAP that reset the reference list. So, all frames after this IDR in decoding 
 order can be decoded if the decoding starts from the IDR. It may have leading picture, but these 
@@ -124,7 +124,7 @@ BLA_N_LP and BLA_W_RADL.
 
  
 
- 
+ 
 
  
 14496-12 5th edition defines "leading sample" as follows: 
@@ -182,7 +182,7 @@ TRAIL_R  that  contain  only  slices  with  slice_type  equal  to  2  (I  slice)
 
  
 
- 
+ 
 
 We believe DVB should be informed that MPEG reached a conclusion. 
  
@@ -294,4 +294,3 @@ DVB.
 
  
 
-

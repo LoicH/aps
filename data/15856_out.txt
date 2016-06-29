@@ -67,7 +67,7 @@ replacing
 
  
 
- 
+ 
 
 URL of the media segment at position k is determined by replacing the $Time$ identifier by the 
 time address associated to this Segment. The time address is determined as follows:  
@@ -115,4 +115,3 @@ We suggest taking these edits into consideration for the next revision of DASH 3
 
  
 
-

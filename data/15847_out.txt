@@ -70,7 +70,7 @@ We  propose  replacing  “HTTP-based”  by  “HTTP-compatible”  everywhere 
 document  (including  the  title  “Part  6:  DASH  over  Full  Duplex  HTTP-compatible 
 Protocols (FDH)”). 
 
- 
+ 
 Considering that for HTTP/2 the only normative element defined in the specification is a 
 new  header,  the  length  of  the  specification  (30  pages)  seems  unnecessary.  The  group 
 should consider making a very concise specification defining HTTP/2 only and a separate 
@@ -129,7 +129,7 @@ solution. The existing mechanism for MPD update was considered sufficient”. We
 what it is allowed (WebSocket binding seems to use it).  
  
 
-We think “agreed upon by the client  and server” should be removed since it is indication from 
+We think “agreed upon by the client  and server” should be removed since it is indication from 
 the clients, and may not be agreed or applied by server. 
  
 We propose the following rewording for push strategy: 
@@ -184,7 +184,7 @@ In addition, on the figure describing the message flow, we propose to remove the
 HTTP/1.1  to  the  bidirectional  protocol  to  focus  only  on  the  DASH  part.  Connection 
 establishment  is  out  of  scope  (idem  for  description  text).  Additionally,  the  current  diagram  is 
 
-wrong. In case of upgrade, the client does not issue 2 separate messages, the upgrade is done as 
+wrong. In case of upgrade, the client does not issue 2 separate messages, the upgrade is done as 
 part of the request for the MPD. 
 To simplify, we may not put the list of possible pushDirectives in the request for segment #i. 
 At the bottom of the figure the push of the MPD update should be removed (or at least clarified) 
@@ -244,7 +244,7 @@ Replace:
 With: 
 “A pushDirective is defined as a type (pushType), optionally followed by a payload (PushParams).” 
 
- 
+ 
 Indeed, push-none and push-fast-start don’t have any parameters. 
  
 We  suggest  removing  the  inclusion  of  the  scheme  identifier.  It  is  preferable,  if  versioning  is 
@@ -316,7 +316,7 @@ K:Number
 Indication  that  the  the  next  K  segments,  using  the 
 requested segment as the initial index are considered for 
 
-push.   
+push.   
 
 A  value  of  0  means  that  the  server  may  elect  to  push 
 indefinitely*. 
@@ -383,7 +383,7 @@ suggest  removing  them,  as  they  contain  no  normative  statements.  If  the
 suggest clarifying the behaviors in normative terms.  
  
 
-3.8.2  Section 6.4.1 on MPD request message 
+3.8.2  Section 6.4.1 on MPD request message 
 This section should include input text from contribution m36966 as agreed during the last conf 
 call on October 7th, 2015. 
 This text is provided here for convenience: 
@@ -449,7 +449,7 @@ extensibility.
 Moreover,  we  may  authorize  more  than  one  PushDirective  in  this  message,  for  example  to 
 indicate preferred Push Strategies (see proposal from m36966).  
 
-3.8.4  Section 6.4.3 on MPD received message 
+3.8.4  Section 6.4.3 on MPD received message 
 Following  the  inclusion  of  the  new  push-fast-start,  a  pushAck  should  be  included  as  optional 
 parameter  of  the  new_mpd  message.  The  contribution  m36966  provides  the  following  text  for 
 that purpose: 
@@ -523,7 +523,7 @@ Some comments only duplicate what is said in HTTP/2 spec: should be removed.
 Section 7.2.1 should include the generic header definition from  contribution  m36966  as agreed 
 during last conf call on 7th of October. 
 
-Replace: 
+Replace: 
 DASH-PUSH:scheme=<SchemeID>,type=<PushType>,params=<PushParams> 
  
 With: 
@@ -575,7 +575,7 @@ There is a strong requirement on server behavior in this section:
 return the MPD as the body of the HTTP response, just as it would when communicating with an HTTP 
 1.1 DASH client.” 
 
- 
+ 
 That  could  be  rewritten  as  follows  (if  we  decide  to  focus  on  FDH  messages  and  consider 
 client/server behavior as out of scope): 
 “This  message  shall  contain  the  requested  MPD  in  the  body  of  the  HTTP  response  (as  in  DASH  over 
@@ -631,7 +631,7 @@ messages and server implements one or more push strategies.
 
 or template) 
 
--  Add a new example for a server-initiated push request on segment 
+-  Add a new example for a server-initiated push request on segment 
 
  
 
@@ -642,7 +642,7 @@ case)
 
  
 
--  Add  a  new  example  for  a  client  indicating  that  it  does  not  want  any  push  at  all  (use  of 
+-  Add  a  new  example  for  a  client  indicating  that  it  does  not  want  any  push  at  all  (use  of 
 
  
 
@@ -654,7 +654,7 @@ push-none)
 
 client does not accept the push by immediately sending a segment cancel message  
 
--  Add  a  new  example  for  server-initiated  fast  start:  no  directive  from  client,  server  takes 
+-  Add  a  new  example  for  server-initiated  fast  start:  no  directive  from  client,  server  takes 
 
  
 
@@ -670,7 +670,7 @@ FDH messages or server does not implement the pushDirectives indicated by the cl
 resources that do not match client expectations. 
  
 
--  Add an example of a client-initiated fast-start  request with  apush capable  serverbut  that 
+-  Add an example of a client-initiated fast-start  request with  apush capable  serverbut  that 
 
 does not support push-fast-start. 
 
@@ -685,7 +685,7 @@ does not support push at all.
 
  
 
-3.15 Section 13: Examples of Push Template  
+3.15 Section 13: Examples of Push Template  
 
 We propose to insert the examples from m36966 (using URI template from IETF) 
 13.1  Example of push template with segment number addressing 
@@ -726,4 +726,3 @@ M. Thompson, May 2015; available at https://tools.ietf.org/html/rfc7540
  
  
 
-

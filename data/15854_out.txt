@@ -81,7 +81,7 @@ index  ranges  …),  or
 
  
 
- 
+ 
 
 SegmentTemplate. This means that for using server push, a server has to parse the MPD, 
 or  that  a  specific  communication  with  the  DASH  generator  is  made  (sockets,  files  …). 
@@ -141,7 +141,7 @@ of what HTTP/2 server would use.
 
  
 
- 
+ 
 
  
 We  used  the  DASH-IF  Test  vectors,  only  the  non-encrypted  ISOBMFF  Live  profile  ones,  and 
@@ -201,7 +201,7 @@ particular during the start-up phase of a DASH session when MPD and IS are downl
 
  
 
- 
+ 
 
 The experimental results reported in this contribution indicate that delivering some (even all) IS 
 on HTTP/2 at the same time as the MPD can be beneficial to reduce the start-up delay in DASH 
@@ -218,4 +218,3 @@ Xiamen, China, October 2015.
 
  
 
-

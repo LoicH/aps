@@ -85,7 +85,7 @@ process is also required for extractors resolution).
 
  
 
-As shown in m36560 extractors can be quite costly, whether for tiles or for L-HEVC. Given 
+As shown in m36560 extractors can be quite costly, whether for tiles or for L-HEVC. Given 
 this,  we  wonder  why  extractors  are  actually  needed  (remember  MPEG  “one  tool  one 
 functionality”).  The  specification  should  either  provide  strong  use  cases  for  extractors  that 
 cannot be fulfilled with implicit AU reconstruction, and restrict the use of extractors to these 
@@ -136,4 +136,3 @@ We  suggest  MPEG  to  issue  a  study  text  for  ISO/IEC  14496-15  taking  th
 modifications into account. 
  
 
-

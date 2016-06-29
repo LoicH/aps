@@ -107,7 +107,7 @@ linksT o(x, y) ∧ currentM ember(x, y) ⇒ team(x, y)
 
 we achieve higher conﬁdence. This observation could be
 
-leveraged by data inference and link prediction approaches.
+leveraged by data inference and link prediction approaches.
 It also provides additional insights about the KB.
 
 2. RELATED WORK
@@ -246,7 +246,7 @@ a rule, the addition of a new atom will never increase its
 support. Moreover, support is a measure of statistical evi-
 dence, thus, it does not gauge the precision of the rule, i.e.,
 
-how often it draws correct or incorrect conclusions. This
+how often it draws correct or incorrect conclusions. This
 requires a notion of negative examples. Since KBs do not
 encode negative information, rule mining approaches resort
 to diﬀerent assumptions to derive counter-evidence. Meth-
@@ -403,7 +403,7 @@ confers a probabilistic interpretation to the PCA conﬁdence.
 1We learn rules on DBpedia 3.8 to corroborate some of their
 predictions automatically in DBpedia 3.9
 
-Domain
+Domain
 
 Person
 Person
@@ -580,7 +580,7 @@ support and the diﬀerence in conﬁdence with respect to the
 rule without the linksTo∗ atom. Table 5 reports an aver-
 age gain of 0.03. We ﬁnd, however, that for 10% of rules,
 
-WikiLink
+WikiLink
 Interstate 76 (west) → Colorado State Highway
 J. Bracken Lee → Herbert B. Maw
 WHQX → WTZE
@@ -745,4 +745,3 @@ AAAI, 2014.
 
 wikipedia. In CIKM, 2007.
 
-

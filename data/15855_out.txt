@@ -69,7 +69,7 @@ The following figure shows the view of the box hierarchy  and the properties of 
 
  
 
- 
+ 
 
  
 The following view shows the movie view. It shows general information about the file such as 
@@ -79,7 +79,7 @@ brands, fragmentation, as well as track information (including audio, video, sub
 
  
 
- 
+ 
 
  
 The following image shows the sample view. For a select set of samples (per track and sample 
@@ -96,7 +96,7 @@ visualization is available.
 
  
 
- 
+ 
 
  
 
@@ -118,7 +118,7 @@ http://download.tsi.telecom-paristech.fr/gpac/mp4box.js/hevcimageviewer
 
  
 
- 
+ 
 
 4  MP4 File Player 
 Current browsers support playback of MP4 files using two different approaches: 
@@ -169,7 +169,7 @@ http://download.tsi.telecom-paristech.fr/gpac/mp4box.js/
 
  
 
- 
+ 
 
 The current player allows playing any browser-support track types plus the following track types 
 not supported natively: 
@@ -223,7 +223,7 @@ Worker
 
  
 
- 
+ 
 
  
 
@@ -251,4 +251,3 @@ based on the use cases demonstrated above.
 
  
 
-

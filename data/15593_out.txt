@@ -73,7 +73,7 @@ captured.
 
  
 
- 
+ 
 
 Allowing information to change over time in the ISOBMFF can mean: using a dedicated track; 
 using sample entries; or using sample groups. Using dedicated tracks allows sharing information 
@@ -112,7 +112,7 @@ The default sample grouping mechanism can also be applied as shown below.
 
  
 
- 
+ 
 
  
 
@@ -167,7 +167,7 @@ information. There are 2 options here:
 
  
 
- 
+ 
 
 - discard the 'oref' type and mandate that the 'oinf' information be in the base track, as indicated 
 by  the  'sbas'  track  reference.  In  case  of  hybrid  coding  (AVC  base  track  +  HEVC  enhancement 
@@ -181,4 +181,3 @@ HEVC.
 
  
 
-

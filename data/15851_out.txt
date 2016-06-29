@@ -62,7 +62,7 @@ not compliant, changing the syntax of the extractors / aggregator for HEVC is no
 
  
 
- 
+ 
 
 3  Possible Solutions 
 Our analysis is that the issue comes for avc only (since l-hevc is not out there). 
@@ -111,4 +111,3 @@ adds the edits suggested in this contribution, preferably approach 2.
 
  
 
-
