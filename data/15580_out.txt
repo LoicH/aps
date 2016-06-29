@@ -120,7 +120,7 @@ describing  the  service.  To  achieve  low  latency,  the
 1 http://www.gpac.io  
 2 http://www.ffmpeg.org  
 
-video encoder uses a low-latency coding profile without 
+video encoder uses a low-latency coding profile without 
 bidirectional  prediction;  and  segments  are  flushed  to 
 disk and published as small fragments as soon as ready.  
 
@@ -250,4 +250,3 @@ advances using GPAC. In Proc. of ACM MM '11. pp. 715-
 5 http://h2b2vs.epfl.ch/ 
 6 http://www.4ever2-project.com/ 
 
-

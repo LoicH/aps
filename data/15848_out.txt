@@ -78,7 +78,7 @@ A file with boxes not specified in
 
  
 
- 
+ 
 
 IFF. 
 
@@ -179,7 +179,7 @@ Q: How to check conformance that this is applied?
 
  
 
- 
+ 
 
  
  
@@ -305,7 +305,7 @@ file with a hidden image
 
  
 
- 
+ 
 
 "The primary item shall not be a hidden image item." 
  
@@ -415,7 +415,7 @@ auxiliary image
 
  
 
- 
+ 
 
 "The  auxiliary  image  and  the  master  image  are  linked  using  an  item  reference  of  'auxl' from  the 
 auxiliary image to the master image." 
@@ -501,7 +501,7 @@ the
 first transformative property (one 
 per type of descriptive prop) 
 
- 
+ 
 
 "Writers  should  arrange  the  descriptive  properties  specified  in  the  subclauses  of  6.5  prior  to  any  other 
 properties in the sequence associating properties with an item." 
@@ -620,7 +620,7 @@ positive
 
  
 
- 
+ 
 
  
 
@@ -735,7 +735,7 @@ reference_count  >1  (case  of
 
  
 
- 
+ 
 
  
 
@@ -858,7 +858,7 @@ canvas_fill_value  fully opaque
 an  image  with  item  type  'iovl' 
 with  blanks  in  the  grid  and 
 
- 
+ 
 
 canvas_fill_value 
 transparent 
@@ -990,7 +990,7 @@ an  image  with  item  type  'grid'
 
 positive 
 
- 
+ 
 
  
 
@@ -1114,7 +1114,7 @@ positive
 
  
 
- 
+ 
 
  
 
@@ -1255,7 +1255,7 @@ negative
 
  
 
- 
+ 
 
  
 
@@ -1382,7 +1382,7 @@ sample group
 file with a pict track with several 
 DirectReferenceSamplesList  
 
- 
+ 
 
  [TO BE COMPLETED] 
 
@@ -1498,7 +1498,7 @@ positive
 
  
 
- 
+ 
 
 3.36 Section 8.2 
  
@@ -1605,7 +1605,7 @@ negative
 
  
 
-positive 
+positive 
 
 positive 
 
@@ -1720,7 +1720,7 @@ box
 
  
 
- 
+ 
 
 "A reader shall not process an item that is associated with a property that is not recognized or not 
 supported by the reader and that is marked as essential to the item. A reader may ignore an 
@@ -1840,7 +1840,7 @@ box at the file level
 a file with a grpl box in a meta 
 box at the movie level 
 
- 
+ 
 
  
 
@@ -1970,7 +1970,7 @@ SampleToMetadataItemEntry
 a file with a 
 SampleToMetadataItemEntry 
 
- 
+ 
 
  
 
@@ -2071,7 +2071,7 @@ corresponding to an IDR picture
 a file with a 'hvc1' item type 
 corresponding to an BLA picture 
 
- 
+ 
 
  
 
@@ -2187,7 +2187,7 @@ an HEVC auxiliary image item
 with additional SEI message "that 
 are specific to the auxiliary image 
 
- 
+ 
 
  
 
@@ -2305,7 +2305,7 @@ item containing a single tile
 an HEVC tiled image using the 
 'dpnd' item reference from a tile 
 
- 
+ 
 
  
 
@@ -2431,7 +2431,7 @@ negative
 
  
 
- 
+ 
 
 "The HEVCSampleEntry shall be used as specified in ISO/IEC 14496-15." 
  
@@ -2503,25 +2503,25 @@ sequence
 
 positive 
 
+ 
+
+ 
+
+ 
+
+positive 
+
+positive 
+
+positive 
+
+ 
+
+ 
+
+positive 
+
 image 
-
- 
-
- 
-
- 
-
-positive 
-
-positive 
-
-positive 
-
- 
-
- 
-
-positive 
 
 image 
 
@@ -2565,6 +2565,8 @@ decoder
 image 
 
 image 
+
+sequence 
 
 An 
 track 
@@ -2584,13 +2586,11 @@ integer), as specified in B.2.5, an HEVC SEI message describing the auxiliary im
 included in the sample entry." 
  
 
-sequence 
-
 positive 
 
 image 
 
- 
+ 
 
  
 
@@ -2689,7 +2689,7 @@ positive
 
  
 
- 
+ 
 
  
 
@@ -2798,7 +2798,7 @@ to 1
 
  
 
- 
+ 
 
  
 
@@ -2909,7 +2909,7 @@ exif_tiff_header_offset set to 0
 
  
 
- 
+ 
 
  
 
@@ -3008,4 +3008,3 @@ We propose to adopt the above text as a Working Draft of Conformance for the IFF
 
  
 
-

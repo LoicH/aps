@@ -103,7 +103,7 @@ referenceType='cdsc', from_item_ID=2, reference_count=1,
 
  
 
- 
+ 
 
  
  
@@ -236,7 +236,7 @@ essential = 0, property_index = 4;
 
  
 
- 
+ 
 
  
 
@@ -412,7 +412,7 @@ images are assumed to have the same width and height.
 
  
 
- 
+ 
 
  
 
@@ -616,7 +616,7 @@ PrimaryItemBox ‘pitm’: item_ID = 1;
 
  
 
- 
+ 
 
  
  
@@ -870,7 +870,7 @@ essential=0, property_index=3;
 
  
 
- 
+ 
 
  
 
@@ -1076,7 +1076,7 @@ MetaBox ‘meta’:
 
  
 
- 
+ 
 
  
 
@@ -1304,7 +1304,7 @@ essential=0, property_index=7;
 
  
 
- 
+ 
 
 MediaDataBox ‘mdat’ or ‘idat’: 
  
@@ -1500,7 +1500,7 @@ names.
 
  
 
- 
+ 
 
 FileTypeBox ‘ftyp’:  major-brand = 'heic', compatible-brands = 'heic, mp41' 
 MetaBox: (container) 
@@ -1690,7 +1690,7 @@ ItemPropertiesBox ‘iprp’:
 
  
 
- 
+ 
 
  
 
@@ -1989,7 +1989,7 @@ item_ID = 3, extent_count = 1, extent_offset = X2, extent_length
 
  
 
- 
+ 
 
  
 = Q2; 
@@ -2144,7 +2144,7 @@ item_ID = 4, extent_count = 1, extent_offset = P2, extent_length = Q2;
 
  
 
- 
+ 
 
  
 
@@ -2431,7 +2431,7 @@ ItemPropertyContainerBox ‘ipco’:
 
  
 
- 
+ 
 
  
 
@@ -2706,7 +2706,7 @@ item_ID = 3, extent_count = 1, extent_offset = P1, extent_length = Q1;
 
  
 
- 
+ 
 
  
 
@@ -2855,7 +2855,7 @@ ItemInfoBox ‘iinf’:  entry_count=5
 
  
 
- 
+ 
 
  
 
@@ -3040,7 +3040,7 @@ This example with 4 HEVC coded images is a new one (not included in Annex G).
 
  
 
- 
+ 
 
 A derived image is  formed as  the composition  of 4 rotated  (all 90°)  independent  HEVC coded 
 sub-images.  
@@ -3230,7 +3230,7 @@ essential=1 , property_index=1
 
  
 
- 
+ 
 
  
 
@@ -3391,7 +3391,7 @@ ItemPropertyContainerBox ‘ipco’:
 
  
 
- 
+ 
 
  
 
@@ -3562,7 +3562,7 @@ ItemReferenceBox ‘iref’:
 
  
 
- 
+ 
 
  
 
@@ -3718,7 +3718,7 @@ references[];
 
  
 
- 
+ 
 
 } 
 
@@ -3763,4 +3763,3 @@ improvements.
 
  
 
-

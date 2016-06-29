@@ -126,7 +126,7 @@ transferred  within  a  TCP  SYN  and  SYN  ACK  packets.
 
 the 
 
-Through  traffic  analysis  and  network  emulation,  the  authors 
+Through  traffic  analysis  and  network  emulation,  the  authors 
 have  shown  that  TFO  can  improve  HTTP  request  latency  by 
 10%  and  the  whole  page  load  time  from  4%  to  40  %.    TFO 
 eliminates one full RTT of latency but is still limited in terms 
@@ -269,7 +269,7 @@ not possible in HTTP/1.1. We note that in practice, not all web
 servers  support  pipelining.  T3  is  the  corresponding  bootstrap 
 delay reported in Table II. 
 
-SSDSSDTABLE II ANALYTICAL EVALUATION OF THE DIFFERENT DASH CLIENT BOOTSTRAP STRATEGIES 
+SSDSSDTABLE II ANALYTICAL EVALUATION OF THE DIFFERENT DASH CLIENT BOOTSTRAP STRATEGIES 
 
 Request Strategies  Number of TCP 
 
@@ -413,7 +413,7 @@ recover  the  original  binary  IS.  The  advantage  of  this  naïve
                                                  
 1 http://tools.ietf.org/rfc/rfc2397.txt 
 
-CXkkssssCISDMPDDRTTX1 1)()(12T CXkkssssCISDMPDDRTTX1 2)()(2  TCXkkssISMPDDRTT1 3)(3T ))(2(max)(2T ,..14kssXckssISDRTTMPDDRTTCXkkssISMPDRTT15)(D3T <MPD ...> 
+CXkkssssCISDMPDDRTTX1 1)()(12T CXkkssssCISDMPDDRTTX1 2)()(2  TCXkkssISMPDDRTT1 3)(3T ))(2(max)(2T ,..14kssXckssISDRTTMPDDRTTCXkkssISMPDRTT15)(D3T <MPD ...> 
  <Period ...> 
   <AdaptationSet ...> 
    <Representation mimeType="video/mp4"  
@@ -571,7 +571,7 @@ Only  the  first  period  IS  were  considered,  as  we  want  to
 4 http://dashif.org/reference/players/javascript/1.3.0/index.html 
 5 http://dashif.org/testvectors/ 
 
-           Web Server           Network EmulatorBandwidth Shaper       Web Client    evaluate  bootstrap  time  not  seek  time.  N  equals  to  2  (video 
+           Web Server           Network EmulatorBandwidth Shaper       Web Client    evaluate  bootstrap  time  not  seek  time.  N  equals  to  2  (video 
 and  audio)  in  each  MPD.  M  is  7  where  Mvideo  is  bounded 
 between  1  and  6  representations,  in  various  bitrates  or 
 resolutions.  Videos  identified  by  "avc1"  and  "avc3"  are 
@@ -746,7 +746,7 @@ case,  the  TCP  slow  start  algorithm  requires  waiting  for
 acknowledgements  to  arrive  before  new  data  is  sent  which 
 induces an additional RTT.  The size of these eight sequences 
 
-ISOBMFFMoov-based  approach  and  the  server  push  method 
+ISOBMFFMoov-based  approach  and  the  server  push  method 
 over  HTTP/2.  The  server  push  is  enabled  on  the  web  server 
 and on the client, and the server is aware of the all IS to push 
 for a given MPD.  
@@ -899,4 +899,4 @@ May 2013.
 
 IEEE INFOCOM, 2000, 1724-1751 
 
-CSRTTcwndinit 1)_1)-S((log
+CSRTTcwndinit 1)_1)-S((log
