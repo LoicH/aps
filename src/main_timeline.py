@@ -94,7 +94,6 @@ for dic in periodFrequenciesList:
 #selecting the best:
 sorted_items = sorted([(score, word) for (word, score) in scores.items()], reverse=True)[:9]
 best_words = [word for (score, word) in sorted_items]
-
 #filtering the periodFrequenciesList to keep only the best words:
 filteredFrequenciesList = []
 for old_dic in periodFrequenciesList:

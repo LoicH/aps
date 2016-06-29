@@ -98,16 +98,23 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections):
     s=""
     M=23*M
     (a,b)=np.shape(M)
+    
+    listNormalValues=[]
+    for j in range(b):
+        normalValue=0
+        for i in range(a):
+            normalValue+=M[i][j]
+        listNormalValues.append(23*normalValue)
     for i in range(a-1): # converting matrix to json format for the timeline
         s2=""
         for j in range(b-1):
-            s2+=str(M[i][j])+","
-        s2+=str(M[i][b-1])
-        s+='{"label":"a","values":'+"["+s2+"]},"
+            s2+=str(M[i][j]/listNormalValues[j])+","
+        s2+=str(M[i][b-1]/listNormalValues[b-1])
+        s+='{"label":"'+categoryDict[str(i)]+'","values":'+"["+s2+"]},"
     s2=""
     for j in range(b-1):
-        s2+=str(M[a-1][j])
-    s+='{"label":"a","values":'+"["+s2+","+str(M[a-1][b-1])
+        s2+=str(M[a-1][j]/listNormalValues[j])
+    s+='{"label":"'+categoryDict[str(a-1)]+'","values":'+"["+s2+","+str(M[a-1][b-1]/listNormalValues[b-1])
     result = """{"toto":"""+"["+s+"]}]}"
     f=open(file_out,"w") # saving the matrix in json format
     f.write(result) 
