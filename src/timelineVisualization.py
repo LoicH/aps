@@ -23,6 +23,7 @@ def getAll(index,bibName):
     return bibtexparser.customization.convert_to_unicode(entries[index]) 
 
 def getInfo(authorName): #name in the form of lastName
+    #datesAndIds : {pubName:[date,id]}
     datesAndIds = dict()
     coauthors=[]
     for i in entries:

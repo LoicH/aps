@@ -25,7 +25,10 @@ def getURIs(text):
     for i in annotations:
         a=i["URI"]
         URIList.append(a.encode("UTF-8"))
-        annotatedWords.append(str(i["surfaceForm"]))
+        try:
+            annotatedWords.append(i["surfaceForm"].encode("utf-8"))
+        except AttributeError as e:
+            print 'Error adding this word: "%s" (%s)'% (i["surfaceForm"], e.message)
     return URIList, annotatedWords
                           
 
@@ -113,6 +116,7 @@ def getAll(text):
     
     @return: link categories to their frequencies and match each Categories to the words linked to
     @rtype: tuple(dict{category (string): frequency (float)}, dict{category (string): list word (list string)})"""
-    categories=getCategories(getURIs(text)[0], getURIs(text)[1] )
+    URIs = getURIs(text)
+    categories=getCategories(URIs[0], URIs[1] )
     return categoryFrequency(categories[0]),categories[1]
     

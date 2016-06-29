@@ -55,10 +55,10 @@ def pdf_to_txt(path):
     device.close()
     s = retstr.getvalue()
     retstr.close()
-    return s
+    return s.replace('\x0c','')
     
 def pdf_to_file(src_filepath, out_filepath):
-    """Outputs a file to out_filepath, in utf-8 file"""
+    """Outputs a file to out_filepath, in utf-8 file
     @return: pdf content
     @rtype: txt file"""
     print "Processing...",

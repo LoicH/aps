@@ -9,18 +9,19 @@ Created on Tue Jun 28 11:53:50 2016
 
 import os
 import codecs
+import threading 
+from datetime import date, timedelta
+from dateutil.relativedelta import relativedelta
+from calendar import monthrange
 
 import pdf2txt
 import TFIDFMatrixClass
 import freqMatrixClass
 import PDFdl
 import modifTexte
-
 import formatConversion
 import dataTimeline
-from datetime import date, timedelta
-from dateutil.relativedelta import relativedelta
-from calendar import monthrange
+
 
 
 app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
@@ -228,6 +229,7 @@ def make_json_timeline(authorName, startDate, endDate, periodLength, json_filepa
     
 
 if __name__ == "__main__":
+    threading.Thread(PDFdl.downloadAll(data+os.sep+"document.bib",tmp_pdf_dir,data)).start()
     make_json_wordcloud2(data+os.sep+"concolato.bib")
     make_json_timeline("C. Concolato", "2012 01", "2015 12", 6, 
         src+os.sep+"static"+os.sep+"timeline"+os.sep+"timeline.json")
