@@ -1,29 +1,27 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jun 24 10:56:34 2016
-
-@author: alagasse
+Main module used only to test the lemmatization of words
 """
 
 #ADJ, ADJ_SAT, ADV, NOUN, VERB = 'a', 's', 'r', 'n', 'v'
 
-import modifTexte
-from nltk import *
+import modifTexte as mt
+import nltk
 
 
 def wLemmatization(textWords): # test lemmatization with wordnet
-    return modifTexte.lemmatization(textWords)
+    return mt.lemmatization(textWords)
 
 def sStemmatization(textWords): #test stemmatization with snowballstemmer
     #lemmatizes all the words
     words = textWords
-    snowball_stemmer = SnowballStemmer("english")
+    snowball_stemmer = nltk.SnowballStemmer("english")
     for i in range(len(words)):
         words[i]=snowball_stemmer.stem(words[i])
     return words
 
 def textToDictionnary(text, blackList):
-    return wLemmatization(deleteStopWords(modifyText(getTextWords(delPunctuation(text)),blackList)))
+    return wLemmatization(mt.deleteStopWords(mt.modifyText(mt.getTextWords(mt.delPunctuation(text)),blackList)))
 
     
 def get_wordnet_pos(treebank_tag): # convert pos_tag from nltk to pos_tag from wordnet
@@ -40,11 +38,11 @@ def get_wordnet_pos(treebank_tag): # convert pos_tag from nltk to pos_tag from w
         return 'n'
         
 #comparison wordnet with and without taking account of post_tag
-lmtzr=WordNetLemmatizer()
+lmtzr=nltk.WordNetLemmatizer()
 
 #text used as test
-text = word_tokenize("""The aim of a probabilistic logic (also probability logic and probabilistic reasoning) is to combine the capacity of probability theory to handle uncertainty with the capacity of deductive logic to exploit structure of formal argument. The result is a richer and more expressive formalism with a broad range of possible application areas. Probabilistic logics attempt to find a natural extension of traditional logic truth tables: the results they define are derived through probabilistic expressions instead. A difficulty with probabilistic logics is that they tend to multiply the computational complexities of their probabilistic and logical components. Other difficulties include the possibility of counter-intuitive results, such as those of Dempster-Shafer theory. The need to deal with a broad variety of contexts and issues has led to many different proposals.""")
-p = pos_tag(text)
+text = nltk.word_tokenize("""The aim of a probabilistic logic (also probability logic and probabilistic reasoning) is to combine the capacity of probability theory to handle uncertainty with the capacity of deductive logic to exploit structure of formal argument. The result is a richer and more expressive formalism with a broad range of possible application areas. Probabilistic logics attempt to find a natural extension of traditional logic truth tables: the results they define are derived through probabilistic expressions instead. A difficulty with probabilistic logics is that they tend to multiply the computational complexities of their probabilistic and logical components. Other difficulties include the possibility of counter-intuitive results, such as those of Dempster-Shafer theory. The need to deal with a broad variety of contexts and issues has led to many different proposals.""")
+p = nltk.pos_tag(text)
 
 #print words that are different with and without taking account of post_tag
 for i in p:

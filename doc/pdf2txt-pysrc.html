@@ -63,7 +63,7 @@
 <a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">codecs</tt>  <tt class="py-comment">#write files in utf8</tt> </tt>
 <a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">fnmatch</tt> <tt class="py-comment">#to match filename and implement testing</tt> </tt>
 <a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">nltk</tt>    <tt class="py-comment">#words retriever</tt> </tt>
-<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Variable testing.random=testing-module.html#random"><a title="testing.random" class="py-name" href="#" onclick="return doclink('link-0', 'random', 'link-0');">random</a></tt>  <tt class="py-comment">#used for testing</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">random</tt>  <tt class="py-comment">#used for testing</tt> </tt>
 <a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
 <a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
 <a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
@@ -81,33 +81,43 @@
 <a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">pdfminer</tt><tt class="py-op">.</tt><tt class="py-name">pdfpage</tt> <tt class="py-keyword">import</tt> <tt class="py-name">PDFPage</tt> </tt>
 <a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">cStringIO</tt> <tt class="py-keyword">import</tt> <tt class="py-name">StringIO</tt> </tt>
 <a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
-<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable PDFdl.app_path=PDFdl-module.html#app_path,Variable dataTimeline.app_path=dataTimeline-module.html#app_path,Variable main.app_path=main-module.html#app_path,Variable main_timeline.app_path=main_timeline-module.html#app_path,Variable pdf2txt.app_path=pdf2txt-module.html#app_path,Variable server.app_path=server-module.html#app_path"><a title="PDFdl.app_path
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable PDFdl.app_path=PDFdl-module.html#app_path,Variable dataTimeline.app_path=dataTimeline-module.html#app_path,Variable initServer.app_path=initServer-module.html#app_path,Variable main_timeline.app_path=main_timeline-module.html#app_path,Variable makeFrequencyList.app_path=makeFrequencyList-module.html#app_path,Variable pdf2txt.app_path=pdf2txt-module.html#app_path,Variable server.app_path=server-module.html#app_path,Variable timelineVisualization.app_path=timelineVisualization-module.html#app_path"><a title="PDFdl.app_path
 dataTimeline.app_path
-main.app_path
+initServer.app_path
 main_timeline.app_path
+makeFrequencyList.app_path
 pdf2txt.app_path
-server.app_path" class="py-name" href="#" onclick="return doclink('link-1', 'app_path', 'link-1');">app_path</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getcwd</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt> </tt>
-<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable PDFdl.data=PDFdl-module.html#data,Variable dataTimeline.data=dataTimeline-module.html#data,Variable main.data=main-module.html#data,Variable main_timeline.data=main_timeline-module.html#data,Variable pdf2txt.data=pdf2txt-module.html#data,Variable server.data=server-module.html#data"><a title="PDFdl.data
+server.app_path
+timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-0', 'app_path', 'link-0');">app_path</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getcwd</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable PDFdl.data=PDFdl-module.html#data,Variable dataTimeline.data=dataTimeline-module.html#data,Variable initServer.data=initServer-module.html#data,Variable main_timeline.data=main_timeline-module.html#data,Variable makeFrequencyList.data=makeFrequencyList-module.html#data,Variable pdf2txt.data=pdf2txt-module.html#data,Variable server.data=server-module.html#data,Variable timelineVisualization.data=timelineVisualization-module.html#data"><a title="PDFdl.data
 dataTimeline.data
-main.data
+initServer.data
 main_timeline.data
+makeFrequencyList.data
 pdf2txt.data
-server.data" class="py-name" href="#" onclick="return doclink('link-2', 'data', 'link-2');">data</a></tt> <tt class="py-op">=</tt> <tt id="link-3" class="py-name"><a title="PDFdl.app_path
+server.data
+timelineVisualization.data" class="py-name" href="#" onclick="return doclink('link-1', 'data', 'link-1');">data</a></tt> <tt class="py-op">=</tt> <tt id="link-2" class="py-name"><a title="PDFdl.app_path
 dataTimeline.app_path
-main.app_path
+initServer.app_path
 main_timeline.app_path
+makeFrequencyList.app_path
 pdf2txt.app_path
-server.app_path" class="py-name" href="#" onclick="return doclink('link-3', 'app_path', 'link-1');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"data"</tt> </tt>
-<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable PDFdl.src=PDFdl-module.html#src,Variable main.src=main-module.html#src,Variable main_timeline.src=main_timeline-module.html#src,Variable pdf2txt.src=pdf2txt-module.html#src,Variable server.src=server-module.html#src"><a title="PDFdl.src
-main.src
+server.app_path
+timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-2', 'app_path', 'link-0');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"data"</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable PDFdl.src=PDFdl-module.html#src,Variable initServer.src=initServer-module.html#src,Variable main_timeline.src=main_timeline-module.html#src,Variable makeFrequencyList.src=makeFrequencyList-module.html#src,Variable pdf2txt.src=pdf2txt-module.html#src,Variable server.src=server-module.html#src,Variable timelineVisualization.src=timelineVisualization-module.html#src"><a title="PDFdl.src
+initServer.src
 main_timeline.src
+makeFrequencyList.src
 pdf2txt.src
-server.src" class="py-name" href="#" onclick="return doclink('link-4', 'src', 'link-4');">src</a></tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="PDFdl.app_path
+server.src
+timelineVisualization.src" class="py-name" href="#" onclick="return doclink('link-3', 'src', 'link-3');">src</a></tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="PDFdl.app_path
 dataTimeline.app_path
-main.app_path
+initServer.app_path
 main_timeline.app_path
+makeFrequencyList.app_path
 pdf2txt.app_path
-server.app_path" class="py-name" href="#" onclick="return doclink('link-5', 'app_path', 'link-1');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"src"</tt> </tt>
+server.app_path
+timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-4', 'app_path', 'link-0');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"src"</tt> </tt>
 <a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
 <a name="pdf_to_txt"></a><div id="pdf_to_txt-def"><a name="L34"></a><tt class="py-lineno"> 34</tt> <a class="py-toggle" href="#" id="pdf_to_txt-toggle" onclick="return toggle('pdf_to_txt');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pdf2txt-module.html#pdf_to_txt">pdf_to_txt</a><tt class="py-op">(</tt><tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="pdf_to_txt-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="pdf_to_txt-expanded"><a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt class="py-docstring">"""converts pdf into a string</tt> </tt>
@@ -133,22 +143,24 @@ server.app_path" class="py-name" href="#" onclick="return doclink('link-5', 'app
 <a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">    <tt class="py-name">device</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt class="py-name">s</tt> <tt class="py-op">=</tt> <tt class="py-name">retstr</tt><tt class="py-op">.</tt><tt class="py-name">getvalue</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt class="py-name">retstr</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">s</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">s</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'\x0c'</tt><tt class="py-op">,</tt><tt class="py-string">''</tt><tt class="py-op">)</tt> </tt>
 </div><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">     </tt>
 <a name="pdf_to_file"></a><div id="pdf_to_file-def"><a name="L60"></a><tt class="py-lineno"> 60</tt> <a class="py-toggle" href="#" id="pdf_to_file-toggle" onclick="return toggle('pdf_to_file');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pdf2txt-module.html#pdf_to_file">pdf_to_file</a><tt class="py-op">(</tt><tt class="py-param">src_filepath</tt><tt class="py-op">,</tt> <tt class="py-param">out_filepath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="pdf_to_file-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="pdf_to_file-expanded"><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-docstring">"""Outputs a file to out_filepath   </tt> </tt>
+</div><div id="pdf_to_file-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="pdf_to_file-expanded"><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-docstring">"""Outputs a file to out_filepath, in utf-8 file</tt> </tt>
 <a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">    @return: pdf content</tt> </tt>
 <a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">    @rtype: txt file"""</tt> </tt>
 <a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Processing..."</tt><tt class="py-op">,</tt> </tt>
-<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt class="py-name">raw_txt</tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name" targets="Function pdf2txt.pdf_to_txt()=pdf2txt-module.html#pdf_to_txt"><a title="pdf2txt.pdf_to_txt" class="py-name" href="#" onclick="return doclink('link-6', 'pdf_to_txt', 'link-6');">pdf_to_txt</a></tt><tt class="py-op">(</tt><tt class="py-name">src_filepath</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt class="py-name">raw_txt</tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name" targets="Function pdf2txt.pdf_to_txt()=pdf2txt-module.html#pdf_to_txt"><a title="pdf2txt.pdf_to_txt" class="py-name" href="#" onclick="return doclink('link-5', 'pdf_to_txt', 'link-5');">pdf_to_txt</a></tt><tt class="py-op">(</tt><tt class="py-name">src_filepath</tt><tt class="py-op">)</tt> </tt>
 <a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt class="py-name">src_filename</tt> <tt class="py-op">=</tt> <tt class="py-name">src_filepath</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-comment">#with .pdf at the end</tt> </tt>
 <a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-name">docname</tt> <tt class="py-op">=</tt> <tt class="py-name">src_filename</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">"."</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-comment">#doc name without .pdf</tt> </tt>
-<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-name">output</tt> <tt class="py-op">=</tt> <tt class="py-name">codecs</tt><tt class="py-op">.</tt><tt class="py-name">open</tt><tt class="py-op">(</tt><tt id="link-7" class="py-name"><a title="PDFdl.app_path
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-name">output</tt> <tt class="py-op">=</tt> <tt class="py-name">codecs</tt><tt class="py-op">.</tt><tt class="py-name">open</tt><tt class="py-op">(</tt><tt id="link-6" class="py-name"><a title="PDFdl.app_path
 dataTimeline.app_path
-main.app_path
+initServer.app_path
 main_timeline.app_path
+makeFrequencyList.app_path
 pdf2txt.app_path
-server.app_path" class="py-name" href="#" onclick="return doclink('link-7', 'app_path', 'link-1');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-string">"/data/"</tt><tt class="py-op">+</tt><tt class="py-name">docname</tt><tt class="py-op">+</tt><tt class="py-string">"_out.txt"</tt><tt class="py-op">,</tt> <tt class="py-string">"w"</tt><tt class="py-op">,</tt> <tt class="py-string">"utf-8"</tt><tt class="py-op">)</tt> </tt>
+server.app_path
+timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-6', 'app_path', 'link-0');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-string">"/data/"</tt><tt class="py-op">+</tt><tt class="py-name">docname</tt><tt class="py-op">+</tt><tt class="py-string">"_out.txt"</tt><tt class="py-op">,</tt> <tt class="py-string">"w"</tt><tt class="py-op">,</tt> <tt class="py-string">"utf-8"</tt><tt class="py-op">)</tt> </tt>
 <a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-name">output</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">raw_txt</tt><tt class="py-op">.</tt><tt class="py-name">decode</tt><tt class="py-op">(</tt><tt class="py-string">'utf-8'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
 <a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt class="py-name">output</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Done."</tt> </tt>
@@ -158,16 +170,18 @@ server.app_path" class="py-name" href="#" onclick="return doclink('link-7', 'app
 <a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
 <a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-name">trials</tt> <tt class="py-op">=</tt> <tt class="py-number">1000</tt> </tt>
 <a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Testing for"</tt><tt class="py-op">,</tt> <tt class="py-name">trials</tt><tt class="py-op">,</tt><tt class="py-string">"words."</tt> </tt>
-<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">filename</tt> <tt class="py-keyword">in</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">listdir</tt><tt class="py-op">(</tt><tt id="link-8" class="py-name"><a title="PDFdl.app_path
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt id="link-7" class="py-name" targets="Variable makeFrequencyList.filename=makeFrequencyList-module.html#filename"><a title="makeFrequencyList.filename" class="py-name" href="#" onclick="return doclink('link-7', 'filename', 'link-7');">filename</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">listdir</tt><tt class="py-op">(</tt><tt id="link-8" class="py-name"><a title="PDFdl.app_path
 dataTimeline.app_path
-main.app_path
+initServer.app_path
 main_timeline.app_path
+makeFrequencyList.app_path
 pdf2txt.app_path
-server.app_path" class="py-name" href="#" onclick="return doclink('link-8', 'app_path', 'link-1');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-string">'/data/'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">fnmatch</tt><tt class="py-op">.</tt><tt class="py-name">fnmatch</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-string">'*_orig.txt'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">            <tt class="py-name">docname</tt> <tt class="py-op">=</tt> <tt class="py-name">filename</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">9</tt><tt class="py-op">]</tt> </tt>
+server.app_path
+timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-8', 'app_path', 'link-0');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-string">'/data/'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">fnmatch</tt><tt class="py-op">.</tt><tt class="py-name">fnmatch</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="makeFrequencyList.filename" class="py-name" href="#" onclick="return doclink('link-9', 'filename', 'link-7');">filename</a></tt><tt class="py-op">,</tt> <tt class="py-string">'*_orig.txt'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">            <tt class="py-name">docname</tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name"><a title="makeFrequencyList.filename" class="py-name" href="#" onclick="return doclink('link-10', 'filename', 'link-7');">filename</a></tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">9</tt><tt class="py-op">]</tt> </tt>
 <a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"Testing "</tt><tt class="py-op">,</tt><tt class="py-name">docname</tt><tt class="py-op">,</tt><tt class="py-string">"..."</tt> </tt>
-<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-9" class="py-name" targets="Function pdf2txt.test_file()=pdf2txt-module.html#test_file"><a title="pdf2txt.test_file" class="py-name" href="#" onclick="return doclink('link-9', 'test_file', 'link-9');">test_file</a></tt><tt class="py-op">(</tt><tt class="py-name">docname</tt><tt class="py-op">,</tt> <tt class="py-name">trials</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-11" class="py-name" targets="Function pdf2txt.test_file()=pdf2txt-module.html#test_file"><a title="pdf2txt.test_file" class="py-name" href="#" onclick="return doclink('link-11', 'test_file', 'link-11');">test_file</a></tt><tt class="py-op">(</tt><tt class="py-name">docname</tt><tt class="py-op">,</tt> <tt class="py-name">trials</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 <a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"Done."</tt> </tt>
 <a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
 <a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"ERROR."</tt> </tt>
@@ -176,31 +190,35 @@ server.app_path" class="py-name" href="#" onclick="return doclink('link-8', 'app
 <a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
 <a name="test_file"></a><div id="test_file-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="test_file-toggle" onclick="return toggle('test_file');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pdf2txt-module.html#test_file">test_file</a><tt class="py-op">(</tt><tt class="py-param">docname</tt><tt class="py-op">,</tt> <tt class="py-param">trials</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="test_file-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="test_file-expanded"><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-docstring">"""Tests a sample file to check the integrity"""</tt> </tt>
-<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-name">src_file</tt> <tt class="py-op">=</tt> <tt class="py-name">codecs</tt><tt class="py-op">.</tt><tt class="py-name">open</tt><tt class="py-op">(</tt><tt id="link-10" class="py-name"><a title="PDFdl.app_path
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-name">src_file</tt> <tt class="py-op">=</tt> <tt class="py-name">codecs</tt><tt class="py-op">.</tt><tt class="py-name">open</tt><tt class="py-op">(</tt><tt id="link-12" class="py-name"><a title="PDFdl.app_path
 dataTimeline.app_path
-main.app_path
+initServer.app_path
 main_timeline.app_path
+makeFrequencyList.app_path
 pdf2txt.app_path
-server.app_path" class="py-name" href="#" onclick="return doclink('link-10', 'app_path', 'link-1');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-string">"/data/"</tt><tt class="py-op">+</tt><tt class="py-name">docname</tt><tt class="py-op">+</tt><tt class="py-string">"_orig.txt"</tt><tt class="py-op">,</tt> <tt class="py-string">'r'</tt><tt class="py-op">,</tt> <tt class="py-string">"utf-8"</tt><tt class="py-op">)</tt> </tt>
+server.app_path
+timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-12', 'app_path', 'link-0');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-string">"/data/"</tt><tt class="py-op">+</tt><tt class="py-name">docname</tt><tt class="py-op">+</tt><tt class="py-string">"_orig.txt"</tt><tt class="py-op">,</tt> <tt class="py-string">'r'</tt><tt class="py-op">,</tt> <tt class="py-string">"utf-8"</tt><tt class="py-op">)</tt> </tt>
 <a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-name">src_txt</tt> <tt class="py-op">=</tt> <tt class="py-name">src_file</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-comment">#src_txt is unicode</tt> </tt>
 <a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-name">src_file</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
-<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-name">dest_txt</tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="pdf2txt.pdf_to_txt" class="py-name" href="#" onclick="return doclink('link-11', 'pdf_to_txt', 'link-6');">pdf_to_txt</a></tt><tt class="py-op">(</tt><tt id="link-12" class="py-name"><a title="PDFdl.app_path
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-name">dest_txt</tt> <tt class="py-op">=</tt> <tt id="link-13" class="py-name"><a title="pdf2txt.pdf_to_txt" class="py-name" href="#" onclick="return doclink('link-13', 'pdf_to_txt', 'link-5');">pdf_to_txt</a></tt><tt class="py-op">(</tt><tt id="link-14" class="py-name"><a title="PDFdl.app_path
 dataTimeline.app_path
-main.app_path
+initServer.app_path
 main_timeline.app_path
+makeFrequencyList.app_path
 pdf2txt.app_path
-server.app_path" class="py-name" href="#" onclick="return doclink('link-12', 'app_path', 'link-1');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-string">"/data/"</tt><tt class="py-op">+</tt><tt class="py-name">docname</tt><tt class="py-op">+</tt><tt class="py-string">".pdf"</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">decode</tt><tt class="py-op">(</tt><tt class="py-string">"utf-8"</tt><tt class="py-op">)</tt> <tt class="py-comment">#unicode</tt> </tt>
+server.app_path
+timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-14', 'app_path', 'link-0');">app_path</a></tt><tt class="py-op">+</tt><tt class="py-string">"/data/"</tt><tt class="py-op">+</tt><tt class="py-name">docname</tt><tt class="py-op">+</tt><tt class="py-string">".pdf"</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">decode</tt><tt class="py-op">(</tt><tt class="py-string">"utf-8"</tt><tt class="py-op">)</tt> <tt class="py-comment">#unicode</tt> </tt>
 <a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt class="py-name">words_src</tt> <tt class="py-op">=</tt> <tt class="py-name">nltk</tt><tt class="py-op">.</tt><tt class="py-name">word_tokenize</tt><tt class="py-op">(</tt><tt class="py-name">src_txt</tt><tt class="py-op">)</tt> </tt>
-<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt id="link-13" class="py-name" targets="Variable main.count=main-module.html#count"><a title="main.count" class="py-name" href="#" onclick="return doclink('link-13', 'count', 'link-13');">count</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
-<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">trials</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">chosen_word</tt> <tt class="py-op">=</tt> <tt id="link-14" class="py-name"><a title="testing.random" class="py-name" href="#" onclick="return doclink('link-14', 'random', 'link-0');">random</a></tt><tt class="py-op">.</tt><tt class="py-name">choice</tt><tt class="py-op">(</tt><tt class="py-name">words_src</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt id="link-15" class="py-name" targets="Variable makeFrequencyList.count=makeFrequencyList-module.html#count"><a title="makeFrequencyList.count" class="py-name" href="#" onclick="return doclink('link-15', 'count', 'link-15');">count</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt id="link-16" class="py-name" targets="Variable testlemmatizers.i=testlemmatizers-module.html#i"><a title="testlemmatizers.i" class="py-name" href="#" onclick="return doclink('link-16', 'i', 'link-16');">i</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">trials</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">chosen_word</tt> <tt class="py-op">=</tt> <tt class="py-name">random</tt><tt class="py-op">.</tt><tt class="py-name">choice</tt><tt class="py-op">(</tt><tt class="py-name">words_src</tt><tt class="py-op">)</tt> </tt>
 <a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">chosen_word</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dest_txt</tt><tt class="py-op">:</tt> </tt>
-<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">            <tt id="link-15" class="py-name"><a title="main.count" class="py-name" href="#" onclick="return doclink('link-15', 'count', 'link-13');">count</a></tt> <tt class="py-op">+=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">            <tt id="link-17" class="py-name"><a title="makeFrequencyList.count" class="py-name" href="#" onclick="return doclink('link-17', 'count', 'link-15');">count</a></tt> <tt class="py-op">+=</tt> <tt class="py-number">1</tt> </tt>
 <a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-comment">#        else:</tt> </tt>
 <a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-comment">#            print chosen_word,"not in destination"</tt> </tt>
-<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Success rate:"</tt><tt class="py-op">,</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt id="link-16" class="py-name"><a title="main.count" class="py-name" href="#" onclick="return doclink('link-16', 'count', 'link-13');">count</a></tt><tt class="py-op">)</tt><tt class="py-op">/</tt><tt class="py-name">trials</tt> </tt>
-<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt id="link-17" class="py-name"><a title="main.count" class="py-name" href="#" onclick="return doclink('link-17', 'count', 'link-13');">count</a></tt><tt class="py-op">)</tt><tt class="py-op">/</tt><tt class="py-name">trials</tt> <tt class="py-op">&gt;=</tt> <tt class="py-number">0.7</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Success rate:"</tt><tt class="py-op">,</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt id="link-18" class="py-name"><a title="makeFrequencyList.count" class="py-name" href="#" onclick="return doclink('link-18', 'count', 'link-15');">count</a></tt><tt class="py-op">)</tt><tt class="py-op">/</tt><tt class="py-name">trials</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt id="link-19" class="py-name"><a title="makeFrequencyList.count" class="py-name" href="#" onclick="return doclink('link-19', 'count', 'link-15');">count</a></tt><tt class="py-op">)</tt><tt class="py-op">/</tt><tt class="py-name">trials</tt> <tt class="py-op">&gt;=</tt> <tt class="py-number">0.7</tt><tt class="py-op">)</tt> </tt>
 </div><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">         </tt>
 <a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">     </tt>
 <a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">     </tt>
@@ -208,12 +226,14 @@ server.app_path" class="py-name" href="#" onclick="return doclink('link-12', 'ap
 <a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
 <a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">"/usr/home/username/pdfminer"</tt><tt class="py-op">)</tt> <tt class="py-comment">#? what's the use?</tt> </tt>
 <a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
-<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt id="link-18" class="py-name"><a title="PDFdl.app_path
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt id="link-20" class="py-name"><a title="PDFdl.app_path
 dataTimeline.app_path
-main.app_path
+initServer.app_path
 main_timeline.app_path
+makeFrequencyList.app_path
 pdf2txt.app_path
-server.app_path" class="py-name" href="#" onclick="return doclink('link-18', 'app_path', 'link-1');">app_path</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getcwd</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt> </tt>
+server.app_path
+timelineVisualization.app_path" class="py-name" href="#" onclick="return doclink('link-20', 'app_path', 'link-0');">app_path</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getcwd</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"aps"</tt> </tt>
 <a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">     </tt>
 <a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">     </tt>
 <a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">    <tt class="py-string">"""Adding arguments for command-line use"""</tt> </tt>
@@ -226,11 +246,9 @@ server.app_path" class="py-name" href="#" onclick="return doclink('link-18', 'ap
 <a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">     </tt>
 <a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">    <tt class="py-name">args</tt> <tt class="py-op">=</tt> <tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">parse_args</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt class="py-name">file</tt><tt class="py-op">:</tt> </tt>
-<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt id="link-19" class="py-name" targets="Function pdf2txt.pdf_to_file()=pdf2txt-module.html#pdf_to_file"><a title="pdf2txt.pdf_to_file" class="py-name" href="#" onclick="return doclink('link-19', 'pdf_to_file', 'link-19');">pdf_to_file</a></tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">.</tt><tt class="py-name">file</tt><tt class="py-op">,</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt class="py-name">output</tt><tt class="py-op">)</tt> </tt>
-<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Function pdf2txt.testing()=pdf2txt-module.html#testing,Module testing=testing-module.html"><a title="pdf2txt.testing
-testing" class="py-name" href="#" onclick="return doclink('link-20', 'testing', 'link-20');">testing</a></tt><tt class="py-op">:</tt> </tt>
-<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt id="link-21" class="py-name"><a title="pdf2txt.testing
-testing" class="py-name" href="#" onclick="return doclink('link-21', 'testing', 'link-20');">testing</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt id="link-21" class="py-name" targets="Function pdf2txt.pdf_to_file()=pdf2txt-module.html#pdf_to_file"><a title="pdf2txt.pdf_to_file" class="py-name" href="#" onclick="return doclink('link-21', 'pdf_to_file', 'link-21');">pdf_to_file</a></tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">.</tt><tt class="py-name">file</tt><tt class="py-op">,</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt class="py-name">output</tt><tt class="py-op">)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Function pdf2txt.testing()=pdf2txt-module.html#testing"><a title="pdf2txt.testing" class="py-name" href="#" onclick="return doclink('link-22', 'testing', 'link-22');">testing</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt id="link-23" class="py-name"><a title="pdf2txt.testing" class="py-name" href="#" onclick="return doclink('link-23', 'testing', 'link-22');">testing</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
@@ -261,7 +279,8 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jun 28 18:46:00 2016
+    Generated by Epydoc 3.0.1
+    on Wed Jun 29 09:18:16 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

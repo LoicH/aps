@@ -52,13 +52,10 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module Timeline</h1><p class="nomargin-top"><span class="codelink"><a href="Timeline-pysrc.html">source&nbsp;code</a></span></p>
-<p>Created on Wed Jun 22 11:55:20 2016</p>
+<p>Module used essentially for formatting dates from &quot;2012 dec&quot;
+  to &quot;2012 12&quot;</p>
 
-<hr />
-<div class="fields">      <p><strong>Author:</strong>
-        alagasse
-      </p>
-</div><!-- ==================== FUNCTIONS ==================== -->
+<!-- ==================== FUNCTIONS ==================== -->
 <a name="section-Functions"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
@@ -77,29 +74,12 @@
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">doc list</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="Timeline-module.html#selecDocsByAuthor" class="summary-sig-name">selecDocsByAuthor</a>(<span class="summary-sig-arg">listDocs</span>,
-        <span class="summary-sig-arg">author</span>)</span><br />
-      select the docs written by an author</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="Timeline-pysrc.html#selecDocsByAuthor">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="formatMonth"></a><span class="summary-sig-name">formatMonth</span>(<span class="summary-sig-arg">string</span>)</span></td>
+          <td><span class="summary-sig"><a name="formatMonth"></a><span class="summary-sig-name">formatMonth</span>(<span class="summary-sig-arg">string</span>)</span><br />
+      converts from number to month</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="Timeline-pysrc.html#formatMonth">source&nbsp;code</a></span>
             
@@ -116,74 +96,9 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="formatDate"></a><span class="summary-sig-name">formatDate</span>(<span class="summary-sig-arg">string</span>)</span><br />
-      turn &quot;2015 feb&quot; in &quot;2015 02&quot; for instance</td>
+      turns &quot;2015 feb&quot; into &quot;2015 02&quot; for instance</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="Timeline-pysrc.html#formatDate">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="formatAllDates"></a><span class="summary-sig-name">formatAllDates</span>(<span class="summary-sig-arg">dicDocs</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="Timeline-pysrc.html#formatAllDates">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="chronologicalOrder"></a><span class="summary-sig-name">chronologicalOrder</span>(<span class="summary-sig-arg">listDocs</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="Timeline-pysrc.html#chronologicalOrder">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="categoriesDoc"></a><span class="summary-sig-name">categoriesDoc</span>(<span class="summary-sig-arg">listDocs</span>,
-        <span class="summary-sig-arg">dicTitleText</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="Timeline-pysrc.html#categoriesDoc">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="allCategories"></a><span class="summary-sig-name">allCategories</span>(<span class="summary-sig-arg">listCategoriesDocs</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="Timeline-pysrc.html#allCategories">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -213,56 +128,17 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="regex"></a><span class="summary-name">regex</span> = <code title="r&quot;(\d+) ([a-zA-Z]+)&quot;">r&quot;(\d+) ([a-zA-Z]+)&quot;</code>
+        <a name="regex"></a><span class="summary-name">regex</span> = <code title="'(\\d+) ([a-zA-Z]+)'"><code class="variable-quote">'</code><code class="variable-string">(\\d+) ([a-zA-Z]+)</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="None">None</code>
     </td>
   </tr>
 </table>
-<!-- ==================== FUNCTION DETAILS ==================== -->
-<a name="section-FunctionDetails"></a>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Function Details</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-FunctionDetails"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-</table>
-<a name="selecDocsByAuthor"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">selecDocsByAuthor</span>(<span class="sig-arg">listDocs</span>,
-        <span class="sig-arg">author</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="Timeline-pysrc.html#selecDocsByAuthor">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>select the docs written by an author</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>listDocs</code></strong> (doc list) - all docs in a corpus</li>
-        <li><strong class="pname"><code>author</code></strong> (string) - author name</li>
-    </ul></dd>
-    <dt>Returns: doc list</dt>
-        <dd>all docs written by the author in the corpus</dd>
-  </dl>
-</td></tr></table>
-</div>
-<br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
@@ -286,7 +162,8 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jun 28 18:46:00 2016
+    Generated by Epydoc 3.0.1
+    on Wed Jun 29 09:18:16 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

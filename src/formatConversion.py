@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jun 21 13:46:30 2016
-
-@author: asueur
+Converts data to JSON files
 """
 import json
 import numpy as np
@@ -12,19 +10,19 @@ import os
 ###################################################################
 #conversion for wordCloud
 
-
+import initServer #for global path variables
 
 class Object(object):
-    """__init__() functions as the class constructor"""
+    """Used to convert an objet into JSON format"""
     def __init__(self, text=None, size=None):
         self.text = text
         self.size = size
 
 
 def convertDict(dico, file_out):
-    """ convert a dictionnary to a json file used by the first worldcloud
-    @param dico: dictionnary you want to convert
-    @type dico: dictionnary
+    """ convert a dictionary to a json file used by the first worldcloud
+    @param dico: dictionary you want to convert
+    @type dico: dictionary
     
     @param file_out: path you want to save the file to
     @type file_out: string"""
@@ -41,9 +39,9 @@ def convertDict(dico, file_out):
     f.close()
     
 def convertDict2(dico, file_out): #used for the second type of word visualization
-    """ convert a dictionnary to a json file used by the second worldcloud
-    @param dico: dictionnary you want to convert
-    @type dico: dictionnary
+    """ convert a dictionary to a json file used by the second worldcloud
+    @param dico: dictionary you want to convert
+    @type dico: dictionary
     
     @param file_out: path you want to save the file to
     @type file_out: string"""
@@ -68,9 +66,13 @@ def convertDict2(dico, file_out): #used for the second type of word visualizatio
 
 def convertToMatrice(totalFreqDictList, file_out, timeSections): 
     """ standard input form: [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] ordered chronologically
-    @param totalFreqDictList: all category frequencies for all periods previously selected
-    @type totalFreqDictList: list of dictionnary[category (string): frequency (float)] ordered chronologically
-                             example: [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] 
+    Used to view the evolution in time of the weights of words
+    
+    @param totalFreqDictList: list of dictionaries saving the weights of each word 
+        at a given time point
+    @type totalFreqDictList: list of dictionary {category (string): frequency (float)} 
+        ordered chronologically
+        example: [{"a":0.3,"b":0.7},{"c":0.3,"d":0.7}] 
                              
     @param file_out: path you want to save the file to
     @type file_out: string
@@ -123,7 +125,7 @@ def convertToMatrice(totalFreqDictList, file_out, timeSections):
     
 #conversion for graph
 
-f=codecs.open("departments.json","r","utf-8") #json of departments
+f=codecs.open(initServer.data+os.sep+"departments.json","r","utf-8") #json of departments
 departments=json.load(f)
 dptDict=dict()
 for department in departments:
@@ -137,10 +139,10 @@ for department in departments:
 def convertGraph(coauthorDict): 
     """ convert from coauthor dict to input format for graph
     @param coauthorDict: link each author to his coauthor
-    @type coauthorDict: dictionnary [author (string): list coauthors (list string)]
+    @type coauthorDict: dictionnary {author (string): list coauthors (list string)}
     
     @return: format for graph coauthor
-    @rtype: [{"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
+    @rtype: string {"name":string,"size":int,"imports":string list}, {"name":string,"size":int,"imports":string list}, ... ] """
     s=""
     for i in coauthorDict:
         dpt=""

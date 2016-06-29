@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun 23 10:33:11 2016
-
-@author: asueur
+Only used for testing purposes
 """
 # coding: utf8
 
@@ -17,16 +15,13 @@ def getText(fileName):
     return content
 
 import retrieveCategories as ret
-#trouver mots liés concept dans dictionnaire de chacun des documents / concaténer
-#garder mot avec plus grande fréquence
-# quand on clique sur un mot: parcourir l'ensemble des mots liés à ce concept dans chaque document et compter nombre occurences
 
 def getLinkedWord(category, textList, numberWords = 20): 
     """returns the "numberWords" words linked to a category and with the most occurences
     @param category: The category you want the words linked to
     @type category: string
     
-    @param textList: The texts'filename you want to search category in
+    @param textList: The texts' filename you want to search category in
     @type textList: string list
     
     @param numberWords: number of words you want

@@ -17,7 +17,13 @@ src = app_path+os.sep+"src"
 regex=r'id=(\d+)'  
 
 def openBibLib(bibName): 
-    """bibName = the complete filepath of the bibtex file"""
+    """Extracts the corpus information from a bibtex file
+    
+    @param bibName: the path to the file
+    @type bibName: string
+    
+    @return: the BibDatabase object with all the information
+    @rtype: BibDatabase"""
     with open(bibName) as bibtex_file:  
         bibtex_database = bibtexparser.load(bibtex_file) 
     return bibtex_database
@@ -33,8 +39,9 @@ def openBibLib(bibName):
 def downloadPDF(pdf_id, pdf_out_dir, txt_out_dir):
     """downloads the pdf with a given ID and puts it into pdf_out_dir
     if the "pdf"_out.txt is not in txt_out_dir
+    
     @param pdf_id: the ID of the doc
-    @type bibName: str
+    @type pdf_id: str
     
     @param pdf_out_dir: the directory where you want to put the pdf files (e.g. /tmp/aps/)
     @type pdf_out_dir: str

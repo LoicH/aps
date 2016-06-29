@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+"""
+Module used to view the timeline.
+"""
 import PDFdl
 import bibtexparser
 import re
@@ -11,18 +13,52 @@ src = app_path+os.sep+"src"
 
 regex=r'id=(\d+)' 
 bib = data+os.sep+'document.bib'  ### bib name (can be modified)
-bibName="testbib.bib"
-entries=PDFdl.openBibLib(bibName).entries  #all of the bib's articles
-class article:
-    def __init__(self, title, author):
-        self.title = list 
-        self.author = author
+entries=PDFdl.openBibLib(bib).entries  #all of the bib's articles
 
 
 def getAll(index,bibName):
+    """returns the information about an article at a given position in a bibtex file
+    
+    >>> getAll(3, "toto")
+    {u'author': u'S. {Durand} and J. P. {Bello} and B. {DAVID} and G. {Richard}',
+     u'title': u'Feature Adapted Convolutional Neural Networks for Downbeat Tracking',
+     u'year': u'2016'}
+     
+     
+    @param index: the position of the article in the corpus
+    @type index: int
+    
+    @param bibName: the path leading to the bibtex file (useless)
+    @type bibName: string
+    
+    @return: a dictionary of the information about the article, all the strings are in unicode
+    @rtype: dict {unicode: unicode}
+    
+    
+    """
     return bibtexparser.customization.convert_to_unicode(entries[index]) 
 
-def getInfo(authorName): #name in the form of lastName
+def getInfo(authorName): 
+    u"""returns the publication and colleagues of a given author 
+    
+        >>> pub, colleagues = getInfo(u"Clémençon")
+        >>> pub
+        {u'Multipartite Ranking': [u'2014 jul',
+        14057],
+        u'Visual Mining of Epidemic Networks': [u'2011 jun', 11289]}
+        >>> colleagues
+        [u'S.Cl\xe9men\xe7onandH.DeArazozaandV.Ch.TranandF.Rossi',
+        u'R.GaudelandS.Cl\xe9men\xe7on']   
+        
+    @param authorName: the last name of the author        
+    @type authorName: unicode
+    
+    @return: the publications informations and the colleagues of a given author
+    @rtype: tuple (dict {title (unicode): [date (unicode), ID (int)]}, 
+    unicode list)
+    
+
+    """
     #datesAndIds : {pubName:[date,id]}
     datesAndIds = dict()
     coauthors=[]
@@ -39,6 +75,19 @@ def getInfo(authorName): #name in the form of lastName
     return datesAndIds, coauthors
 
 def getCoauthors(authorName):
+    u"""returns the colleagues of a given author.
+    
+        >>> getCoauthors(u'Mazé')
+        [u'E. Nassor', u'F. Denoual', u'F. Maz\xe9', u'C. Concolato', u'J. Le Feuvre']
+    
+    @param authorName: the last name of an author
+    @type authorName: unicode
+    
+    @return: a list of all the colleagues
+    @rtype: unicode list
+    
+   
+"""
     coauthors=[]
     for i in entries:
         if authorName.replace(" ","") in i["author"].replace(" ","").replace("{","").replace("}",""):

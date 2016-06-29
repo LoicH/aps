@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>server</title>
+  <title>initServer</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -34,7 +34,7 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        Module&nbsp;server
+        Module&nbsp;initServer
       </span>
     </td>
     <td>
@@ -44,15 +44,15 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="server-module.html"
+            >]&nbsp;|&nbsp;<a href="initServer-module.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module server</h1><p class="nomargin-top"><span class="codelink"><a href="server-pysrc.html">source&nbsp;code</a></span></p>
-<p>Created on Wed Jun 22 17:33:59 2016</p>
+<h1 class="epydoc">Module initServer</h1><p class="nomargin-top"><span class="codelink"><a href="initServer-pysrc.html">source&nbsp;code</a></span></p>
+<p>Created on Tue Jun 28 11:53:50 2016</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -75,15 +75,17 @@
     </table>
   </td>
 </tr>
-<tr>
+<tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">TFIDFMatrix</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="server-module.html#index" class="summary-sig-name">index</a>()</span></td>
+          <td><span class="summary-sig"><a href="initServer-module.html#_compute_tfidf" class="summary-sig-name" onclick="show_private();">_compute_tfidf</a>(<span class="summary-sig-arg">bib_path</span>)</span><br />
+      Saves a &quot;bibtex&quot;_tfidf.csv with a given bibtex file, only 
+      if the .csv is older than the .bib.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#index">source&nbsp;code</a></span>
+            <span class="codelink"><a href="initServer-pysrc.html#_compute_tfidf">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -97,9 +99,45 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="server-module.html#wordcloud" class="summary-sig-name">wordcloud</a>()</span></td>
+          <td><span class="summary-sig"><a href="initServer-module.html#make_json_wordcloud2" class="summary-sig-name">make_json_wordcloud2</a>(<span class="summary-sig-arg">bibtex</span>)</span><br />
+      Creates a JSON file from a bibtex file.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#wordcloud">source&nbsp;code</a></span>
+            <span class="codelink"><a href="initServer-pysrc.html#make_json_wordcloud2">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_monthdelta"></a><span class="summary-sig-name">_monthdelta</span>(<span class="summary-sig-arg">d1</span>,
+        <span class="summary-sig-arg">d2</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="initServer-pysrc.html#_monthdelta">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">dictionary {word:float} (same as freq_list)</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="initServer-module.html#_select_top_timeline" class="summary-sig-name" onclick="show_private();">_select_top_timeline</a>(<span class="summary-sig-arg">freq_list</span>,
+        <span class="summary-sig-arg">number</span>=<span class="summary-sig-default">10</span>)</span><br />
+      Returns the frequency list, but only with the best words, i.e.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="initServer-pysrc.html#_select_top_timeline">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -113,57 +151,15 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="server-module.html#timeline" class="summary-sig-name">timeline</a>()</span></td>
+          <td><span class="summary-sig"><a href="initServer-module.html#make_json_timeline" class="summary-sig-name">make_json_timeline</a>(<span class="summary-sig-arg">authorName</span>,
+        <span class="summary-sig-arg">startDate</span>,
+        <span class="summary-sig-arg">endDate</span>,
+        <span class="summary-sig-arg">periodLength</span>,
+        <span class="summary-sig-arg">json_filepath</span>)</span><br />
+      Creates a JSON file for a timeline about a given author between two 
+      dates.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#timeline">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="server-module.html#testjs" class="summary-sig-name">testjs</a>()</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#testjs">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="server-module.html#show_author" class="summary-sig-name">show_author</a>(<span class="summary-sig-arg">name</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#show_author">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="server-module.html#init_wordcloud" class="summary-sig-name">init_wordcloud</a>()</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="server-pysrc.html#init_wordcloud">source&nbsp;code</a></span>
+            <span class="codelink"><a href="initServer-pysrc.html#make_json_timeline">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -207,15 +203,14 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="src"></a><span class="summary-name">src</span> = <code title="'/home/loic/Programmation/aps/src'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps/src</code><code class="variable-quote">'</code></code><br />
-      Directing the routes
+        <a name="src"></a><span class="summary-name">src</span> = <code title="'/home/loic/Programmation/aps/src'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps/src</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="app"></a><span class="summary-name">app</span> = <code title="&lt;Flask 'server'&gt;">&lt;Flask 'server'&gt;</code>
+        <a name="tmp_pdf_dir"></a><span class="summary-name">tmp_pdf_dir</span> = <code title="'/tmp/aps'"><code class="variable-quote">'</code><code class="variable-string">/tmp/aps</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
@@ -244,140 +239,115 @@
   </td>
 </tr>
 </table>
-<a name="index"></a>
-<div>
+<a name="_compute_tfidf"></a>
+<div class="private">
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">index</span>()</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_compute_tfidf</span>(<span class="sig-arg">bib_path</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#index">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="initServer-pysrc.html#_compute_tfidf">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  
+  <p>Saves a &quot;bibtex&quot;_tfidf.csv with a given bibtex file, only if
+  the .csv is older than the .bib.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>t = compute_tfidf(<span class="py-string">&quot;data/document.bib&quot;</span>)</pre>
   <dl class="fields">
-    <dt>Decorators:</dt>
+    <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><code>@app.route('/')</code></li>
+        <li><strong class="pname"><code>bib_path</code></strong> (string) - the complete filepath of the bibtex file</li>
     </ul></dd>
+    <dt>Returns: TFIDFMatrix</dt>
+        <dd>The TFIDF Matrix</dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="wordcloud"></a>
+<a name="make_json_wordcloud2"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">wordcloud</span>()</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">make_json_wordcloud2</span>(<span class="sig-arg">bibtex</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#wordcloud">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="initServer-pysrc.html#make_json_wordcloud2">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  
+  <p>Creates a JSON file from a bibtex file.</p>
+  <p>bibtex is the complete path of the file.</p>
   <dl class="fields">
-    <dt>Decorators:</dt>
-    <dd><ul class="nomargin-top">
-        <li><code>@app.route('/wordcloud/')</code></li>
-    </ul></dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="timeline"></a>
-<div>
+<a name="_select_top_timeline"></a>
+<div class="private">
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">timeline</span>()</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_select_top_timeline</span>(<span class="sig-arg">freq_list</span>,
+        <span class="sig-arg">number</span>=<span class="sig-default">10</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#timeline">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="initServer-pysrc.html#_select_top_timeline">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  
+  <p>Returns the frequency list, but only with the best words, i.e. the 
+  words that have the biggest sum of frequencies.</p>
   <dl class="fields">
-    <dt>Decorators:</dt>
+    <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><code>@app.route('/timeline/')</code></li>
+        <li><strong class="pname"><code>freq_list</code></strong> (dictionary {word (str or unicode?):float}) - the list of dictionaries {word:frequency}</li>
+        <li><strong class="pname"><code>number</code></strong> (int) - the number of words you want</li>
     </ul></dd>
+    <dt>Returns: dictionary {word:float} (same as freq_list)</dt>
+        <dd>the list of dictionaries {word:frequency} reduced to the top 
+          words</dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="testjs"></a>
+<a name="make_json_timeline"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">testjs</span>()</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">make_json_timeline</span>(<span class="sig-arg">authorName</span>,
+        <span class="sig-arg">startDate</span>,
+        <span class="sig-arg">endDate</span>,
+        <span class="sig-arg">periodLength</span>,
+        <span class="sig-arg">json_filepath</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#testjs">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="initServer-pysrc.html#make_json_timeline">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  
+  <p>Creates a JSON file for a timeline about a given author between two 
+  dates.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>make_json_timeline(<span class="py-string">&quot;J. Doe&quot;</span>, <span class="py-string">&quot;2012 jan&quot;</span>, <span class="py-string">&quot;2015 dec&quot;</span>, <span class="py-string">&quot;src/static/timeline/timeline.json&quot;</span>)</pre>
   <dl class="fields">
-    <dt>Decorators:</dt>
+    <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><code>@app.route('/testjs/')</code></li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="show_author"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">show_author</span>(<span class="sig-arg">name</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#show_author">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  
-  <dl class="fields">
-    <dt>Decorators:</dt>
-    <dd><ul class="nomargin-top">
-        <li><code>@app.route('/author/<name>')</code></li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="init_wordcloud"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">init_wordcloud</span>()</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="server-pysrc.html#init_wordcloud">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  
-  <dl class="fields">
-    <dt>Decorators:</dt>
-    <dd><ul class="nomargin-top">
-        <li><code>@app.route('/init_wordcloud/')</code></li>
+        <li><strong class="pname"><code>authorName</code></strong> (unicode) - The name of the author you want to visualize, must respect the 
+          case: &quot;J. Doe&quot;</li>
+        <li><strong class="pname"><code>startDate</code></strong> (string) - The date where you want to start : &quot;2012 jan&quot;</li>
+        <li><strong class="pname"><code>endDate</code></strong> (string) - The date where you want to stop.</li>
+        <li><strong class="pname"><code>periodLength</code></strong> (int) - Number of months between two steps.</li>
+        <li><strong class="pname"><code>json_filepath</code></strong> (string) - Complete path of the JSON output: 
+          &quot;src/static/timeline/timeline.json&quot;</li>
     </ul></dd>
   </dl>
 </td></tr></table>

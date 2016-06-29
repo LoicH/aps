@@ -52,13 +52,10 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module dataTimeline</h1><p class="nomargin-top"><span class="codelink"><a href="dataTimeline-pysrc.html">source&nbsp;code</a></span></p>
-<p>Created on Fri Jun 24 10:43:42 2016</p>
+<p>Performs computations for the timeline (moving average, TFIDF matrix 
+  creation)</p>
 
-<hr />
-<div class="fields">      <p><strong>Author:</strong>
-        asueur
-      </p>
-</div><!-- ==================== FUNCTIONS ==================== -->
+<!-- ==================== FUNCTIONS ==================== -->
 <a name="section-Functions"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
@@ -77,13 +74,30 @@
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">dict {str:float}</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="dataTimeline-module.html#getCategories" class="summary-sig-name">getCategories</a>(<span class="summary-sig-arg">filepath</span>)</span><br />
+      returns the frequencies of categories in a file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="dataTimeline-pysrc.html#getCategories">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">TDIDFMatrix object</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="dataTimeline-module.html#createTFIDFMatrix" class="summary-sig-name">createTFIDFMatrix</a>(<span class="summary-sig-arg">authorName</span>,
-        <span class="summary-sig-arg">startDate</span>,
-        <span class="summary-sig-arg">endDate</span>)</span><br />
+        <span class="summary-sig-arg">startDateString</span>,
+        <span class="summary-sig-arg">endDateString</span>)</span><br />
       create TFIDF Matrix using documents written by an author during a 
       selected period</td>
           <td align="right" valign="top">
@@ -97,7 +111,7 @@
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">float list</span>
+      <span class="summary-type">dict {unicode: float}</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -135,14 +149,21 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="app_path"></a><span class="summary-name">app_path</span> = <code title="os.getcwd().split(os.sep+ &quot;aps&quot;) [0]+ os.sep+ &quot;aps&quot;">os.getcwd().split(os.sep+ &quot;aps&quot;) [0]+ os.sep+ &quot;aps&quot;</code>
+        <a name="app_path"></a><span class="summary-name">app_path</span> = <code title="'/home/loic/Programmation/aps'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="data"></a><span class="summary-name">data</span> = <code title="app_path+ os.sep+ &quot;data&quot;">app_path+ os.sep+ &quot;data&quot;</code>
+        <a name="data"></a><span class="summary-name">data</span> = <code title="'/home/loic/Programmation/aps/data'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps/data</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="None">None</code>
     </td>
   </tr>
 </table>
@@ -164,6 +185,31 @@
   </td>
 </tr>
 </table>
+<a name="getCategories"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCategories</span>(<span class="sig-arg">filepath</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="dataTimeline-pysrc.html#getCategories">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>returns the frequencies of categories in a file.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filepath</code></strong> (string) - the path to the text file</li>
+    </ul></dd>
+    <dt>Returns: dict {str:float}</dt>
+        <dd>a dictionary {category:frequency}</dd>
+  </dl>
+</td></tr></table>
+</div>
 <a name="createTFIDFMatrix"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -172,8 +218,8 @@
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">createTFIDFMatrix</span>(<span class="sig-arg">authorName</span>,
-        <span class="sig-arg">startDate</span>,
-        <span class="sig-arg">endDate</span>)</span>
+        <span class="sig-arg">startDateString</span>,
+        <span class="sig-arg">endDateString</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="dataTimeline-pysrc.html#createTFIDFMatrix">source&nbsp;code</a></span>&nbsp;
@@ -186,8 +232,8 @@
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>authorName</code></strong> (string) - author's lastname</li>
-        <li><strong class="pname"><code>startName</code></strong> (string &quot;year monthNumber&quot;) - start of the period you want to select</li>
-        <li><strong class="pname"><code>endName</code></strong> (string &quot;year monthNumber&quot;) - end of the period you want to select</li>
+        <li><strong class="pname"><code>startDateString</code></strong> (string &quot;year monthNumber&quot;) - start of the period you want to select</li>
+        <li><strong class="pname"><code>endDateString</code></strong> (string &quot;year monthNumber&quot;) - end of the period you want to select</li>
     </ul></dd>
     <dt>Returns: TDIDFMatrix object</dt>
         <dd>TFIDF Matrix using documents selected</dd>
@@ -213,11 +259,10 @@
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>matrixList</code></strong> (list of objects TFIDFMatrix) - TFIDF Matrixes you want average value from</li>
+        <li><strong class="pname"><code>matrixList</code></strong> (TFIDFMatrix list) - the list of matrices you want the average</li>
     </ul></dd>
-    <dt>Returns: float list</dt>
-        <dd>average value of category frequencies for all categories in those
-          matrices</dd>
+    <dt>Returns: dict {unicode: float}</dt>
+        <dd>a dictionary linking words to their weight</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -245,7 +290,8 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jun 28 18:46:00 2016
+    Generated by Epydoc 3.0.1
+    on Wed Jun 29 09:18:16 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

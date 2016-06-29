@@ -75,7 +75,11 @@ class TFIDFMatrix:
             print "\n"
             
     def weights(self, number=25):
-        """returns the weight of the <number> first words, used for the word cloud"""
+        """returns the weight of the <number> first words, used for the word cloud.
+        The weight of the top word is 100, the weight os the "lowest top word" is 1
+        
+        @return: a dictionary linking words to their weight
+        @rtype: dict {word (unicode): weight(int)}"""
         weights = dict()
         for word in self.graph.keys():
             weights[word] = sum(self.graph[word].values())
@@ -92,7 +96,10 @@ class TFIDFMatrix:
         return {k:int(a*v+b) for (v,k) in l}
   
     def sum_word(self, word):
-            """returns the sum of the TFIDF values in the line of  "word" """
+            """
+            returns the sum of the TFIDF values in the line of  "word" 
+            
+            """
             return sum(self.graph[word].values())  
   
     def sum_words(self):   

@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jun 20 18:28:52 2016
-
-@author: loic
-
-Class defining matrix behavior
+Matrix saving the frequencies for each word in every document.
+Used to save place because there are lots of zeros.
 """
 
 from math import log
@@ -21,14 +18,19 @@ class FreqMatrix:
             self.graph[word] = dict()
         
     def coef(self, word, doc):
-        """returns the frequency of word in doc"""
+        """returns the frequency of a word in doc"""
         try:
             return self.graph[word][doc]
         except:
             return 0
     
     def doc_contains(self,doc):
-        """returns all interesting words in a doc"""
+        """returns all interesting words in a doc, with their frequencies
+        @param doc: the name (generally ID) of the doc saved in the matrix
+        @type doc: string
+        
+        @return: a dictionary linking words that are found in this doc, and their frequency
+        @rtype: dict {word (unicode): frequency (float)}"""
         words_dict = dict()
         for word in self.graph:
             try:
@@ -38,12 +40,25 @@ class FreqMatrix:
         return words_dict
         
     def word_appearance(self, word):
-        """returns all frequency of a word: dict {doc: frequency of word in this doc}"""
+        """returns all the docs where this word appears
+        
+        @param word: the word you want to examinate
+        @type word: unicode
+        
+        @return: a dictionary of all the docs that contain this word, 
+            and the frequency of this word in every doc
+        @rtype: dict {docname (string): frequency (float)}"""
         return self.graph[word]
 
         
     def add_doc(self, docname, dic):
-        """Adding all words in dic related to a doc"""
+        """Add all words that are in the dic, linked to docname
+        
+        @param docname: the name (generally ID) of the doc
+        @type docname: string
+        
+        @param dic: the dictionary containing all words and their frequencies
+        @type dic: dict {word (unicode): frequency (float)}"""
         if docname not in self.docs:
             self.docs.append(docname)
         for word in dic:
@@ -74,7 +89,10 @@ class FreqMatrix:
             
     
     def save(self, filename):
-        """saves the matrix under the csv format"""
+        """saves the matrix under the csv format
+        
+        @param filename: the path leading to the file
+        @type filename: string"""
         f = codecs.open(filename, "w", "utf-8")
         for doc in self.docs:
             f.write(","+doc)

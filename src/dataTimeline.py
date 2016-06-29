@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jun 24 10:43:42 2016
-
-@author: asueur
+Performs computations for the timeline (moving average, TFIDF matrix creation)
 """
 from freqMatrixClass import FreqMatrix
 from retrieveCategories import getAll
 from timelineVisualization import getInfo
 from Timeline import formatDate
-from TFIDFMatrixClass import TFIDFMatrix
 import initServer
 import pdf2txt
 import PDFdl
@@ -24,7 +21,7 @@ def getCategories(filepath):
     """
     returns the frequencies of categories in a file.
     @param filepath: the path to the text file
-    @type filepath: str
+    @type filepath: string
     
     @return: a dictionary {category:frequency}
     @rtype: dict {str:float}
@@ -32,14 +29,14 @@ def getCategories(filepath):
     fileName=open(filepath,"r")
     fileText = fileName.read()
     fileName.close()
-    #freq_dictionaries[title]=getAll(fileText)[0] #category frequencies of documents
+
     try:
         return getAll(fileText)[0]
     except HTTPError as e:
         print 'Error getting categories for %s: "%s"'% (filepath, e.message)
         return dict()
     
-def createTFIDFMatrix(authorName, startDateString, endDateString): #date format: year monthNumber
+def createTFIDFMatrix(authorName, startDateString, endDateString):
     """ create TFIDF Matrix using documents written by an author during a selected period
     @param authorName: author's lastname
     @type authorName: string
@@ -121,7 +118,12 @@ def createTFIDFMatrix(authorName, startDateString, endDateString): #date format:
 def median(matrixList): 
     """
     returns average value of category frequencies for multiple TFIDF matrixes
-    return type : dictionary {word:float}
+    
+    @param matrixList: the list of matrices you want the average
+    @type matrixList: TFIDFMatrix list
+    
+    @return: a dictionary linking words to their weight
+    @rtype: dict {unicode: float}
     """
     n=len(matrixList) #number of matrixes
     totalFreq=dict()

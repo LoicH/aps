@@ -52,37 +52,8 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module timelineVisualization</h1><p class="nomargin-top"><span class="codelink"><a href="timelineVisualization-pysrc.html">source&nbsp;code</a></span></p>
-<p>Created on Thu Jun 23 11:19:24 2016</p>
+<p>Module used to view the timeline.</p>
 
-<hr />
-<div class="fields">      <p><strong>Author:</strong>
-        asueur
-      </p>
-</div><!-- ==================== CLASSES ==================== -->
-<a name="section-Classes"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Classes</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Classes"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="timelineVisualization.article-class.html" class="summary-name">article</a>
-    </td>
-  </tr>
-</table>
 <!-- ==================== FUNCTIONS ==================== -->
 <a name="section-Functions"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -102,12 +73,14 @@
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">dict {unicode: unicode}</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="getAll"></a><span class="summary-sig-name">getAll</span>(<span class="summary-sig-arg">index</span>,
-        <span class="summary-sig-arg">bibName</span>)</span></td>
+          <td><span class="summary-sig"><a href="timelineVisualization-module.html#getAll" class="summary-sig-name">getAll</a>(<span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">bibName</span>)</span><br />
+      returns the information about an article at a given position in a 
+      bibtex file</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="timelineVisualization-pysrc.html#getAll">source&nbsp;code</a></span>
             
@@ -119,11 +92,13 @@
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">tuple (dict {title (unicode): [date (unicode), ID (int)]}, unicode 
+      list)</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="getInfo"></a><span class="summary-sig-name">getInfo</span>(<span class="summary-sig-arg">authorName</span>)</span></td>
+          <td><span class="summary-sig"><a href="timelineVisualization-module.html#getInfo" class="summary-sig-name">getInfo</a>(<span class="summary-sig-arg">authorName</span>)</span><br />
+      returns the publication and colleagues of a given author</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="timelineVisualization-pysrc.html#getInfo">source&nbsp;code</a></span>
             
@@ -135,11 +110,12 @@
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">unicode list</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="getCoauthors"></a><span class="summary-sig-name">getCoauthors</span>(<span class="summary-sig-arg">authorName</span>)</span></td>
+          <td><span class="summary-sig"><a href="timelineVisualization-module.html#getCoauthors" class="summary-sig-name">getCoauthors</a>(<span class="summary-sig-arg">authorName</span>)</span><br />
+      returns the colleagues of a given author.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="timelineVisualization-pysrc.html#getCoauthors">source&nbsp;code</a></span>
             
@@ -171,31 +147,222 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="regex"></a><span class="summary-name">regex</span> = <code title="r'id=(\d+)'">r'id=(\d+)'</code>
+        <a name="app_path"></a><span class="summary-name">app_path</span> = <code title="'/home/loic/Programmation/aps'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="bib"></a><span class="summary-name">bib</span> = <code title="'document2.bib'">'document2.bib'</code>
+        <a name="data"></a><span class="summary-name">data</span> = <code title="'/home/loic/Programmation/aps/data'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps/data</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="bibName"></a><span class="summary-name">bibName</span> = <code title="&quot;testbib.bib&quot;">&quot;testbib.bib&quot;</code>
+        <a name="src"></a><span class="summary-name">src</span> = <code title="'/home/loic/Programmation/aps/src'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps/src</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="entries"></a><span class="summary-name">entries</span> = <code title="PDFdl.openBibLib(bibName).entries">PDFdl.openBibLib(bibName).entries</code>
+        <a name="regex"></a><span class="summary-name">regex</span> = <code title="'id=(\\d+)'"><code class="variable-quote">'</code><code class="variable-string">id=(\\d+)</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="bib"></a><span class="summary-name">bib</span> = <code title="'/home/loic/Programmation/aps/data/document.bib'"><code class="variable-quote">'</code><code class="variable-string">/home/loic/Programmation/aps/data/document.bib</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="timelineVisualization-module.html#entries" class="summary-name">entries</a> = <code title="[{'ENTRYTYPE': u'inproceedings',
+  'ID': 'CC:MMSys-2016',
+  u'address': u'Klagenfurt, Austria',
+  u'annote': u'category=inproceedings language=en audience=2 state=toa\
+ppear dept=tsi group=mm id=16023',
+  u'author': u'O. {Niamut} and E. {Thomas} and D. {Mico} and C. {Conco\
+lato} and F. {Denoual} and S. Y. {Lim}',
+  u'booktitle': u'ACM MMSys',
+..."><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">ENTRYTYPE</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">inproceedings</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">ID</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">CC:MMSys-201</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="None">None</code>
     </td>
   </tr>
 </table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="getAll"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAll</span>(<span class="sig-arg">index</span>,
+        <span class="sig-arg">bibName</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="timelineVisualization-pysrc.html#getAll">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>returns the information about an article at a given position in a 
+  bibtex file</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>getAll(3, <span class="py-string">&quot;toto&quot;</span>)
+<span class="py-output">{u'author': u'S. {Durand} and J. P. {Bello} and B. {DAVID} and G. {Richard}',</span>
+<span class="py-output"> u'title': u'Feature Adapted Convolutional Neural Networks for Downbeat Tracking',</span>
+<span class="py-output"> u'year': u'2016'}</span></pre>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>index</code></strong> (int) - the position of the article in the corpus</li>
+        <li><strong class="pname"><code>bibName</code></strong> (string) - the path leading to the bibtex file (useless)</li>
+    </ul></dd>
+    <dt>Returns: dict {unicode: unicode}</dt>
+        <dd>a dictionary of the information about the article, all the 
+          strings are in unicode</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getInfo"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getInfo</span>(<span class="sig-arg">authorName</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="timelineVisualization-pysrc.html#getInfo">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>returns the publication and colleagues of a given author</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>pub, colleagues = getInfo(u<span class="py-string">&quot;Cl&#233;men&#231;on&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>pub
+<span class="py-output">{u'Multipartite Ranking': [u'2014 jul',</span>
+<span class="py-output">14057],</span>
+<span class="py-output">u'Visual Mining of Epidemic Networks': [u'2011 jun', 11289]}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>colleagues
+<span class="py-output">[u'S.Cl&#233;men&#231;onandH.DeArazozaandV.Ch.TranandF.Rossi',</span>
+<span class="py-output">u'R.GaudelandS.Cl&#233;men&#231;on']</span></pre>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>authorName</code></strong> (unicode) - the last name of the author</li>
+    </ul></dd>
+    <dt>Returns: tuple (dict {title (unicode): [date (unicode), ID (int)]}, unicode 
+      list)</dt>
+        <dd>the publications informations and the colleagues of a given 
+          author</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getCoauthors"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCoauthors</span>(<span class="sig-arg">authorName</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="timelineVisualization-pysrc.html#getCoauthors">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>returns the colleagues of a given author.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>getCoauthors(u<span class="py-string">'Maz&#233;'</span>)
+<span class="py-output">[u'E. Nassor', u'F. Denoual', u'F. Maz&#233;', u'C. Concolato', u'J. Le Feuvre']</span></pre>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>authorName</code></strong> (unicode) - the last name of an author</li>
+    </ul></dd>
+    <dt>Returns: unicode list</dt>
+        <dd>a list of all the colleagues</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="entries"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">entries</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">ENTRYTYPE</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">inproceedings</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">'</code><code class="variable-string">ID</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">CC:MMSys-2016</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">u'</code><code class="variable-string">address</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Klagenfurt, Austria</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">u'</code><code class="variable-string">annote</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">category=inproceedings language=en audience=2 state=toa</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">ppear dept=tsi group=mm id=16023</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">u'</code><code class="variable-string">author</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">O. {Niamut} and E. {Thomas} and D. {Mico} and C. {Conco</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">lato} and F. {Denoual} and S. Y. {Lim}</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  <code class="variable-quote">u'</code><code class="variable-string">booktitle</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">ACM MMSys</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
@@ -219,7 +386,8 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jun 28 18:46:00 2016
+    Generated by Epydoc 3.0.1
+    on Wed Jun 29 09:18:16 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

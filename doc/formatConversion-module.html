@@ -52,13 +52,9 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module formatConversion</h1><p class="nomargin-top"><span class="codelink"><a href="formatConversion-pysrc.html">source&nbsp;code</a></span></p>
-<p>Created on Tue Jun 21 13:46:30 2016</p>
+<p>Converts data to JSON files</p>
 
-<hr />
-<div class="fields">      <p><strong>Author:</strong>
-        asueur
-      </p>
-</div><!-- ==================== CLASSES ==================== -->
+<!-- ==================== CLASSES ==================== -->
 <a name="section-Classes"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
@@ -80,7 +76,7 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="formatConversion.Object-class.html" class="summary-name">Object</a><br />
-      __init__() functions as the class constructor
+      Used to convert an objet into JSON format
     </td>
   </tr>
 </table>
@@ -109,7 +105,7 @@
         <tr>
           <td><span class="summary-sig"><a href="formatConversion-module.html#convertDict" class="summary-sig-name">convertDict</a>(<span class="summary-sig-arg">dico</span>,
         <span class="summary-sig-arg">file_out</span>)</span><br />
-      convert a dictionnary to a json file used by the first worldcloud</td>
+      convert a dictionary to a json file used by the first worldcloud</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="formatConversion-pysrc.html#convertDict">source&nbsp;code</a></span>
             
@@ -127,7 +123,7 @@
         <tr>
           <td><span class="summary-sig"><a href="formatConversion-module.html#convertDict2" class="summary-sig-name">convertDict2</a>(<span class="summary-sig-arg">dico</span>,
         <span class="summary-sig-arg">file_out</span>)</span><br />
-      convert a dictionnary to a json file used by the second worldcloud</td>
+      convert a dictionary to a json file used by the second worldcloud</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="formatConversion-pysrc.html#convertDict2">source&nbsp;code</a></span>
             
@@ -148,7 +144,8 @@
         <span class="summary-sig-arg">timeSections</span>)</span><br />
       standard input form: 
       [{&quot;a&quot;:0.3,&quot;b&quot;:0.7},{&quot;c&quot;:0.3,&quot;d&quot;:0.7}]
-      ordered chronologically</td>
+      ordered chronologically Used to view the evolution in time of the 
+      weights of words</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="formatConversion-pysrc.html#convertToMatrice">source&nbsp;code</a></span>
             
@@ -160,7 +157,8 @@
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">[{&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
+      <span class="summary-type">string 
+      {&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
       list}, 
       {&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
       list}, ... ]</span>
@@ -176,6 +174,105 @@
         </tr>
       </table>
       
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="formatConversion-module.html#f" class="summary-name">f</a> = <code title="codecs.open(initServer.data+ os.sep+ &quot;departments.json&quot;, &quot;r&quot;, &quot;utf-8&quot;)">codecs.open(initServer.data+ os.sep+ &quot;departments.json&quot;, &quot;<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="formatConversion-module.html#departments" class="summary-name">departments</a> = <code title="[{u'groups': [{u'name': u'ECOGE',
+               u'people': [{u'name': u'BACACHE',
+                            u'surname': u'Maya',
+                            u'uri': u''},
+                           {u'name': u'BOUNIE',
+                            u'surname': u'David',
+                            u'uri': u''},
+                           {u'name': u'BOURREAU', u'surname': u'Marc',\
+..."><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">groups</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">ECOGE</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">people</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="formatConversion-module.html#dptDict" class="summary-name">dptDict</a> = <code title="{u'Abdessalem': u'INFRES.IC2.',
+ u'Aissaoui': u'INFRES.SR.',
+ u'Alleaume': u'INFRES.SR.',
+ u'Almansa': u'TSI.STA.',
+ u'Ameur-Boulifa': u'COMELEC.LabSoC.',
+ u'Angelini': u'TSI.STA.',
+ u'Apvrille': u'COMELEC.LabSoC.',
+ u'Asselineau': u'TSI.STA.',
+..."><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">Abdessalem</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">INFRES.IC2.</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">Aissaoui</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">INFRE</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="formatConversion-module.html#department" class="summary-name">department</a> = <code title="{u'groups': [{u'name': u'IC2',
+              u'people': [{u'name': u'ABDESSALEM',
+                           u'surname': u'Talel',
+                           u'uri': u''},
+                          {u'name': u'BAILLY',
+                           u'surname': u'Gilles',
+                           u'uri': u''},
+                          {u'name': u'BURTSCHY', u'surname': u'Bernard\
+..."><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">groups</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">IC2</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">people</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">nam</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="formatConversion-module.html#groups" class="summary-name">groups</a> = <code title="{u'name': u'SR',
+ u'people': [{u'name': u'AISSAOUI',
+              u'surname': u'Hassane',
+              u'uri': u''},
+             {u'name': u'ALLEAUME',
+              u'surname': u'Romain',
+              u'uri': u''},
+             {u'name': u'DIAMANTI', u'surname': u'Eleni', u'uri': u''}\
+..."><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">SR</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">people</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">AISSAOUI</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="formatConversion-module.html#person" class="summary-name">person</a> = <code title="{u'name': u'ZAQUINE', u'surname': u'Isabelle', u'uri': u''}"><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">ZAQUINE</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Isabelle</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">uri</code><code class="variable-quote">'</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 </table>
@@ -212,11 +309,11 @@
     </td>
   </tr></table>
   
-  <p>convert a dictionnary to a json file used by the first worldcloud</p>
+  <p>convert a dictionary to a json file used by the first worldcloud</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>dico</code></strong> (dictionnary) - dictionnary you want to convert</li>
+        <li><strong class="pname"><code>dico</code></strong> (dictionary) - dictionary you want to convert</li>
         <li><strong class="pname"><code>file_out</code></strong> (string) - path you want to save the file to</li>
     </ul></dd>
   </dl>
@@ -237,11 +334,11 @@
     </td>
   </tr></table>
   
-  <p>convert a dictionnary to a json file used by the second worldcloud</p>
+  <p>convert a dictionary to a json file used by the second worldcloud</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>dico</code></strong> (dictionnary) - dictionnary you want to convert</li>
+        <li><strong class="pname"><code>dico</code></strong> (dictionary) - dictionary you want to convert</li>
         <li><strong class="pname"><code>file_out</code></strong> (string) - path you want to save the file to</li>
     </ul></dd>
   </dl>
@@ -265,13 +362,15 @@
   
   <p>standard input form: 
   [{&quot;a&quot;:0.3,&quot;b&quot;:0.7},{&quot;c&quot;:0.3,&quot;d&quot;:0.7}]
-  ordered chronologically</p>
+  ordered chronologically Used to view the evolution in time of the weights
+  of words</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>totalFreqDictList</code></strong> (list of dictionnary[category (string): frequency (float)] ordered
+        <li><strong class="pname"><code>totalFreqDictList</code></strong> (list of dictionary {category (string): frequency (float)} ordered
           chronologically example: 
-          [{&quot;a&quot;:0.3,&quot;b&quot;:0.7},{&quot;c&quot;:0.3,&quot;d&quot;:0.7}]) - all category frequencies for all periods previously selected</li>
+          [{&quot;a&quot;:0.3,&quot;b&quot;:0.7},{&quot;c&quot;:0.3,&quot;d&quot;:0.7}]) - list of dictionaries saving the weights of each word at a given 
+          time point</li>
         <li><strong class="pname"><code>file_out</code></strong> (string) - path you want to save the file to</li>
         <li><strong class="pname"><code>timeSections</code></strong> (int) - number of periods chosen</li>
     </ul></dd>
@@ -299,13 +398,173 @@
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>coauthorDict</code></strong> (dictionnary [author (string): list coauthors (list string)]) - link each author to his coauthor</li>
+        <li><strong class="pname"><code>coauthorDict</code></strong> (dictionnary {author (string): list coauthors (list string)}) - link each author to his coauthor</li>
     </ul></dd>
-    <dt>Returns: [{&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
+    <dt>Returns: string 
+      {&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
       list}, 
       {&quot;name&quot;:string,&quot;size&quot;:int,&quot;imports&quot;:string
       list}, ... ]</dt>
         <dd>format for graph coauthor</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="f"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">f</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+codecs.open(initServer.data+ os.sep+ &quot;departments.json&quot;, &quot;r&quot;, &quot;utf-8&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="departments"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">departments</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">groups</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">ECOGE</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+               <code class="variable-quote">u'</code><code class="variable-string">people</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">BACACHE</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+                            <code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Maya</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+                            <code class="variable-quote">u'</code><code class="variable-string">uri</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">}</code><code class="variable-op">,</code>
+                           <code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">BOUNIE</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+                            <code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">David</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+                            <code class="variable-quote">u'</code><code class="variable-string">uri</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">}</code><code class="variable-op">,</code>
+                           <code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">BOURREAU</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Marc</code><code class="variable-quote">'</code><code class="variable-op">,</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="dptDict"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">dptDict</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">Abdessalem</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">INFRES.IC2.</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Aissaoui</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">INFRES.SR.</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Alleaume</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">INFRES.SR.</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Almansa</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">TSI.STA.</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Ameur-Boulifa</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">COMELEC.LabSoC.</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Angelini</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">TSI.STA.</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Apvrille</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">COMELEC.LabSoC.</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Asselineau</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">TSI.STA.</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="department"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">department</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">groups</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">IC2</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+              <code class="variable-quote">u'</code><code class="variable-string">people</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">ABDESSALEM</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+                           <code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Talel</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+                           <code class="variable-quote">u'</code><code class="variable-string">uri</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">}</code><code class="variable-op">,</code>
+                          <code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">BAILLY</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+                           <code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Gilles</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+                           <code class="variable-quote">u'</code><code class="variable-string">uri</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">}</code><code class="variable-op">,</code>
+                          <code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">BURTSCHY</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Bernard</code><code class="variable-quote"></code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="groups"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">groups</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">SR</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">people</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">AISSAOUI</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+              <code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Hassane</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+              <code class="variable-quote">u'</code><code class="variable-string">uri</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">}</code><code class="variable-op">,</code>
+             <code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">ALLEAUME</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+              <code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Romain</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+              <code class="variable-quote">u'</code><code class="variable-string">uri</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">}</code><code class="variable-op">,</code>
+             <code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">DIAMANTI</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Eleni</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">uri</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">}</code><code class="variable-op"></code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="person"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">person</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">u'</code><code class="variable-string">name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">ZAQUINE</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">surname</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string">Isabelle</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">uri</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">u'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">}</code>
+</pre></td></tr></table>
+</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -333,7 +592,8 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jun 28 18:46:00 2016
+    Generated by Epydoc 3.0.1
+    on Wed Jun 29 09:18:16 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -53,11 +53,12 @@ def getTextWords(text):
 
 def modifyText(textWords, blackList):
     """deleting one letter words + lowercase (except acronyms)
+    
     @param textWords: word list
     @type textWords: string list
     
     @param blackList: words you want to delete in textWords
-    @type blacklist: string list
+    @type blackList: string list
     
     @return: word list without one letter words. All words in lowercase, except acronyms
     @rtype: string list """
@@ -75,8 +76,8 @@ def modifyText(textWords, blackList):
     
 def deleteStopWords(textWords):
     """deleting words of types determiners, conjonctions, cardinal numbers and stopwords
-    @param text: word list you want to delete stopwords from
-    @type text: string list
+    @param textWords: word list you want to delete stopwords from
+    @type textWords: string list
     
     @return: word list without stopwords, determiners ...
     @rtype: string list """
@@ -170,8 +171,8 @@ def frequencyWithTreshold(textWords, occTreshold, lengthTreshold):
     @param occTreshold: world with less occurences than occTreshold will be wiped out
     @type occTreshold: int
     
-    @param occTreshold: world with less letters than lengthTreshold will be wiped out
-    @type occTreshold: int
+    @param lengthTreshold: world with less letters than lengthTreshold will be wiped out
+    @type lengthTreshold: int
 
     @return: world list without the world below the two tresholds
     @rtype: string list """

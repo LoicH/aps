@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jun 28 11:53:50 2016
-
-@author: loic
-"""
-
-"""Populating the database and performing the calculations when needed"""
+Creates the JSON files for visualization from bibtex files
+The server will call the functions make_json_timeline and make_json_wordcloud2
+to create the JSON files when needed"""
 
 import os
 import codecs
@@ -13,6 +10,11 @@ import threading
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
 from calendar import monthrange
+
+app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
+data = app_path+os.sep+"data"
+src = app_path+os.sep+"src"
+tmp_pdf_dir = "/tmp/aps"
 
 import pdf2txt
 import TFIDFMatrixClass
@@ -24,30 +26,21 @@ import dataTimeline
 
 
 
-app_path = os.getcwd().split(os.sep+"aps")[0]+os.sep+"aps"
-data = app_path+os.sep+"data"
-src = app_path+os.sep+"src"
-tmp_pdf_dir = "/tmp/aps"
+
 
 def _compute_tfidf(bib_path):
     """
     Saves a "bibtex"_tfidf.csv with a given bibtex file, only if the .csv is older 
     than the .bib.
-    
-    Parameters
-    ----------
-    bib_path: str
-        the complete filepath of the bibtex file
-    
-    Returns
-    -------
-    tmatrix: TFIDFMatrix
-        The TFIDFMatrix object
-    
+        
+        >>> t = compute_tfidf("data/document.bib")
 
-    Example
-    -------
-    >>> t = compute_tfidf("data/document.bib")
+    @param bib_path: the complete filepath of the bibtex file
+    @type bib_path:  string   
+
+    @return: The TFIDF Matrix 
+    @rtype: TFIDFMatrix
+    
     """
     
     #bib_path = "/home/user/aps/data/document.bib" → bib_name = "document"
@@ -98,9 +91,14 @@ def _compute_tfidf(bib_path):
 
 def make_json_wordcloud2(bibtex):
     """
-    Creates a JSON file from a bibtex file.
+    Creates a JSON file from a bibtex file to visualize the 2nd version 
+    of the wordcloud.
     
-    bibtex is the complete path of the file.
+    @param bibtex: the path to the bibtex file
+    @type bibtex: string
+    
+    @return: Nothing
+    @rtype: None
     """
     tmatrix = _compute_tfidf(bibtex)
     print "Saving the JSON file"
@@ -110,6 +108,18 @@ def make_json_wordcloud2(bibtex):
   
 
 def _monthdelta(d1, d2):
+    """
+    Computes the months difference between two dates
+    
+    @param d1: the first date
+    @type d1: date object
+    
+    @param d2: the second date
+    @type d2: date object
+    
+    @return: the number of months between the two dates
+    @rtype: int
+    """
     delta = 0
     while True:
         mdays = monthrange(d1.year, d1.month)[1]
@@ -162,22 +172,27 @@ def _select_top_timeline(freq_list, number=10):
 def make_json_timeline(authorName, startDate, endDate, periodLength, json_filepath):
     """Creates a JSON file for a timeline about a given author between two dates.
     
-    Parameters
-    ----------
-    authorName: str
-        The name of the author you want to visualize, must respect the case: "J. Doe"
-    startDate: str
-        The date where you want to start : "2012 jan"
-    endDate: str
-        The date where you want to stop.
-    periodLength: int
-        Number of months between two steps.
-    json_filepath: str
-        Complete path of the JSON output: "src/static/timeline/timeline.json"
+        >>> make_json_timeline("J. Doe", "2012 jan", "2015 dec", "src/static/timeline/timeline.json")
+    
+    @param authorName: The name of the author you want to visualize, 
+        must respect the case: "J. Doe"
+    @type authorName: unicode
+    
+    @param startDate: The date where you want to start : "2012 jan"
+    @type startDate: string
 
-    Example
-    -------
-    >>> make_json_timeline("J. Doe", "2012 jan", "2015 dec", "src/static/timeline/timeline.json")
+    @param endDate: The date where you want to stop.
+    @type endDate: string
+ 
+    @param periodLength: Number of months between two steps.
+    @type periodLength: int
+
+    @param json_filepath: Complete path of the JSON output: "src/static/timeline/timeline.json"
+    @type json_filepath: string
+    
+    @return: Nothing
+    @rtype: None
+    
     """
     periodFrequenciesList = []
     #periodFrequenciesList will save moving average (French: « moyenne glissante »)

@@ -24,7 +24,7 @@ var svg = d3.select("body").append("svg")
     .append("g")
     .attr("transform", "translate(" + radius + "," + radius + ")");
 
-d3.json("readme-flare-imports.json", function(error, classes) {
+d3.json("/static/readme-flare-imports.json", function(error, classes) {
     if (error) throw error;
 
     var nodes = cluster.nodes(packageHierarchy(classes)),
