@@ -1,30 +1,34 @@
-# aps
-Analysis of scientific papers and results visualization
 
-# Plugins:
+# aps 
+(for « **A**nalyse de **p**apiers **s**cientifiques »)
+Analysis of scientific papers and results visualization.
 
-* nltk
+2nd year project, in June 2016.
+We mined scientific publications from our school to generate insights about the topics and the authors.
 
-* latexcodec
 
-* Flask
+# Plugins used:
 
-* pdfMiner
+* nltk for natural language processing
 
-* bibtexparser
+* latexcodec to work with LaTeX
 
-* rdflib
+* Flask to code the server
 
-* pyspotlight
+* pdfMiner to extract text from pdf
 
-* datetime
+* bibtexparser to extract data from bibtex files
 
+* rdflib to work with RDF and represent information
+
+* pyspotlight to connect to DBpedia and retrieve semantic categories/topics
+
+* datetime for time computations
+
+To install them all (Linux):
 → ```sudo pip install nltk latexcodec Flask pdfMiner bibtexparser rdflib pyspotlight dateutil```
 
-(The list of requirements may be not up-to-date, if you have an import error, please message us
-and we'll update the list!)
-
-# How to view the wordcloud:
+# How to view the wordcloud of topics:
 
 1) You will need a command line inside the source folder. You can execute ```cd aps/``` after cloning our repository.
 
