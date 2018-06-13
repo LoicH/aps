@@ -6,6 +6,8 @@ Analysis of scientific papers and results visualization.
 Project done during our 1st year at Télécom ParisTech, in June 2016.
 We mined scientific publications from our school to generate insights about the topics and the authors.
 
+For instance we built visualization about the various topics covered by the papers, and built charts to highlight links between authors.
+
 
 # Plugins used:
 
