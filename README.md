@@ -3,7 +3,7 @@
 (for « **A**nalyse de **p**apiers **s**cientifiques »)
 Analysis of scientific papers and results visualization.
 
-2nd year project, in June 2016.
+Project done during our 1st year at Télécom ParisTech, in June 2016.
 We mined scientific publications from our school to generate insights about the topics and the authors.
 
 
